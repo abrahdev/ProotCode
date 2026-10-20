@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProotCode</string>
+    <string name="app_tagline">A portable Linux development workspace for Android</string>
+    <string name="app_status">Initial scaffold</string>
+</resources>
