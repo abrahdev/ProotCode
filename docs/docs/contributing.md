@@ -8,14 +8,15 @@ sidebar_position: 5
 
 1. Install JDK 17 or newer and Android SDK 37.
 2. Clone the repository.
-3. Run `./gradlew assembleDebug` to verify the toolchain.
-4. Open the project in Android Studio or IntelliJ IDEA.
+3. Run `cd mobile && ./gradlew assembleDebug` to verify the toolchain.
+4. Open the `mobile/` directory in Android Studio or IntelliJ IDEA.
 
 ## Checks
 
 Run the same checks as CI before opening a pull request:
 
 ```bash
+cd mobile
 ./gradlew ktlintCheck lintDebug testDebugUnitTest assembleDebug
 ```
 
@@ -32,12 +33,12 @@ Use `./gradlew ktlintFormat` to fix formatting issues automatically.
 
 - Kotlin official style, 4-space indentation, 120-column limit.
 - Jetpack Compose and Material 3 for UI.
-- User-facing strings belong in `app/src/main/res/values/strings.xml`.
+- User-facing strings belong in `mobile/app/src/main/res/values/strings.xml`.
 - Do not add comments unless they explain non-obvious behavior.
 
 ## Releases
 
-- Update `VERSION` and `CHANGELOG.md`.
+- Update `VERSION` and `mobile/CHANGELOG.md`.
 - Merge the change into `main`.
 - The release workflow builds and publishes a signed APK.
 

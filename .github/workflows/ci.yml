@@ -5,11 +5,6 @@ on:
     branches: [main]
   push:
     branches: [main]
-    paths-ignore:
-      - "VERSION"
-      - "docs/**"
-      - "CHANGELOG.md"
-      - ".github/workflows/deploy-docs.yml"
 
 permissions:
   contents: read
@@ -30,8 +25,11 @@ jobs:
           packages: "platforms;android-37.0 build-tools;37.0.0"
 
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          build-root-directory: mobile
 
       - name: Formatting, lint, tests, and debug build
+        working-directory: mobile
         run: ./gradlew ktlintCheck lintDebug testDebugUnitTest assembleDebug --stacktrace
 
       - name: Upload reports
@@ -40,6 +38,6 @@ jobs:
         with:
           name: reports
           path: |
-            app/build/reports/**
-            build/reports/**
+            mobile/app/build/reports/**
+            mobile/build/reports/**
           if-no-files-found: ignore

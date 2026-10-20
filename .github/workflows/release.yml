@@ -30,8 +30,11 @@ jobs:
           packages: "platforms;android-37.0 build-tools;37.0.0"
 
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          build-root-directory: mobile
 
       - name: Formatting, lint, and tests
+        working-directory: mobile
         run: ./gradlew ktlintCheck lintDebug testDebugUnitTest --stacktrace
 
   build:
@@ -50,13 +53,15 @@ jobs:
           packages: "platforms;android-37.0 build-tools;37.0.0"
 
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          build-root-directory: mobile
 
       - name: Restore keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/prootcode-release.jks"
-          cat > key.properties <<EOF
+          cat > mobile/key.properties <<EOF
           storeFile=$RUNNER_TEMP/prootcode-release.jks
           storePassword=${{ secrets.KEYSTORE_PASSWORD }}
           keyAlias=${{ secrets.KEY_ALIAS }}
@@ -64,12 +69,13 @@ jobs:
           EOF
 
       - name: Build signed APK
+        working-directory: mobile
         run: ./gradlew assembleRelease --stacktrace
 
       - name: Rename APK
         run: |
           VERSION=$(cat VERSION)
-          cp app/build/outputs/apk/release/app-release.apk "prootcode-${VERSION}.apk"
+          cp mobile/app/build/outputs/apk/release/app-release.apk "prootcode-${VERSION}.apk"
           echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
 
       - uses: actions/upload-artifact@v7
@@ -79,7 +85,7 @@ jobs:
 
       - name: Clean up keystore
         if: always()
-        run: rm -f "$RUNNER_TEMP/prootcode-release.jks" key.properties
+        run: rm -f "$RUNNER_TEMP/prootcode-release.jks" mobile/key.properties
 
   release:
     runs-on: ubuntu-latest
