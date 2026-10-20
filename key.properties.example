@@ -1,0 +1,4 @@
+storeFile=/absolute/path/to/prootcode-release.jks
+storePassword=change-me
+keyAlias=prootcode
+keyPassword=change-me

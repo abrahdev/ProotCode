@@ -1,0 +1,30 @@
+:root {
+  --ifm-color-primary: #16a34a;
+  --ifm-color-primary-dark: #128a3e;
+  --ifm-color-primary-darker: #0f7a37;
+  --ifm-color-primary-darkest: #0b5f2a;
+  --ifm-color-primary-light: #22c55e;
+  --ifm-color-primary-lighter: #4ade80;
+  --ifm-color-primary-lightest: #86efac;
+  --ifm-background-color: #f8fafc;
+  --ifm-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+[data-theme='dark'] {
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-color-content: #e2e8f0;
+  --ifm-color-content-secondary: #94a3b8;
+}
+
+.navbar {
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08);
+}
+
+.hero--primary {
+  background: linear-gradient(135deg, #0f172a 0%, #14532d 100%);
+}
+
+code {
+  border-radius: 6px;
+}
