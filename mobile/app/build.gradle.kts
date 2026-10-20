@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-val appVersion = rootProject.file("VERSION").readText().trim()
+val appVersion = rootProject.file("../VERSION").readText().trim()
 val numericVersion = appVersion.substringBefore("-")
 val versionParts = numericVersion.split(".")
 val versionCodeValue =

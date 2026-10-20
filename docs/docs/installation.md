@@ -34,15 +34,15 @@ Add `https://github.com/abrahdev/ProotCode` as a source in
 
 ```bash
 git clone https://github.com/abrahdev/ProotCode.git
-cd ProotCode
+cd ProotCode/mobile
 ./gradlew assembleDebug
 ```
 
-The APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
+The APK is generated at `mobile/app/build/outputs/apk/debug/app-debug.apk`.
 
 ### Release build
 
-Create a keystore and a `key.properties` file in the repository root:
+Create a keystore and a `key.properties` file inside `mobile/`:
 
 ```properties
 storeFile=/absolute/path/to/prootcode-release.jks
@@ -54,10 +54,11 @@ keyPassword=your-password
 Then run:
 
 ```bash
+cd mobile
 ./gradlew assembleRelease
 ```
 
-The signed APK is generated at `app/build/outputs/apk/release/app-release.apk`.
+The signed APK is generated at `mobile/app/build/outputs/apk/release/app-release.apk`.
 
 :::danger
 

@@ -53,24 +53,27 @@ You can also add `https://github.com/abrahdev/ProotCode` as a source in
 
 ```bash
 git clone https://github.com/abrahdev/ProotCode.git
-cd ProotCode
+cd ProotCode/mobile
 ./gradlew assembleDebug
 ```
 
-The APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
+The APK is generated at `mobile/app/build/outputs/apk/debug/app-debug.apk`.
 
-For a signed release build, copy `key.properties.example` to `key.properties`, fill in the
-keystore values, and run:
+For a signed release build, copy `mobile/key.properties.example` to
+`mobile/key.properties`, fill in the keystore values, and run:
 
 ```bash
+cd mobile
 ./gradlew assembleRelease
 ```
 
 ## Project structure
 
 ```
-app/                  Android application module (Kotlin + Compose)
-gradle/               Version catalog and Gradle wrapper
+mobile/               Android build root (Kotlin + Compose)
+mobile/app/           Android application module
+mobile/gradle/        Version catalog and Gradle wrapper
+mobile/CHANGELOG.md   Release notes
 docs/                 Docusaurus documentation
 .github/workflows/    CI, release, and documentation deployment
 VERSION               Calendar version used by the release workflow

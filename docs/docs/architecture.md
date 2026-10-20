@@ -10,13 +10,15 @@ scaffold, CI, release pipeline, and documentation.
 ## Layers
 
 ```
-app/                      Android UI, navigation, and lifecycle
-  ui/                     Jetpack Compose screens and theme
-  core/                   Shared utilities and result types
-  data/                   Settings, storage, and environment metadata
-  runtime/                proot process management
-  terminal/               Terminal sessions and input handling
-  codeserver/             Code Server lifecycle and networking
+mobile/                    Android build root
+  app/                     Android UI, navigation, and lifecycle
+    ui/                    Jetpack Compose screens and theme
+    core/                  Shared utilities and result types
+    data/                  Settings, storage, and environment metadata
+    runtime/               proot process management
+    terminal/              Terminal sessions and input handling
+    codeserver/            Code Server lifecycle and networking
+docs/                      Docusaurus documentation
 ```
 
 The package root is `dev.prootcode.app`. Layers will be introduced as features are implemented;

@@ -9,7 +9,7 @@ without root using proot, with terminals, apt management, and Code Server.
 
 - Never commit without explicit user permission.
 - Never build a release bundle unless explicitly asked.
-- Always run `./gradlew ktlintCheck lintDebug testDebugUnitTest` after code changes and fix issues before reporting done.
+- Always run `./gradlew ktlintCheck lintDebug testDebugUnitTest` from `mobile/` after code changes and fix issues before reporting done.
 - Check existing code conventions before changing anything (imports, naming, package structure).
 - Follow existing patterns and reuse existing dependencies.
 - Do not add comments to code unless explicitly requested.
@@ -32,11 +32,13 @@ without root using proot, with terminals, apt management, and Code Server.
 - UI with Jetpack Compose and Material 3. No XML layouts.
 - Package root: `dev.prootcode.app`.
 - Keep UI, domain, and data concerns separated as the app grows.
-- Add strings to `app/src/main/res/values/strings.xml`; never hardcode user-facing text.
+- Add strings to `mobile/app/src/main/res/values/strings.xml`; never hardcode user-facing text.
 - Minimum SDK 26, compile/target SDK 37, Java 17 bytecode.
 - Do not change AGP, Kotlin, or Compose versions without asking.
 
 ## Build
+
+Run every command from `mobile/`.
 
 - Debug APK: `./gradlew assembleDebug`
 - Unit tests: `./gradlew testDebugUnitTest`
@@ -48,13 +50,13 @@ without root using proot, with terminals, apt management, and Code Server.
 
 - Calendar version in `VERSION`: `YYYY.MM.PATCH` (for example `2026.10.0`).
 - `versionCode` is derived automatically from `VERSION`.
-- Update `VERSION` and `CHANGELOG.md` together.
+- Update `VERSION` and `mobile/CHANGELOG.md` together.
 - Push the `VERSION` change to `main` to trigger the release workflow.
 - Release tags use `v<version>`; versions with a suffix such as `-alpha` are marked as pre-releases.
 
 ## Signing
 
-- Local signing: `key.properties` plus a keystore outside the repository.
+- Local signing: `mobile/key.properties` plus a keystore outside the repository.
 - CI signing: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
 - Never print, commit, or paste keystore contents or passwords.
 
