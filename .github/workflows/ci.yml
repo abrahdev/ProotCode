@@ -27,9 +27,7 @@ jobs:
 
       - uses: android-actions/setup-android@v4.0.4
         with:
-          packages: |
-            platforms;android-37.0
-            build-tools;37.0.0
+          packages: "platforms;android-37.0 build-tools;37.0.0"
 
       - uses: gradle/actions/setup-gradle@v4
 
