@@ -19,6 +19,7 @@ data class InstallRequest(
     val arch: String,
     val codeServerVersion: String?,
     val dnsServers: List<String>,
+    val presets: List<String> = emptyList(),
 )
 
 class EnvironmentInstaller(
@@ -59,10 +60,28 @@ class EnvironmentInstaller(
                 codeServerVersion = request.codeServerVersion,
                 createdAtMillis = System.currentTimeMillis(),
                 sizeBytes = sizeOf(directory),
+                presets = request.presets,
             )
         registry.add(environment)
         onStage(InstallStage.READY)
         return environment
+    }
+
+    fun installCodeServer(
+        environment: Environment,
+        version: String,
+        archive: InputStream,
+    ): Environment {
+        val target = File(rootfsDir(environment.id), CODE_SERVER_DIR)
+        target.deleteRecursively()
+        RootfsExtractor.extract(archive, target, version)
+        val updated =
+            environment.copy(
+                codeServerVersion = version,
+                sizeBytes = sizeOf(environmentDir(environment.id)),
+            )
+        registry.add(updated)
+        return updated
     }
 
     fun delete(id: String) {

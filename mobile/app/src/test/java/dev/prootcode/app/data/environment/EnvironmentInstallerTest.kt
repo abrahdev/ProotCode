@@ -64,6 +64,27 @@ class EnvironmentInstallerTest {
     }
 
     @Test
+    fun `installs another code-server version`() {
+        val environment =
+            installer.install(
+                request = request(),
+                rootfs = ByteArrayInputStream(tarGz { file("./bin/true", "ELF") }),
+                codeServer = null,
+            )
+
+        val updated =
+            installer.installCodeServer(
+                environment,
+                "4.144.0",
+                ByteArrayInputStream(tarGz { file("./code-server/bin/code-server", "new") }),
+            )
+
+        assertEquals("4.144.0", updated.codeServerVersion)
+        assertEquals("4.144.0", registry.load().single().codeServerVersion)
+        assertTrue(File(environmentsDir, "one/rootfs/opt/code-server/code-server/bin/code-server").isFile)
+    }
+
+    @Test
     fun `deletes the environment and its registry entry`() {
         installer.install(request(), ByteArrayInputStream(tarGz { file("./bin/true", "ELF") }), null)
 
