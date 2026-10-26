@@ -35,7 +35,7 @@ jobs:
 
       - name: Formatting, lint, and tests
         working-directory: mobile
-        run: ./gradlew ktlintCheck lintDebug testDebugUnitTest --stacktrace
+        run: ./gradlew ktlintCheck lintStandardDebug testStandardDebugUnitTest --stacktrace
 
   build:
     runs-on: ubuntu-latest
@@ -70,12 +70,12 @@ jobs:
 
       - name: Build signed APK
         working-directory: mobile
-        run: ./gradlew assembleRelease --stacktrace
+        run: ./gradlew assembleStandardRelease --stacktrace
 
       - name: Rename APK
         run: |
           VERSION=$(cat VERSION)
-          cp mobile/app/build/outputs/apk/release/app-release.apk "prootcode-${VERSION}.apk"
+          cp mobile/app/build/outputs/apk/standard/release/app-standard-release.apk "prootcode-${VERSION}.apk"
           echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
 
       - uses: actions/upload-artifact@v7

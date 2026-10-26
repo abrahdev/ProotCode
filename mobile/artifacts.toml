@@ -1,0 +1,33 @@
+schema_version = 1
+
+[[distros]]
+id = "ubuntu-26.04"
+name = "Ubuntu 26.04 LTS"
+version = "26.04"
+arch = "arm64-v8a"
+url = "https://cdimage.ubuntu.com/ubuntu-base/releases/26.04/release/ubuntu-base-26.04.1-base-arm64.tar.gz"
+sha256 = "5a1906794ced63a71a8119c3f211ef5f0bbe0a243001b4bbd41fdf80c5b219fd"
+size = 35092106
+
+[[distros]]
+id = "ubuntu-26.04"
+name = "Ubuntu 26.04 LTS"
+version = "26.04"
+arch = "x86_64"
+url = "https://cdimage.ubuntu.com/ubuntu-base/releases/26.04/release/ubuntu-base-26.04.1-base-amd64.tar.gz"
+sha256 = "a496a960472ce474a59590b8987d3a1135d3cbef1991f3b1abe8cacfea8bf85a"
+size = 34931253
+
+[[code_server]]
+version = "4.143.1"
+arch = "arm64-v8a"
+url = "https://github.com/coder/code-server/releases/download/v4.143.1/code-server-4.143.1-linux-arm64.tar.gz"
+sha256 = "51481a891754dc2585b86d007aec24ac675453fc5ef6cfa346c4462449277384"
+size = 227022946
+
+[[code_server]]
+version = "4.143.1"
+arch = "x86_64"
+url = "https://github.com/coder/code-server/releases/download/v4.143.1/code-server-4.143.1-linux-amd64.tar.gz"
+sha256 = "614877cf71005f14ea252bd2d9b1c12237cf7d73681ef150f0dff7f13849fdb5"
+size = 229583113

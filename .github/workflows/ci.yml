@@ -30,7 +30,7 @@ jobs:
 
       - name: Formatting, lint, tests, and debug build
         working-directory: mobile
-        run: ./gradlew ktlintCheck lintDebug testDebugUnitTest assembleDebug --stacktrace
+        run: ./gradlew ktlintCheck lintStandardDebug testStandardDebugUnitTest assembleStandardDebug --stacktrace
 
       - name: Upload reports
         if: failure()

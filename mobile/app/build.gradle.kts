@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.Exec
+import org.gradle.api.tasks.testing.Test
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
@@ -65,6 +67,36 @@ android {
         }
     }
 
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("standard") {
+            dimension = "distribution"
+            buildConfigField("boolean", "BUNDLED_ARTIFACTS", "false")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"\"")
+            ndk {
+                abiFilters += listOf("arm64-v8a", "x86_64")
+            }
+        }
+        create("raccoonArm64") {
+            dimension = "distribution"
+            versionNameSuffix = "-Raccoon"
+            buildConfigField("boolean", "BUNDLED_ARTIFACTS", "true")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"4.143.1\"")
+            ndk {
+                abiFilters += "arm64-v8a"
+            }
+        }
+        create("raccoonX64") {
+            dimension = "distribution"
+            versionNameSuffix = "-Raccoon"
+            buildConfigField("boolean", "BUNDLED_ARTIFACTS", "true")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"4.143.1\"")
+            ndk {
+                abiFilters += "x86_64"
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -72,6 +104,11 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    androidResources {
+        noCompress += listOf("gz", "bin")
     }
 
     lint {
@@ -80,6 +117,9 @@ android {
     }
 
     packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -96,6 +136,17 @@ ktlint {
     android.set(true)
 }
 
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+}
+
+tasks.register<Exec>("bundleArtifacts") {
+    group = "build"
+    description = "Downloads and verifies the Raccoon artifacts into the flavor assets."
+    workingDir = rootProject.projectDir
+    commandLine("python3", "tools/bundle_artifacts.py")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -105,8 +156,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.commons.compress)
 
-    testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.org.json)
+    testRuntimeOnly(libs.junit.platform.launcher)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)

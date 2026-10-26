@@ -1,0 +1,31 @@
+ProotCode
+Copyright (C) 2026 ProotCode contributors
+Licensed under the GNU Affero General Public License v3.0. See LICENSE.
+
+This product includes third-party software:
+
+proot 5.1.107.101
+  https://github.com/termux/proot
+  License: GNU General Public License v2.0
+  Distributed as lib/<abi>/libproot.so and lib/<abi>/libproot_loader.so.
+  Source code is available at the URL above.
+
+libtalloc 2.5.0
+  https://talloc.samba.org/
+  License: GNU Lesser General Public License v3.0
+
+libandroid-shmem 0.7
+  https://github.com/termux/libandroid-shmem
+  License: MIT
+
+Ubuntu Base 26.04.1 LTS
+  https://cdimage.ubuntu.com/ubuntu-base/
+  License: mixed free software licenses; see /usr/share/doc inside the rootfs.
+
+code-server 4.143.1
+  https://github.com/coder/code-server
+  License: MIT
+  Includes Node.js (https://nodejs.org/), License: MIT
+
+AndroidX, Jetpack Compose and Kotlin
+  License: Apache License 2.0
