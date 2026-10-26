@@ -124,10 +124,12 @@ for abi in "${ABIS[@]}"; do
     chmod 755 "$lib_dir"/*.so
 
     for elf in "$lib_dir"/*.so; do
-        if readelf -lW "$elf" | awk '$1 == "LOAD" { print $NF }' | grep -qv '0x4000'; then
-            echo "16 KB alignment check failed: $elf" >&2
-            exit 1
-        fi
+        while read -r align; do
+            if [ $((align % 0x4000)) -ne 0 ]; then
+                echo "16 KB alignment check failed: $elf ($align)" >&2
+                exit 1
+            fi
+        done < <(readelf -lW "$elf" | awk '$1 == "LOAD" { print $NF }')
     done
 
     rootfs_dir="$ARTIFACTS_DIR/assets/rootfs/$abi"
