@@ -44,6 +44,7 @@ class EnvironmentRegistry(
             put("codeServerVersion", codeServerVersion ?: JSONObject.NULL)
             put("createdAtMillis", createdAtMillis)
             put("sizeBytes", sizeBytes)
+            put("presets", org.json.JSONArray(presets))
         }
 
     private fun JSONObject.toEnvironment(): Environment =
@@ -56,5 +57,11 @@ class EnvironmentRegistry(
             codeServerVersion = if (isNull("codeServerVersion")) null else getString("codeServerVersion"),
             createdAtMillis = getLong("createdAtMillis"),
             sizeBytes = getLong("sizeBytes"),
+            presets =
+                optJSONArray("presets")
+                    ?.let { array ->
+                        (0 until array.length())
+                            .mapNotNull { array.optString(it).takeIf(String::isNotBlank) }
+                    }.orEmpty(),
         )
 }

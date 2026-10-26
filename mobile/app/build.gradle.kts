@@ -72,6 +72,7 @@ android {
         create("standard") {
             dimension = "distribution"
             buildConfigField("boolean", "BUNDLED_ARTIFACTS", "false")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"\"")
             ndk {
                 abiFilters += listOf("arm64-v8a", "x86_64")
             }
@@ -80,6 +81,7 @@ android {
             dimension = "distribution"
             versionNameSuffix = "-Raccoon"
             buildConfigField("boolean", "BUNDLED_ARTIFACTS", "true")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"4.143.1\"")
             ndk {
                 abiFilters += "arm64-v8a"
             }
@@ -88,6 +90,7 @@ android {
             dimension = "distribution"
             versionNameSuffix = "-Raccoon"
             buildConfigField("boolean", "BUNDLED_ARTIFACTS", "true")
+            buildConfigField("String", "BUNDLED_CODE_SERVER_VERSION", "\"4.143.1\"")
             ndk {
                 abiFilters += "x86_64"
             }

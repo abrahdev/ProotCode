@@ -9,4 +9,5 @@ data class Environment(
     val codeServerVersion: String?,
     val createdAtMillis: Long,
     val sizeBytes: Long,
+    val presets: List<String> = emptyList(),
 )

@@ -27,6 +27,13 @@ class EnvironmentRegistryTest {
     }
 
     @Test
+    fun `keeps the selected presets`() {
+        registry.add(environment(id = "one", name = "Ubuntu").copy(presets = listOf("essentials", "editors")))
+
+        assertEquals(listOf("essentials", "editors"), registry.load().single().presets)
+    }
+
+    @Test
     fun `keeps a null code-server version`() {
         registry.add(environment(id = "one", name = "Ubuntu", codeServerVersion = null))
 
