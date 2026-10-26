@@ -33,3 +33,7 @@ docs/.env*
 
 # Logs
 *.log
+
+# Bundled artifacts
+mobile/.artifacts-cache/
+mobile/app/src/raccoon*/assets/bundled/
