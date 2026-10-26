@@ -22,4 +22,18 @@
     <string name="install_stage_rootfs">Extracting rootfs</string>
     <string name="install_stage_code_server">Installing code-server</string>
     <string name="install_stage_ready">Finishing</string>
+    <string name="install_cancel">Cancel</string>
+    <string name="install_cancelled">Installation cancelled</string>
+    <string name="bridge_test">Test projects bridge</string>
+    <string name="bridge_ok">Projects bridge works</string>
+    <string name="bridge_failed">Projects bridge failed</string>
+    <string name="environments_presets">Presets: %1$s</string>
+    <string name="code_server_change">Change to %1$s</string>
+    <string name="code_server_changed">code-server %1$s installed</string>
+    <string name="licenses_title">Licenses</string>
+    <string name="licenses_close">Close</string>
+    <string name="preset_essentials">Essentials (git, curl, build tools)</string>
+    <string name="preset_editors">Editors (OpenCode, Neovim)</string>
+    <string name="preset_languages">Languages (Python, Node, Go, Rust)</string>
+    <string name="preset_utilities">Utilities (htop, ripgrep, tmux)</string>
 </resources>
