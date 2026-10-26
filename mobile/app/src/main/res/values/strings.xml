@@ -2,4 +2,24 @@
     <string name="app_name">ProotCode</string>
     <string name="app_tagline">A portable Linux development workspace for Android</string>
     <string name="app_status">Initial scaffold</string>
+    <string name="environments_storage">Storage used: %1$s</string>
+    <string name="environments_details">%1$s · %2$s · code-server %3$s · %4$s</string>
+    <string name="environments_new">New environment</string>
+    <string name="environments_delete">Delete</string>
+    <string name="catalog_refresh">Refresh catalog</string>
+    <string name="wizard_title">Create environment</string>
+    <string name="wizard_name">Name</string>
+    <string name="wizard_name_taken">Name already in use</string>
+    <string name="wizard_distro">Distribution</string>
+    <string name="wizard_no_distros">No distribution available for this device. Refresh the catalog.</string>
+    <string name="wizard_code_server">code-server</string>
+    <string name="wizard_none">None</string>
+    <string name="wizard_presets">Presets</string>
+    <string name="wizard_presets_note">Presets are installed from the package manager in a later step.</string>
+    <string name="wizard_install">Install</string>
+    <string name="wizard_cancel">Cancel</string>
+    <string name="install_downloading">Downloading artifacts</string>
+    <string name="install_stage_rootfs">Extracting rootfs</string>
+    <string name="install_stage_code_server">Installing code-server</string>
+    <string name="install_stage_ready">Finishing</string>
 </resources>
