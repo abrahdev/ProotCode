@@ -113,6 +113,7 @@ dependencies {
     implementation(libs.commons.compress)
 
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.org.json)
     testRuntimeOnly(libs.junit.platform.launcher)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
