@@ -16,6 +16,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
 
   markdown: {
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
@@ -42,6 +43,8 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   themeConfig: {
     image: 'img/logo.svg',
