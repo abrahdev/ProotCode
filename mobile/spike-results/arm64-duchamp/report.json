@@ -1,0 +1,105 @@
+{
+  "sdk": 36,
+  "abi": "arm64-v8a",
+  "targetSdk": 37,
+  "timestamp": "2026-10-26T21:53:38Z",
+  "passed": true,
+  "steps": [
+    {
+      "id": "device-info",
+      "title": "Device information",
+      "status": "PASS",
+      "detail": "API 36 (16), targetSdk 37, abi arm64-v8a, device Xiaomi 2311DRK48G",
+      "durationMs": 0,
+      "output": ""
+    },
+    {
+      "id": "rootfs-extract",
+      "title": "Extract Ubuntu 26.04 rootfs",
+      "status": "PASS",
+      "detail": "6564 entries extracted",
+      "durationMs": 5031,
+      "output": ""
+    },
+    {
+      "id": "exec-datadir-control",
+      "title": "Exec binary from filesDir (control)",
+      "status": "PASS",
+      "detail": "exec denied: Cannot run program \"\/data\/user\/0\/dev.prootcode.app\/files\/spike\/control\/control\": error=13, Permission denied",
+      "durationMs": 3,
+      "output": ""
+    },
+    {
+      "id": "exec-nativelib-control",
+      "title": "Exec binary from nativeLibraryDir (control)",
+      "status": "PASS",
+      "detail": "exec allowed, exit=139",
+      "durationMs": 105,
+      "output": ""
+    },
+    {
+      "id": "proot-true",
+      "title": "proot \/bin\/true",
+      "status": "PASS",
+      "detail": "exit=0 in 104 ms",
+      "durationMs": 105,
+      "output": ""
+    },
+    {
+      "id": "proot-true-noseccomp",
+      "title": "proot \/bin\/true without seccomp",
+      "status": "PASS",
+      "detail": "exit=0 in 102 ms",
+      "durationMs": 102,
+      "output": ""
+    },
+    {
+      "id": "proot-uid",
+      "title": "proot id -u",
+      "status": "PASS",
+      "detail": "exit=0 in 104 ms",
+      "durationMs": 104,
+      "output": "0\n"
+    },
+    {
+      "id": "bridge-write",
+      "title": "Write to ~\/projects_bridge from proot",
+      "status": "PASS",
+      "detail": "app reads: 'hello-from-proot'",
+      "durationMs": 105,
+      "output": ""
+    },
+    {
+      "id": "bridge-read",
+      "title": "Read from ~\/projects_bridge inside proot",
+      "status": "PASS",
+      "detail": "proot reads the file written by the app",
+      "durationMs": 107,
+      "output": "hello-from-android\n"
+    },
+    {
+      "id": "apt-update",
+      "title": "apt-get update",
+      "status": "PASS",
+      "detail": "exit=0 in 10578 ms",
+      "durationMs": 10579,
+      "output": "Get:1 http:\/\/archive.ubuntu.com\/ubuntu resolute InRelease [136 kB]\nGet:2 http:\/\/security.ubuntu.com\/ubuntu resolute-security InRelease [137 kB]\nGet:3 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates InRelease [137 kB]\nGet:4 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/main arm64 Packages [628 kB]\nGet:5 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports InRelease [137 kB]\nGet:6 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main arm64 Packages [1468 kB]\nGet:7 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main Translation-en [524 kB]\nGet:8 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/main Translation-en [141 kB]\nGet:9 http:\/\/archive.ubuntu.com\/ubuntu resolute\/universe arm64 Packages [16.2 MB]\nGet:10 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/universe arm64 Packages [202 kB]\nGet:11 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/universe Translation-en [67.9 kB]\nGet:12 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/restricted arm64 Packages [664 kB]\nGet:13 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/restricted Translation-en [99.6 kB]\nGet:14 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/multiverse arm64 Packages [20.0 kB]\nGet:15 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/multiverse Translation-en [3728 B]\nGet:16 http:\/\/archive.ubuntu.com\/ubuntu resolute\/universe Translation-en [6329 kB]\nGet:17 http:\/\/archive.ubuntu.com\/ubuntu resolute\/restricted arm64 Packages [187 kB]\nGet:18 http:\/\/archive.ubuntu.com\/ubuntu resolute\/restricted Translation-en [25.8 kB]\nGet:19 http:\/\/archive.ubuntu.com\/ubuntu resolute\/multiverse arm64 Packages [245 kB]\nGet:20 http:\/\/archive.ubuntu.com\/ubuntu resolute\/multiverse Translation-en [127 kB]\nGet:21 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/main arm64 Packages [773 kB]\nGet:22 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/main Translation-en [178 kB]\nGet:23 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/universe arm64 Packages [328 kB]\nGet:24 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/universe Translation-en [111 kB]\nGet:25 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/restricted arm64 Packages [692 kB]\nGet:26 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/restricted Translation-en [104 kB]\nGet:27 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/multiverse arm64 Packages [21.3 kB]\nGet:28 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/multiverse Translation-en [4168 B]\nGet:29 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports\/universe arm64 Packages [3136 B]\nGet:30 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports\/universe Translation-en [7988 B]\nFetched 29.7 MB in 9s (3276 kB\/s)\nReading package lists...\n"
+    },
+    {
+      "id": "apt-install",
+      "title": "apt-get install hello",
+      "status": "PASS",
+      "detail": "exit=0 in 3019 ms",
+      "durationMs": 3019,
+      "output": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nSolving dependencies...\nThe following NEW packages will be installed:\n  hello\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 25.6 kB of archives.\nAfter this operation, 147 kB of additional disk space will be used.\nGet:1 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main arm64 hello arm64 2.10-5build1 [25.6 kB]\nFetched 25.6 kB in 1s (39.8 kB\/s)\nSelecting previously unselected package hello.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 7718 files and directories currently installed.)\nPreparing to unpack ...\/hello_2.10-5build1_arm64.deb ...\nUnpacking hello (2.10-5build1) ...\nSetting up hello (2.10-5build1) ...\n"
+    },
+    {
+      "id": "installed-binary",
+      "title": "Run installed hello binary",
+      "status": "PASS",
+      "detail": "exit=0 in 106 ms",
+      "durationMs": 107,
+      "output": "Hello, world!\n"
+    }
+  ]
+}

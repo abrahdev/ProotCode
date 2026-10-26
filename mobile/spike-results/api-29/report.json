@@ -1,0 +1,105 @@
+{
+  "sdk": 29,
+  "abi": "x86_64",
+  "targetSdk": 37,
+  "timestamp": "2026-10-26T16:25:03Z",
+  "passed": true,
+  "steps": [
+    {
+      "id": "device-info",
+      "title": "Device information",
+      "status": "PASS",
+      "detail": "API 29 (10), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64",
+      "durationMs": 2,
+      "output": ""
+    },
+    {
+      "id": "rootfs-extract",
+      "title": "Extract Ubuntu 26.04 rootfs",
+      "status": "PASS",
+      "detail": "6569 entries extracted",
+      "durationMs": 9216,
+      "output": ""
+    },
+    {
+      "id": "exec-datadir-control",
+      "title": "Exec binary from filesDir (control)",
+      "status": "PASS",
+      "detail": "exec denied: Cannot run program \"\/data\/user\/0\/dev.prootcode.app\/files\/spike\/control\/control\": error=13, Permission denied",
+      "durationMs": 9,
+      "output": ""
+    },
+    {
+      "id": "exec-nativelib-control",
+      "title": "Exec binary from nativeLibraryDir (control)",
+      "status": "PASS",
+      "detail": "exec allowed, exit=139",
+      "durationMs": 103,
+      "output": ""
+    },
+    {
+      "id": "proot-true",
+      "title": "proot \/bin\/true",
+      "status": "PASS",
+      "detail": "exit=0 in 107 ms",
+      "durationMs": 111,
+      "output": ""
+    },
+    {
+      "id": "proot-true-noseccomp",
+      "title": "proot \/bin\/true without seccomp",
+      "status": "PASS",
+      "detail": "exit=0 in 101 ms",
+      "durationMs": 101,
+      "output": ""
+    },
+    {
+      "id": "proot-uid",
+      "title": "proot id -u",
+      "status": "PASS",
+      "detail": "exit=0 in 101 ms",
+      "durationMs": 101,
+      "output": "0\n"
+    },
+    {
+      "id": "bridge-write",
+      "title": "Write to ~\/projects_bridge from proot",
+      "status": "PASS",
+      "detail": "app reads: 'hello-from-proot'",
+      "durationMs": 102,
+      "output": ""
+    },
+    {
+      "id": "bridge-read",
+      "title": "Read from ~\/projects_bridge inside proot",
+      "status": "PASS",
+      "detail": "proot reads the file written by the app",
+      "durationMs": 101,
+      "output": "hello-from-android\n"
+    },
+    {
+      "id": "apt-update",
+      "title": "apt-get update",
+      "status": "PASS",
+      "detail": "exit=0 in 31245 ms",
+      "durationMs": 31245,
+      "output": "Get:1 http:\/\/archive.ubuntu.com\/ubuntu resolute InRelease [136 kB]\nGet:2 http:\/\/security.ubuntu.com\/ubuntu resolute-security InRelease [137 kB]\nGet:3 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates InRelease [137 kB]\nGet:4 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports InRelease [137 kB]\nGet:5 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/main amd64 Packages [606 kB]\nGet:6 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main amd64 Packages [1480 kB]\nGet:7 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/main Translation-en [141 kB]\nGet:8 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/universe amd64 Packages [205 kB]\nGet:9 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/universe Translation-en [67.7 kB]\nGet:10 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/restricted amd64 Packages [495 kB]\nGet:11 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/restricted Translation-en [99.6 kB]\nGet:12 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/multiverse amd64 Packages [20.0 kB]\nGet:13 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main Translation-en [524 kB]\nGet:14 http:\/\/security.ubuntu.com\/ubuntu resolute-security\/multiverse Translation-en [3728 B]\nGet:15 http:\/\/archive.ubuntu.com\/ubuntu resolute\/universe amd64 Packages [16.0 MB]\nGet:16 http:\/\/archive.ubuntu.com\/ubuntu resolute\/universe Translation-en [6329 kB]\nGet:17 http:\/\/archive.ubuntu.com\/ubuntu resolute\/restricted amd64 Packages [152 kB]\nGet:18 http:\/\/archive.ubuntu.com\/ubuntu resolute\/restricted Translation-en [25.8 kB]\nGet:19 http:\/\/archive.ubuntu.com\/ubuntu resolute\/multiverse amd64 Packages [290 kB]\nGet:20 http:\/\/archive.ubuntu.com\/ubuntu resolute\/multiverse Translation-en [127 kB]\nGet:21 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/main amd64 Packages [744 kB]\nGet:22 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/main Translation-en [176 kB]\nGet:23 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/universe amd64 Packages [334 kB]\nGet:24 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/universe Translation-en [110 kB]\nGet:25 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/restricted amd64 Packages [508 kB]\nGet:26 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/restricted Translation-en [101 kB]\nGet:27 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/multiverse amd64 Packages [21.0 kB]\nGet:28 http:\/\/archive.ubuntu.com\/ubuntu resolute-updates\/multiverse Translation-en [4168 B]\nGet:29 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports\/universe amd64 Packages [3136 B]\nGet:30 http:\/\/archive.ubuntu.com\/ubuntu resolute-backports\/universe Translation-en [7988 B]\nFetched 29.1 MB in 30s (973 kB\/s)\nReading package lists...\n"
+    },
+    {
+      "id": "apt-install",
+      "title": "apt-get install hello",
+      "status": "PASS",
+      "detail": "exit=0 in 2309 ms",
+      "durationMs": 2310,
+      "output": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nSolving dependencies...\nThe following NEW packages will be installed:\n  hello\n0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.\nNeed to get 26.1 kB of archives.\nAfter this operation, 106 kB of additional disk space will be used.\nGet:1 http:\/\/archive.ubuntu.com\/ubuntu resolute\/main amd64 hello amd64 2.10-5build1 [26.1 kB]\nFetched 26.1 kB in 0s (61.0 kB\/s)\nSelecting previously unselected package hello.\n(Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 7722 files and directories currently installed.)\nPreparing to unpack ...\/hello_2.10-5build1_amd64.deb ...\nUnpacking hello (2.10-5build1) ...\nSetting up hello (2.10-5build1) ...\n"
+    },
+    {
+      "id": "installed-binary",
+      "title": "Run installed hello binary",
+      "status": "PASS",
+      "detail": "exit=0 in 103 ms",
+      "durationMs": 104,
+      "output": "Hello, world!\n"
+    }
+  ]
+}

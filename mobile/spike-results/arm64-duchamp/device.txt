@@ -1,0 +1,11 @@
+ro.product.manufacturer=Xiaomi
+ro.product.model=2311DRK48G
+ro.build.version.release=16
+ro.build.version.sdk=36
+ro.product.cpu.abilist=arm64-v8a
+ro.build.version.security_patch=2026-08-01
+ro.debuggable=0
+ro.product.device=duchamp
+uname=Linux localhost 6.1.138-android14-11-g6ab8c9a86a33-ab14396278 #1 SMP PREEMPT Wed Nov  5 15:47:39 UTC 2025 aarch64 Toybox
+page_size=4096
+selinux=Enforcing
