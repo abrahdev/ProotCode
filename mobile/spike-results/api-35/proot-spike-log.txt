@@ -1,0 +1,86 @@
+--------- beginning of main
+10-26 17:27:17.438  2309  2337 I ProotSpike: PASS device-info: API 35 (15), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:27:22.122  2309  2337 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:27:22.127  2309  2337 I ProotSpike: PASS exec-datadir-control: exec denied: Cannot run program "/data/user/0/dev.prootcode.app/files/spike/control/control": error=13, Permission denied
+10-26 17:27:22.231  2309  2337 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:27:22.334  2309  2337 I ProotSpike: PASS proot-true: exit=0 in 101 ms
+10-26 17:27:22.455  2309  2337 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 120 ms
+10-26 17:27:22.558  2309  2337 I ProotSpike: PASS proot-uid: exit=0 in 102 ms
+10-26 17:27:22.558  2309  2337 I ProotSpike:   0
+10-26 17:27:22.661  2309  2337 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:27:22.765  2309  2337 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:27:22.765  2309  2337 I ProotSpike:   hello-from-android
+10-26 17:27:54.738  2309  2337 I ProotSpike: PASS apt-update: exit=0 in 31973 ms
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:3 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:4 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:5 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:6 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:7 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:9 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:13 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:14 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Fetched 29.1 MB in 31s (946 kB/s)
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Reading package lists...
+10-26 17:27:57.446  2309  2337 I ProotSpike: PASS apt-install: exit=0 in 2706 ms
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Reading package lists...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Building dependency tree...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Reading state information...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Solving dependencies...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   The following NEW packages will be installed:
+10-26 17:27:57.447  2309  2337 I ProotSpike:     hello
+10-26 17:27:57.447  2309  2337 I ProotSpike:   0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Need to get 26.1 kB of archives.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   After this operation, 106 kB of additional disk space will be used.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 hello amd64 2.10-5build1 [26.1 kB]
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Fetched 26.1 kB in 1s (20.3 kB/s)
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Selecting previously unselected package hello.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 5%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 10%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 15%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 20%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 25%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 30%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 35%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 40%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 45%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 50%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 55%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 60%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 65%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 70%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 75%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 80%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 85%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 90%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 95%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 100%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 7722 files and directories currently installed.)
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Preparing to unpack .../hello_2.10-5build1_amd64.deb ...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Unpacking hello (2.10-5build1) ...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Setting up hello (2.10-5build1) ...
+10-26 17:27:57.551  2309  2337 I ProotSpike: PASS installed-binary: exit=0 in 103 ms
+10-26 17:27:57.551  2309  2337 I ProotSpike:   Hello, world!
+10-26 17:27:57.562  2309  2337 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json

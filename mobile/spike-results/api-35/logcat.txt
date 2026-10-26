@@ -1,0 +1,758 @@
+--------- beginning of main
+10-26 17:27:16.190   588   588 W binder:588_4: type=1400 audit(0.0:31): avc:  denied  { getopt } for  scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-26 17:27:16.221   387   454 I netd    : tetherGetStats() -> {[]} <1.83ms>
+10-26 17:27:16.221  1265  1290 D PackageUpdatedTask: Package updated: mOp=ADD packages=[dev.prootcode.app]
+10-26 17:27:16.222   982  1007 I PermissionControllerServiceImpl: Updating user sensitive for uid 10148
+10-26 17:27:16.223  1118  1118 E SmsApplication: com.android.messaging lost android:receive_wap_push:  (fixing)
+10-26 17:27:16.223  1118  1118 E SmsApplication: com.android.messaging lost android:read_cell_broadcasts:  (fixing)
+10-26 17:27:16.228  1118  1118 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
+10-26 17:27:16.228  1265  1270 W droid.launcher3: Cleared Reference was only reachable from finalizer (only reported once)
+10-26 17:27:16.235  1118  1373 D ImsResolver: maybeAddedImsService, packageName: dev.prootcode.app
+10-26 17:27:16.241  1118  1118 D CarrierSvcBindHelper: onPackageModified: dev.prootcode.app
+10-26 17:27:16.242  1118  1118 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:27:16.245  1118  1118 E SmsApplication: com.android.messaging lost android:receive_wap_push:  (fixing)
+--------- beginning of system
+10-26 17:27:16.245   588  1299 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 10114, code = RECEIVE_WAP_PUSH, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.245  1118  1118 E SmsApplication: com.android.messaging lost android:read_cell_broadcasts:  (fixing)
+10-26 17:27:16.246   588  1005 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 10114, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.247  1118  1118 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
+10-26 17:27:16.247   588  1181 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_SMS, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.247   588  1299 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_SMS, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.247   588  1181 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_WAP_PUSH, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.247   588  1181 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = SEND_SMS, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.247   588  1005 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+10-26 17:27:16.251  1118  1373 D ImsResolver: maybeAddedImsService, packageName: dev.prootcode.app
+10-26 17:27:16.256  1265  1265 D StatsLog: LAUNCHER_ALLAPPS_COUNT
+10-26 17:27:16.256   588  1181 I AppWidgetServiceImpl: getInstalledProvidersForProfiles() 0
+10-26 17:27:16.273  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/Dialer/Dialer.apk' with 1 weak references
+10-26 17:27:16.274  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/messaging/messaging.apk' with 2 weak references
+10-26 17:27:16.274  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Browser2/Browser2.apk' with 1 weak references
+10-26 17:27:16.274  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Camera2/Camera2.apk' with 2 weak references
+10-26 17:27:16.274  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Gallery2/Gallery2.apk' with 1 weak references
+10-26 17:27:16.275  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/DocumentsUI/DocumentsUI.apk' with 1 weak references
+10-26 17:27:16.276  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/DeskClock/DeskClock.apk' with 1 weak references
+10-26 17:27:16.276  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Calendar/Calendar.apk' with 2 weak references
+10-26 17:27:16.276  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/Contacts/Contacts.apk' with 1 weak references
+10-26 17:27:16.276  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /system/app/Stk/Stk.apk' with 2 weak references
+10-26 17:27:16.277  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/priv-app/Settings/Settings.apk' with 2 weak references
+10-26 17:27:16.280  1265  1290 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[dev.prootcode.app]
+10-26 17:27:16.280  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/priv-app/SystemUI/SystemUI.apk' with 2 weak references
+10-26 17:27:16.280  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '/vendor/overlay/SystemUI__sdk_phone64_x86_64__auto_generated_rro_vendor.apk' with 2 weak references
+10-26 17:27:16.283  1265  1272 W droid.launcher3: ApkAssets: Deleting an ApkAssets object '/product/overlay/SystemUIEmulationPixel5/SystemUIEmulationPixel5Overlay.apk' with 1 weak references
+10-26 17:27:16.314  1265  1265 D StatsLog: LAUNCHER_ALLAPPS_COUNT
+10-26 17:27:16.350   588  1299 W ActivityTaskManager: callingPackage for (uid=2000, pid=2305) has no WPC
+10-26 17:27:16.352   588  1299 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+10-26 17:27:16.354   588  1299 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10148, packageName = null, attributionTag = null, token = android.os.Binder@d9779aa, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-26 17:27:16.354   588  1299 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+10-26 17:27:16.354   588  1299 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+10-26 17:27:16.355   588   633 I system_server: Background concurrent mark compact GC freed 4923KB AllocSpace bytes, 15(332KB) LOS objects, 49% free, 17MB/35MB, paused 1.351ms,1.724ms total 163.729ms
+10-26 17:27:16.357   588   635 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/LatinIME/LatinIME.apk' with 1 weak references
+10-26 17:27:16.357   588   643 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-26 17:27:16.357   588   635 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/InputDevices/InputDevices.apk' with 1 weak references
+10-26 17:27:16.357   588   635 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/AccessibilityMenu/AccessibilityMenu.apk' with 1 weak references
+10-26 17:27:16.361   588  1299 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.prootcode.app/.MainActivity (has extras)} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+10-26 17:27:16.362   979  1023 V WindowManagerShell: Transition requested (#6): android.os.BinderProxy@aa53fdb TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.prootcode.app/.MainActivity } baseActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} topActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} origActivity=null realActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} numActivities=1 lastActiveTime=29882 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@331a78} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 136 - 0, 0) topActivityInfo=ActivityInfo{8a30551 dev.prootcode.app.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=1080 topActivityLetterboxHeight=2340 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 6 }
+10-26 17:27:16.365   588   644 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10148, packageName = null, attributionTag = null, token = android.os.Binder@d9779aa, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-26 17:27:16.378   388   388 D Zygote  : Forked child process 2309
+10-26 17:27:16.379   588   654 I ActivityManager: Start proc 2309:dev.prootcode.app/u0a148 for next-top-activity {dev.prootcode.app/dev.prootcode.app.MainActivity}
+10-26 17:27:16.380   979  1023 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=false, height=308
+10-26 17:27:16.380  1265  1265 W SplitSelectStateCtor: Missing session instanceIds
+10-26 17:27:16.380  1265  1265 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+10-26 17:27:16.381   979  1086 D SplashScreenView: Build android.window.SplashScreenView{fe80daf V.E...... ......ID 0,0-0,0}
+10-26 17:27:16.381   979  1086 D SplashScreenView: Icon: view: android.widget.ImageView{e5355bc V.ED..... ......I. 0,0-0,0 #1020504 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@902f945 size: 440
+10-26 17:27:16.381   979  1086 D SplashScreenView: Branding: view: android.view.View{e95589a G.ED..... ......I. 0,0-0,0 #1020503 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-26 17:27:16.386   588   923 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+10-26 17:27:16.386   588   923 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10148 package dev.prootcode.app isStopped false
+10-26 17:27:16.387  1265  1265 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=8, baseIntent=Intent { flg=0x10000000 cmp=dev.prootcode.app/.MainActivity }
+10-26 17:27:16.388   588  1181 D CoreBackPreview: Window{e9c9f6c u0 Splash Screen dev.prootcode.app}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@66a4658, mPriority=0, mIsAnimationCallback=false}
+10-26 17:27:16.391   447   447 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-26 17:27:16.391  2309  2309 I v.prootcode.app: Late-enabling -Xcheck:jni
+10-26 17:27:16.410  2309  2309 I v.prootcode.app: Using CollectorTypeCMC GC.
+10-26 17:27:16.411  2309  2309 W v.prootcode.app: Unexpected CPU variant for x86: x86_64.
+10-26 17:27:16.411  2309  2309 W v.prootcode.app: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+10-26 17:27:16.427   467   476 I adbd    : jdwp connection from 2309
+10-26 17:27:16.432   588   641 V WindowManager: Sent Transition (#6) createdAt=10-26 17:27:16.355 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=dev.prootcode.app/.MainActivity } baseActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} topActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} origActivity=null realActivity=ComponentInfo{dev.prootcode.app/dev.prootcode.app.MainActivity} numActivities=1 lastActiveTime=29882 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{6f443cc Task{dbf110d #8 type=standard A=10148:dev.prootcode.app}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 136 - 0, 0) topActivityInfo=ActivityInfo{e713615 dev.prootcode.app.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=1080 topActivityLetterboxHeight=2340 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 6 }
+10-26 17:27:16.432   588   641 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-26 17:27:16.433   588   641 V WindowManager:     info={id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+10-26 17:27:16.433   588   641 V WindowManager:         {WCT{RemoteToken{6f443cc Task{dbf110d #8 type=standard A=10148:dev.prootcode.app}}} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x6c4cd1e sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1},
+10-26 17:27:16.433   588   641 V WindowManager:         {WCT{RemoteToken{907d0b8 Task{12eee81 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xf151d59 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1}
+10-26 17:27:16.433   588   641 V WindowManager:     ]}
+10-26 17:27:16.436  2309  2309 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+10-26 17:27:16.437   979  1399 V WindowManagerShell: onTransitionReady(transaction=2525440770369)
+10-26 17:27:16.437   979  1023 V WindowManagerShell: onTransitionReady (#6) android.os.BinderProxy@aa53fdb: {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@b8d9a3e} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x9853343 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@a3dc09f} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xc276dc0 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1}]}
+10-26 17:27:16.437   979  1023 V WindowManagerShell: Playing animation for (#6) android.os.BinderProxy@aa53fdb@0
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@ee0c226
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@3e6e67
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@ae29414
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@70f54bd
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@486dab2
+10-26 17:27:16.437   979  1023 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@bb98a03
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@75edd80
+10-26 17:27:16.437   979  1023 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@b8d9a3e} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x9853343 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@a3dc09f} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xc276dc0 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1}]}
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@6f5a5ec, appThread = android.app.IApplicationThread$Stub$Proxy@fadbdb5, debugName = QuickstepLaunchHome }}
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  Delegate animation for (#6) to null
+10-26 17:27:16.437   979  1023 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@f40c35f
+10-26 17:27:16.437   979  1023 V WindowManagerShell: start default transition animation, info = {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@b8d9a3e} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x9853343 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@a3dc09f} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xc276dc0 sb=Rect(0, 0 - 1080, 2340) eb=Rect(0, 0 - 1080, 2340) d=0 taskParent=-1}]}
+10-26 17:27:16.438   979  1023 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@cc7c7bb animAttr=0x13 type=OPEN isEntrance=false
+10-26 17:27:16.438   979  1023 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@4212497 animAttr=0x12 type=OPEN isEntrance=true
+10-26 17:27:16.451   979  1023 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@f40c35f
+10-26 17:27:16.467   588  1005 W UserManagerService: Requested status bar icon for non-badged user 0
+10-26 17:27:16.483   979  1175 D EGL_emulation: app_time_stats: avg=152.95ms min=1.79ms max=1819.57ms count=13
+10-26 17:27:16.486  2309  2309 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-26 17:27:16.486  2309  2309 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-26 17:27:16.486  2309  2309 W ziparchive: Unable to open '/data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/base.dm': No such file or directory
+10-26 17:27:16.486  2309  2309 W ziparchive: Unable to open '/data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/base.dm': No such file or directory
+10-26 17:27:16.533  1265  1726 D EGL_emulation: app_time_stats: avg=419.19ms min=2.83ms max=5506.76ms count=14
+10-26 17:27:16.696   979   979 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-26 17:27:16.697   979   979 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+10-26 17:27:16.751  1473  1480 W FuseDaemon: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:16.751  1473  1480 W FuseDaemon: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:16.751  1473  1480 W FuseDaemon: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:16.763   979  1023 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#6) android.os.BinderProxy@aa53fdb@0
+10-26 17:27:16.767   588   644 D OomAdjuster: Not killing cached processes
+10-26 17:27:16.768   588   641 V WindowManager: Finish Transition (#6): created at 10-26 17:27:16.355 collect-started=0.044ms request-sent=6.011ms started=11.201ms ready=75.17ms sent=76.744ms finished=411.557ms
+10-26 17:27:16.768   979  1023 V WindowManagerShell: Track 0 became idle
+10-26 17:27:16.768   979  1023 V WindowManagerShell: All active transition animations finished
+10-26 17:27:16.768   588   712 I RoleService: Granting default roles...
+10-26 17:27:16.768   588  1181 W UserManagerService: Requested status bar icon for non-badged user 0
+10-26 17:27:16.769   588  1181 W UserManagerService: Requested status bar icon for non-badged user 0
+10-26 17:27:16.787   588  1084 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.android.devicelockcontroller, role: android.app.role.SYSTEM_FINANCED_DEVICE_CONTROLLER
+10-26 17:27:16.836  1265  1265 D VRI[QuickstepLauncher]: visibilityChanged oldVisibility=true newVisibility=false
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10086} in 0ms
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:16.885   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20086} in 1ms
+10-26 17:27:16.898  2309  2309 D nativeloader: Configuring clns-7 for other apk /data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/base.apk. target_sdk_version=37, uses_libraries=, library_path=/data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/lib/x86_64:/data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/dev.prootcode.app
+10-26 17:27:16.904  2309  2309 V GraphicsEnvironment: Currently set values for:
+10-26 17:27:16.904  2309  2309 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-26 17:27:16.904  2309  2309 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-26 17:27:16.904  2309  2309 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-26 17:27:16.904  2309  2309 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-26 17:27:16.914   588   709 D ActivityManager: freezing 1559 com.android.music
+10-26 17:27:16.915   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:16.916   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:16.916   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10105} in 1ms
+10-26 17:27:16.988  2309  2309 W HWUI    : Unknown dataspace 0
+10-26 17:27:17.064  2250  2250 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification android.hardware.drm.IDrmFactory/clearkey has clients: 0
+10-26 17:27:17.064  2250  2250 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+--------- beginning of kernel
+10-26 17:27:17.308     0     0 I servicemanager: Notifying android.hardware.drm.IDrmFactory/clearkey they don't (previously: do) have clients when we now have no record of a client
+10-26 17:27:17.311     0     0 I servicemanager: Caller(pid=2250,uid=1013,sid=u:r:hal_drm_clearkey_aidl:s0) Unregistering android.hardware.drm.IDrmFactory/clearkey
+10-26 17:27:17.312     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+10-26 17:27:17.067  2250  2250 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+10-26 17:27:17.314     0     0 I init    : Service 'vendor.drm-clearkey-service' (pid 2250) exited with status 0 oneshot service took 4.728000 seconds in background
+10-26 17:27:17.316     0     0 I init    : Sending signal 9 to service 'vendor.drm-clearkey-service' (pid 2250) process group...
+10-26 17:27:17.317     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_1013/pid_2250
+10-26 17:27:17.213   588  1216 D CoreBackPreview: Window{c3b493d u0 dev.prootcode.app/dev.prootcode.app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@d35982c, mPriority=0, mIsAnimationCallback=false}
+10-26 17:27:17.232  2309  2314 I v.prootcode.app: Compiler allocated 5174KB to compile void android.view.ViewRootImpl.performTraversals()
+10-26 17:27:17.337   447   490 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10148 pid=0
+10-26 17:27:17.338   447   490 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10148 => denied (132 us)
+10-26 17:27:17.338   447   492 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10148 pid=2309
+10-26 17:27:17.338   447   492 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10148 => denied (46 us)
+10-26 17:27:17.338   447   490 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10148 pid=0
+10-26 17:27:17.338   447   490 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10148 => denied (76 us)
+10-26 17:27:17.338   447   492 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10148 pid=2309
+10-26 17:27:17.338   447   492 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10148 => denied (68 us)
+10-26 17:27:17.338   447   490 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10148 pid=0
+10-26 17:27:17.338   447   490 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10148 => denied (75 us)
+10-26 17:27:17.338   447   492 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10148 pid=2309
+10-26 17:27:17.338   447   492 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10148 => denied (107 us)
+10-26 17:27:17.338  2309  2329 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-26 17:27:17.339  2309  2329 I EGL_emulation: Opening libGLESv2_emulation.so
+10-26 17:27:17.345  2309  2329 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-26 17:27:17.345  2309  2329 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-26 17:27:17.355   182   182 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-26 17:27:17.355  2309  2329 I Gralloc4: mapper 4.x is not supported
+10-26 17:27:17.599     0     0 I servicemanager: Caller(pid=2309,uid=10148,sid=u:r:untrusted_app:s0:c148,c256,c512,c768) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-26 17:27:17.407   588  1005 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10148 pid=0
+10-26 17:27:17.409   588  1005 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10148 => denied (398 us)
+10-26 17:27:17.409  2309  2309 W v.prootcode.app: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (unsupported, reflection, allowed)
+10-26 17:27:17.410   588  1005 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10148 pid=0
+10-26 17:27:17.410   588  1005 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10148 => denied (96 us)
+10-26 17:27:17.410   588  1005 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10148 pid=0
+10-26 17:27:17.410   588  1005 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10148 => denied (18 us)
+10-26 17:27:17.413   588   641 W ziparchive: Unable to open '/data/app/~~eSGNr-ej622apcJTNKXMUQ==/dev.prootcode.app-LAVSgMWkPfrvvBS76jzPNA==/base.dm': No such file or directory
+10-26 17:27:17.415   588   641 I ActivityTaskManager: Displayed dev.prootcode.app/.MainActivity for user 0: +1s63ms
+10-26 17:27:17.438  2309  2337 I ProotSpike: PASS device-info: API 35 (15), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:27:17.519  1510  1510 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:27:17.520  1510  1510 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
+10-26 17:27:17.525  1510  1510 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:27:17.530  1438  1438 D CompatChangeReporter: Compat change id reported: 150939131; UID 10109; state: ENABLED
+10-26 17:27:17.548  1510  1510 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:27:17.567   588   729 I ImeTracker: dev.prootcode.app:3907e8d7: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+10-26 17:27:17.568   588   729 I ImeTracker: dev.prootcode.app:3907e8d7: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-26 17:27:17.573  1265  1265 D BaseDepthController: setSurface:
+10-26 17:27:17.573  1265  1265 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+10-26 17:27:17.573  1265  1265 D BaseDepthController: 	mSurface: null
+10-26 17:27:17.573  1265  1265 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+10-26 17:27:17.575  1265  1265 D StateManager: goToState - fromState: Normal, toState: Normal, partial trace:
+10-26 17:27:17.575  1265  1265 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(StateManager.java:453)
+10-26 17:27:17.575  1265  1265 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(StateManager.java:444)
+10-26 17:27:17.575  1265  1265 D StateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(StatefulActivity.java:119)
+10-26 17:27:17.576  1265  1265 D StatsLog: LAUNCHER_ONSTOP
+10-26 17:27:17.576   588  1299 I AppWidgetServiceImpl: setAppWidgetHidden() 0
+10-26 17:27:17.592   387   454 I netd    : tetherGetStats() -> {[]} <0.76ms>
+10-26 17:27:17.822   979  1085 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@6dee4c1
+10-26 17:27:17.823   588  1216 D CoreBackPreview: Window{e9c9f6c u0 Splash Screen dev.prootcode.app EXITING}: Setting back callback null
+10-26 17:27:17.823   588  1299 W InputManager-JNI: Input channel object 'e9c9f6c Splash Screen dev.prootcode.app (client)' was disposed without first being removed with the input manager!
+10-26 17:27:17.873   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 24, 6748, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 24, 6748, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missing HWUI jank callback for vsyncId: 6748, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 88, 6763, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 88, 6763, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missing HWUI jank callback for vsyncId: 6763, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 88, 6792, 112191744, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 88, 6792, 112191744, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 74, 6806, 132985136, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 74, 6806, 132985136, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 88, 6836, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.874   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 88, 6836, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.875   979  1085 W FrameTracker: Missing HWUI jank callback for vsyncId: 6836, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missing HWUI jank callback for vsyncId: 6882, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 80, 6949, 50213987, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 74, 6964, 54362250, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 74, 6964, 54362250, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 88, 6979, 59222519, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 88, 6979, 59222519, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 80, 7009, 66826006, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed App frame:UNKNOWN: 88, 7032, 55063201, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1085 W FrameTracker: Missed SF frame:UNKNOWN: 88, 7032, 55063201, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:27:17.876   979  1028 V PerfettoTrigger: Not triggering com.android.telemetry.interaction-jank-monitor-39 - not enough time since last trigger
+10-26 17:27:18.118   588   709 D ActivityManager: freezing 1486 com.android.printspooler
+10-26 17:27:18.119   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:18.120   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:18.120   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10084} in 1ms
+10-26 17:27:18.163   588   709 D ActivityManager: freezing 1822 com.android.quicksearchbox
+10-26 17:27:18.163   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:18.163   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:18.163   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10104} in 1ms
+10-26 17:27:18.414  2309  2309 W DefaultDispatch: type=1400 audit(0.0:32): avc:  denied  { link } for  name="perl" dev="dm-43" ino=352904 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:18.664     0     0 I logd    : start watching /data/system/packages.list ...
+10-26 17:27:18.669     0     0 I logd    : ReadPackageList, total packages: 156
+10-26 17:27:18.542  2309  2309 W DefaultDispatch: type=1400 audit(0.0:33): avc:  denied  { link } for  name="coreutils" dev="dm-43" ino=352675 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:18.542  2309  2309 W DefaultDispatch: type=1400 audit(0.0:34): avc:  denied  { link } for  name="coreutils" dev="dm-43" ino=352675 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:18.795     0     0 W audit   : audit_lost=5 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:18.797     0     0 E audit   : rate limit exceeded
+10-26 17:27:18.542  2309  2309 W DefaultDispatch: type=1400 audit(0.0:35): avc:  denied  { link } for  name="coreutils" dev="dm-43" ino=352675 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:18.546  2309  2309 W DefaultDispatch: type=1400 audit(0.0:36): avc:  denied  { link } for  name="coreutils" dev="dm-43" ino=352675 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:18.850   588   709 D ActivityManager: freezing 1543 com.android.sdksetup
+10-26 17:27:18.851   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:18.852   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:18.852   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10115} in 2ms
+10-26 17:27:19.365   588  1739 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:27:20.413   588   709 D ActivityManager: freezing 2127 com.android.carrierconfig
+10-26 17:27:20.414   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:20.414   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:20.414   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10118} in 1ms
+10-26 17:27:20.554  1680  1680 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:27:21.884   588   709 D ActivityManager: freezing 2213 com.android.carrierdefaultapp
+10-26 17:27:21.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:21.885   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:21.885   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10086} in 1ms
+10-26 17:27:21.983   588   709 D ActivityManager: freezing 1342 com.android.cellbroadcastreceiver
+10-26 17:27:21.984   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:21.984   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:21.985   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10068} in 1ms
+10-26 17:27:22.041  1039  1712 D DhcpClient: Received packet: 02:15:b2:00:00:00 OFFER, ip /10.0.2.16, netmask /255.255.255.0, DNS servers: /10.0.2.3 , gateways [/10.0.2.2], lease time 86400, domain null
+10-26 17:27:22.041  1039  1712 D DhcpClient: Received packet: 02:15:b2:00:00:00 ACK: your new IP /10.0.2.16, netmask /255.255.255.0, gateways [/10.0.2.2] DNS servers: /10.0.2.3 , lease time 86400, domain null
+10-26 17:27:22.050  1039  1049 W rkstack.process: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 4 weak references
+10-26 17:27:22.050  1039  1049 W rkstack.process: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 4 weak references
+10-26 17:27:22.050  1039  1049 W rkstack.process: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 4 weak references
+10-26 17:27:22.122  2309  2337 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:27:22.127  2309  2337 I ProotSpike: PASS exec-datadir-control: exec denied: Cannot run program "/data/user/0/dev.prootcode.app/files/spike/control/control": error=13, Permission denied
+10-26 17:27:22.122  2354  2354 W DefaultDispatch: type=1400 audit(0.0:147): avc:  granted  { execute } for  name="control" dev="dm-43" ino=354848 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:22.122  2354  2354 W DefaultDispatch: type=1400 audit(0.0:148): avc:  denied  { execute_no_trans } for  path="/data/data/dev.prootcode.app/files/spike/control/control" dev="dm-43" ino=354848 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:22.375     0     0 I libproot_loader[2355]: segfault at 0 ip 0000600000000046 sp 00007fff298f6f80 error 4 in libproot_loader.so[600000000000+1000] likely on CPU 3 (core 3, socket 0)
+10-26 17:27:22.379     0     0 I Code    : ff 4c 8d 25 54 44 00 00 0f 57 c0 eb 1d 48 8b 7b 08 b8 0a 00 00 00 be 01 00 00 00 ba 07 00 00 01 0f 05 b9 10 00 00 00 48 01 cb <48> 8b 03 48 83 f8 06 0f 87 ab 02 00 00 49 63 04 84 4c 01 e0 ff e0
+10-26 17:27:22.146  2309  2329 D EGL_emulation: app_time_stats: avg=1176.01ms min=10.56ms max=4562.34ms count=4
+10-26 17:27:22.231  2309  2337 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:27:22.234  2358  2358 W libproot.so: type=1400 audit(0.0:149): avc:  denied  { search } for  name="tests" dev="dm-43" ino=65540 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:27:22.481     0     0 W audit   : audit_lost=115 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:22.481     0     0 E audit   : rate limit exceeded
+10-26 17:27:22.234  2358  2358 W libproot.so: type=1400 audit(0.0:150): avc:  denied  { search } for  name="tests" dev="dm-43" ino=65540 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:27:22.234  2358  2358 W libproot.so: type=1400 audit(0.0:151): avc:  denied  { search } for  name="tests" dev="dm-43" ino=65540 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:27:22.334  2309  2337 I ProotSpike: PASS proot-true: exit=0 in 101 ms
+10-26 17:27:22.455  2309  2337 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 120 ms
+10-26 17:27:22.558  2309  2337 I ProotSpike: PASS proot-uid: exit=0 in 102 ms
+10-26 17:27:22.558  2309  2337 I ProotSpike:   0
+10-26 17:27:22.816     0     0 I logd    : start watching /data/system/packages.list ...
+10-26 17:27:22.817     0     0 I logd    : ReadPackageList, total packages: 156
+10-26 17:27:22.656  2309  2377 D ProfileInstaller: Installing profile for dev.prootcode.app
+10-26 17:27:22.661  2309  2337 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:27:22.765  2309  2337 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:27:22.765  2309  2337 I ProotSpike:   hello-from-android
+10-26 17:27:23.565   588   652 D OomAdjuster: Not killing cached processes
+10-26 17:27:24.048     0     0 W audit   : audit_lost=320 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:24.048     0     0 E audit   : rate limit exceeded
+10-26 17:27:23.798  2390  2390 W http    : type=1400 audit(0.0:357): avc:  denied  { ioctl } for  path="/proc/2390/cgroup" dev="proc" ino=18864 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:23.798  2391  2391 W http    : type=1400 audit(0.0:358): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:23.798  2391  2391 W http    : type=1400 audit(0.0:359): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:23.798  2390  2390 W http    : type=1400 audit(0.0:360): avc:  denied  { ioctl } for  path="/proc/2390/cgroup" dev="proc" ino=18864 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:23.798  2391  2391 W http    : type=1400 audit(0.0:361): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:24.751   588   890 W FileUtils: Failed to chmod(/data/misc_ce/0/apexdata/com.android.wifi/WifiConfigStoreNetworkSuggestions.xml, 384): 
+10-26 17:27:24.751   588   890 W FileUtils: android.system.ErrnoException: chmod failed: ENOENT (No such file or directory)
+10-26 17:27:24.751   588   890 W FileUtils: 	at libcore.io.Linux.chmod(Native Method)
+10-26 17:27:24.751   588   890 W FileUtils: 	at libcore.io.ForwardingOs.chmod(ForwardingOs.java:165)
+10-26 17:27:24.751   588   890 W FileUtils: 	at libcore.io.BlockGuardOs.chmod(BlockGuardOs.java:83)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.system.Os.chmod(Os.java:119)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.util.FileUtils.chmod(FileUtils.java:44)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigStore$StoreFile.writeBufferedRawData(WifiConfigStore.java:864)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigStore.writeBufferedData(WifiConfigStore.java:435)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigStore.write(WifiConfigStore.java:386)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigManager.writeBufferedData(WifiConfigManager.java:3866)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigManager.-$$Nest$mwriteBufferedData(WifiConfigManager.java:0)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.WifiConfigManager$1.onAlarm(WifiConfigManager.java:136)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.app.AlarmManager$ListenerWrapper.run(AlarmManager.java:375)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.os.Handler.handleCallback(Handler.java:959)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-26 17:27:24.751   588   890 W FileUtils: 	at com.android.server.wifi.RunnerHandler.dispatchMessage(RunnerHandler.java:124)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.os.Looper.loopOnce(Looper.java:232)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.os.Looper.loop(Looper.java:317)
+10-26 17:27:24.751   588   890 W FileUtils: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-26 17:27:24.753   588   890 D WifiConfigStore: Writing to stores completed in 4 ms.
+10-26 17:27:24.817   588   883 W OverlayManager: service 'idmap' died
+10-26 17:27:25.061     0     0 I init    : Sending signal 9 to service 'idmap2d' (pid 491) process group...
+10-26 17:27:25.063     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_1000/pid_491
+10-26 17:27:25.065     0     0 I init    : Control message: Processed ctl.stop for 'idmap2d' from pid: 588 (system_server)
+10-26 17:27:25.067     0     0 I init    : Service 'idmap2d' (pid 491) received signal 9
+10-26 17:27:25.068     0     0 I init    : Sending signal 9 to service 'idmap2d' (pid 491) process group...
+10-26 17:27:25.069     0     0 E libprocessgroup: Failed to write 1 to /sys/fs/cgroup/uid_1000/pid_491/cgroup.kill: No such file or directory
+10-26 17:27:25.071     0     0 E libprocessgroup: Failed to open /sys/fs/cgroup/uid_1000/pid_491/cgroup.procs: No such file or directory
+10-26 17:27:24.967  1139  1150 W droid.bluetooth: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:24.967  1139  1150 W droid.bluetooth: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:24.967  1139  1150 W droid.bluetooth: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:24.962  2383  2383 W libproot.so: type=1400 audit(0.0:431): avc:  granted  { execute } for  name="store" dev="dm-43" ino=353053 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:24.969   588   643 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-26 17:27:25.211     0     0 W audit   : audit_lost=389 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:24.962  2383  2383 W libproot.so: type=1400 audit(0.0:432): avc:  granted  { execute } for  name="ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:25.215     0     0 E audit   : rate limit exceeded
+10-26 17:27:24.962  2399  2399 W libproot_loader: type=1400 audit(0.0:433): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/apt/methods/store" dev="dm-43" ino=353053 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:24.962  2399  2399 W libproot_loader: type=1400 audit(0.0:434): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:24.962  2399  2399 W store   : type=1400 audit(0.0:435): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0" dev="dm-43" ino=353517 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:25.172   443   460 W GpuWork : Failed to attach bpf program to power/gpu_work_period tracepoint [2(No such file or directory)]
+10-26 17:27:26.150  1438  1442 W putmethod.latin: Cleared Reference was only reachable from finalizer (only reported once)
+10-26 17:27:26.200   207   223 I keystore2: system/security/keystore2/watchdog/src/lib.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+10-26 17:27:26.243   387   454 I netd    : tetherGetStats() -> {[]} <0.65ms>
+10-26 17:27:26.298  2391  2391 W http    : type=1400 audit(0.0:541): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:26.547     0     0 W audit   : audit_lost=494 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:26.553     0     0 E audit   : rate limit exceeded
+10-26 17:27:26.298  2391  2391 W http    : type=1400 audit(0.0:542): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:26.298  2391  2391 W http    : type=1400 audit(0.0:543): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:26.298  2391  2391 W http    : type=1400 audit(0.0:544): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:26.298  2391  2391 W http    : type=1400 audit(0.0:545): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:26.433  1662  1668 W viders.calendar: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:26.433  1662  1668 W viders.calendar: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:26.433  1662  1668 W viders.calendar: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:26.671   588   950 I SdkSandboxManager: Reconciling sdk data package directories for 0
+10-26 17:27:26.717  1121  1135 W ndroid.settings: Cleared Reference was only reachable from finalizer (only reported once)
+10-26 17:27:26.725  1121  1137 W ndroid.settings: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 3 weak references
+10-26 17:27:26.725  1121  1137 W ndroid.settings: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 3 weak references
+10-26 17:27:26.725  1121  1137 W ndroid.settings: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 3 weak references
+10-26 17:27:26.934  1798  1805 W android.traceur: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:26.934  1798  1805 W android.traceur: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:26.934  1798  1805 W android.traceur: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:26.959   387   454 I netd    : tetherGetStats() -> {[]} <0.42ms>
+10-26 17:27:26.962   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.14ms>
+10-26 17:27:26.965   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.75ms>
+10-26 17:27:26.966   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.58ms>
+10-26 17:27:26.969   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.44ms>
+10-26 17:27:26.969   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.44ms>
+10-26 17:27:26.971   588   973 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=5, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3455958 ] accessLevel:3
+10-26 17:27:26.971   588   888 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=6, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3436455 ] accessLevel:3
+10-26 17:27:26.999   387   454 I netd    : tetherGetStats() -> {[]} <0.65ms>
+10-26 17:27:27.059  1949  1956 W ompute.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:27.059  1949  1956 W ompute.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:27.059  1949  1956 W ompute.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:27.486   588  1093 D WifiNl80211Manager: Scan result ready event
+10-26 17:27:27.486   588  1093 D WifiNative: Scan result ready event
+10-26 17:27:27.489   588   890 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-26 17:27:28.060  1326  1332 W receiver.module: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 2 weak references
+10-26 17:27:28.060  1326  1332 W receiver.module: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 2 weak references
+10-26 17:27:28.060  1326  1332 W receiver.module: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 2 weak references
+10-26 17:27:28.164   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.164   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.164   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10101} in 1ms
+10-26 17:27:28.165   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.165   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.165   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20101} in 0ms
+10-26 17:27:28.207   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.207   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.207   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10069} in 0ms
+10-26 17:27:28.207   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.208   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.208   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20069} in 0ms
+10-26 17:27:28.351  1497  1503 W or.multidisplay: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:28.351  1497  1503 W or.multidisplay: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:28.351  1497  1503 W or.multidisplay: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:28.363   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.364   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.364   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10111} in 1ms
+10-26 17:27:28.364   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.364   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.364   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20111} in 1ms
+10-26 17:27:28.395   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.396   588   897 D InetDiagMessage: Destroyed 1 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.396   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10076} in 1ms
+10-26 17:27:28.396   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.396   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.396   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20076} in 1ms
+10-26 17:27:28.523  1582  1608 W ndroid.keychain: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:28.523  1582  1608 W ndroid.keychain: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:28.523  1582  1608 W ndroid.keychain: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:28.576   588   701 D OomAdjuster: Not killing cached processes
+10-26 17:27:28.577   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.577   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.577   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10107} in 1ms
+10-26 17:27:28.578   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.578   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.578   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20107} in 0ms
+10-26 17:27:28.748   387   454 I netd    : setProcSysNet(4, 2, wlan0, retrans_time_ms, 750) <0.18ms>
+10-26 17:27:28.748   387   454 I netd    : setProcSysNet(4, 2, wlan0, ucast_solicit, 10) <0.02ms>
+10-26 17:27:28.748   387   454 I netd    : setProcSysNet(6, 2, wlan0, retrans_time_ms, 750) <0.02ms>
+10-26 17:27:28.748   387   454 I netd    : setProcSysNet(6, 2, wlan0, ucast_solicit, 10) <0.02ms>
+10-26 17:27:28.765   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.765   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.765   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10135} in 1ms
+10-26 17:27:28.765   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:28.766   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:28.766   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20135} in 0ms
+10-26 17:27:28.795  1510  1516 W oid.documentsui: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/MtpService/MtpService.apk' with 1 weak references
+10-26 17:27:28.796  1510  1516 W oid.documentsui: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/DownloadProvider/DownloadProvider.apk' with 1 weak references
+10-26 17:27:28.796  1510  1516 W oid.documentsui: ApkAssets: Deleting an ApkAssets object '<empty> and /apex/com.android.mediaprovider/priv-app/MediaProvider@AE3A.240806.019/MediaProvider.apk' with 1 weak references
+10-26 17:27:28.796  1510  1516 W oid.documentsui: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk' with 1 weak references
+10-26 17:27:28.831  1761  1768 W tatementservice: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:28.831  1761  1768 W tatementservice: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:28.831  1761  1768 W tatementservice: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:29.036   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.037   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.037   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10114} in 1ms
+10-26 17:27:29.037   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.037   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.037   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20114} in 1ms
+10-26 17:27:29.059  2000  2006 W droid.messaging: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 2 weak references
+10-26 17:27:29.059  2000  2006 W droid.messaging: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 2 weak references
+10-26 17:27:29.059  2000  2006 W droid.messaging: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 2 weak references
+10-26 17:27:29.351   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.352   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.352   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10134} in 1ms
+10-26 17:27:29.352   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.352   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.352   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20134} in 1ms
+10-26 17:27:29.485   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.485   588   897 D InetDiagMessage: Destroyed 1 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.485   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10132} in 1ms
+10-26 17:27:29.486   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:29.486   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:29.486   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={20132} in 0ms
+10-26 17:27:29.810  2391  2391 W http    : type=1400 audit(0.0:610): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:30.059     0     0 W audit   : audit_lost=558 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:30.064     0     0 E audit   : rate limit exceeded
+10-26 17:27:29.810  2391  2391 W http    : type=1400 audit(0.0:611): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:29.810  2391  2391 W http    : type=1400 audit(0.0:612): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:29.810  2391  2391 W http    : type=1400 audit(0.0:613): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:29.810  2391  2391 W http    : type=1400 audit(0.0:614): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:30.263  1899  1905 W .adservices: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:30.263  1899  1905 W .adservices: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:30.263  1899  1905 W .adservices: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:30.352  1930  1942 W droid.dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:30.352  1930  1942 W droid.dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:30.352  1930  1942 W droid.dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:30.457  1950  1965 W ystem:dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:30.457  1950  1965 W ystem:dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:30.457  1950  1965 W ystem:dynsystem: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:30.948  2018  2025 W id.ext.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:30.948  2018  2025 W id.ext.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:30.948  2018  2025 W id.ext.services: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:31.427  2137  2143 W .localtransport: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:31.427  2137  2143 W .localtransport: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:31.427  2137  2143 W .localtransport: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:31.787   387   454 I netd    : tetherGetStats() -> {[]} <0.45ms>
+10-26 17:27:31.791   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.10ms>
+10-26 17:27:31.794   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.79ms>
+10-26 17:27:31.795   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.44ms>
+10-26 17:27:31.798   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.58ms>
+10-26 17:27:31.799   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.48ms>
+10-26 17:27:31.801   588   973 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=6, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3436455 ] accessLevel:3
+10-26 17:27:31.801   588   888 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=7, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3433140 ] accessLevel:3
+10-26 17:27:31.823   387   454 I netd    : tetherGetStats() -> {[]} <0.38ms>
+10-26 17:27:32.300  1099  1105 W com.android.se: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:32.301  1099  1105 W com.android.se: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:32.301  1099  1105 W com.android.se: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:32.660  1738  1745 W ndroid.contacts: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:32.660  1738  1745 W ndroid.contacts: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:32.660  1738  1745 W ndroid.contacts: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:32.971  1634  1646 W gedprovisioning: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:32.971  1634  1646 W gedprovisioning: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:32.971  1634  1646 W gedprovisioning: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:33.246  1588  1600 W d.process.media: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 3 weak references
+10-26 17:27:33.246  1588  1600 W d.process.media: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 3 weak references
+10-26 17:27:33.246  1588  1600 W d.process.media: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 3 weak references
+10-26 17:27:33.610   588   709 D ActivityManager: freezing 1703 com.android.externalstorage
+10-26 17:27:33.611   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:33.612   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:33.612   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10064} in 1ms
+10-26 17:27:34.695   387   454 I netd    : tetherGetStats() -> {[]} <0.49ms>
+10-26 17:27:34.698   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.08ms>
+10-26 17:27:34.700   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.64ms>
+10-26 17:27:34.700   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.42ms>
+10-26 17:27:34.978  2111  2117 W m.android.shell: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:34.978  2111  2117 W m.android.shell: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:34.979  2111  2117 W m.android.shell: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:35.402  1680  1680 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:27:36.710  1528  1535 W d.process.acore: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 5 weak references
+10-26 17:27:36.710  1528  1535 W d.process.acore: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 5 weak references
+10-26 17:27:36.710  1528  1535 W d.process.acore: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 5 weak references
+10-26 17:27:36.711  1528  1535 W d.process.acore: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/Contacts/Contacts.apk' with 1 weak references
+10-26 17:27:36.891   588   709 D ActivityManager: freezing 1510 com.android.documentsui
+10-26 17:27:36.893   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:36.893   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:36.893   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10063} in 2ms
+10-26 17:27:37.462  1916  1922 W android.camera2: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-neutral-xc4Y.frro' with 1 weak references
+10-26 17:27:37.462  1916  1922 W android.camera2: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-accent-zukP.frro' with 1 weak references
+10-26 17:27:37.462  1916  1922 W android.camera2: ApkAssets: Deleting an ApkAssets object '/data/resource-cache/com.android.systemui-dynamic-mAOM.frro' with 1 weak references
+10-26 17:27:37.787   387   454 I netd    : tetherGetStats() -> {[]} <0.65ms>
+10-26 17:27:37.791   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.13ms>
+10-26 17:27:37.937   588   709 D ActivityManager: freezing 1798 com.android.traceur
+10-26 17:27:37.938   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:37.939   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:37.939   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10097} in 1ms
+10-26 17:27:37.989   588   709 D ActivityManager: freezing 1326 com.android.cellbroadcastreceiver.module
+10-26 17:27:37.990   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:37.991   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:37.991   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10130} in 1ms
+10-26 17:27:38.200   588  1894 D OomAdjuster: Not killing cached processes
+10-26 17:27:38.206   588   709 D ActivityManager: freezing 1634 com.android.managedprovisioning
+10-26 17:27:38.208   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.208   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.208   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10069} in 1ms
+10-26 17:27:38.215   387   454 I netd    : tetherGetStats() -> {[]} <0.49ms>
+10-26 17:27:38.285   588   709 D ActivityManager: freezing 1662 com.android.providers.calendar
+10-26 17:27:38.286   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.286   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.286   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10078} in 1ms
+10-26 17:27:38.363   588   709 D ActivityManager: freezing 1859 com.android.calendar
+10-26 17:27:38.364   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.365   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.365   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10111} in 1ms
+10-26 17:27:38.394   588   709 D ActivityManager: freezing 1761 com.android.statementservice
+10-26 17:27:38.395   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.396   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.396   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10076} in 1ms
+10-26 17:27:38.448   588   709 D ActivityManager: freezing 1899 .adservices
+10-26 17:27:38.577   588   709 D ActivityManager: freezing 1916 com.android.camera2
+10-26 17:27:38.578   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.579   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.579   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10107} in 1ms
+10-26 17:27:38.693   588   709 D ActivityManager: freezing 2137 com.android.localtransport
+10-26 17:27:38.693   588   709 D ActivityManager: freezing 1121 com.android.settings
+10-26 17:27:38.694   588   709 D ActivityManager: freezing 1950 com.android.dynsystem:dynsystem
+10-26 17:27:38.694   588   709 D ActivityManager: freezing 1930 com.android.dynsystem
+10-26 17:27:38.694   588   709 D ActivityManager: freezing 1582 com.android.keychain
+10-26 17:27:38.807   588   709 D ActivityManager: freezing 1949 com.android.federatedcompute.services
+10-26 17:27:38.808   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.809   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.809   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10135} in 1ms
+10-26 17:27:38.930   588   709 D ActivityManager: freezing 1988 com.android.imsserviceentitlement
+10-26 17:27:38.931   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:38.932   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:38.932   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10100} in 1ms
+10-26 17:27:39.036   588   709 D ActivityManager: freezing 2000 com.android.messaging
+10-26 17:27:39.038   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:39.038   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:39.038   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10114} in 2ms
+10-26 17:27:39.351   588   709 D ActivityManager: freezing 2062 com.android.ondevicepersonalization.services
+10-26 17:27:39.353   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:39.353   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:39.353   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10134} in 2ms
+10-26 17:27:39.408   588   709 D ActivityManager: freezing 2078 com.android.packageinstaller
+10-26 17:27:39.409   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:39.410   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:39.410   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10062} in 1ms
+10-26 17:27:39.484   588   709 D ActivityManager: freezing 2096 com.android.rkpdapp
+10-26 17:27:39.485   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:39.486   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:39.486   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10132} in 1ms
+10-26 17:27:39.568   588   709 D ActivityManager: freezing 2111 com.android.shell
+10-26 17:27:39.569   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:39.570   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:39.570   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={2000} in 1ms
+10-26 17:27:40.547   387   454 I netd    : tetherGetStats() -> {[]} <0.57ms>
+10-26 17:27:40.552   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.18ms>
+10-26 17:27:40.556   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.83ms>
+10-26 17:27:40.556   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.59ms>
+10-26 17:27:40.561   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.98ms>
+10-26 17:27:40.561   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.47ms>
+10-26 17:27:40.564   588   973 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=7, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3433140 ] accessLevel:3
+10-26 17:27:40.564   588   888 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:588/1000(android) for DataUsageRequest [ requestId=8, networkTemplate=NetworkTemplate: matchRule=MOBILE, matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, thresholdInBytes=3429908 ] accessLevel:3
+10-26 17:27:40.591   387   454 I netd    : tetherGetStats() -> {[]} <0.35ms>
+10-26 17:27:42.210   588   897 D ConnectivityService: handleLingerComplete for [100 WIFI]
+10-26 17:27:43.367   387   454 I netd    : tetherGetStats() -> {[]} <0.39ms>
+10-26 17:27:43.370   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-26 17:27:43.371   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.80ms>
+10-26 17:27:43.372   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.49ms>
+10-26 17:27:43.594  1680  1680 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:27:44.283   588   897 D ConnectivityService: handleLingerComplete for [101 CELLULAR]
+10-26 17:27:44.284   588   897 I ConnectivityService: Update capabilities for net 101 : -FOREGROUND
+10-26 17:27:44.286   387   454 I netd    : networkSetPermissionForNetwork(101, 1) <2.11ms>
+10-26 17:27:45.730  2391  2391 W http    : type=1400 audit(0.0:622): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:45.980     0     0 W audit   : audit_lost=565 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:45.986     0     0 E audit   : rate limit exceeded
+10-26 17:27:45.730  2391  2391 W http    : type=1400 audit(0.0:623): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:45.730  2391  2391 W http    : type=1400 audit(0.0:624): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:45.730  2391  2391 W http    : type=1400 audit(0.0:625): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:45.730  2391  2391 W http    : type=1400 audit(0.0:626): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:46.371   387   454 I netd    : tetherGetStats() -> {[]} <0.55ms>
+10-26 17:27:46.374   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.10ms>
+10-26 17:27:46.479   588   653 D ActivityManager: sync unfroze 1121 com.android.settings for 3
+10-26 17:27:46.480   588   653 D OomAdjuster: Not killing cached processes
+10-26 17:27:46.482  1121  1121 D BatteryUsageBroadcastReceiver: onReceive:android.intent.action.BATTERY_LEVEL_CHANGED
+10-26 17:27:46.483  1121  1121 D BatteryUsageBroadcastReceiver: fetch data because of event: ACTION_BATTERY_LEVEL_CHANGED
+10-26 17:27:46.485  1121  1121 D BatteryUsageBroadcastReceiver: cancel sendBroadcastToFetchUsageData when broadcastDelay is 2339994ms.
+10-26 17:27:47.474   588  1093 D WifiNl80211Manager: Scan result ready event
+10-26 17:27:47.475   588  1093 D WifiNative: Scan result ready event
+10-26 17:27:47.476   588   890 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-26 17:27:48.206   588   709 D ActivityManager: freezing 982 com.android.permissioncontroller
+10-26 17:27:48.207   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-26 17:27:48.208   588   897 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-26 17:27:48.208   588   897 D InetDiagMessage: Destroyed live tcp sockets for uids={10147} in 1ms
+10-26 17:27:49.095   387   454 I netd    : tetherGetStats() -> {[]} <0.43ms>
+10-26 17:27:49.100   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.13ms>
+10-26 17:27:49.101   387   454 I netd    : bandwidthRemoveInterfaceQuota(eth0) <0.52ms>
+10-26 17:27:49.102   387   454 I netd    : bandwidthSetInterfaceQuota(eth0, 9223372036854775807) <0.46ms>
+10-26 17:27:49.993   588   890 E WifiHealthMonitor:  Hit PackageManager exception
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: android.content.pm.PackageManager$NameNotFoundException: No module info for package: com.android.wifi
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.app.ApplicationPackageManager.getModuleInfo(ApplicationPackageManager.java:1215)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.getWifiStackVersion(WifiHealthMonitor.java:369)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.extractCurrentSoftwareBuildInfo(WifiHealthMonitor.java:590)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootSwBuildCheck(WifiHealthMonitor.java:525)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootDetectionHandler(WifiHealthMonitor.java:516)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.-$$Nest$mpostBootDetectionHandler(WifiHealthMonitor.java:0)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor$2.onAlarm(WifiHealthMonitor.java:192)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.app.AlarmManager$ListenerWrapper.run(AlarmManager.java:375)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.os.Handler.handleCallback(Handler.java:959)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at com.android.server.wifi.RunnerHandler.dispatchMessage(RunnerHandler.java:124)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.os.Looper.loopOnce(Looper.java:232)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.os.Looper.loop(Looper.java:317)
+10-26 17:27:49.993   588   890 E WifiHealthMonitor: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-26 17:27:51.090  2391  2391 W http    : type=1400 audit(0.0:628): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:51.339     0     0 W audit   : audit_lost=566 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:51.344     0     0 E audit   : rate limit exceeded
+10-26 17:27:51.090  2391  2391 W http    : type=1400 audit(0.0:629): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:51.090  2391  2391 W http    : type=1400 audit(0.0:630): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:51.090  2391  2391 W http    : type=1400 audit(0.0:631): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:51.090  2391  2391 W http    : type=1400 audit(0.0:632): avc:  denied  { ioctl } for  path="/proc/2391/cgroup" dev="proc" ino=18863 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:51.939   387   454 I netd    : tetherGetStats() -> {[]} <0.37ms>
+10-26 17:27:51.941   387   454 I netd    : bandwidthSetGlobalAlert(2097152) <0.06ms>
+10-26 17:27:53.594  2383  2383 W libproot.so: type=1400 audit(0.0:658): avc:  granted  { execute } for  name="dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:53.594  2383  2383 W libproot.so: type=1400 audit(0.0:659): avc:  granted  { execute } for  name="ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:53.842     0     0 W audit   : audit_lost=591 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:53.846     0     0 E audit   : rate limit exceeded
+10-26 17:27:53.594  2416  2416 W libproot_loader: type=1400 audit(0.0:660): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:53.594  2416  2416 W libproot_loader: type=1400 audit(0.0:661): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:53.594  2416  2416 W dpkg    : type=1400 audit(0.0:662): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-43" ino=353565 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.658  2383  2383 W libproot.so: type=1400 audit(0.0:670): avc:  granted  { execute } for  name="dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.907     0     0 W audit   : audit_lost=598 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:54.658  2383  2383 W libproot.so: type=1400 audit(0.0:671): avc:  granted  { execute } for  name="ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.908     0     0 E audit   : rate limit exceeded
+10-26 17:27:54.658  2417  2417 W libproot_loader: type=1400 audit(0.0:672): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.658  2417  2417 W libproot_loader: type=1400 audit(0.0:673): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.658  2417  2417 W dpkg    : type=1400 audit(0.0:674): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-43" ino=353565 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:54.738  2309  2337 I ProotSpike: PASS apt-update: exit=0 in 31973 ms
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:3 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:4 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:5 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:6 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:7 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:9 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:13 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:14 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:27:54.739  2309  2337 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Fetched 29.1 MB in 31s (946 kB/s)
+10-26 17:27:54.740  2309  2337 I ProotSpike:   Reading package lists...
+10-26 17:27:54.761  2309  2329 D EGL_emulation: app_time_stats: avg=2715.72ms min=5.15ms max=31982.75ms count=12
+10-26 17:27:55.323     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+10-26 17:27:55.370  1680  1680 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:27:56.186  2427  2427 W http    : type=1400 audit(0.0:812): avc:  denied  { ioctl } for  path="/proc/2427/cgroup" dev="proc" ino=20668 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:56.186  2427  2427 W http    : type=1400 audit(0.0:813): avc:  denied  { ioctl } for  path="/proc/2427/cgroup" dev="proc" ino=20668 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:56.434     0     0 W audit   : audit_lost=735 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:56.437     0     0 E audit   : rate limit exceeded
+10-26 17:27:56.186  2427  2427 W http    : type=1400 audit(0.0:814): avc:  denied  { ioctl } for  path="/proc/2427/cgroup" dev="proc" ino=20668 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:56.186  2427  2427 W http    : type=1400 audit(0.0:815): avc:  denied  { ioctl } for  path="/proc/2427/cgroup" dev="proc" ino=20668 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:56.186  2427  2427 W http    : type=1400 audit(0.0:816): avc:  denied  { ioctl } for  path="/proc/2427/cgroup" dev="proc" ino=20668 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:27:56.489   588   709 D ActivityManager: freezing 1121 com.android.settings
+10-26 17:27:57.294     0     0 I init    : Untracked pid 2430 exited with status 0
+10-26 17:27:57.295     0     0 I init    : Untracked pid 2430 did not have an associated service entry and will not be reaped
+10-26 17:27:57.258  2418  2418 W libproot.so: type=1400 audit(0.0:1091): avc:  granted  { execute } for  name="dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:57.508     0     0 W audit   : audit_lost=1009 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:27:57.509     0     0 E audit   : rate limit exceeded
+10-26 17:27:57.258  2418  2418 W libproot.so: type=1400 audit(0.0:1092): avc:  granted  { execute } for  name="ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:57.258  2449  2449 W libproot_loader: type=1400 audit(0.0:1093): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-43" ino=352700 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:57.258  2449  2449 W libproot_loader: type=1400 audit(0.0:1094): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-43" ino=353511 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:57.258  2449  2449 W dpkg    : type=1400 audit(0.0:1095): avc:  granted  { execute } for  path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-43" ino=353565 scontext=u:r:untrusted_app:s0:c148,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c148,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:27:57.446  2309  2337 I ProotSpike: PASS apt-install: exit=0 in 2706 ms
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Reading package lists...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Building dependency tree...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Reading state information...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Solving dependencies...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   The following NEW packages will be installed:
+10-26 17:27:57.447  2309  2337 I ProotSpike:     hello
+10-26 17:27:57.447  2309  2337 I ProotSpike:   0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Need to get 26.1 kB of archives.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   After this operation, 106 kB of additional disk space will be used.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 hello amd64 2.10-5build1 [26.1 kB]
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Fetched 26.1 kB in 1s (20.3 kB/s)
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Selecting previously unselected package hello.
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 5%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 10%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 15%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 20%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 25%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 30%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 35%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 40%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 45%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 50%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 55%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 60%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 65%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 70%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 75%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 80%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 85%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 90%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 95%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 100%
+10-26 17:27:57.447  2309  2337 I ProotSpike:   (Reading database ... 7722 files and directories currently installed.)
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Preparing to unpack .../hello_2.10-5build1_amd64.deb ...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Unpacking hello (2.10-5build1) ...
+10-26 17:27:57.447  2309  2337 I ProotSpike:   Setting up hello (2.10-5build1) ...
+10-26 17:27:57.465  2309  2329 D EGL_emulation: app_time_stats: avg=2703.93ms min=2703.93ms max=2703.93ms count=1
+10-26 17:27:57.551  2309  2337 I ProotSpike: PASS installed-binary: exit=0 in 103 ms
+10-26 17:27:57.551  2309  2337 I ProotSpike:   Hello, world!
+10-26 17:27:57.562  2309  2337 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json

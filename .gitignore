@@ -33,3 +33,6 @@ docs/.env*
 
 # Logs
 *.log
+
+# Spike artifacts
+mobile/spike-artifacts/

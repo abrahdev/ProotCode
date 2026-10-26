@@ -1,0 +1,54 @@
+--------- beginning of main
+--------- beginning of system
+10-26 17:23:00.287  3011  3029 I ProotSpike: PASS device-info: API 26 (8.0.0), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:23:09.614  3011  3029 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:23:09.719  3011  3029 I ProotSpike: PASS exec-datadir-control: exec allowed, exit=139
+10-26 17:23:09.821  3011  3029 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:23:09.925  3011  3029 I ProotSpike: PASS proot-true: exit=0 in 103 ms
+10-26 17:23:10.029  3011  3029 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 103 ms
+10-26 17:23:10.133  3011  3029 I ProotSpike: PASS proot-uid: exit=0 in 102 ms
+10-26 17:23:10.133  3011  3029 I ProotSpike:   0
+10-26 17:23:10.238  3011  3029 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:23:10.342  3011  3029 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:23:10.342  3011  3029 I ProotSpike:   hello-from-android
+--------- beginning of crash
+10-26 17:23:41.368  3011  3029 I ProotSpike: FAIL apt-update: exit=100, retried without seccomp in 30921 ms
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:5 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:6 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:7 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:9 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:13 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:14 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:15 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Fetched 29.1 MB in 31s (950 kB/s)
+10-26 17:23:41.370  3011  3029 I ProotSpike:   E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+10-26 17:23:41.370  3011  3029 I ProotSpike:   E: The package lists or status file could not be parsed or opened.
+10-26 17:23:41.675  3011  3029 I ProotSpike: FAIL apt-install: exit=100, retried without seccomp in 202 ms
+10-26 17:23:41.675  3011  3029 I ProotSpike:   E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+10-26 17:23:41.675  3011  3029 I ProotSpike:   E: The package lists or status file could not be parsed or opened.
+10-26 17:23:41.777  3011  3029 I ProotSpike: FAIL installed-binary: exit=127 in 101 ms
+10-26 17:23:41.777  3011  3029 I ProotSpike:   /bin/sh: 1: hello: not found
+10-26 17:23:41.786  3011  3029 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json

@@ -1,0 +1,334 @@
+--------- beginning of main
+10-26 17:22:56.004  1702  1939 W AlarmManagerService: Unable to set rtc to 1793031776: No such device
+10-26 17:22:56.016  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:22:56.016  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:22:56.016  2141  2141 I AlarmClock: AlarmInitReceiver android.intent.action.TIME_SET
+10-26 17:22:56.018  2141  2169 I AlarmClock: Fixing alarm instances
+10-26 17:22:56.021  2141  2169 V AlarmClock: AlarmInitReceiver finished
+10-26 17:22:56.024  2141  2141 I DigitalWidgetProvider: onReceive: Intent { act=android.intent.action.TIME_SET flg=0x25200010 cmp=com.android.deskclock/com.android.alarmclock.DigitalAppWidgetProvider }
+10-26 17:22:56.521  2959  2959 I dex2oat : dex2oat took 9.087s (13.976s cpu) (threads: 4) arena alloc=3KB (3632B) java alloc=11MB (12560312B) native alloc=23MB (24475832B) free=5MB (5277512B) swap=16MB (16777216B)
+10-26 17:22:56.574  1547  1746 D installd: Applied hard quotas for 10065
+10-26 17:22:56.582  1547  1746 E         : Couldn't opendir /data/app/vmdl2030786975.tmp: No such file or directory
+10-26 17:22:56.582  1547  1746 E installd: Failed to delete /data/app/vmdl2030786975.tmp: No such file or directory
+10-26 17:22:56.594  1702  1769 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:22:56.620  1702  1769 I chatty  : uid=1000(system) InputReader identical 6 lines
+10-26 17:22:56.623  1702  1769 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:22:56.632  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.messaging
+10-26 17:22:56.634  1902  1902 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:22:56.674  1902  1902 I chatty  : uid=1001(radio) com.android.phone identical 2 lines
+10-26 17:22:56.703  1902  1902 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f080128
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f120dcc
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f080127
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f1203c5
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f080126
+10-26 17:22:56.709  1702  1716 W ResourceType: No known package when getting value for resource number 0x7f12084e
+10-26 17:22:56.713  1844  1844 I InputAttributes: InputType.TYPE_NULL is specified
+10-26 17:22:56.722  1902  1902 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:22:56.744  2415  2415 I zygote64: Deoptimizing void com.android.launcher3.BubbleTextView.applyIconAndLabel(android.graphics.Bitmap, com.android.launcher3.ItemInfo) due to JIT inline cache
+10-26 17:22:56.747  1902  1902 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:22:56.781  1902  1902 I chatty  : uid=1001(radio) com.android.phone identical 1 line
+10-26 17:22:56.851  1902  1902 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:22:56.867  2415  2420 I zygote64: Do partial code cache collection, code=57KB, data=51KB
+10-26 17:22:56.868  2415  2420 I zygote64: After code cache collection, code=55KB, data=49KB
+10-26 17:22:56.868  2415  2420 I zygote64: Increasing code cache capacity to 256KB
+10-26 17:22:56.872  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.camera2
+10-26 17:22:56.875  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.calendar
+10-26 17:22:56.877  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.gallery3d
+10-26 17:22:56.877  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.inputmethod.latin
+10-26 17:22:56.878  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.settings
+10-26 17:22:56.881  1902  1902 D ImsResolver: maybeAddedImsService, packageName: com.android.email
+10-26 17:22:56.881  1902  1902 D ImsResolver: maybeAddedImsService, packageName: dev.prootcode.app
+10-26 17:22:56.881  1902  1902 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-26 17:22:56.937  1702  1819 W AlarmManager: Unrecognized alarm listener com.android.server.wifi.WifiConfigStore$1@8ada326
+10-26 17:22:56.959  1702  1819 D WifiConfigStore: Writing to stores completed in 22 ms.
+10-26 17:22:58.716  1844  1844 I LatinIME: Timeout waiting for dictionary load
+--------- beginning of system
+10-26 17:22:59.645  1702  2321 I ActivityManager: START u0 {flg=0x10000000 cmp=dev.prootcode.app/.MainActivity (has extras)} from uid 2000
+10-26 17:22:59.658  3011  3011 I zygote64: Late-enabling -Xcheck:jni
+10-26 17:22:59.663  1702  2940 I ActivityManager: Start proc 3011:dev.prootcode.app/u0a65 for activity dev.prootcode.app/.MainActivity
+10-26 17:22:59.665  3011  3011 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:22:59.683  1433  1433 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:22:59.769  2415  2552 D EGL_emulation: eglMakeCurrent: 0x76edde83f3a0: ver 3 1 (tinfo 0x76edde80d980)
+10-26 17:22:59.793  1443  1977 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-26 17:22:59.793  3011  3027 D OpenGLRenderer: HWUI GL Pipeline
+10-26 17:22:59.942  1702  1939 D WificondControl: Scan result ready event
+10-26 17:23:00.122  3011  3027 D         : HostConnection::get() New Host Connection established 0x76edde83a180, tid 3027
+10-26 17:23:00.125  1433  1433 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:23:00.127  3011  3027 I OpenGLRenderer: Initialized EGL, version 1.4
+10-26 17:23:00.127  3011  3027 D OpenGLRenderer: Swap behavior 1
+10-26 17:23:00.129  3011  3027 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-26 17:23:00.129  3011  3027 D OpenGLRenderer: Swap behavior 0
+10-26 17:23:00.155  3011  3027 D EGL_emulation: eglCreateContext: 0x76edde8445a0: maj 3 min 1 rcv 4
+10-26 17:23:00.156  1433  1433 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:23:00.158  3011  3027 D EGL_emulation: eglMakeCurrent: 0x76edde8445a0: ver 3 1 (tinfo 0x76edde80d3a0)
+10-26 17:23:00.158  1433  1433 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:23:00.161  3011  3027 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-26 17:23:00.161  3011  3027 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-26 17:23:00.278  1702  1939 D VoldConnector: SND -> {34 volume mkdirs /storage/emulated/0/Android/data/dev.prootcode.app/files/}
+10-26 17:23:00.280  1702  1772 D VoldConnector: RCV <- {200 34 Command succeeded}
+10-26 17:23:00.286  3011  3016 I zygote64: Do partial code cache collection, code=29KB, data=29KB
+10-26 17:23:00.287  3011  3029 I ProotSpike: PASS device-info: API 26 (8.0.0), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:23:00.287  3011  3016 I zygote64: After code cache collection, code=29KB, data=29KB
+10-26 17:23:00.287  3011  3016 I zygote64: Increasing code cache capacity to 128KB
+10-26 17:23:00.450  3011  3027 D EGL_emulation: eglMakeCurrent: 0x76edde8445a0: ver 3 1 (tinfo 0x76edde80d3a0)
+10-26 17:23:00.612  3011  3016 I zygote64: Do partial code cache collection, code=61KB, data=57KB
+10-26 17:23:00.612  3011  3016 I zygote64: After code cache collection, code=61KB, data=57KB
+10-26 17:23:00.612  3011  3016 I zygote64: Increasing code cache capacity to 256KB
+10-26 17:23:00.665  1702  1724 I ActivityManager: Displayed dev.prootcode.app/.MainActivity: +1s12ms
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:36): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:37): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:38): avc: granted { use } for path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:39): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:40): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:41): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:42): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.674  3037  3037 W run-as  : type=1400 audit(0.0:43): avc: granted { use } for path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:00.684  3037  3037 W run-as  : type=1400 audit(0.0:44): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:00.684  3037  3037 W run-as  : type=1400 audit(0.0:45): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:00.684  3037  3037 W run-as  : type=1400 audit(0.0:46): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:00.684  3037  3037 W run-as  : type=1400 audit(0.0:47): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:00.684  3037  3037 W run-as  : type=1400 audit(0.0:48): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:00.736  1853  2088 D EGL_emulation: eglMakeCurrent: 0x76edd9f73620: ver 3 1 (tinfo 0x76edd9f70e80)
+10-26 17:23:01.004  1702  1717 I ActivityManager: Waited long enough for: ServiceRecord{de1112a u0 com.android.calendar/.alerts.InitAlarmsService}
+10-26 17:23:01.293  3011  3016 I zygote64: Do full code cache collection, code=124KB, data=97KB
+10-26 17:23:01.293  3011  3016 I zygote64: After code cache collection, code=98KB, data=60KB
+10-26 17:23:01.682  1702  2321 I ActivityManager: Killing 2395:com.android.sdksetup/u0a18 (adj 906): empty #17
+10-26 17:23:01.834  3011  3011 W DefaultDispatch: type=1400 audit(0.0:49): avc: denied { link } for name="perl" dev="dm-0" ino=99441 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:01.969  3011  3016 I zygote64: Do partial code cache collection, code=121KB, data=81KB
+10-26 17:23:01.969  3011  3016 I zygote64: After code cache collection, code=121KB, data=81KB
+10-26 17:23:01.969  3011  3016 I zygote64: Increasing code cache capacity to 512KB
+10-26 17:23:02.084  3011  3011 W DefaultDispatch: type=1400 audit(0.0:50): avc: denied { link } for name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:02.134  3011  3011 I chatty  : uid=10065(u0_a65) dev.prootcode.app identical 33 lines
+10-26 17:23:02.134  3011  3011 W DefaultDispatch: type=1400 audit(0.0:84): avc: denied { link } for name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:03.155  1702  1841 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:23:05.041  3011  3042 D ProfileInstaller: Installing profile for dev.prootcode.app
+10-26 17:23:06.044  1702  2940 I ActivityManager: Killing 2227:com.android.carrierconfig/u0a1 (adj 906): empty #17
+10-26 17:23:06.045  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:06.045  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:06.050  1702  2940 I ActivityManager: Killing 2624:com.android.quicksearchbox/u0a53 (adj 906): empty #17
+10-26 17:23:06.052  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:06.052  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:06.058  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:06.058  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:09.614  3011  3029 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:23:09.622  1434  1454 D hwcomposer: hw_composer sent 79 syncs in 62s
+10-26 17:23:09.719  3011  3029 I ProotSpike: PASS exec-datadir-control: exec allowed, exit=139
+10-26 17:23:09.821  3011  3029 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:23:09.925  3011  3029 I ProotSpike: PASS proot-true: exit=0 in 103 ms
+10-26 17:23:09.958  3011  3016 I zygote64: Do full code cache collection, code=248KB, data=204KB
+10-26 17:23:09.959  3011  3016 I zygote64: After code cache collection, code=243KB, data=160KB
+10-26 17:23:10.029  3011  3029 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 103 ms
+10-26 17:23:10.034  3059  3059 W libproot.so: type=1400 audit(0.0:164): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 I chatty  : uid=1036(auditd) identical 2 lines
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:167): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:168): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:169): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:170): avc: denied { setattr } for name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:171): avc: denied { setattr } for name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:172): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 I chatty  : uid=1036(auditd) identical 2 lines
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:175): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:176): avc: denied { setattr } for name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:177): avc: denied { setattr } for name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:178): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.044  3059  3059 W libproot.so: type=1400 audit(0.0:179): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:10.068  3011  3016 I zygote64: Do partial code cache collection, code=247KB, data=175KB
+10-26 17:23:10.068  3011  3016 I zygote64: After code cache collection, code=247KB, data=175KB
+10-26 17:23:10.068  3011  3016 I zygote64: Increasing code cache capacity to 1024KB
+10-26 17:23:10.133  3011  3029 I ProotSpike: PASS proot-uid: exit=0 in 102 ms
+10-26 17:23:10.133  3011  3029 I ProotSpike:   0
+10-26 17:23:10.238  3011  3029 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:23:10.244  3068  3068 W libproot.so: type=1400 audit(0.0:180): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:10.244  3068  3068 I chatty  : uid=1036(auditd) identical 2 lines
+10-26 17:23:10.244  3068  3068 W libproot.so: type=1400 audit(0.0:183): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:10.342  3011  3029 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:23:10.342  3011  3029 I ProotSpike:   hello-from-android
+--------- beginning of crash
+10-26 17:23:10.373  3073  3073 F libc    : ./tracee/event.c:718: int handle_tracee_event(Tracee *, int): assertion "IS_IN_SYSENTER(tracee)" failed
+10-26 17:23:11.754  3079  3079 W libproot.so: type=1400 audit(0.0:251): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:11.754  3079  3079 W libproot.so: type=1400 audit(0.0:252): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:11.754  3079  3079 W libproot.so: type=1400 audit(0.0:253): avc: denied { setattr } for name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:11.754  3079  3079 W libproot.so: type=1400 audit(0.0:254): avc: denied { setattr } for name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:11.754  3079  3079 W libproot.so: type=1400 audit(0.0:255): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:11.794  3079  3079 I chatty  : uid=10065(u0_a65) /data/app/dev.prootcode.app-ELAP5p8gWd_vgCqVhTP29g==/lib/x86_64/libproot.so identical 2 lines
+10-26 17:23:11.794  3079  3079 W libproot.so: type=1400 audit(0.0:258): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:11.794  3079  3079 W libproot.so: type=1400 audit(0.0:259): avc: denied { setattr } for name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:11.794  3079  3079 W libproot.so: type=1400 audit(0.0:260): avc: denied { setattr } for name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:11.794  3079  3079 W libproot.so: type=1400 audit(0.0:261): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:14.934  3079  3079 I chatty  : uid=10065(u0_a65) /data/app/dev.prootcode.app-ELAP5p8gWd_vgCqVhTP29g==/lib/x86_64/libproot.so identical 2 lines
+10-26 17:23:14.934  3079  3079 W libproot.so: type=1400 audit(0.0:264): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:14.934  3079  3079 W libproot.so: type=1400 audit(0.0:265): avc: denied { setattr } for name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:14.934  3079  3079 W libproot.so: type=1400 audit(0.0:266): avc: denied { setattr } for name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:14.934  3079  3079 W libproot.so: type=1400 audit(0.0:267): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:14.974  3079  3079 I chatty  : uid=10065(u0_a65) /data/app/dev.prootcode.app-ELAP5p8gWd_vgCqVhTP29g==/lib/x86_64/libproot.so identical 2 lines
+10-26 17:23:14.974  3079  3079 W libproot.so: type=1400 audit(0.0:270): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:14.974  3079  3079 W libproot.so: type=1400 audit(0.0:271): avc: denied { setattr } for name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:14.974  3079  3079 W libproot.so: type=1400 audit(0.0:272): avc: denied { setattr } for name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:14.974  3079  3079 W libproot.so: type=1400 audit(0.0:273): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:14.974  3079  3079 W libproot.so: type=1400 audit(0.0:274): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:15.234  1702  1823 D ConnectivityService: handleLingerComplete for NetworkAgentInfo [MOBILE (LTE) - 100]
+10-26 17:23:16.009  2746  2822 D InitAlarmsService: Clearing and rescheduling alarms.
+10-26 17:23:16.014  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:16.014  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:16.021  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:16.021  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:16.022  1702  2321 I ActivityManager: Killing 2488:com.android.launcher3:wallpaper_chooser/u0a13 (adj 906): empty #17
+10-26 17:23:16.027  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:16.027  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:16.032  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:16.032  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:16.039  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:16.039  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:19.962  1702  1939 D WificondControl: Scan result ready event
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:275): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:276): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:277): avc: granted { use } for path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:278): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:279): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:280): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:281): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:282): avc: granted { use } for path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:283): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:284): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:285): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:286): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:20.714  3107  3107 W run-as  : type=1400 audit(0.0:287): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:21.014  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.014  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:21.020  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.020  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:21.025  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.025  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:21.031  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.031  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:21.036  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.036  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:21.042  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:21.042  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:27.978  1702  1720 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:288): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:289): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:290): avc: granted { use } for path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:291): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:292): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:293): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:294): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:295): avc: granted { use } for path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:296): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:297): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:298): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:299): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:30.734  3111  3111 W run-as  : type=1400 audit(0.0:300): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:37.670  1441  1441 I boot-pipe: done populating /dev/random
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:301): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:302): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:303): avc: granted { use } for path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:304): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:305): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:306): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:307): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:308): avc: granted { use } for path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:309): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:310): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:311): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:312): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:40.754  3115  3115 W run-as  : type=1400 audit(0.0:313): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+10-26 17:23:41.368  3011  3029 I ProotSpike: FAIL apt-update: exit=100, retried without seccomp in 30921 ms
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:5 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:6 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:7 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:9 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:13 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:23:41.368  3011  3029 I ProotSpike:   Get:14 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:15 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:23:41.369  3011  3029 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:23:41.370  3011  3029 I ProotSpike:   Fetched 29.1 MB in 31s (950 kB/s)
+10-26 17:23:41.370  3011  3029 I ProotSpike:   E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+10-26 17:23:41.370  3011  3029 I ProotSpike:   E: The package lists or status file could not be parsed or opened.
+10-26 17:23:41.382  3011  3016 I zygote64: Compiler allocated 4MB to compile boolean androidx.compose.runtime.snapshots.SnapshotStateObserver$ObservedScopeMap.recordInvalidation(java.util.Set)
+10-26 17:23:41.390  3117  3117 F libc    : ./tracee/event.c:718: int handle_tracee_event(Tracee *, int): assertion "IS_IN_SYSENTER(tracee)" failed
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:314): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:315): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:316): avc: denied { setattr } for name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:317): avc: denied { setattr } for name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:318): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.524  3123  3123 W libproot.so: type=1400 audit(0.0:319): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.544  3123  3123 W libproot.so: type=1400 audit(0.0:320): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:41.544  3123  3123 I chatty  : uid=10065(u0_a65) /data/app/dev.prootcode.app-ELAP5p8gWd_vgCqVhTP29g==/lib/x86_64/libproot.so identical 2 lines
+10-26 17:23:41.544  3123  3123 W libproot.so: type=1400 audit(0.0:323): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+10-26 17:23:41.554  3123  3123 W libproot.so: type=1400 audit(0.0:324): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.554  3123  3123 W libproot.so: type=1400 audit(0.0:325): avc: denied { setattr } for name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+10-26 17:23:41.554  3123  3123 W libproot.so: type=1400 audit(0.0:326): avc: denied { setattr } for name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+10-26 17:23:41.554  3123  3123 W libproot.so: type=1400 audit(0.0:327): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+10-26 17:23:41.675  3011  3029 I ProotSpike: FAIL apt-install: exit=100, retried without seccomp in 202 ms
+10-26 17:23:41.675  3011  3029 I ProotSpike:   E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+10-26 17:23:41.675  3011  3029 I ProotSpike:   E: The package lists or status file could not be parsed or opened.
+10-26 17:23:41.777  3011  3029 I ProotSpike: FAIL installed-binary: exit=127 in 101 ms
+10-26 17:23:41.777  3011  3029 I ProotSpike:   /bin/sh: 1: hello: not found
+10-26 17:23:41.786  3011  3029 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json
+10-26 17:23:45.519  2244  2696 I Dialer  : OmtpVvmCarrierCfgHlpr - OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-26 17:23:45.519  2244  2244 I Dialer  : RetryPolicy - discarding deferred status: configuration_state=4
+10-26 17:23:45.520  2244  2244 I Dialer  : VvmTaskExecutor - no more tasks, stopping service if no task are added in 5000 millis
+10-26 17:23:45.521  1702  1717 I ActivityManager: Killing 1991:com.android.settings/1000 (adj 906): empty #17
+10-26 17:23:45.522  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.522  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:45.525  2244  2244 I Dialer  : VvmTaskReceiver - task received
+10-26 17:23:45.525  2244  2244 I Dialer  : VvmTaskReceiver - TaskExecutor already running
+10-26 17:23:45.525  2244  2244 I Dialer  : Task.createTask - create task:com.android.voicemail.impl.ActivationTask
+10-26 17:23:45.525  2244  2244 I Dialer  : RetryPolicy - retry #1 for com.android.voicemail.impl.ActivationTask@357ec5e queued, executing in 5000
+10-26 17:23:45.525  2244  2244 I Dialer  : VvmTaskExecutor - com.android.voicemail.impl.ActivationTask@357ec5e added
+10-26 17:23:45.525  2244  2244 I Dialer  : VvmTaskExecutor - minimal wait time:5000
+10-26 17:23:45.526  2244  2244 I Dialer  : VvmTaskExecutor - sleep for 5000 millis
+10-26 17:23:45.531  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.531  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:45.539  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.539  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:45.548  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.548  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:45.558  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.558  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:45.565  1702  1724 W ActivityManager: setHasOverlayUi called on unknown pid: 1991
+10-26 17:23:45.569  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:45.569  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:50.532  2244  2696 I Dialer  : VvmTaskExecutor - executing task com.android.voicemail.impl.ActivationTask@357ec5e
+10-26 17:23:50.532  2244  2696 I Dialer  : PreOMigrationHandler - ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, [e2f7d48dd2b5ca523e7313cf4ba0f6ea830b6281], UserHandle{0} already migrated
+10-26 17:23:50.537  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:50.537  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:50.544  1702  1716 E memtrack: Couldn't load memtrack module
+10-26 17:23:50.544  1702  1716 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:23:50.544  2244  2696 I Dialer  : VvmActivationTask - VVM content provider configured - vvm_type_cvvm
+10-26 17:23:50.545  2244  2696 I Dialer  : OmtpVvmCarrierCfgHlpr - OmtpEvent:CONFIG_ACTIVATING
+10-26 17:23:50.551  2244  2696 I Dialer  : TelephonyMangerCompat.setVisualVoicemailSmsFilterSettings - using TelephonyManager
+10-26 17:23:50.553  2244  2696 I Dialer  : TelephonyMangerCompat.sendVisualVoicemailSms - using TelephonyManager
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:328): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:329): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:330): avc: granted { use } for path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:331): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:332): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:333): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:334): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:335): avc: granted { use } for path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+10-26 17:23:50.764  3135  3135 W run-as  : type=1400 audit(0.0:336): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file

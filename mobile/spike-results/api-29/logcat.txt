@@ -1,0 +1,1044 @@
+--------- beginning of main
+10-26 17:24:14.928  2364  2364 I RemoteVvmTaskManager: Binding to ComponentInfo{com.android.dialer/com.android.voicemail.impl.OmtpService}
+10-26 17:24:14.954  3063  3063 I Dialer  : VvmOmtpService - onCellServiceConnected
+10-26 17:24:14.956  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4098 to 4098
+10-26 17:24:14.960  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:14.963  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4386 to 4391
+10-26 17:24:14.963  3063  3063 I Dialer  : VoicemailModule.provideVoicemailClient - providing VoicemailClientImpl
+--------- beginning of system
+10-26 17:24:14.969  2837  2837 I MediaUpgradeReceiver: <--- Finished upgrade of media database external.db in 39ms
+10-26 17:24:14.969  1957  1974 I PreBootBroadcaster: Pre-boot of {com.android.settings/com.android.settings.SettingsInitialize} for user 0
+10-26 17:24:14.978  2364  2811 D MmsSmsDatabaseHelper: onCreate: Creating all SMS-MMS tables.
+10-26 17:24:14.982  1957  2949 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:14.982  1957  2949 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:14.985  2364  2811 D MmsSmsDatabaseHelper: onCreate: broadcasting ACTION_SMS_MMS_DB_CREATED
+10-26 17:24:14.985  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:14.992  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4379 to 4379
+10-26 17:24:15.001  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.012  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4099 to 4099
+10-26 17:24:15.019  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.021  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4392 to 4392
+10-26 17:24:15.060  1957  2212 I ActivityManager: Posting BOOT_COMPLETED user #0
+10-26 17:24:15.061  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4380 to 4380
+10-26 17:24:15.067  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove cdma broadcast channels range 4100 to 4100
+10-26 17:24:15.068  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4393 to 4393
+10-26 17:24:15.077  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4381 to 4381
+10-26 17:24:15.078  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4394 to 4394
+10-26 17:24:15.085  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4382 to 4382
+10-26 17:24:15.086  1957  1957 I NotificationService: Cannot find enqueued record for key: 0|android|13|PreBootBroadcaster|1000
+10-26 17:24:15.086  1957  1976 I AppWidgetServiceImpl: Processing of handleUserUnlocked u0 took 26 ms
+10-26 17:24:15.087  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4395 to 4395
+10-26 17:24:15.091  1708  1708 D Zygote  : Forked child process 3184
+10-26 17:24:15.094  3184  3184 W .localtranspor: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.095  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.108  3063  3063 I Dialer  : VvmTaskReceiver - task received
+10-26 17:24:15.109  3063  3063 I Dialer  : VvmTaskReceiver - scheduling new job
+10-26 17:24:15.109  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4352 to 4354
+10-26 17:24:15.109  1957  1986 W ActivityManager: Slow operation: 51ms so far, now at startProcess: done updating battery stats
+10-26 17:24:15.109  1957  1986 W ActivityManager: Slow operation: 51ms so far, now at startProcess: building log message
+10-26 17:24:15.109  1957  1986 I ActivityManager: Start proc 3184:com.android.localtransport/1000 for service {com.android.localtransport/com.android.localtransport.LocalTransportService}
+10-26 17:24:15.109  1957  1986 W ActivityManager: Slow operation: 51ms so far, now at startProcess: starting to update pids map
+10-26 17:24:15.110  1957  1986 W ActivityManager: Slow operation: 52ms so far, now at startProcess: done updating pids map
+10-26 17:24:15.111  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.113  3063  3063 I Dialer  : TaskSchedulerJobService - scheduling job with 1 tasks
+10-26 17:24:15.115  3063  3063 I Dialer  : TaskSchedulerJobService - running job instantly.
+10-26 17:24:15.119  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4356 to 4356
+10-26 17:24:15.135  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4355 to 4355
+10-26 17:24:15.137  3063  3063 I Dialer  : TaskSchedulerJobService - job 0 scheduled
+10-26 17:24:15.139  3184  3184 I .localtranspor: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.139  3063  3063 I Dialer  : TaskSchedulerJobService - starting 0
+10-26 17:24:15.140  3063  3063 I Dialer  : VvmTaskExecutor - onStartJob
+10-26 17:24:15.141  3063  3063 I Dialer  : Task.createTask - create task:com.android.voicemail.impl.ActivationTask
+10-26 17:24:15.142  3063  3204 I Dialer  : VvmTaskExecutor - executing task com.android.voicemail.impl.ActivationTask@8a62808
+10-26 17:24:15.143  3063  3204 I Dialer  : PreOMigrationHandler - migrating ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, ***, UserHandle{0}
+10-26 17:24:15.143  3063  3204 I Dialer  : PreOMigrationHandler.migrateSettings - migrating settings
+10-26 17:24:15.144  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.146  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4396 to 4396
+10-26 17:24:15.149  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.152  2364  3120 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4397 to 4397
+10-26 17:24:15.161  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4398 to 4398
+10-26 17:24:15.162  2364  2733 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4399 to 4399
+10-26 17:24:15.169  1957  1970 I system_server: Background concurrent copying GC freed 86037(6145KB) AllocSpace objects, 16(832KB) LOS objects, 42% free, 7089KB/12MB, paused 3.342ms total 265.924ms
+10-26 17:24:15.171  1957  3206 I RecoverySystem: No recovery log file
+10-26 17:24:15.171  2964  3077 D CellBroadcastConfigService: Enable CellBroadcast on sub 1
+10-26 17:24:15.171  1957  3206 I BootReceiver: No existing last log timestamp file /data/system/log-files.xml; starting empty
+10-26 17:24:15.172  1957  3206 I DropBoxManagerService: add tag=SYSTEM_BOOT isTagEnabled=true flags=0x2
+10-26 17:24:15.173  3063  3063 I Dialer  : DialerExecutorModule.newThread - creating low priority thread
+10-26 17:24:15.173  3063  3208 I Dialer  : VisualVoicemailUpdateTask.updateNotification - enter
+10-26 17:24:15.174  1957  3206 I BootReceiver: Copying audit failures to DropBox
+10-26 17:24:15.174  1957  3206 I BootReceiver: Checking for fsck errors
+10-26 17:24:15.176  1957  1957 I TransportClient: LocalTransportService#0: Notifying [TransportManager.registerTransport()] transport = IBackupTransport
+10-26 17:24:15.176  1957  2594 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+10-26 17:24:15.176  1957  2594 W Binder  : java.lang.Throwable
+10-26 17:24:15.176  1957  2594 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at com.android.internal.backup.IBackupTransport$Stub$Proxy.name(IBackupTransport.java:869)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at com.android.server.backup.TransportManager.registerTransport(TransportManager.java:653)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at com.android.server.backup.TransportManager.registerTransportsForIntent(TransportManager.java:588)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at com.android.server.backup.TransportManager.registerTransports(TransportManager.java:558)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at com.android.server.backup.-$$Lambda$pM_c5tVAGDtxjxLF_ONtACWWq6Q.run(Unknown Source:2)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:883)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at android.os.Looper.loop(Looper.java:214)
+10-26 17:24:15.176  1957  2594 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-26 17:24:15.177  1957  3206 I BootReceiver: fs_stat, partition:vdc stat:0x13
+10-26 17:24:15.178  1957  2594 D BackupTransportManager: Transport com.android.localtransport/.LocalTransportService registered
+10-26 17:24:15.178  1957  2594 D BackupManagerService: Transport com.android.localtransport/.LocalTransport registered 3171ms after first request (delay = 3000ms)
+10-26 17:24:15.185  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.188  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4370 to 4370
+10-26 17:24:15.193  1707  2232 I netd    : bandwidthAddNiceApp(10050) <0.04ms>
+10-26 17:24:15.193  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.195  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4096 to 4096
+10-26 17:24:15.196  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.202  3063  3208 I Dialer  : VisualVoicemailUpdateTask.updateNotification - no voicemails to notify about
+10-26 17:24:15.203  3063  3208 I Dialer  : VisualVoicemailNotifier.cancelAllVoicemailNotifications - enter
+10-26 17:24:15.203  3063  3208 I Dialer  : VoicemailNotificationJobService.scheduleJob - job canceled
+10-26 17:24:15.203  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4383 to 4383
+10-26 17:24:15.203  3063  3063 I Dialer  : VisualVoicemailUpdateTask.scheduleTask - update successful
+10-26 17:24:15.212  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT@AEA
+10-26 17:24:15.215  1957  1957 I Telecom : MissedCallNotifierImpl: reloadAfterBootComplete: user=0: CM.CCCR->CM.UECNT@AEA
+10-26 17:24:15.217  2893  2916 I VoicemailNotifier: receivers for android.intent.action.PROVIDER_CHANGED :[]
+10-26 17:24:15.219  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.221  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4371 to 4372
+10-26 17:24:15.222  2364  2364 D CarrierConfigLoader: mHandler: 13 phoneId: 0
+10-26 17:24:15.222  2364  2364 D CarrierConfigLoader: mHandler: 7 phoneId: 0
+10-26 17:24:15.223  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.226  2364  2364 D CarrierConfigLoader: Loaded config from XML. package=com.android.carrierconfig phoneId=0
+10-26 17:24:15.237  2364  2364 D CarrierConfigLoader: mHandler: 5 phoneId: 0
+10-26 17:24:15.239  2893  2916 I VoicemailNotifier: receivers for android.intent.action.PROVIDER_CHANGED :[]
+10-26 17:24:15.241  3063  3204 I Dialer  : VvmActivationTask - VVM content provider configured - vvm_type_cvvm
+10-26 17:24:15.242  3063  3204 I Dialer  : OmtpVvmCarrierCfgHlpr - OmtpEvent:CONFIG_ACTIVATING
+10-26 17:24:15.242  2364  2596 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4097 to 4097
+10-26 17:24:15.242  2364  2364 D CarrierConfigLoader: mHandler: 16 phoneId: 0
+10-26 17:24:15.243  2364  2364 D CarrierConfigLoader: Broadcast CARRIER_CONFIG_CHANGED for phone 0
+10-26 17:24:15.244  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.245  3089  3089 I MessagingApp: Carrier config changed. Reloading MMS config.
+10-26 17:24:15.246  1708  1708 D Zygote  : Forked child process 3211
+10-26 17:24:15.247  2364  2733 I CarrierInfoManager: using values for mnc, mcc: 260,310
+10-26 17:24:15.248  2364  2733 D CarrierInfoManager: No rows found for keyType: 2
+10-26 17:24:15.248  2964  2964 D CellBroadcastReceiver: onReceive Intent { act=android.telephony.action.CARRIER_CONFIG_CHANGED flg=0x15000010 cmp=com.android.cellbroadcastreceiver/.CellBroadcastReceiver (has extras) }
+10-26 17:24:15.248  2964  2964 D CellBroadcastReceiver: initializeSharedPreference
+10-26 17:24:15.249  2364  2364 D CarrierKeyDownloadManager: Carrier Config changed: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-26 17:24:15.250  3211  3211 W ndroid.calenda: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.251  1957  1986 I ActivityManager: Start proc 3211:com.android.calendar/u0a105 for broadcast {com.android.calendar/com.android.calendar.UpgradeReceiver}
+10-26 17:24:15.253  2964  2964 D CellBroadcastReceiver: Default interval 0 did not change.
+10-26 17:24:15.253  2964  2964 D CellBroadcastReceiver: Start Cell Broadcast configuration.
+10-26 17:24:15.255  2893  2916 I VoicemailNotifier: receivers for android.intent.action.PROVIDER_CHANGED :[]
+10-26 17:24:15.259  2364  2364 D CarrierKeyDownloadManager: Carrier not enabled or invalid values
+10-26 17:24:15.259  2364  2364 D CarrierKeyDownloadManager: Cleaning up existing renewal alarms
+10-26 17:24:15.259  1957  1957 I Telecom : PhoneAccountRegistrar: getSimCallManager: SimCallManager for subId 1 queried, returning: null: CM.CCCR->CM.UECNT@AEA
+10-26 17:24:15.259  3089  3171 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+10-26 17:24:15.260  1957  2949 D MmsServiceBroker: getCarrierConfigValues() by com.android.messaging
+10-26 17:24:15.260  2364  3120 D MmsService: getCarrierConfigValues
+10-26 17:24:15.260  2364  3120 I MmsService: mms config for sub 1: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=true, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}]
+10-26 17:24:15.261  3089  3171 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=true, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+10-26 17:24:15.262  1707  2232 I netd    : bandwidthRemoveInterfaceQuota("radio0") <0.70ms>
+10-26 17:24:15.262  2364  2700 I LocationAccessPolicy: Allowing com.android.dialer fine because it doesn't target API 29 yet. Please fix this app. Called from getServiceStateForSubscriber
+10-26 17:24:15.263  1957  1976 E GnssLocationProvider: android_location_GnssLocationProvider_set_agps_server: AGPS interface not supported
+10-26 17:24:15.263  2364  2364 I TelecomFramework: : Carrier-config changed, checking for phone account updates.
+10-26 17:24:15.263  2364  2700 I LocationAccessPolicy: Allowing com.android.dialer coarse because it doesn't target API 29 yet. Please fix this app. Called from getServiceStateForSubscriber
+10-26 17:24:15.264  1707  2232 I netd    : bandwidthSetInterfaceQuota("radio0", 9223372036854775807) <0.69ms>
+10-26 17:24:15.265  1707  2232 I netd    : bandwidthSetGlobalAlert(2097152) <0.12ms>
+10-26 17:24:15.271  2364  2364 I TelecomFramework: AccountEntry: reRegisterPstnPhoneAccount: subId: 1 - no change
+10-26 17:24:15.271  2364  2364 I MmsService: MmsConfigManager receiver action: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-26 17:24:15.272  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4384 to 4385
+10-26 17:24:15.272  2364  3230 I MmsService: MmsConfigManager loads in background mcc/mnc: 310/260
+10-26 17:24:15.276  3211  3211 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.276  3211  3211 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-26 17:24:15.276  3211  3211 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.277  3211  3211 I ndroid.calenda: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.278  2837  2961 E SQLiteLog: (1) no such table: audio_genres
+10-26 17:24:15.279  2364  2383 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.281  2837  2961 E SQLiteLog: (1) no such table: audio_genres
+10-26 17:24:15.286  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.286  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.288  2837  2961 E SQLiteLog: (1) no such table: audio_genres
+10-26 17:24:15.289  2364  2364 D OtaspSimStateReceiver: Received intent: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-26 17:24:15.290  2364  2364 D OtaspSimStateReceiver: otasp activation not needed: no supported carrier
+10-26 17:24:15.291  3211  3211 D AlertReceiver: onReceive: a=android.intent.action.BOOT_COMPLETED Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 cmp=com.android.calendar/.alerts.AlertReceiver (has extras) }
+10-26 17:24:15.292  2364  2383 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4373 to 4378
+10-26 17:24:15.292  1957  1976 D AutofillManagerService: Close system dialogs
+10-26 17:24:15.293  2104  2104 V StatusBar: mStatusBarWindow: com.android.systemui.statusbar.phone.StatusBarWindowView{321a7c5 V.E...... ........ 0,0-1080,66} canPanelBeCollapsed(): false
+10-26 17:24:15.294  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.306  2364  2364 I VvmSimStateTracker: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-26 17:24:15.308  2364  2364 I VvmSimStateTracker: Service connected on ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, ***, UserHandle{0}
+10-26 17:24:15.310  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4098 to 4098
+10-26 17:24:15.310  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.312  2364  2364 I RemoteVvmTaskManager: Binding to ComponentInfo{com.android.dialer/com.android.voicemail.impl.OmtpService}
+10-26 17:24:15.315  1708  1708 D Zygote  : Forked child process 3235
+10-26 17:24:15.317  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4386 to 4391
+10-26 17:24:15.317  3063  3063 I Dialer  : VvmOmtpService - onCellServiceConnected
+10-26 17:24:15.318  3235  3235 W android.camera: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.319  1957  1986 I ActivityManager: Start proc 3235:com.android.camera2/u0a111 for broadcast {com.android.camera2/com.android.camera.DisableCameraReceiver}
+10-26 17:24:15.323  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.325  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4379 to 4379
+10-26 17:24:15.326  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.327  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4099 to 4099
+10-26 17:24:15.328  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.329  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4392 to 4392
+10-26 17:24:15.338  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4380 to 4380
+10-26 17:24:15.338  3235  3235 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.338  3235  3235 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-26 17:24:15.338  3235  3235 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.338  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove cdma broadcast channels range 4100 to 4100
+10-26 17:24:15.339  3235  3235 I android.camera: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.339  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4393 to 4393
+10-26 17:24:15.340  3235  3235 I android.camera: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.341  3089  3171 I MessagingAppDataModel: SyncMessagesAction: All messages now in sync
+10-26 17:24:15.344  2364  2382 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4381 to 4381
+10-26 17:24:15.345  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4394 to 4394
+10-26 17:24:15.346  3235  3235 V CAM_Profiler: [  0.000ms][ui] GUARD: CameraApp onCreate() - START
+10-26 17:24:15.346  3235  3235 V CAM_Profiler: [  0.000ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - START
+10-26 17:24:15.347  3235  3235 V CAM_Profiler: [  0.597ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - [ 0.597ms] PreferenceManager.getDefaultSharedPreferences
+10-26 17:24:15.348  3235  3235 V CAM_Profiler: [  1.318ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - [ 0.721ms] preferences.getLong
+10-26 17:24:15.348  3235  3235 V CAM_Profiler: [  1.671ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - [ 0.353ms] getSharedPreferences
+10-26 17:24:15.348  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4382 to 4382
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  2.202ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - [ 0.531ms] preferences.edit()
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  2.270ms][ui] GUARD: FirstRunDetector getTimeOfFirstRun - STOP
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  2.870ms][ui] GUARD: CameraApp onCreate() - [ 2.870ms] initializeTimeOfFirstRun
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  2.983ms][ui] GUARD: CameraApp onCreate() - [ 0.114ms] UsageStatistics.initialize
+10-26 17:24:15.349  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4395 to 4395
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  3.423ms][ui] GUARD: CameraApp onCreate() - [ 0.440ms] clearNotifications
+10-26 17:24:15.349  3235  3235 V CAM_Profiler: [  3.423ms][ui] GUARD: CameraApp onCreate() - STOP
+10-26 17:24:15.350  3235  3235 I CAM_DisableCamRcver: number of camera: 1
+10-26 17:24:15.350  1957  2212 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.350  1957  2212 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.351  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.353  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4352 to 4354
+10-26 17:24:15.353  1957  1974 I ActivityManager: Killing 2387:com.android.settings:CryptKeeper/1000 (adj 985): empty #17
+10-26 17:24:15.354  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.355  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4356 to 4356
+10-26 17:24:15.358  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4355 to 4355
+10-26 17:24:15.364  1957  1957 V SettingsProvider: Notifying for 0: content://settings/global/sysui_demo_allowed
+10-26 17:24:15.365  1957  2212 E ActivityManager: Sending non-protected broadcast com.android.systemui.demo from system 2104:com.android.systemui/u0a102 pkg com.android.systemui
+10-26 17:24:15.365  1957  2212 E ActivityManager: java.lang.Throwable
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14783)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:15330)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14800)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntent(ActivityManagerService.java:15566)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:1950)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2741)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-26 17:24:15.365  1957  2212 E ActivityManager: 	at android.os.Binder.execTransact(Binder.java:994)
+10-26 17:24:15.366  1957  2212 I DropBoxManagerService: add tag=system_server_wtf isTagEnabled=true flags=0x2
+10-26 17:24:15.367  1957  2212 E ActivityManager: Sending non-protected broadcast com.android.systemui.demo from system 2104:com.android.systemui/u0a102 pkg com.android.systemui
+10-26 17:24:15.367  1957  2212 E ActivityManager: java.lang.Throwable
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14783)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:15424)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14800)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntent(ActivityManagerService.java:15566)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:1950)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2741)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-26 17:24:15.367  1957  2212 E ActivityManager: 	at android.os.Binder.execTransact(Binder.java:994)
+10-26 17:24:15.368  1708  1708 D Zygote  : Forked child process 3258
+10-26 17:24:15.369  3258  3258 W ndroid.contact: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.368  1957  2212 I DropBoxManagerService: add tag=system_server_wtf isTagEnabled=true flags=0x2
+10-26 17:24:15.371  1957  1986 I ActivityManager: Start proc 3258:com.android.contacts/u0a96 for broadcast {com.android.contacts/com.android.contacts.interactions.OnBootOrUpgradeReceiver}
+10-26 17:24:15.373  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_volume_up_silent
+10-26 17:24:15.374  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.375  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/accessibility_display_inversion_enabled
+10-26 17:24:15.375  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/notification_dismiss_rtl
+10-26 17:24:15.376  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4396 to 4396
+10-26 17:24:15.376  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/keyguard_slice_uri
+10-26 17:24:15.377  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.377  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_qs_fancy_anim
+10-26 17:24:15.378  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4397 to 4397
+10-26 17:24:15.378  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_do_not_disturb
+10-26 17:24:15.379  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/clock_seconds
+10-26 17:24:15.380  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_qqs_count
+10-26 17:24:15.384  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4398 to 4398
+10-26 17:24:15.387  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4399 to 4399
+10-26 17:24:15.392  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/doze_tap_gesture
+10-26 17:24:15.392  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_qs_move_whole_rows
+10-26 17:24:15.392  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_volume_down_silent
+10-26 17:24:15.393  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_keyguard_right
+10-26 17:24:15.393  2964  3077 D CellBroadcastConfigService: Enable CellBroadcast on sub 1
+10-26 17:24:15.393  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_keyguard_left
+10-26 17:24:15.393  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/icon_blacklist
+10-26 17:24:15.393  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/qs_show_brightness
+10-26 17:24:15.394  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/face_unlock_dismisses_keyguard
+10-26 17:24:15.394  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/high_priority
+10-26 17:24:15.394  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/doze_pulse_on_double_tap
+10-26 17:24:15.398  3258  3258 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.398  3258  3258 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-26 17:24:15.398  3258  3258 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.399  3258  3258 I ndroid.contact: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.399  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.402  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4370 to 4370
+10-26 17:24:15.403  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.404  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4096 to 4096
+10-26 17:24:15.404  1708  1708 I Zygote  : Process 2387 exited due to signal 9 (Killed)
+10-26 17:24:15.405  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.406  2541  2541 I AlarmClock: AlarmInitReceiver android.intent.action.BOOT_COMPLETED
+10-26 17:24:15.406  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4383 to 4383
+10-26 17:24:15.409  1957  1974 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+10-26 17:24:15.409  1957  1974 W Binder  : java.lang.Throwable
+10-26 17:24:15.409  1957  1974 W Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:480)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at android.content.ContentProviderProxy.getType(ContentProviderNative.java:456)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at com.android.server.am.ActivityManagerService.getProviderMimeType(ActivityManagerService.java:7667)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:3205)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2741)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1021)
+10-26 17:24:15.409  1957  1974 W Binder  : 	at android.os.Binder.execTransact(Binder.java:994)
+10-26 17:24:15.414  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.415  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4371 to 4372
+10-26 17:24:15.416  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.416  2541  2566 I AlarmClock: Fixing alarm instances
+10-26 17:24:15.417  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4097 to 4097
+10-26 17:24:15.418  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.419  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4384 to 4385
+10-26 17:24:15.420  2541  2566 V AlarmClock: AlarmInitReceiver finished
+10-26 17:24:15.422  3063  3063 I Dialer  : VvmOmtpService - onBoot
+10-26 17:24:15.422  1957  2946 I ActivityManager: Killing 2643:com.android.documentsui/u0a58 (adj 985): empty #17
+10-26 17:24:15.430  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.432  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4373 to 4378
+10-26 17:24:15.433  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.434  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 2387 in 80ms
+10-26 17:24:15.437  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4098 to 4098
+10-26 17:24:15.440  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.442  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4386 to 4391
+10-26 17:24:15.444  1957  2945 D WificondControl: Scan result ready event
+10-26 17:24:15.445  1829  1829 I wificond: Unexpected empty scan result!
+10-26 17:24:15.455  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.457  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4379 to 4379
+10-26 17:24:15.457  1708  1708 D Zygote  : Forked child process 3281
+10-26 17:24:15.459  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setCdmaBroadcastConfig with 1 configurations
+10-26 17:24:15.460  3281  3281 W droid.dynsyste: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.461  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add cdma broadcast channels range 4099 to 4099
+10-26 17:24:15.462  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.464  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4392 to 4392
+10-26 17:24:15.468  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4380 to 4380
+10-26 17:24:15.469  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove cdma broadcast channels range 4100 to 4100
+10-26 17:24:15.470  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4393 to 4393
+10-26 17:24:15.471  1957  1986 I ActivityManager: Start proc 3281:com.android.dynsystem/1000 for broadcast {com.android.dynsystem/com.android.dynsystem.BootCompletedReceiver}
+10-26 17:24:15.474  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4381 to 4381
+10-26 17:24:15.474  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4394 to 4394
+10-26 17:24:15.488  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4382 to 4382
+10-26 17:24:15.488  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4395 to 4395
+10-26 17:24:15.492  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.498  3281  3281 I droid.dynsyste: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.499  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4352 to 4354
+10-26 17:24:15.499  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.502  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4356 to 4356
+10-26 17:24:15.504  1708  1708 I Zygote  : Process 2643 exited due to signal 9 (Killed)
+10-26 17:24:15.506  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4355 to 4355
+10-26 17:24:15.510  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.514  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10058 pid 2643 in 80ms
+10-26 17:24:15.516  2364  3011 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4396 to 4396
+10-26 17:24:15.517  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Calling setGsmBroadcastConfig with 1 configurations
+10-26 17:24:15.519  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast channels range 4397 to 4397
+10-26 17:24:15.522  1957  2946 D DynamicSystemService: GsiService is not ready, wait for 64ms
+10-26 17:24:15.523  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4398 to 4398
+10-26 17:24:15.523  2364  2811 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast channels range 4399 to 4399
+10-26 17:24:15.526  1957  1974 I ActivityManager: Killing 2814:com.android.externalstorage/u0a54 (adj 985): empty #17
+10-26 17:24:15.574  1708  1708 I Zygote  : Process 2814 exited due to signal 9 (Killed)
+10-26 17:24:15.604  1609  1609 I ServiceManager: service 'gsiservice' died
+10-26 17:24:15.604  1957  2947 W DynamicSystemService: gsiservice died; reconnecting
+10-26 17:24:15.609  1957  2947 I ActivityManager: Killing 2865:com.android.keychain/1000 (adj 985): empty #17
+10-26 17:24:15.619  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10054 pid 2814 in 88ms
+10-26 17:24:15.625  1708  1708 D Zygote  : Forked child process 3304
+10-26 17:24:15.627  1957  1986 I ActivityManager: Start proc 3304:com.android.email/u0a107 for broadcast {com.android.email/com.android.email.service.EmailUpgradeBroadcastReceiver}
+10-26 17:24:15.630  3304  3304 W m.android.emai: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.620  3304  3304 W main    : type=1400 audit(0.0:9): avc: granted { read } for name="u:object_r:net_dns_prop:s0" dev="tmpfs" ino=8365 scontext=u:r:untrusted_app_25:s0:c512,c768 tcontext=u:object_r:net_dns_prop:s0 tclass=file app=com.android.email
+10-26 17:24:15.654  1708  1708 I Zygote  : Process 2865 exited due to signal 9 (Killed)
+10-26 17:24:15.667  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 2865 in 48ms
+10-26 17:24:15.669  3304  3304 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.669  3304  3304 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-26 17:24:15.669  3304  3304 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.670  3304  3304 I m.android.emai: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.687  3304  3327 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-26 17:24:15.671  3304  3304 I m.android.emai: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.698  2364  2382 W TelephonyPermissions: reportAccessDeniedToReadIdentifiers:com.android.email:getDeviceId:isPreinstalled=true:isPrivApp=false
+10-26 17:24:15.700  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.703  1957  2948 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.703  3304  3329 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-26 17:24:15.705  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.710  3304  3304 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-26 17:24:15.714  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.719  3304  3334 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-26 17:24:15.730  3304  3331 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-26 17:24:15.731  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.732  1957  2948 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.784  1957  2946 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.784  1957  2946 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.784  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.784  1957  2946 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.784  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.785  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.785  1957  2947 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.785  1957  2947 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.785  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.786  3304  3343 I Email   : Observing account changes for notifications
+10-26 17:24:15.785  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.786  1957  2948 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.786  1957  2948 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.787  1957  2946 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-26 17:24:15.792  1957  2948 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.793  1957  2948 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.794  1957  2947 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-26 17:24:15.795  1957  2948 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.795  1957  2948 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.795  1957  2947 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.795  1957  2947 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.795  1957  2947 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.795  1957  2947 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.796  1957  2587 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:24:15.796  1957  2587 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:24:15.798  1957  1974 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.800  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.800  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.800  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.800  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.806  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.806  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.807  3304  3344 I Email   : Onetime initialization: 1
+10-26 17:24:15.807  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.807  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.807  3304  3344 I Email   : Onetime initialization: 2
+10-26 17:24:15.808  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.808  3304  3344 I Email   : Onetime initialization: completed.
+10-26 17:24:15.809  1957  2947 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.809  1957  2947 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.810  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.815  3345  3345 W droid.gallery3: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.816  1708  1708 D Zygote  : Forked child process 3345
+10-26 17:24:15.817  1957  1986 I ActivityManager: Start proc 3345:com.android.gallery3d/u0a110 for broadcast {com.android.gallery3d/com.android.camera.DisableCameraReceiver}
+10-26 17:24:15.820  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.823  1957  2947 I chatty  : uid=1000(system) Binder:1957_E identical 2 lines
+10-26 17:24:15.823  1957  2947 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-26 17:24:15.825  3304  3304 E ActivityThread: Service com.android.email.service.EmailBroadcastProcessorService has leaked ServiceConnection com.android.emailcommon.service.ServiceProxy$ProxyConnection@1a5335a that was originally bound here
+10-26 17:24:15.825  3304  3304 E ActivityThread: android.app.ServiceConnectionLeaked: Service com.android.email.service.EmailBroadcastProcessorService has leaked ServiceConnection com.android.emailcommon.service.ServiceProxy$ProxyConnection@1a5335a that was originally bound here
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:1805)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.LoadedApk.getServiceDispatcherCommon(LoadedApk.java:1677)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:1656)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:1721)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.ContextImpl.bindService(ContextImpl.java:1650)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.content.ContextWrapper.bindService(ContextWrapper.java:705)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.emailcommon.service.ServiceProxy.setTask(ServiceProxy.java:181)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.emailcommon.service.ServiceProxy.test(ServiceProxy.java:224)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.service.EmailServiceUtils.isServiceAvailable(EmailServiceUtils.java:160)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.provider.AccountReconciler.reconcileAccountsInternal(AccountReconciler.java:171)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.provider.AccountReconciler.reconcileAccounts(AccountReconciler.java:115)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.service.EmailBroadcastProcessorService.reconcileAndStartServices(EmailBroadcastProcessorService.java:305)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.service.EmailBroadcastProcessorService.onBootCompleted(EmailBroadcastProcessorService.java:295)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at com.android.email.service.EmailBroadcastProcessorService.onHandleIntent(EmailBroadcastProcessorService.java:130)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:78)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.os.Looper.loop(Looper.java:214)
+10-26 17:24:15.825  3304  3304 E ActivityThread: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-26 17:24:15.826  1957  2947 I ActivityManager: Killing 2919:com.android.mtp/u0a50 (adj 985): empty #17
+10-26 17:24:15.826  1957  1974 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@dc65f26
+10-26 17:24:15.844  3345  3345 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.844  3345  3345 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+10-26 17:24:15.844  3345  3345 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+10-26 17:24:15.844  3345  3345 I droid.gallery3: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.845  3345  3345 I droid.gallery3: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.854  3345  3345 I G:DisableCameraReceiver: back camera found: 0
+10-26 17:24:15.854  1957  2947 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.854  1957  2947 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.855  2461  2461 I SystemBroadcastReceiver: Boot has been completed
+10-26 17:24:15.856  2461  2461 I SystemBroadcastReceiver: toggleAppIcon() : FLAG_SYSTEM = true
+10-26 17:24:15.856  1957  2947 I ActivityManager: Killing 2701:com.android.printspooler/u0a83 (adj 985): empty #17
+10-26 17:24:15.857  1957  2946 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.857  1957  2946 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.876  1708  1708 D Zygote  : Forked child process 3365
+10-26 17:24:15.878  3365  3365 W com.android.nf: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.879  1957  1986 I ActivityManager: Start proc 3365:com.android.nfc/1027 for broadcast {com.android.nfc/com.android.nfc.NfcBootCompletedReceiver}
+10-26 17:24:15.884  1708  1708 I Zygote  : Process 2919 exited due to signal 9 (Killed)
+10-26 17:24:15.894  3365  3365 I com.android.nf: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.900  1957  2947 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:15.900  1957  2947 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:15.901  1957  2002 I ActivityManager: Killing 3365:com.android.nfc/1027 (adj 0): change com.android.nfc
+10-26 17:24:15.904  1708  1708 I Zygote  : Process 2701 exited due to signal 9 (Killed)
+10-26 17:24:15.905  1957  1957 I RoleManagerService: Granting default permissions...
+10-26 17:24:15.909  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:15.911  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:15.912  1708  1708 D Zygote  : Forked child process 3386
+10-26 17:24:15.914  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10050 pid 2919 in 88ms
+10-26 17:24:15.914  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10083 pid 2701 in 0ms
+10-26 17:24:15.915  3386  3386 W timeinitialize: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.921  1957  1986 I ActivityManager: Start proc 3386:com.android.onetimeinitializer/u0a92 for broadcast {com.android.onetimeinitializer/com.android.onetimeinitializer.OneTimeInitializerReceiver}
+10-26 17:24:15.930  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:15.933  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:15.945  3386  3386 I timeinitialize: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.949  3386  3386 V OneTimeInitializerReceiver: OneTimeInitializerReceiver.onReceive
+10-26 17:24:15.954  1708  1708 I Zygote  : Process 3365 exited due to signal 9 (Killed)
+10-26 17:24:15.955  3386  3407 I OneTimeInitializer: Updating to version 1.
+10-26 17:24:15.956  3386  3407 E ActivityThread: Failed to find provider info for com.android.launcher2.settings
+10-26 17:24:15.959  1957  2947 I ActivityManager: Killing 2774:com.android.provision/u0a93 (adj 985): empty #17
+10-26 17:24:15.961  2364  2364 I m.android.phon: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.976  1708  1708 D Zygote  : Forked child process 3412
+10-26 17:24:15.978  3412  3412 W ackageinstalle: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:15.981  1957  1986 I ActivityManager: Start proc 3412:com.android.packageinstaller/u0a60 for broadcast {com.android.packageinstaller/com.android.packageinstaller.TemporaryFileManager}
+10-26 17:24:15.991  3412  3412 I ackageinstalle: The ClassLoaderContext is a special shared library.
+10-26 17:24:15.994  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 1027 pid 3365 in 77ms
+10-26 17:24:16.011  1957  2728 I ActivityManager: Killing 3034:com.android.carrierconfig/u0a98 (adj 985): empty #17
+10-26 17:24:16.014  1708  1708 I Zygote  : Process 2774 exited due to signal 9 (Killed)
+10-26 17:24:16.017  2364  2364 I VvmSimStateTracker: android.intent.action.BOOT_COMPLETED
+10-26 17:24:16.033  2364  2364 I m.android.phon: The ClassLoaderContext is a special shared library.
+10-26 17:24:16.034  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10093 pid 2774 in 39ms
+10-26 17:24:16.044  1708  1708 D Zygote  : Forked child process 3435
+10-26 17:24:16.046  3435  3435 W android.traceu: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:16.049  1957  1986 I ActivityManager: Start proc 3435:com.android.traceur/u0a78 for broadcast {com.android.traceur/com.android.traceur.Receiver}
+10-26 17:24:16.064  1708  1708 I Zygote  : Process 3034 exited due to signal 9 (Killed)
+10-26 17:24:16.066  3435  3435 I android.traceu: The ClassLoaderContext is a special shared library.
+10-26 17:24:16.075  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10098 pid 3034 in 40ms
+10-26 17:24:16.077  1957  1974 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:16.077  1957  1974 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:16.079  1957  2362 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:16.079  1957  2362 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:16.080  1957  2362 I ActivityManager: Finished processing BOOT_COMPLETED for u0
+10-26 17:24:16.080  1957  2362 W BroadcastQueue: Background execution not allowed: receiving Intent { act=com.android.Bugle.intent.action.ACTION_NOTIFY_CONVERSATIONS_CHANGED flg=0x10 } to com.android.messaging/.widget.BugleWidgetProvider
+10-26 17:24:16.081  1957  2362 I ActivityManager: Killing 3022:com.android.quicksearchbox/u0a113 (adj 985): empty #17
+10-26 17:24:16.083  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sysui_qs_tiles
+10-26 17:24:16.084  3063  3063 I Dialer  : VvmTaskReceiver - task received
+10-26 17:24:16.084  3063  3063 I Dialer  : VvmTaskReceiver - TaskExecutor already running
+10-26 17:24:16.084  3063  3063 I Dialer  : Task.createTask - create task:com.android.voicemail.impl.ActivationTask
+10-26 17:24:16.084  3063  3063 I Dialer  : TaskQueue.add - duplicated task added
+10-26 17:24:16.084  3063  3063 I Dialer  : VvmTaskExecutor - com.android.voicemail.impl.ActivationTask@337a338 added
+10-26 17:24:16.124  1708  1708 I Zygote  : Process 3022 exited due to signal 9 (Killed)
+10-26 17:24:16.125  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10113 pid 3022 in 43ms
+10-26 17:24:16.127  2837  2961 E SQLiteLog: (1) no such table: audio_genres
+10-26 17:24:16.138  1957  2946 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:16.138  1957  2946 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:16.285  1740  1740 I qemu-props: tell the host boot completed
+10-26 17:24:16.319  1957  1984 I RoleUserState: Wrote roles.xml successfully
+10-26 17:24:16.373  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/screen_off_timeout
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: Error inserting title_key=RLN*B:DFL instance_id=null duration=12956 is_ringtone=1 album_artist=null orientation=null format=47362 height=null is_drm=0 bucket_display_name=ringtones is_audiobook=0 parent=140 volume_name=internal title_resource_uri=null date_modified=1629523148 composer=null _display_name=URSAMINOR.ogg datetaken=null mime_type=audio/ogg is_notification=0 year=null _data=/system/product/media/audio/ringtones/URSAMINOR.ogg _size=144112 is_alarm=0 title=Ursa Minor track=0 width=null is_music=0 group_id=1957744874 document_id=null artist_id=2 date_added=1793031856 is_podcast=0 album_id=6 original_document_id=null bucket_id=-2044634724 media_type=2 relative_path=null
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067 SQLITE_CONSTRAINT_UNIQUE)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:879)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:790)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:88)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1599)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1468)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2713)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:3076)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insert(MediaProvider.java:2903)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.content.ContentProviderOperation.applyInternal(ContentProviderOperation.java:321)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.content.ContentProviderOperation.apply(ContentProviderOperation.java:304)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.content.ContentProvider.applyBatch(ContentProvider.java:2126)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.applyBatch(MediaProvider.java:3302)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.content.ContentProvider.applyBatch(ContentProvider.java:2117)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.content.ContentResolver.applyBatch(ContentResolver.java:1865)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.applyPending(ModernMediaScanner.java:439)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.walkFileTree(ModernMediaScanner.java:274)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.scan.ModernMediaScanner$Scan.run(ModernMediaScanner.java:245)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.scan.ModernMediaScanner.scanDirectory(ModernMediaScanner.java:166)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaService.onScanVolume(MediaService.java:150)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaService.onScanVolume(MediaService.java:131)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at com.android.providers.media.MediaService.onHandleIntent(MediaService.java:86)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.app.IntentService$ServiceHandler.handleMessage(IntentService.java:78)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:107)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:214)
+10-26 17:24:16.529  2837  2961 E SQLiteDatabase: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-26 17:24:16.618  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/sync_parent_sounds
+10-26 17:24:16.626  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/ringtone
+10-26 17:24:16.659  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/ringtone_set
+10-26 17:24:16.683  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/notification_sound
+10-26 17:24:16.706  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/notification_sound_set
+10-26 17:24:16.724  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/alarm_alert
+10-26 17:24:16.752  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/alarm_alert_set
+10-26 17:24:16.913  2837  2961 I MediaProvider: End Intent { act=android.intent.action.MEDIA_MOUNTED dat=file:///storage/emulated/0 flg=0x5000010 cmp=com.android.providers.media/.MediaService (has extras) }
+10-26 17:24:17.559  1957  1957 V SettingsProvider: Notifying for 0: content://settings/system/accelerometer_rotation
+10-26 17:24:17.560  1957  1979 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:17.561  1957  1979 I chatty  : uid=1000(system) android.display identical 8 lines
+10-26 17:24:17.561  1957  1979 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:17.597  3480  3480 I abb     : StartCommandInProcess(73657474696e67730067657400676c6f settings.get.glo [truncated])
+10-26 17:24:17.590  1957  1957 W Binder:1957_A: type=1400 audit(0.0:10): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-26 17:24:17.590  1957  1957 I chatty  : uid=1000 system_server identical 1 line
+10-26 17:24:17.590  1957  1957 W Binder:1957_A: type=1400 audit(0.0:12): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-26 17:24:17.608  3480  3480 I abb     : StartCommandInProcess(7061636b61676500696e7374616c6c00 package.install. [truncated])
+10-26 17:24:17.600  1778  1778 W adbd    : type=1400 audit(0.0:13): avc: denied { shutdown } for scontext=u:r:adbd:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-26 17:24:17.740  1957  1957 W Binder:1957_A: type=1400 audit(0.0:14): avc: denied { getopt } for scontext=u:r:system_server:s0 tcontext=u:r:shell:s0 tclass=unix_stream_socket permissive=0
+10-26 17:24:17.889  1957  2002 I PackageManager: Un-granting permission android.permission.GLOBAL_SEARCH from package com.android.quicksearchbox (protectionLevel=18 flags=0x3088be45)
+10-26 17:24:17.889  1957  2002 I PackageManager: Un-granting permission android.permission.BIND_WALLPAPER from package com.android.camera2 (protectionLevel=18 flags=0x20d8bc45)
+10-26 17:24:17.891  1957  2002 I PackageManager: Un-granting permission android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS from package com.android.captiveportallogin (protectionLevel=18 flags=0x38c8be45)
+10-26 17:24:17.891  1957  2002 I PackageManager: Un-granting permission android.permission.NETWORK_BYPASS_PRIVATE_DNS from package com.android.captiveportallogin (protectionLevel=2 flags=0x38c8be45)
+10-26 17:24:17.902  1957  2002 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+10-26 17:24:17.902  1957  2002 D PackageManager: Clear ephemeral installer activity
+10-26 17:24:17.905  1957  2002 V BackupManagerService: restoreAtInstall pkg=dev.prootcode.app token=1 restoreSet=0
+10-26 17:24:17.905  1957  2002 V BackupManagerService: Finishing install immediately
+10-26 17:24:17.906  1707  2232 I netd    : trafficSetNetPermForUids(4, [10116]) <0.02ms>
+10-26 17:24:17.906  1802  2031 E         : Couldn't opendir /data/app/vmdl703773426.tmp: No such file or directory
+10-26 17:24:17.906  1802  2031 E installd: Failed to delete /data/app/vmdl703773426.tmp: No such file or directory
+10-26 17:24:17.912  1957  1957 I RoleManagerService: Granting default permissions...
+10-26 17:24:17.916  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:17.918  1957  2949 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.prootcode.app flg=0x4000010 (has extras) } to com.android.packageinstaller/.PackageInstalledReceiver
+10-26 17:24:17.918  1957  1985 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.prootcode.app flg=0x4000010 (has extras) } to com.android.gallery3d/.app.PackagesMonitor
+10-26 17:24:17.918  1957  1985 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:dev.prootcode.app flg=0x4000010 (has extras) } to com.android.musicfx/.Compatibility$Receiver
+10-26 17:24:17.923  2125  2177 E BackupHelper: Could not parse delayed permissions
+10-26 17:24:17.923  2125  2177 E BackupHelper: java.io.FileNotFoundException: /data/user_de/0/com.android.permissioncontroller/files/delayed_restore_permissions.xml: open failed: ENOENT (No such file or directory)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.IoBridge.open(IoBridge.java:496)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at java.io.FileInputStream.<init>(FileInputStream.java:159)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at android.app.ContextImpl.openFileInput(ContextImpl.java:600)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at com.android.packageinstaller.permission.service.BackupHelper.restoreDelayedState(BackupHelper.java:338)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at com.android.packageinstaller.permission.service.PermissionControllerServiceImpl.onRestoreDelayedRuntimePermissionsBackup(PermissionControllerServiceImpl.java:358)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at com.android.packageinstaller.permission.service.PermissionControllerServiceImpl.lambda$onRestoreDelayedRuntimePermissionsBackup$3$PermissionControllerServiceImpl(PermissionControllerServiceImpl.java:352)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at com.android.packageinstaller.permission.service.-$$Lambda$PermissionControllerServiceImpl$wHAhob5PsX8wKMTaFp8IJWkb1LE.run(Unknown Source:8)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:289)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at java.lang.Thread.run(Thread.java:919)
+10-26 17:24:17.923  2125  2177 E BackupHelper: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.Linux.open(Native Method)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:167)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:252)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.ForwardingOs.open(ForwardingOs.java:167)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at android.app.ActivityThread$AndroidOs.open(ActivityThread.java:7255)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	at libcore.io.IoBridge.open(IoBridge.java:482)
+10-26 17:24:17.923  2125  2177 E BackupHelper: 	... 10 more
+10-26 17:24:17.937  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:17.944  2364  2364 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-26 17:24:17.944  1957  1984 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-26 17:24:17.960  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:17.962  1957  1957 V BackupManagerConstants: getFullBackupIntervalMilliseconds(...) returns 86400000
+10-26 17:24:17.962  1957  1957 V BackupManagerConstants: getFullBackupRequiredNetworkType(...) returns 2
+10-26 17:24:17.963  1957  1957 V BackupManagerConstants: getFullBackupRequireCharging(...) returns true
+10-26 17:24:17.970  1957  2949 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.prootcode.app/.MainActivity (has extras)} from uid 2000
+10-26 17:24:17.982  1957  1980 E system_server: Invalid ID 0x00000000.
+10-26 17:24:17.987  1957  2728 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:17.987  1957  2728 I chatty  : uid=1000(system) Binder:1957_A identical 8 lines
+10-26 17:24:17.987  1957  2728 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:18.001  1729  1729 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:24:18.015  3496  3496 I v.prootcode.ap: Late-enabling -Xcheck:jni
+10-26 17:24:18.024  1708  1708 D Zygote  : Forked child process 3496
+10-26 17:24:18.029  1957  1986 I ActivityManager: Start proc 3496:dev.prootcode.app/u0a116 for activity {dev.prootcode.app/dev.prootcode.app.MainActivity}
+10-26 17:24:18.031  3496  3496 E v.prootcode.ap: Unknown bits set in runtime_flags: 0x8000
+10-26 17:24:18.032  3496  3496 W v.prootcode.ap: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:18.081  1957  2728 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:18.085  1957  2728 I chatty  : uid=1000(system) Binder:1957_A identical 28 lines
+10-26 17:24:18.085  1957  2728 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:18.087  1957  1980 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:18.088  1957  1980 I chatty  : uid=1000(system) android.anim identical 8 lines
+10-26 17:24:18.088  1957  1980 W InputReader: Device has associated, but no associated display id.
+10-26 17:24:18.381  2732  2860 D EGL_emulation: eglMakeCurrent: 0x7b312dfe4240: ver 3 1 (tinfo 0x7b31793990e0)
+10-26 17:24:18.447  1957  1984 I RoleUserState: Wrote roles.xml successfully
+10-26 17:24:18.733  1764  1816 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-26 17:24:18.733  1764  1816 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-26 17:24:18.733  3496  3520 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-26 17:24:18.734  3496  3520 W libc    : Unable to set property "qemu.gles" to "1": connection failed; errno=13 (Permission denied)
+10-26 17:24:18.720  3496  3496 W RenderThread: type=1400 audit(0.0:19): avc: denied { write } for name="property_service" dev="tmpfs" ino=8412 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0 app=dev.prootcode.app
+10-26 17:24:18.738  3496  3520 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-26 17:24:18.739  3496  3520 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-26 17:24:18.740  3496  3520 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-26 17:24:19.266  3496  3496 W v.prootcode.ap: Accessing hidden method Landroid/view/View;->getViewRootImpl()Landroid/view/ViewRootImpl; (greylist, reflection, allowed)
+10-26 17:24:19.267  3496  3496 W v.prootcode.ap: Accessing hidden field Landroid/view/View$AttachInfo;->mVisibleInsets:Landroid/graphics/Rect; (greylist, reflection, allowed)
+10-26 17:24:19.267  3496  3496 W v.prootcode.ap: Accessing hidden field Landroid/view/ViewRootImpl;->mAttachInfo:Landroid/view/View$AttachInfo; (greylist, reflection, allowed)
+10-26 17:24:19.417  3130  3160 I viders.calenda: Waiting for a blocking GC ProfileSaver
+10-26 17:24:19.716  3496  3518 D HostConnection: HostConnection::get() New Host Connection established 0x7b317989f2c0, tid 3518
+10-26 17:24:19.722  3496  3518 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-26 17:24:19.723  3496  3518 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-26 17:24:19.723  3496  3518 D EGL_emulation: eglCreateContext: 0x7b317989f4a0: maj 3 min 1 rcv 4
+10-26 17:24:19.724  3496  3518 D EGL_emulation: eglMakeCurrent: 0x7b317989f4a0: ver 3 1 (tinfo 0x7b3179818e40)
+10-26 17:24:19.725  3496  3518 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-26 17:24:19.725  3496  3518 E eglCodecCommon: glUtilsParamSize: unknow param 0x000082da
+10-26 17:24:19.732  1729  1729 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:24:19.733  1610  1610 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+10-26 17:24:19.733  3496  3518 W Gralloc3: mapper 3.x is not supported
+10-26 17:24:19.734  3496  3518 D HostConnection: createUnique: call
+10-26 17:24:19.735  3496  3518 D HostConnection: HostConnection::get() New Host Connection established 0x7b317989f680, tid 3518
+10-26 17:24:19.735  3496  3518 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-26 17:24:19.735  3496  3518 D eglCodecCommon: allocate: Ask for block of size 0x1000
+10-26 17:24:19.735  3496  3518 D eglCodecCommon: allocate: ioctl allocate returned offset 0x3ff64d000 size 0x2000
+10-26 17:24:19.738  1729  1729 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:24:19.738  1729  1729 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 10108928
+10-26 17:24:19.759  3496  3518 D EGL_emulation: eglMakeCurrent: 0x7b317989f4a0: ver 3 1 (tinfo 0x7b3179818e40)
+10-26 17:24:19.776  3496  3518 I OpenGLRenderer: Davey! duration=1033ms; Flags=1, IntendedVsync=19487531797, Vsync=19554198461, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=19565299720, AnimationStart=19565330030, PerformTraversalsStart=19565578840, DrawStart=20494996200, SyncQueued=20504900260, SyncStart=20505883230, IssueDrawCommandsStart=20505922350, SwapBuffers=20519747220, FrameCompleted=20521770960, DequeueBufferDuration=93000, QueueBufferDuration=347000, 
+10-26 17:24:19.777  3496  3496 W v.prootcode.ap: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (greylist, reflection, allowed)
+10-26 17:24:19.779  1957  1984 I ActivityTaskManager: Displayed dev.prootcode.app/.MainActivity: +1s808ms
+10-26 17:24:19.790  3496  3496 I Choreographer: Skipped 46 frames!  The application may be doing too much work on its main thread.
+10-26 17:24:19.813  3496  3523 I ProotSpike: PASS device-info: API 29 (10), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:24:19.817  3496  3518 I OpenGLRenderer: Davey! duration=808ms; Flags=0, IntendedVsync=19754239564, Vsync=20520906200, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=20536702020, AnimationStart=20536741850, PerformTraversalsStart=20547035850, DrawStart=20547166950, SyncQueued=20556412620, SyncStart=20557715000, IssueDrawCommandsStart=20557773310, SwapBuffers=20560920450, FrameCompleted=20563553730, DequeueBufferDuration=1152000, QueueBufferDuration=271000, 
+10-26 17:24:19.959  2104  2310 D EGL_emulation: eglMakeCurrent: 0x7b31794e2840: ver 3 1 (tinfo 0x7b312d827ac0)
+10-26 17:24:20.049  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.059  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.074  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.085  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:20.066  1957  2049 I chatty  : uid=1000(system) InputReader identical 2 lines
+10-26 17:24:20.083  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.087  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:20.088  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.101  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.108  1957  2049 I chatty  : uid=1000(system) InputReader identical 2 lines
+10-26 17:24:20.114  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.123  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:20.125  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.142  1957  2049 I chatty  : uid=1000(system) InputReader identical 2 lines
+10-26 17:24:20.144  1957  2049 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-26 17:24:20.149  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:20.156  1957  1957 I chatty  : uid=1000 system_server identical 3 lines
+10-26 17:24:20.163  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.163  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:20.168  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.181  1957  1957 I chatty  : uid=1000 system_server identical 3 lines
+10-26 17:24:20.189  1957  1957 I Telecom : DefaultDialerCache: Refreshing default dialer for user 0: now com.android.dialer: CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:20.214  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:20.229  1957  1984 I chatty  : uid=1000(system) android.bg identical 2 lines
+10-26 17:24:20.231  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:20.236  1957  1957 V SettingsProvider: Notifying for 0: content://settings/secure/input_methods_subtype_history
+10-26 17:24:20.236  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:20.214  2364  2364 I chatty  : uid=1001(radio) com.android.phone identical 3 lines
+10-26 17:24:20.228  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f080247.
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f121165.
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f080246.
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f1204d9.
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f080245.
+10-26 17:24:20.247  1957  1984 E system_server: No package ID 7f found for ID 0x7f120ad2.
+10-26 17:24:20.247  2461  2461 I InputAttributes: InputType.TYPE_NULL is specified
+10-26 17:24:20.249  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:20.292  2364  2364 I chatty  : uid=1001(radio) com.android.phone identical 3 lines
+10-26 17:24:20.309  2364  2364 D CarrierSvcBindHelper: No carrier app for: 0
+10-26 17:24:21.140  3496  3496 W DefaultDispatch: type=1400 audit(0.0:20): avc: denied { link } for name="perl" dev="vdc" ino=131350 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:21.400  3496  3496 W DefaultDispatch: type=1400 audit(0.0:21): avc: denied { link } for name="coreutils" dev="vdc" ino=131121 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:20.254  1957  1984 I chatty  : uid=1000(system) android.bg identical 4 lines
+10-26 17:24:20.257  1957  1984 W VoiceInteractionManagerService: no available voice interaction services found for user 0
+10-26 17:24:21.550  1957  2587 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:24:21.400  3496  3496 I chatty  : uid=10116(dev.prootcode.app) identical 6 lines
+10-26 17:24:21.410  3496  3496 W DefaultDispatch: type=1400 audit(0.0:28): avc: denied { link } for name="coreutils" dev="vdc" ino=131121 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:22.254  2461  2461 I LatinIME: Timeout waiting for dictionary load
+10-26 17:24:23.956  3496  3534 D ProfileInstaller: Installing profile for dev.prootcode.app
+10-26 17:24:29.058  3496  3523 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:24:29.070  3496  3523 I ProotSpike: PASS exec-datadir-control: exec denied: Cannot run program "/data/user/0/dev.prootcode.app/files/spike/control/control": error=13, Permission denied
+10-26 17:24:29.060  3537  3537 W DefaultDispatch: type=1400 audit(0.0:135): avc: granted { execute } for name="control" dev="vdc" ino=123608 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:24:29.060  3537  3537 W DefaultDispatch: type=1400 audit(0.0:136): avc: denied { execute_no_trans } for path="/data/data/dev.prootcode.app/files/spike/control/control" dev="vdc" ino=123608 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:29.173  3496  3523 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:24:29.190  3541  3541 W libproot.so: type=1400 audit(0.0:137): avc: granted { execute } for name="dash" dev="vdc" ino=131125 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:24:29.190  3541  3541 W libproot.so: type=1400 audit(0.0:138): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="vdc" ino=131957 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:24:29.190  3544  3544 W libproot_loader: type=1400 audit(0.0:139): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dash" dev="vdc" ino=131125 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c116,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:24:29.285  3496  3523 I ProotSpike: PASS proot-true: exit=0 in 107 ms
+10-26 17:24:29.386  3496  3523 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 101 ms
+10-26 17:24:29.488  3496  3523 I ProotSpike: PASS proot-uid: exit=0 in 101 ms
+10-26 17:24:29.488  3496  3523 I ProotSpike:   0
+10-26 17:24:29.591  3496  3523 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:24:29.693  3496  3523 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:24:29.693  3496  3523 I ProotSpike:   hello-from-android
+10-26 17:24:30.170  3574  3574 W http    : type=1400 audit(0.0:357): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:30.170  3574  3574 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:24:30.170  3574  3574 W http    : type=1400 audit(0.0:361): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:31.055  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:31.055  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:31.057  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:31.057  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:31.310  3574  3574 W http    : type=1400 audit(0.0:478): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:31.310  3574  3574 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:24:31.310  3574  3574 W http    : type=1400 audit(0.0:482): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:31.504  1707  2232 I netd    : trafficSwapActiveStatsMap() <63.01ms>
+10-26 17:24:31.505  1707  2232 I netd    : tetherGetStats() <0.55ms>
+10-26 17:24:31.508  1707  2232 I netd    : bandwidthSetGlobalAlert(2097152) <0.09ms>
+10-26 17:24:31.509  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:31.509  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:32.419  1957  1974 D AlarmManagerService: Kernel timezone updated to -60 minutes west of GMT
+10-26 17:24:32.443  2104  2310 D EGL_emulation: eglMakeCurrent: 0x7b31794e2840: ver 3 1 (tinfo 0x7b312d827ac0)
+10-26 17:24:33.206  1957  1974 I ActivityManager: Killing 3184:com.android.localtransport/1000 (adj 985): empty #17
+10-26 17:24:33.211  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:33.211  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:33.212  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:33.213  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:33.215  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:33.215  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:33.244  1708  1708 I Zygote  : Process 3184 exited due to signal 9 (Killed)
+10-26 17:24:33.284  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 3184 in 77ms
+10-26 17:24:33.970  3574  3574 W http    : type=1400 audit(0.0:656): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:33.970  3574  3574 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:24:33.970  3574  3574 W http    : type=1400 audit(0.0:660): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:35.394  1957  1974 D WificondControl: Scan result ready event
+10-26 17:24:35.407  1957  2066 D WifiClientModeImpl: CMD_START_CONNECT sup state UninitializedState my state DisconnectedState nid=0 roam=false
+10-26 17:24:35.423  1957  2066 I WifiClientModeImpl: Connecting with 02:15:b2:00:00:00 as the mac address
+10-26 17:24:35.423  1829  1829 W wificond: Scan is not started. Ignore abort request
+10-26 17:24:35.424  1957  2066 D SupplicantStaIfaceHal: connectToNetwork "AndroidWifi"NONE
+10-26 17:24:35.424  1957  2066 I SupplicantStaIfaceHal: addSupplicantStaNetwork via HIDL
+10-26 17:24:35.505  2220  2220 I wpa_supplicant: wlan0: SME: Trying to authenticate with 02:15:b2:00:01:00 (SSID='AndroidWifi' freq=2447 MHz)
+10-26 17:24:35.509  1899  1899 I hostapd : wlan1: STA 02:15:b2:00:00:00 IEEE 802.11: authenticated
+10-26 17:24:35.509  1899  1899 I hostapd : wlan1: STA 02:15:b2:00:00:00 IEEE 802.11: authenticated
+10-26 17:24:35.510  2220  2220 I wpa_supplicant: wlan0: Trying to associate with 02:15:b2:00:01:00 (SSID='AndroidWifi' freq=2447 MHz)
+10-26 17:24:35.516  1899  1899 I hostapd : wlan1: STA 02:15:b2:00:00:00 IEEE 802.11: associated (aid 1)
+10-26 17:24:35.516  1899  1899 I hostapd : wlan1: STA 02:15:b2:00:00:00 IEEE 802.11: associated (aid 1)
+10-26 17:24:35.516  1899  1899 I hostapd : wlan1: AP-STA-CONNECTED 02:15:b2:00:00:00
+10-26 17:24:35.521  1707  2232 I netd    : interfaceGetCfg("wlan0") <0.19ms>
+10-26 17:24:35.523  2220  2220 I wpa_supplicant: wlan0: Associated with 02:15:b2:00:01:00
+10-26 17:24:35.523  2220  2220 I wpa_supplicant: wlan0: CTRL-EVENT-CONNECTED - Connection to 02:15:b2:00:01:00 completed [id=0 id_str=%7B%22configKey%22%3A%22%5C%22AndroidWifi%5C%22NONE%22%2C%22creatorUid%22%3A%221000%22%7D]
+10-26 17:24:35.524  2220  2220 I wpa_supplicant: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+10-26 17:24:35.526  1957  2066 D ConnectivityService: registerNetworkAgent NetworkAgentInfo{ ni{[type: WIFI[], state: CONNECTING/CONNECTING, reason: (unspecified), extra: (none), failover: false, available: true, roaming: false]}  network{101}  nethandle{437197393933}  lp{{LinkAddresses: [ ] DnsAddresses: [ ] Domains: null MTU: 0 Routes: [ ]}}  nc{[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&NOT_VPN&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED LinkUpBandwidth>=1048576Kbps LinkDnBandwidth>=1048576Kbps Specifier: <WifiNetworkAgentSpecifier [WifiConfiguration=, SSID="AndroidWifi", BSSID=02:15:b2:00:01:00, mOriginalRequestorUid=-1, mOriginalRequestorPackageName=]> SSID: "AndroidWifi"]}  Score{20}  everValidated{false}  lastValidated{false}  created{false} lingering{false} explicitlySelected{false} acceptUnvalidated{false} everCaptivePortalDetected{false} lastCaptivePortalDetected{false} captivePortalValidationPending{false} partialConnectivity{false} acceptPartialConnectivity{false} clat{mBaseIface: null, mIface: null, mState: IDLE} }
+10-26 17:24:35.527  1957  2066 E SupplicantStaIfaceHal: ISupplicantStaIface.setPowerSave failed: {.code = FAILURE_UNKNOWN, .debugMessage = }
+10-26 17:24:35.529  1957  2069 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] EVENT_NETWORK_INFO_CHANGED, going from null to CONNECTING
+10-26 17:24:35.534  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.535  1707  1707 I netd    : interfaceGetCfg("wlan0") <0.23ms>
+10-26 17:24:35.535  1707  1936 I netd    : interfaceSetIPv6PrivacyExtensions("wlan0", "true") <1.00ms>
+10-26 17:24:35.535  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.535  1707  1936 I netd    : setIPv6AddrGenMode("wlan0", 0) <0.45ms>
+10-26 17:24:35.536  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.536  1707  1936 I netd    : interfaceSetEnableIPv6("wlan0", "true") <0.59ms>
+10-26 17:24:35.541  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.541  1707  1936 I netd    : setProcSysNet(4, 2, "wlan0", "retrans_time_ms", "750") <0.46ms>
+10-26 17:24:35.541  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.541  1707  1936 I netd    : setProcSysNet(4, 2, "wlan0", "ucast_solicit", "5") <0.34ms>
+10-26 17:24:35.542  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.542  1707  1936 I netd    : setProcSysNet(6, 2, "wlan0", "retrans_time_ms", "750") <0.31ms>
+10-26 17:24:35.542  1707  1936 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.543  1707  1936 I netd    : setProcSysNet(6, 2, "wlan0", "ucast_solicit", "5") <0.33ms>
+10-26 17:24:35.554  1707  2232 I netd    : trafficSwapActiveStatsMap() <31.12ms>
+10-26 17:24:35.555  1957  2069 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] EVENT_NETWORK_INFO_CHANGED, going from CONNECTING to CONNECTING
+10-26 17:24:35.555  1707  2232 I netd    : tetherGetStats() <0.87ms>
+10-26 17:24:35.556  1957  2069 D ConnectivityService: Adding iface wlan0 to network 101
+10-26 17:24:35.556  1707  2232 E Netd    : no such netId 101
+10-26 17:24:35.557  1707  2232 I netd    : networkAddInterface(101, "wlan0") -> ServiceSpecificException(64, "Machine is not on the network") <0.09ms>
+10-26 17:24:35.557  1957  2069 E ConnectivityService: Exception adding interface: java.lang.IllegalStateException: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+10-26 17:24:35.557  1707  2232 E Netd    : no such netId 101
+10-26 17:24:35.557  1707  2232 I netd    : networkAddRoute(101, "wlan0", "fe80::/64", "") -> ServiceSpecificException(64, "Machine is not on the network") <0.06ms>
+10-26 17:24:35.624  1707  2232 I netd    : trafficSwapActiveStatsMap() <59.64ms>
+10-26 17:24:35.625  2313  3595 D DhcpClient: Receive thread started
+10-26 17:24:35.626  1707  2232 I netd    : tetherGetStats() <1.38ms>
+10-26 17:24:35.630  2313  2442 D DhcpClient: Broadcasting DHCPDISCOVER
+10-26 17:24:35.631  2313  3595 D DhcpClient: Received packet: 02:15:b2:00:00:00 OFFER, ip /10.0.2.16, mask /255.255.255.0, DNS servers: /10.0.2.3 , gateways [/10.0.2.2] lease time 86400, domain null
+10-26 17:24:35.633  2313  2442 D DhcpClient: Got pending lease: android.net.networkstack.DhcpResults@1841076 DHCP server /10.0.2.2 Vendor info null lease 86400 seconds Servername 
+10-26 17:24:35.635  2313  2442 D DhcpClient: Broadcasting DHCPREQUEST ciaddr=0.0.0.0 request=10.0.2.16 serverid=10.0.2.2
+10-26 17:24:35.635  2313  3595 D DhcpClient: Received packet: 02:15:b2:00:00:00 ACK: your new IP /10.0.2.16, netmask /255.255.255.0, gateways [/10.0.2.2] DNS servers: /10.0.2.3 , lease time 86400
+10-26 17:24:35.637  2313  2442 D DhcpClient: Confirmed lease: android.net.networkstack.DhcpResults@b99d2e4 DHCP server /10.0.2.2 Vendor info null lease 86400 seconds Servername 
+10-26 17:24:35.640  1957  2066 E SupplicantStaIfaceHal: ISupplicantStaIface.setPowerSave failed: {.code = FAILURE_UNKNOWN, .debugMessage = }
+10-26 17:24:35.643  1707  2232 E Netd    : no such netId 101
+10-26 17:24:35.643  1707  2232 I netd    : networkAddRoute(101, "wlan0", "10.0.2.0/24", "") -> ServiceSpecificException(64, "Machine is not on the network") <0.05ms>
+10-26 17:24:35.643  1957  2069 E ConnectivityService: Exception in addRoute for non-gateway: java.lang.IllegalStateException: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+10-26 17:24:35.643  1707  2232 E Netd    : no such netId 101
+10-26 17:24:35.643  1707  2232 I netd    : networkAddRoute(101, "wlan0", "0.0.0.0/0", "10.0.2.2") -> ServiceSpecificException(64, "Machine is not on the network") <0.04ms>
+10-26 17:24:35.643  1957  2069 E ConnectivityService: Exception in addRoute for gateway: java.lang.IllegalStateException: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+10-26 17:24:35.644  1707  2232 W ServiceManager: Permission failure: android.permission.NETWORK_STACK from uid=1073 pid=2313
+10-26 17:24:35.645  1707  2232 I netd    : interfaceSetCfg() <1.36ms>
+10-26 17:24:35.648  2313  2442 D DhcpClient: Scheduling renewal in 43199s
+10-26 17:24:35.648  2313  2442 D DhcpClient: Scheduling rebind in 75599s
+10-26 17:24:35.648  2313  2442 D DhcpClient: Scheduling expiry in 86399s
+10-26 17:24:35.679  2104  2104 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{c020393 V.E...... ......ID 7,0-55,61 #7f0a03ef app:id/wifi_group} during layout: running second layout pass
+10-26 17:24:35.679  2104  2104 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{a47fd0 V.E...... ......ID 7,0-55,61 #7f0a03ef app:id/wifi_group} during layout: running second layout pass
+10-26 17:24:35.679  2104  2104 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{fdbfbc9 V.E...... ......ID 7,0-55,61 #7f0a03ef app:id/wifi_group} during layout: running second layout pass
+10-26 17:24:35.695  1707  1936 I netd    : trafficSwapActiveStatsMap() <50.37ms>
+10-26 17:24:35.700  1707  1936 I netd    : tetherGetStats() <1.18ms>
+10-26 17:24:35.706  1957  2069 D ConnectivityService: Setting DNS servers for network 101 to [/10.0.2.3]
+10-26 17:24:35.706  1957  2069 D DnsManager: setDnsConfigurationForNetwork(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, , [])
+10-26 17:24:35.706  1707  1936 I netd    : DnsResolverService::setResolverConfiguration(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, [], []) -> (-64) (0.03ms)
+10-26 17:24:35.706  1707  1936 I netd    : setResolverConfiguration() -> ServiceSpecificException(64, "Machine is not on the network") <0.17ms>
+10-26 17:24:35.706  1957  2069 E DnsManager: Error setting DNS configuration: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+10-26 17:24:35.754  1707  1936 I netd    : trafficSwapActiveStatsMap() <46.72ms>
+10-26 17:24:35.755  1707  1936 I netd    : tetherGetStats() <0.46ms>
+10-26 17:24:35.761  1957  2069 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] EVENT_NETWORK_INFO_CHANGED, going from CONNECTING to CONNECTED
+10-26 17:24:35.761  1707  1936 D TcpSocketMonitor: resuming tcpinfo polling (interval=30000ms)
+10-26 17:24:35.761  1707  1936 I netd    : networkCreatePhysical(101, 0) <0.07ms>
+10-26 17:24:35.762  1707  1936 I netd    : createNetworkCache(101) <0.09ms>
+10-26 17:24:35.763  1957  2069 W DnsManager: updatePrivateDns(101, PrivateDnsConfig{true:/[]})
+10-26 17:24:35.763  1957  2069 D ConnectivityService: Setting DNS servers for network 101 to [/10.0.2.3]
+10-26 17:24:35.763  1957  2069 D DnsManager: setDnsConfigurationForNetwork(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, , [10.0.2.3])
+10-26 17:24:35.764  1707  1936 I netd    : DnsResolverService::setResolverConfiguration(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, [10.0.2.3], []) -> (0) (0.2ms)
+10-26 17:24:35.764  1707  1936 I netd    : setResolverConfiguration() <0.35ms>
+10-26 17:24:35.766  1957  2069 D ConnectivityService: Adding iface wlan0 to network 101
+10-26 17:24:35.767  1707  1936 I netd    : networkAddInterface(101, "wlan0") <1.15ms>
+10-26 17:24:35.768  1707  1936 I netd    : networkAddRoute(101, "wlan0", "fe80::/64", "") <0.09ms>
+10-26 17:24:35.768  1707  1936 I netd    : networkAddRoute(101, "wlan0", "10.0.2.0/24", "") <0.08ms>
+10-26 17:24:35.769  1707  1936 I netd    : networkAddRoute(101, "wlan0", "0.0.0.0/0", "10.0.2.2") <0.08ms>
+10-26 17:24:35.769  1957  2069 D ConnectivityService: Setting DNS servers for network 101 to [/10.0.2.3]
+10-26 17:24:35.769  1957  2069 D DnsManager: setDnsConfigurationForNetwork(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, , [10.0.2.3])
+10-26 17:24:35.770  1707  1936 I netd    : DnsResolverService::setResolverConfiguration(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, [10.0.2.3], []) -> (0) (0.4ms)
+10-26 17:24:35.770  1707  1936 I netd    : setResolverConfiguration() <0.49ms>
+10-26 17:24:35.815  1707  1936 I netd    : trafficSwapActiveStatsMap() <42.46ms>
+10-26 17:24:35.815  1707  3597 W DnsTlsSocket: SSL_connect error 5, errno=111
+10-26 17:24:35.818  1707  1936 I netd    : tetherGetStats() <0.71ms>
+10-26 17:24:35.825  1957  2066 D WifiNetworkAgent: NetworkAgent: Received signal strength thresholds: []
+10-26 17:24:35.826  1957  2066 E WifiVendorHal: stopRssiMonitoring(l.2042) failed {.code = ERROR_NOT_AVAILABLE, .description = }
+10-26 17:24:35.834  1707  1936 I netd    : bandwidthRemoveInterfaceQuota("radio0") <1.62ms>
+10-26 17:24:35.835  1707  1936 I netd    : bandwidthSetInterfaceQuota("radio0", 9223372036854775807) <0.84ms>
+10-26 17:24:35.849  1957  1978 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-26 17:24:35.852  1707  1936 I netd    : bandwidthSetGlobalAlert(2097152) <0.11ms>
+10-26 17:24:35.866  2313  3599 D NetworkMonitor/101: PROBE_DNS www.google.com 36ms OK 142.251.155.119,142.251.157.119,142.251.156.119,142.251.153.119,142.251.152.119,142.251.151.119,142.251.150.119,142.251.154.119
+10-26 17:24:35.870  2313  3600 D NetworkMonitor/101: PROBE_DNS connectivitycheck.gstatic.com 32ms OK 142.251.150.120
+10-26 17:24:35.873  1707  3603 E ResolverController: No valid NAT64 prefix (101, <unspecified>/0)
+10-26 17:24:35.875  1707  3604 E ResolverController: No valid NAT64 prefix (101, <unspecified>/0)
+10-26 17:24:35.951  2313  3599 D NetworkMonitor/101: PROBE_HTTPS https://www.google.com/generate_204 time=79ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Alt-Svc=[h3=":443"; ma=2592000,h3-29=":443"; ma=2592000], Connection=[close], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Mon, 26 Oct 2026 16:24:36 GMT], X-Android-Received-Millis=[1793031875950], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1793031875940]}
+10-26 17:24:35.954  2313  3600 D NetworkMonitor/101: PROBE_HTTP http://connectivitycheck.gstatic.com/generate_204 time=82ms ret=204 request={Connection=[close], User-Agent=[Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36]} headers={null=[HTTP/1.1 204 No Content], Connection=[close], Content-Length=[0], Cross-Origin-Resource-Policy=[cross-origin], Date=[Mon, 26 Oct 2026 16:24:36 GMT], X-Android-Received-Millis=[1793031875953], X-Android-Response-Source=[NETWORK 204], X-Android-Selected-Protocol=[http/1.1], X-Android-Sent-Millis=[1793031875914]}
+10-26 17:24:35.955  2313  3598 D NetworkMonitor/101: isCaptivePortal: isSuccessful()=true isPortal()=false RedirectUrl=null isPartialConnectivity()=false Time=125ms
+10-26 17:24:35.867  1957  1978 I chatty  : uid=1000(system) android.io identical 7 lines
+10-26 17:24:35.871  1957  1978 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-26 17:24:35.957  1957  2069 D ConnectivityService: NetworkAgentInfo [WIFI () - 101] validation passed
+10-26 17:24:35.965  1707  1936 I netd    : idletimerAddInterface("wlan0", 15, "1") <5.07ms>
+10-26 17:24:35.967  1707  1936 I netd    : idletimerRemoveInterface("radio0", 10, "0") <1.01ms>
+10-26 17:24:35.967  1957  2069 D ConnectivityService: Switching to new default network: NetworkAgentInfo{ ni{[type: WIFI[], state: CONNECTED/CONNECTED, reason: (unspecified), extra: (none), failover: false, available: true, roaming: false]}  network{101}  nethandle{437197393933}  lp{{InterfaceName: wlan0 LinkAddresses: [ fe80::15:b2ff:fe00:0/64,10.0.2.16/24 ] DnsAddresses: [ /10.0.2.3 ] Domains: null MTU: 0 TcpBufferSizes: 524288,1048576,2097152,262144,524288,1048576 Routes: [ fe80::/64 -> :: wlan0,10.0.2.0/24 -> 0.0.0.0 wlan0,0.0.0.0/0 -> 10.0.2.2 wlan0 ]}}  nc{[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED LinkUpBandwidth>=1048576Kbps LinkDnBandwidth>=1048576Kbps Specifier: <WifiNetworkAgentSpecifier [WifiConfiguration=, SSID="AndroidWifi", BSSID=02:15:b2:00:01:00, mOriginalRequestorUid=-1, mOriginalRequestorPackageName=]> SignalStrength: -30 SSID: "AndroidWifi"]}  Score{60}  everValidated{true}  lastValidated{true}  created{true} lingering{false} explicitlySelected{false} acceptUnvalidated{false} everCaptivePortalDetected{false} lastCaptivePortalDetected{false} captivePortalValidationPending{false} partialConnectivity{false} acceptPartialConnectivity{false} clat{mBaseIface: null, mIface: null, mState: IDLE} }
+10-26 17:24:35.968  1707  1936 I netd    : networkSetDefault(101) <0.14ms>
+10-26 17:24:36.014  1707  1936 I netd    : trafficSwapActiveStatsMap() <43.24ms>
+10-26 17:24:36.015  1707  1936 I netd    : tetherGetStats() <0.44ms>
+10-26 17:24:36.021  1957  2330 D NetworkTimeUpdateService: New default network 101; checking time.
+10-26 17:24:36.022  1957  1976 I GnssNetworkConnectivityHandler: updateNetworkState, state=CLOSED, connected=true, network=101, capabilities=[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED LinkUpBandwidth>=1048576Kbps LinkDnBandwidth>=1048576Kbps SignalStrength: -30 SSID: "AndroidWifi"], apn: null, availableNetworkCount: 2
+10-26 17:24:36.022  1957  2069 D ConnectivityService: Lingering NetworkAgentInfo [MOBILE (LTE) - 100] for 30000ms
+10-26 17:24:36.024  1957  2069 D ConnectivityService: Sending DISCONNECTED broadcast for type 0 NetworkAgentInfo [MOBILE (LTE) - 100] isDefaultNetwork=true
+10-26 17:24:36.025  1957  2069 D ConnectivityService: Sending CONNECTED broadcast for type 1 NetworkAgentInfo [WIFI () - 101] isDefaultNetwork=true
+10-26 17:24:36.038  1707  1936 I netd    : bandwidthRemoveInterfaceQuota("radio0") <0.83ms>
+10-26 17:24:36.039  1707  1936 I netd    : bandwidthSetInterfaceQuota("radio0", 9223372036854775807) <0.64ms>
+10-26 17:24:36.040  1707  1936 I netd    : bandwidthSetGlobalAlert(2097152) <0.10ms>
+10-26 17:24:36.041  1707  1936 I netd    : bandwidthRemoveInterfaceQuota("radio0") <0.70ms>
+10-26 17:24:36.042  1707  1936 I netd    : bandwidthSetInterfaceQuota("radio0", 9223372036854775807) <1.07ms>
+10-26 17:24:36.044  1707  1936 I netd    : bandwidthSetGlobalAlert(2097152) <0.10ms>
+10-26 17:24:36.054  1707  2232 I netd    : trafficSwapActiveStatsMap() <39.07ms>
+10-26 17:24:36.055  1707  2232 I netd    : tetherGetStats() <0.49ms>
+10-26 17:24:36.061  1957  2069 D ConnectivityService: Setting DNS servers for network 101 to [/10.0.2.3]
+10-26 17:24:36.066  1957  2069 D DnsManager: setDnsConfigurationForNetwork(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, , [10.0.2.3])
+10-26 17:24:36.066  1707  2232 I netd    : DnsResolverService::setResolverConfiguration(101, [10.0.2.3], [], 1800, 25, 8, 64, 0, 0, [10.0.2.3], []) -> (0) (0.2ms)
+10-26 17:24:36.066  1707  2232 I netd    : setResolverConfiguration() <0.29ms>
+10-26 17:24:36.067  1707  3608 W DnsTlsSocket: SSL_connect error 5, errno=111
+10-26 17:24:36.617  1707  2232 E Netd    : Error adding route ::/0 -> fe80::2 wlan0 to table 1003: File exists
+10-26 17:24:36.617  1707  2232 I netd    : networkAddRoute(101, "wlan0", "::/0", "fe80::2") <0.11ms>
+10-26 17:24:36.654  1707  2232 I netd    : trafficSwapActiveStatsMap() <35.63ms>
+10-26 17:24:36.656  1707  2232 I netd    : tetherGetStats() <0.81ms>
+10-26 17:24:36.665  1707  2232 I netd    : networkAddRoute(101, "wlan0", "fec0::/64", "") <0.14ms>
+10-26 17:24:36.724  1707  2232 I netd    : trafficSwapActiveStatsMap() <57.16ms>
+10-26 17:24:36.725  1707  2232 I netd    : tetherGetStats() <0.50ms>
+10-26 17:24:40.662  1708  1708 D Zygote  : Forked child process 3611
+10-26 17:24:40.664  3611  3611 W ndroid.keychai: Unexpected CPU variant for X86 using defaults: x86_64
+10-26 17:24:40.665  1957  1986 I ActivityManager: Start proc 3611:com.android.keychain/1000 for service {com.android.keychain/com.android.keychain.KeyChainService}
+10-26 17:24:40.683  1957  2946 I ActivityManager: Killing 3211:com.android.calendar/u0a105 (adj 985): empty #17
+10-26 17:24:40.683  1957  2946 I ActivityManager: Killing 2964:com.android.cellbroadcastreceiver/u0a63 (adj 985): empty #18
+10-26 17:24:40.685  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.685  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.691  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.691  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.691  3611  3611 I ndroid.keychai: The ClassLoaderContext is a special shared library.
+10-26 17:24:40.693  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.693  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.695  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.695  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.697  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.697  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.699  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.699  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.703  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.703  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.704  1957  2699 I ActivityManager: Killing 3235:com.android.camera2/u0a111 (adj 985): empty #17
+10-26 17:24:40.709  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.709  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.711  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.712  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.714  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.714  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.715  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.715  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.717  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.717  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.718  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.718  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.726  1957  1984 E memtrack: Couldn't load memtrack module
+10-26 17:24:40.726  1957  1984 W android.os.Debug: failed to get memory consumption info: -1
+10-26 17:24:40.754  1708  1708 I Zygote  : Process 2964 exited due to signal 9 (Killed)
+10-26 17:24:40.755  1708  1708 I Zygote  : Process 3211 exited due to signal 9 (Killed)
+10-26 17:24:40.755  1708  1708 I Zygote  : Process 3235 exited due to signal 9 (Killed)
+10-26 17:24:40.764  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10105 pid 3211 in 76ms
+10-26 17:24:40.764  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10063 pid 2964 in 0ms
+10-26 17:24:40.765  1957  1987 I libprocessgroup: Successfully killed process cgroup uid 10111 pid 3235 in 0ms
+10-26 17:24:50.195  1957  1957 W Telecom : Logging: Stale Sessions Cleaned:
+10-26 17:24:50.195  1957  1957 W Telecom : CM.CCCR@AEA
+10-26 17:24:50.195  1957  1957 W Telecom : 	CM.CCCR->CM.UECNT@AEA
+10-26 17:24:50.195  1957  1957 W Telecom : 		CM.CCCR->CM.UECNT@AEA
+10-26 17:24:50.195  1957  1957 W Telecom : 			CM.CCCR->CM.UECNT->CM.CCCR->CM.UECNT@AEA
+10-26 17:24:50.460  3574  3574 W http    : type=1400 audit(0.0:670): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:50.460  3574  3574 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:24:50.460  3574  3574 W http    : type=1400 audit(0.0:674): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:51.441  1957  2066 W AlarmManager: Unrecognized alarm listener com.android.server.wifi.WifiConfigStore$2@53d0866
+10-26 17:24:51.464  1957  2066 D WifiConfigStore: Writing to stores completed in 23 ms.
+10-26 17:24:55.414  1957  2946 D WificondControl: Scan result ready event
+10-26 17:24:57.000  3574  3574 W http    : type=1400 audit(0.0:677): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:57.000  3574  3574 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:24:57.000  3574  3574 W http    : type=1400 audit(0.0:681): avc: denied { ioctl } for path="/proc/3574/cgroup" dev="proc" ino=27021 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:24:59.740  3566  3566 W libproot.so: type=1400 audit(0.0:712): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:24:59.750  3566  3566 W libproot.so: type=1400 audit(0.0:713): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:24:59.750  3566  3566 W libproot.so: type=1400 audit(0.0:714): avc: denied { setattr } for name="fd" dev="proc" ino=28063 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:24:59.750  3566  3566 W libproot.so: type=1400 audit(0.0:715): avc: denied { setattr } for name="fd" dev="proc" ino=28063 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:24:59.750  3566  3566 W libproot.so: type=1400 audit(0.0:716): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.001  2104  2104 D KeyguardClockSwitch: Updating clock: 525
+10-26 17:25:00.890  3566  3566 W libproot.so: type=1400 audit(0.0:730): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.890  3566  3566 W libproot.so: type=1400 audit(0.0:731): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.890  3566  3566 W libproot.so: type=1400 audit(0.0:732): avc: denied { setattr } for name="fd" dev="proc" ino=29051 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.900  3566  3566 W libproot.so: type=1400 audit(0.0:733): avc: denied { setattr } for name="fd" dev="proc" ino=29051 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.900  3566  3566 W libproot.so: type=1400 audit(0.0:734): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:00.939  3496  3523 I ProotSpike: PASS apt-update: exit=0 in 31245 ms
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:5 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:6 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:7 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:9 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:13 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:14 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Fetched 29.1 MB in 30s (973 kB/s)
+10-26 17:25:00.940  3496  3523 I ProotSpike:   Reading package lists...
+10-26 17:25:01.900  3658  3658 W http    : type=1400 audit(0.0:904): avc: denied { ioctl } for path="/proc/3658/cgroup" dev="proc" ino=27548 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:01.900  3658  3658 I chatty  : uid=10116(dev.prootcode.app) /usr/lib/apt/methods/http identical 3 lines
+10-26 17:25:01.900  3658  3658 W http    : type=1400 audit(0.0:908): avc: denied { ioctl } for path="/proc/3658/cgroup" dev="proc" ino=27548 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:02.990  3649  3649 W libproot.so: type=1400 audit(0.0:1238): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:02.990  3649  3649 W libproot.so: type=1400 audit(0.0:1239): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:02.990  3649  3649 W libproot.so: type=1400 audit(0.0:1240): avc: denied { setattr } for name="fd" dev="proc" ino=29248 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:02.990  3649  3649 W libproot.so: type=1400 audit(0.0:1241): avc: denied { setattr } for name="fd" dev="proc" ino=29248 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:02.990  3649  3649 W libproot.so: type=1400 audit(0.0:1242): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c116,c256,c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:03.251  3496  3523 I ProotSpike: PASS apt-install: exit=0 in 2309 ms
+10-26 17:25:03.251  3496  3523 I ProotSpike:   Reading package lists...
+10-26 17:25:03.251  3496  3523 I ProotSpike:   Building dependency tree...
+10-26 17:25:03.251  3496  3523 I ProotSpike:   Reading state information...
+10-26 17:25:03.251  3496  3523 I ProotSpike:   Solving dependencies...
+10-26 17:25:03.251  3496  3523 I ProotSpike:   The following NEW packages will be installed:
+10-26 17:25:03.252  3496  3523 I ProotSpike:     hello
+10-26 17:25:03.252  3496  3523 I ProotSpike:   0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Need to get 26.1 kB of archives.
+10-26 17:25:03.252  3496  3523 I ProotSpike:   After this operation, 106 kB of additional disk space will be used.
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 hello amd64 2.10-5build1 [26.1 kB]
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Fetched 26.1 kB in 0s (61.0 kB/s)
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Selecting previously unselected package hello.
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 5%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 10%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 15%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 20%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 25%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 30%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 35%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 40%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 45%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 50%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 55%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 60%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 65%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 70%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 75%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 80%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 85%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 90%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 95%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 100%
+10-26 17:25:03.252  3496  3523 I ProotSpike:   (Reading database ... 7722 files and directories currently installed.)
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Preparing to unpack .../hello_2.10-5build1_amd64.deb ...
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Unpacking hello (2.10-5build1) ...
+10-26 17:25:03.252  3496  3523 I ProotSpike:   Setting up hello (2.10-5build1) ...
+10-26 17:25:03.357  3496  3523 I ProotSpike: PASS installed-binary: exit=0 in 103 ms
+10-26 17:25:03.358  3496  3523 I ProotSpike:   Hello, world!
+10-26 17:25:03.364  3496  3523 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json
+10-26 17:25:05.958  1957  2069 D ConnectivityService: handleLingerComplete for NetworkAgentInfo [MOBILE (LTE) - 100]
+10-26 17:25:05.961  1707  2232 I netd    : networkSetPermissionForNetwork(100, 1) <2.64ms>
+10-26 17:25:06.014  1707  2232 I netd    : trafficSwapActiveStatsMap() <47.52ms>
+10-26 17:25:06.015  1707  2232 I netd    : tetherGetStats() <0.59ms>
+10-26 17:25:06.781  1866  1866 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+10-26 17:25:06.824  1881  1881 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe

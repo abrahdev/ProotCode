@@ -34,6 +34,20 @@ root privileges. Each distribution is installed from a rootfs tarball into app-p
 - A non-root user owns the home directory.
 - The home directory is persistent and can be backed up.
 
+### Kernel requirements
+
+Running the distribution does not depend on executing files from app storage: proot maps the
+guest binaries instead, which works with `targetSdk 37` on Android 8 through 16.
+
+Package management has an additional requirement. The proot spike showed that apt fails on the
+Android 8 image (kernel 3.18) while it works from API 29 (kernel 4.14), so:
+
+- proot, the terminal and bind mounts work on API 26 and later.
+- apt, presets and tool installation require kernel 4.11 or newer, with API 29 and later as the
+  validated baseline.
+
+Details and raw results are in `mobile/spike-results/`.
+
 ## Storage model
 
 | Location | Purpose |

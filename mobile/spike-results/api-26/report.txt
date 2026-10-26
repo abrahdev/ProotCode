@@ -1,0 +1,66 @@
+ProotCode proot spike
+API 26, targetSdk 37, abi x86_64, at 2026-10-26T16:23:41Z
+RESULT: FAIL
+
+[PASS] device-info - Device information (1 ms)
+  API 26 (8.0.0), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+[PASS] rootfs-extract - Extract Ubuntu 26.04 rootfs (9325 ms)
+  6569 entries extracted
+[PASS] exec-datadir-control - Exec binary from filesDir (control) (102 ms)
+  exec allowed, exit=139
+[PASS] exec-nativelib-control - Exec binary from nativeLibraryDir (control) (102 ms)
+  exec allowed, exit=139
+[PASS] proot-true - proot /bin/true (103 ms)
+  exit=0 in 103 ms
+[PASS] proot-true-noseccomp - proot /bin/true without seccomp (103 ms)
+  exit=0 in 103 ms
+[PASS] proot-uid - proot id -u (103 ms)
+  exit=0 in 102 ms
+  | 0
+[PASS] bridge-write - Write to ~/projects_bridge from proot (105 ms)
+  app reads: 'hello-from-proot'
+[PASS] bridge-read - Read from ~/projects_bridge inside proot (104 ms)
+  proot reads the file written by the app
+  | hello-from-android
+[FAIL] apt-update - apt-get update (31025 ms)
+  exit=100, retried without seccomp in 30921 ms
+  | Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+  | Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+  | Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+  | Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+  | Get:5 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+  | Get:6 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+  | Get:7 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+  | Get:8 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+  | Get:9 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+  | Get:10 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+  | Get:11 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+  | Get:12 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+  | Get:13 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+  | Get:14 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+  | Get:15 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+  | Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+  | Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+  | Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+  | Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+  | Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+  | Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+  | Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+  | Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+  | Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+  | Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+  | Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+  | Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+  | Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+  | Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+  | Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+  | Fetched 29.1 MB in 31s (950 kB/s)
+  | E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+  | E: The package lists or status file could not be parsed or opened.
+[FAIL] apt-install - apt-get install hello (305 ms)
+  exit=100, retried without seccomp in 202 ms
+  | E: flAbsPath on /var/lib/dpkg/status failed - realpath (38: Function not implemented)
+  | E: The package lists or status file could not be parsed or opened.
+[FAIL] installed-binary - Run installed hello binary (101 ms)
+  exit=127 in 101 ms
+  | /bin/sh: 1: hello: not found

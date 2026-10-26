@@ -1,0 +1,7 @@
+Starting: Intent { cmp=dev.prootcode.app/.MainActivity (has extras) }
+Status: ok
+Activity: dev.prootcode.app/.MainActivity
+ThisTime: 1012
+TotalTime: 1012
+WaitTime: 1022
+Complete

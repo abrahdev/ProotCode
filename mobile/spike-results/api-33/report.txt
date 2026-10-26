@@ -1,0 +1,100 @@
+ProotCode proot spike
+API 33, targetSdk 37, abi x86_64, at 2026-10-26T16:26:32Z
+RESULT: PASS
+
+[PASS] device-info - Device information (1 ms)
+  API 33 (13), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+[PASS] rootfs-extract - Extract Ubuntu 26.04 rootfs (3988 ms)
+  6569 entries extracted
+[PASS] exec-datadir-control - Exec binary from filesDir (control) (1 ms)
+  exec denied: Cannot run program "/data/user/0/dev.prootcode.app/files/spike/control/control": error=13, Permission denied
+[PASS] exec-nativelib-control - Exec binary from nativeLibraryDir (control) (102 ms)
+  exec allowed, exit=139
+[PASS] proot-true - proot /bin/true (102 ms)
+  exit=0 in 101 ms
+[PASS] proot-true-noseccomp - proot /bin/true without seccomp (102 ms)
+  exit=0 in 102 ms
+[PASS] proot-uid - proot id -u (102 ms)
+  exit=0 in 102 ms
+  | 0
+[PASS] bridge-write - Write to ~/projects_bridge from proot (102 ms)
+  app reads: 'hello-from-proot'
+[PASS] bridge-read - Read from ~/projects_bridge inside proot (101 ms)
+  proot reads the file written by the app
+  | hello-from-android
+[PASS] apt-update - apt-get update (29769 ms)
+  exit=0 in 29769 ms
+  | Get:1 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+  | Get:2 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+  | Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+  | Get:4 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+  | Get:5 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+  | Get:6 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+  | Get:7 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+  | Get:8 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+  | Get:9 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+  | Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+  | Get:11 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+  | Get:12 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+  | Get:13 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+  | Get:14 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+  | Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+  | Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+  | Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+  | Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+  | Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+  | Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+  | Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+  | Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+  | Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+  | Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+  | Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+  | Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+  | Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+  | Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+  | Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+  | Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+  | Fetched 29.1 MB in 28s (1025 kB/s)
+  | Reading package lists...
+[PASS] apt-install - apt-get install hello (3410 ms)
+  exit=0 in 3410 ms
+  | Reading package lists...
+  | Building dependency tree...
+  | Reading state information...
+  | Solving dependencies...
+  | The following NEW packages will be installed:
+  |   hello
+  | 0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+  | Need to get 26.1 kB of archives.
+  | After this operation, 106 kB of additional disk space will be used.
+  | Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 hello amd64 2.10-5build1 [26.1 kB]
+  | Fetched 26.1 kB in 2s (15.0 kB/s)
+  | Selecting previously unselected package hello.
+  | (Reading database ... 
+  | (Reading database ... 5%
+  | (Reading database ... 10%
+  | (Reading database ... 15%
+  | (Reading database ... 20%
+  | (Reading database ... 25%
+  | (Reading database ... 30%
+  | (Reading database ... 35%
+  | (Reading database ... 40%
+  | (Reading database ... 45%
+  | (Reading database ... 50%
+  | (Reading database ... 55%
+  | (Reading database ... 60%
+  | (Reading database ... 65%
+  | (Reading database ... 70%
+  | (Reading database ... 75%
+  | (Reading database ... 80%
+  | (Reading database ... 85%
+  | (Reading database ... 90%
+  | (Reading database ... 95%
+  | (Reading database ... 100%
+  | (Reading database ... 7722 files and directories currently installed.)
+  | Preparing to unpack .../hello_2.10-5build1_amd64.deb ...
+  | Unpacking hello (2.10-5build1) ...
+  | Setting up hello (2.10-5build1) ...
+[PASS] installed-binary - Run installed hello binary (101 ms)
+  exit=0 in 101 ms
+  | Hello, world!

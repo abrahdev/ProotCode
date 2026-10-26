@@ -1,0 +1,424 @@
+--------- beginning of main
+10-26 17:25:53.153   587   608 I LatencyTracker: ACTION_ROTATE_SCREEN latency=966
+--------- beginning of system
+10-26 17:25:53.174   587   644 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10126; state: ENABLED
+10-26 17:25:53.174   587   644 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=dev.prootcode.app/.MainActivity (has extras)} from uid 2000
+10-26 17:25:53.175   587   644 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10126; state: ENABLED
+10-26 17:25:53.177   587   606 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-26 17:25:53.177   587   644 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 10126; state: DISABLED
+10-26 17:25:53.177   587   644 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10126; state: DISABLED
+10-26 17:25:53.178   587   644 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10126; state: DISABLED
+10-26 17:25:53.178   587   644 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 10126; state: DISABLED
+10-26 17:25:53.178   587   644 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 10126; state: DISABLED
+10-26 17:25:53.178   587   644 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10126; state: ENABLED
+10-26 17:25:53.179   587   644 D CompatibilityChangeReporter: Compat change id reported: 205907456; UID 10126; state: ENABLED
+10-26 17:25:53.181   587   607 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10126; state: DISABLED
+10-26 17:25:53.182   587   616 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10126; state: ENABLED
+10-26 17:25:53.191   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d40e90
+10-26 17:25:53.192   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d3fc90
+10-26 17:25:53.192   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d40e90
+10-26 17:25:53.193   384   384 D Zygote  : Forked child process 2446
+10-26 17:25:53.194   587   616 I ActivityManager: Start proc 2446:dev.prootcode.app/u0a126 for next-top-activity {dev.prootcode.app/dev.prootcode.app.MainActivity}
+10-26 17:25:53.197   856   856 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{4e89d9a V.E...... ......ID 7,0-48,61 #7f0a0742 app:id/wifi_group} during layout: running second layout pass
+10-26 17:25:53.219  1118  1149 D ModelWriter: removing items from db . Reason: [removed because the corresponding package or component is removed. mOp=2 removedPackages=[] removedComponents=[{com.android.inputmethod.latin/com.android.inputmethod.latin.setup.SetupActivity}]]
+10-26 17:25:53.225  2446  2446 I v.prootcode.app: Late-enabling -Xcheck:jni
+10-26 17:25:53.247  2446  2446 W v.prootcode.app: Unexpected CPU variant for x86: x86_64.
+10-26 17:25:53.247  2446  2446 W v.prootcode.app: Known variants: atom, sandybridge, silvermont, kabylake, default
+10-26 17:25:53.252   481   490 I adbd    : jdwp connection from 2446
+10-26 17:25:53.268  2446  2446 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10126; state: ENABLED
+10-26 17:25:53.281  2446  2446 W ziparchive: Unable to open '/data/app/~~zpSw0TmhiV5omBldaG4xjA==/dev.prootcode.app-QKODwDJQag14Z1uno5yRTQ==/base.dm': No such file or directory
+10-26 17:25:53.281  2446  2446 W ziparchive: Unable to open '/data/app/~~zpSw0TmhiV5omBldaG4xjA==/dev.prootcode.app-QKODwDJQag14Z1uno5yRTQ==/base.dm': No such file or directory
+10-26 17:25:53.306   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d3d050
+10-26 17:25:53.398   856   856 D QSPanel : setUsingHorizontalLayout: false, true
+10-26 17:25:53.399   856   856 D QSPanel : Reattaching media host: false, current com.android.systemui.qs.QSPanel{de3298d IFE...... ......ID 0,145-992,1828 #7f0a0501 app:id/quick_settings_panel}, new com.android.systemui.qs.QSPanel{eb5f32f VFE...... ......I. 0,0-0,0 #7f0a0501 app:id/quick_settings_panel}
+10-26 17:25:53.400   856   856 D QSPanel : setUsingHorizontalLayout: false, true
+10-26 17:25:53.400   856   856 D QSPanel : Reattaching media host: false, current com.android.systemui.qs.QSPanel{eb5f32f VFE...... ......I. 0,0-0,0 #7f0a0501 app:id/quick_settings_panel}, new com.android.systemui.qs.QSPanel{eb5f32f VFE...... ......I. 0,0-0,0 #7f0a0501 app:id/quick_settings_panel}
+10-26 17:25:53.404   856   856 D QuickQSPanel: setUsingHorizontalLayout: false, true
+10-26 17:25:53.404   856   856 D QuickQSPanel: Reattaching media host: false, current com.android.systemui.qs.QuickQSPanel{240f353 VFE...... ......ID 0,189-992,607 #7f0a04fe app:id/quick_qs_panel}, new com.android.systemui.qs.QuickQSPanel{2851ac5 VFE...... ......I. 0,0-0,0 #7f0a04fe app:id/quick_qs_panel}
+10-26 17:25:53.423   587   669 I RoleService: Granting default roles...
+10-26 17:25:53.427   857  1012 W Role    : Cannot get ApplicationInfo for default holder: com.google.android.contacts
+10-26 17:25:53.433   856   914 D SplashScreenView: Build android.window.SplashScreenView{8ccea14 V.E...... ......ID 0,0-0,0}
+10-26 17:25:53.433   856   914 D SplashScreenView: Icon: view: android.widget.ImageView{e09f2bd V.ED..... ......I. 0,0-0,0 #10204dc android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@d6020b2 size: 440
+10-26 17:25:53.433   856   914 D SplashScreenView: Branding: view: android.view.View{7905803 G.ED..... ......I. 0,0-0,0 #10204db android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-26 17:25:53.435   587  2409 D CoreBackPreview: Window{47a3db5 u0 Splash Screen dev.prootcode.app}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@823b4d8, mPriority=0}
+10-26 17:25:53.439   856   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+10-26 17:25:53.444   856   940 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+10-26 17:25:53.466   856   856 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{829e80e V.E...... ......ID 7,0-48,61 #7f0a0742 app:id/wifi_group} during layout: running second layout pass
+10-26 17:25:53.478   856   856 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{f5b46a5 V.E...... ......ID 7,0-48,61 #7f0a0742 app:id/wifi_group} during layout: running second layout pass
+10-26 17:25:53.485   856   997 W Parcel  : Expecting binder but got null!
+10-26 17:25:53.544   856   856 W View    : requestLayout() improperly called by com.android.keyguard.AlphaOptimizedLinearLayout{21d9f19 V.E...... ......ID 7,0-48,61 #7f0a0742 app:id/wifi_group} during layout: running second layout pass
+10-26 17:25:53.671  2446  2446 V GraphicsEnvironment: ANGLE Developer option for 'dev.prootcode.app' set to: 'default'
+10-26 17:25:53.671  2446  2446 V GraphicsEnvironment: ANGLE GameManagerService for dev.prootcode.app: false
+10-26 17:25:53.671  2446  2446 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-26 17:25:53.681  2446  2446 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-26 17:25:53.683  2446  2446 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+10-26 17:25:53.752  2446  2466 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-26 17:25:53.754  2446  2466 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-26 17:25:53.755  2446  2466 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-26 17:25:53.820   587   959 D CoreBackPreview: Window{9a27305 u0 dev.prootcode.app/dev.prootcode.app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@3d8458b, mPriority=0}
+10-26 17:25:53.930  2446  2446 D CompatibilityChangeReporter: Compat change id reported: 193247900; UID 10126; state: ENABLED
+10-26 17:25:53.958  1032  1032 D AvrcpBrowsablePlayerConnector: Received a message: msg.what=2
+10-26 17:25:53.958  1032  1032 V AvrcpBrowsablePlayerConnector: Timed out waiting for players
+10-26 17:25:53.958  1032  1032 I AvrcpBrowsablePlayerConnector: Successfully connected to 0 browsable players.
+10-26 17:25:53.958  1032  1032 I MediaPlayerList: init: Browsable Player list size is 0
+10-26 17:25:53.958  1032  1032 D MediaPlayerList: Initializing list of current media players
+10-26 17:25:54.046  2215  2247 I RemoteProvisioningService: Generated 6 keys. 6 keys were also available for signing previous to generation.
+10-26 17:25:54.046  2215  2247 I RemoteProvisioningService: Requesting 12 keys to be provisioned.
+10-26 17:25:54.046  2215  2247 I RemoteProvisioningService: Request for 12 keys to be provisioned.
+10-26 17:25:54.046  2215  2247 I RemoteProvisioner: Packaging 12 keys into a CSR. Test: false
+10-26 17:25:54.071   464   479 W ServiceManager: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10126 pid=0
+10-26 17:25:54.071   464   479 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10126 => denied (105 us)
+10-26 17:25:54.071   464   479 W ServiceManager: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10126 pid=0
+10-26 17:25:54.071   464   479 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10126 => denied (49 us)
+10-26 17:25:54.071   464   479 W ServiceManager: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10126 pid=0
+10-26 17:25:54.071   464   479 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10126 => denied (45 us)
+10-26 17:25:54.071   464  1301 W ServiceManager: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10126 pid=2446
+10-26 17:25:54.071   464  1301 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10126 => denied (146 us)
+10-26 17:25:54.076  2446  2464 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_has_shared_slots_host_memory_allocator ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_vulkan_queue_submit_with_commands ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_read_color_buffer_dma ANDROID_EMU_hwc_multi_configs ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-26 17:25:54.077  2446  2464 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+10-26 17:25:54.077  2446  2464 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-26 17:25:54.080  2446  2464 D EGL_emulation: eglCreateContext: 0x71a562b92bd0: maj 3 min 1 rcv 4
+10-26 17:25:54.082   856   997 D EGL_emulation: app_time_stats: avg=381.62ms min=167.18ms max=574.52ms count=3
+10-26 17:25:54.082  2446  2464 D EGL_emulation: eglMakeCurrent: 0x71a562b92bd0: ver 3 1 (tinfo 0x71a784e58080) (first time)
+10-26 17:25:54.087   230   230 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-26 17:25:54.088  2446  2464 I Gralloc4: mapper 4.x is not supported
+10-26 17:25:54.090  2215  2247 D TrafficStats: tagSocket(6) with statsTag=0xffffffff, statsUid=-1
+10-26 17:25:54.100   587   606 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-26 17:25:54.101   230   230 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.allocator@4.0::IAllocator/default in either framework or device VINTF manifest.
+10-26 17:25:54.102   229   229 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-26 17:25:54.102  2446  2464 W Gralloc4: allocator 4.x is not supported
+10-26 17:25:54.165  2446  2464 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 ANDROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requirements ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_has_shared_slots_host_memory_allocator ANDROID_EMU_vulkan_free_memory_sync ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_vulkan_queue_submit_with_commands ANDROID_EMU_sync_buffer_data ANDROID_EMU_vulkan_async_qsri ANDROID_EMU_read_color_buffer_dma ANDROID_EMU_hwc_multi_configs ANDROID_EMU_hwc_color_transform GL_OES_EGL_image_external_essl3 GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_3_1 
+10-26 17:25:54.219   856   997 D EGL_emulation: app_time_stats: avg=59.34ms min=3.52ms max=277.69ms count=20
+10-26 17:25:54.240  2446  2464 W Parcel  : Expecting binder but got null!
+10-26 17:25:54.241  2446  2446 W v.prootcode.app: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (unsupported, reflection, allowed)
+10-26 17:25:54.242   587   604 W ziparchive: Unable to open '/data/app/~~zpSw0TmhiV5omBldaG4xjA==/dev.prootcode.app-QKODwDJQag14Z1uno5yRTQ==/base.dm': No such file or directory
+10-26 17:25:54.243   587   604 I ActivityTaskManager: Displayed dev.prootcode.app/.MainActivity: +1s68ms
+10-26 17:25:54.253  2446  2474 I ProotSpike: PASS device-info: API 33 (13), targetSdk 37, abi x86_64, device unknown Android SDK built for x86_64
+10-26 17:25:54.370   587   644 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10126; state: ENABLED
+10-26 17:25:54.410   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d40170
+10-26 17:25:54.600  1525  1525 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10061; state: ENABLED
+10-26 17:25:54.600  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:54.652   587   959 D CoreBackPreview: Window{47a3db5 u0 Splash Screen dev.prootcode.app EXITING}: Setting back callback null
+10-26 17:25:54.652   587   644 W InputManager-JNI: Input channel object '47a3db5 Splash Screen dev.prootcode.app (client)' was disposed without first being removed with the input manager!
+10-26 17:25:54.702   856   913 W FrameTracker: Missed App frame:UNKNOWN: 24, 3629, 100161794, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 24, 3629, 100161794, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed App frame:UNKNOWN: 328, 3665, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missing HWUI jank callback for vsyncId: 3665, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed App frame:UNKNOWN: 88, 3687, 180531148, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 88, 3687, 180531148, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed App frame:UNKNOWN: 88, 3712, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 88, 3712, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missing HWUI jank callback for vsyncId: 3712, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 80, 3750, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missing HWUI jank callback for vsyncId: 3750, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 80, 3774, 68469980, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 80, 3792, 42030134, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed App frame:UNKNOWN: 88, 3800, 55159152, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 88, 3800, 55159152, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missed SF frame:UNKNOWN: 80, 3808, 0, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   913 W FrameTracker: Missing HWUI jank callback for vsyncId: 3808, CUJ=J<SPLASHSCREEN_EXIT_ANIM>
+10-26 17:25:54.702   856   900 V PerfettoTrigger: Not triggering com.android.telemetry.interaction-jank-monitor-39 - not enough time since last trigger
+10-26 17:25:54.822   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d3cdb0
+10-26 17:25:54.822   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d3db90
+10-26 17:25:54.822   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d41250
+10-26 17:25:54.822   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d41250
+10-26 17:25:54.822   464   480 W TransactionTracing: Could not find layer handle 0x7d9f83d3db90
+10-26 17:25:54.854  1381  1381 I LatinIME: Timeout waiting for dictionary load
+10-26 17:25:55.156  2446  2446 W DefaultDispatch: type=1400 audit(0.0:15): avc: denied { link } for name="perl" dev="dm-32" ino=131455 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+--------- beginning of kernel
+10-26 17:25:55.422     0     0 I logd    : start watching /data/system/packages.list ...
+10-26 17:25:55.429     0     0 I logd    : ReadPackageList, total packages: 134
+10-26 17:25:55.200   587   607 I system_server: Explicit concurrent copying GC freed 109273(4870KB) AllocSpace objects, 6(128KB) LOS objects, 49% free, 11MB/22MB, paused 38us,49us total 47.564ms
+10-26 17:25:55.200   587   597 I system_server: WaitForGcToComplete blocked HeapTrim on Explicit for 32.988ms
+10-26 17:25:55.202   587   606 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+10-26 17:25:55.292  2446  2446 W DefaultDispatch: type=1400 audit(0.0:16): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.561     0     0 W audit   : audit_lost=1 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:25:55.563     0     0 E audit   : rate limit exceeded
+10-26 17:25:55.292  2446  2446 W DefaultDispatch: type=1400 audit(0.0:17): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.292  2446  2446 W DefaultDispatch: type=1400 audit(0.0:18): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.292  2446  2446 W DefaultDispatch: type=1400 audit(0.0:19): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.296  2446  2446 W DefaultDispatch: type=1400 audit(0.0:20): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.296  2446  2446 W DefaultDispatch: type=1400 audit(0.0:21): avc: denied { link } for name="coreutils" dev="dm-32" ino=131226 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:55.367  2215  2247 I RemoteProvisioningService: Received 12 certificate chains from the server.
+10-26 17:25:55.393  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:55.394  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:55.396  2215  2247 I RemoteProvisioningService: In provisionCerts: Requested 12 keys. 12 were provisioned.
+10-26 17:25:55.412  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:55.417  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
+10-26 17:25:56.165  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:56.171  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.externalstorage.documents
+10-26 17:25:56.184   587  1889 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-26 17:25:56.594   849   849 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:25:56.958  1395  1395 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10098; state: DISABLED
+10-26 17:25:56.968  1525  1525 I ProvidersCache: Updating roots due to change on user 0at content://com.android.providers.media.documents/root
+10-26 17:25:58.011  1479  1519 D StrictMode: StrictMode policy violation: android.os.strictmode.SqliteObjectLeakedViolation: Finalizing a Cursor that has not been deactivated or closed. database = /data/user/0/com.android.providers.contacts/databases/contacts2.db, table = raw_contacts, query = SELECT contacts_view._id AS _id, contacts_view.display_name AS display_name, contacts_view.photo_thumb_uri AS photo_thumb_uri, data1 AS number, data2 AS type, data3 AS label, contacts_view.lookup AS lookup FROM raw_contacts JOIN view_contacts as contacts_view ON (contacts_view._id = raw_contacts.contact_id) JOIN (SELECT data_id,normalized_number FROM phone_lookup WHERE (phone_lookup.min_match = '7654321')) AS lookup ON lookup.data_id=data._id JOIN data ON data.raw_contact_id=raw_contacts._id WHERE (PHONE_NUMBERS_EQUAL(data.data1, '+15551234567', 0, 7)) ORDER BY  length(lookup.normalized_number) DESC
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.os.StrictMode.onSqliteObjectLeaked(StrictMode.java:2185)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteCursor.finalize(SQLiteCursor.java:282)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:319)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:306)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$Daemon.run(Daemons.java:140)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Thread.run(Thread.java:1012)
+10-26 17:25:58.011  1479  1519 D StrictMode: StrictMode policy violation: android.os.strictmode.LeakedClosableViolation: A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.os.StrictMode$AndroidCloseGuardReporter.report(StrictMode.java:1986)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at dalvik.system.CloseGuard.warnIfOpen(CloseGuard.java:336)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.AbstractCursor.finalize(AbstractCursor.java:531)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteCursor.finalize(SQLiteCursor.java:291)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:319)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:306)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Daemons$Daemon.run(Daemons.java:140)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at java.lang.Thread.run(Thread.java:1012)
+10-26 17:25:58.011  1479  1519 D StrictMode: Caused by: java.lang.Throwable: Explicit termination method 'AbstractCursor.close' not called
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.AbstractCursor.<init>(AbstractCursor.java:227)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.AbstractWindowedCursor.<init>(AbstractWindowedCursor.java:39)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteCursor.<init>(SQLiteCursor.java:98)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:52)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1712)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.database.sqlite.SQLiteQueryBuilder.query(SQLiteQueryBuilder.java:592)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.doQuery(ContactsProvider2.java:7249)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLocal(ContactsProvider2.java:6955)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryCorpLookupIfNecessary(ContactsProvider2.java:7419)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLookupEnterprise(ContactsProvider2.java:7558)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryPhoneLookupEnterprise(ContactsProvider2.java:7529)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLocal(ContactsProvider2.java:6878)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryDirectoryIfNecessary(ContactsProvider2.java:5667)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryInternal(ContactsProvider2.java:5609)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.query(ContactsProvider2.java:5559)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.content.ContentProvider.query(ContentProvider.java:1551)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.content.ContentProvider$Transport.query(ContentProvider.java:285)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:107)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.os.Binder.execTransactInternal(Binder.java:1285)
+10-26 17:25:58.011  1479  1519 D StrictMode: 	at android.os.Binder.execTransact(Binder.java:1244)
+10-26 17:25:58.245  2446  2474 I ProotSpike: PASS rootfs-extract: 6569 entries extracted
+10-26 17:25:58.249  2446  2474 I ProotSpike: PASS exec-datadir-control: exec denied: Cannot run program "/data/user/0/dev.prootcode.app/files/spike/control/control": error=13, Permission denied
+10-26 17:25:58.244  2521  2521 W DefaultDispatch: type=1400 audit(0.0:130): avc: granted { execute } for name="control" dev="dm-32" ino=123553 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file
+10-26 17:25:58.512     0     0 I libproot_loader[2522]: segfault at 0 ip 0000600000000046 sp 00007ffd32fcc6f0 error 4 in libproot_loader.so[600000000000+1000]
+10-26 17:25:58.244  2521  2521 W DefaultDispatch: type=1400 audit(0.0:131): avc: denied { execute_no_trans } for path="/data/data/dev.prootcode.app/files/spike/control/control" dev="dm-32" ino=123553 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file permissive=0
+10-26 17:25:58.518     0     0 I Code    : ff 4c 8d 25 54 44 00 00 0f 57 c0 eb 1d 48 8b 7b 08 b8 0a 00 00 00 be 01 00 00 00 ba 07 00 00 01 0f 05 b9 10 00 00 00 48 01 cb <48> 8b 03 48 83 f8 06 0f 87 ab 02 00 00 49 63 04 84 4c 01 e0 ff e0
+10-26 17:25:58.295  2446  2464 D EGL_emulation: app_time_stats: avg=1003.94ms min=25.59ms max=3885.00ms count=4
+10-26 17:25:58.351  2446  2474 I ProotSpike: PASS exec-nativelib-control: exec allowed, exit=139
+10-26 17:25:58.615     0     0 W audit   : audit_lost=109 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:25:58.348  2525  2525 W libproot.so: type=1400 audit(0.0:132): avc: denied { search } for name="tests" dev="dm-32" ino=65540 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:58.617     0     0 E audit   : rate limit exceeded
+10-26 17:25:58.348  2525  2525 W libproot.so: type=1400 audit(0.0:133): avc: denied { search } for name="tests" dev="dm-32" ino=65540 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:58.348  2525  2525 W libproot.so: type=1400 audit(0.0:134): avc: denied { search } for name="tests" dev="dm-32" ino=65540 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=dev.prootcode.app
+10-26 17:25:58.453  2446  2474 I ProotSpike: PASS proot-true: exit=0 in 101 ms
+10-26 17:25:58.465   587   659 D OomAdjuster: Not killing cached processes
+10-26 17:25:58.555  2446  2474 I ProotSpike: PASS proot-true-noseccomp: exit=0 in 102 ms
+10-26 17:25:58.657  2446  2474 I ProotSpike: PASS proot-uid: exit=0 in 102 ms
+10-26 17:25:58.657  2446  2474 I ProotSpike:   0
+10-26 17:25:58.760  2446  2474 I ProotSpike: PASS bridge-write: app reads: 'hello-from-proot'
+10-26 17:25:58.861  2446  2474 I ProotSpike: PASS bridge-read: proot reads the file written by the app
+10-26 17:25:58.861  2446  2474 I ProotSpike:   hello-from-android
+10-26 17:25:59.343  2446  2558 D ProfileInstaller: Installing profile for dev.prootcode.app
+10-26 17:26:00.141     0     0 W audit   : audit_lost=326 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:00.142     0     0 E audit   : rate limit exceeded
+10-26 17:25:59.876  2557  2557 W http    : type=1400 audit(0.0:352): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:59.876  2557  2557 W http    : type=1400 audit(0.0:353): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:59.876  2556  2556 W http    : type=1400 audit(0.0:354): avc: denied { ioctl } for path="/proc/2556/cgroup" dev="proc" ino=49859 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:59.876  2557  2557 W http    : type=1400 audit(0.0:355): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:25:59.876  2557  2557 W http    : type=1400 audit(0.0:356): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:00.008   856   997 D EGL_emulation: app_time_stats: avg=5779.19ms min=5779.19ms max=5779.19ms count=1
+10-26 17:26:01.040  2549  2549 W libproot.so: type=1400 audit(0.0:364): avc: granted { execute } for name="gpgv" dev="dm-32" ino=131595 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:01.306     0     0 W audit   : audit_lost=333 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:01.040  2549  2549 W libproot.so: type=1400 audit(0.0:365): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:01.314     0     0 E audit   : rate limit exceeded
+10-26 17:26:01.040  2559  2559 W libproot_loader: type=1400 audit(0.0:366): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/apt/methods/gpgv" dev="dm-32" ino=131595 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:01.040  2559  2559 W libproot_loader: type=1400 audit(0.0:367): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:01.040  2559  2559 W gpgv    : type=1400 audit(0.0:368): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0" dev="dm-32" ino=132068 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.140  2549  2549 W libproot.so: type=1400 audit(0.0:525): avc: granted { execute } for name="store" dev="dm-32" ino=131604 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.406     0     0 W audit   : audit_lost=489 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:02.413     0     0 E audit   : rate limit exceeded
+10-26 17:26:02.140  2549  2549 W libproot.so: type=1400 audit(0.0:526): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.140  2572  2572 W libproot_loader: type=1400 audit(0.0:527): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/apt/methods/store" dev="dm-32" ino=131604 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.140  2572  2572 W libproot_loader: type=1400 audit(0.0:528): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.140  2572  2572 W store   : type=1400 audit(0.0:529): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libapt-pkg.so.7.0.0" dev="dm-32" ino=132068 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:02.843     0     0 I init    : Sending signal 9 to service 'idmap2d' (pid 513) process group...
+10-26 17:26:02.586   587  1738 W OverlayManager: service 'idmap' died
+10-26 17:26:02.853     0     0 I libprocessgroup: Successfully killed process cgroup uid 1000 pid 513 in 5ms
+10-26 17:26:02.855     0     0 I init    : Control message: Processed ctl.stop for 'idmap2d' from pid: 587 (system_server)
+10-26 17:26:02.858     0     0 I init    : Service 'idmap2d' (pid 513) received signal 9
+10-26 17:26:03.584  1011  1174 D DhcpClient: Received packet: 02:15:b2:00:00:00 OFFER, ip /10.0.2.16, mask /255.255.255.0, DNS servers: /10.0.2.3 , gateways [/10.0.2.2], lease time 86400, domain null
+10-26 17:26:03.584  1011  1174 D DhcpClient: Received packet: 02:15:b2:00:00:00 ACK: your new IP /10.0.2.16, netmask /255.255.255.0, gateways [/10.0.2.2] DNS servers: /10.0.2.3 , lease time 86400
+10-26 17:26:03.853   587   855 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=6, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3457134 ] accessLevel:3
+10-26 17:26:03.853   587   792 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=7, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3443929 ] accessLevel:3
+10-26 17:26:03.966   587   659 D OomAdjuster: Not killing cached processes
+10-26 17:26:04.348  2557  2557 W http    : type=1400 audit(0.0:605): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:04.615     0     0 W audit   : audit_lost=564 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:04.348  2557  2557 W http    : type=1400 audit(0.0:606): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:04.625     0     0 E audit   : rate limit exceeded
+10-26 17:26:04.348  2557  2557 W http    : type=1400 audit(0.0:607): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:04.348  2557  2557 W http    : type=1400 audit(0.0:608): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:04.348  2557  2557 W http    : type=1400 audit(0.0:609): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:04.529   849   849 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:26:05.894   250   263 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+10-26 17:26:06.517   459   466 W GpuWork : Failed to attach bpf program to power/gpu_work_period tracepoint [2(No such file or directory)]
+10-26 17:26:06.910   587   855 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=7, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3443929 ] accessLevel:3
+10-26 17:26:06.910   587   792 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=8, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3433582 ] accessLevel:3
+10-26 17:26:07.458   587  1738 D WifiNl80211Manager: Scan result ready event
+10-26 17:26:07.458   587  1738 D WifiNative: Scan result ready event
+10-26 17:26:09.646   587   855 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=8, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3433582 ] accessLevel:3
+10-26 17:26:09.646   587   792 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=9, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3430349 ] accessLevel:3
+10-26 17:26:12.654   587   855 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=9, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3430349 ] accessLevel:3
+10-26 17:26:12.654   587   792 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=10, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3427116 ] accessLevel:3
+10-26 17:26:15.537   849   849 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:26:17.773   587  1735 D ConnectivityService: requestNetwork for uid/pid:10104/2215 activeRequest: null callbackRequest: 44 [NetworkRequest [ REQUEST id=45, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10104 RequestorUid: 10104 RequestorPkg: com.android.remoteprovisioner UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+10-26 17:26:17.774   587   801 D ConnectivityService: NetReassign [45 : null → 102]
+10-26 17:26:17.774   587   794 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=45, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10104 RequestorUid: 10104 RequestorPkg: com.android.remoteprovisioner UnderlyingNetworks: Null] ]
+10-26 17:26:17.774   587   794 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=45, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10104 RequestorUid: 10104 RequestorPkg: com.android.remoteprovisioner UnderlyingNetworks: Null] ]
+10-26 17:26:17.774   587   794 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=45, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10104 RequestorUid: 10104 RequestorPkg: com.android.remoteprovisioner UnderlyingNetworks: Null] ]
+10-26 17:26:17.774   587   794 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=45, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10104 RequestorUid: 10104 RequestorPkg: com.android.remoteprovisioner UnderlyingNetworks: Null] ]
+10-26 17:26:17.777  2215  2579 I RemoteProvisioningService: Waking up; checking provisioning state.
+10-26 17:26:17.778  2215  2579 I RemoteProvisioner: Pool status 12, 12, 0, 12
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: Pool status.
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: Total: 12
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: Attested: 12
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: Unassigned: 12
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: Expiring: 0
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService.KeyPoolStats: Sufficient keys are available, no CSR needed.
+10-26 17:26:17.778  2215  2579 I RemoteProvisioningService: No provisioning needed.
+10-26 17:26:17.780  2215  2231 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=6ea3fd6b-647c-4783-952e-8a7212d3abbb, tags={ com.android.remoteprovisioner.PeriodicProvisioner } ]
+10-26 17:26:19.464  2557  2557 W http    : type=1400 audit(0.0:617): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:19.732     0     0 W audit   : audit_lost=571 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:19.741     0     0 E audit   : rate limit exceeded
+10-26 17:26:19.468  2557  2557 W http    : type=1400 audit(0.0:618): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:19.468  2557  2557 W http    : type=1400 audit(0.0:619): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:19.468  2557  2557 W http    : type=1400 audit(0.0:620): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:19.468  2557  2557 W http    : type=1400 audit(0.0:621): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:20.074   587   801 D ConnectivityService: handleLingerComplete for [101 CELLULAR]
+10-26 17:26:21.297   587   855 D NetworkStatsObservers: Unregistering RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=10, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3427116 ] accessLevel:3
+10-26 17:26:21.297   587   792 D NetworkStatsObservers: Registering observer for RequestInfo from pid/uid:587/1000(android) for DataUsageRequest [ requestId=11, networkTemplate=NetworkTemplate: matchRule=MOBILE, subscriberId=310260..., matchSubscriberIds=[310260...], matchWifiNetworkKeys=[], metered=YES, defaultNetwork=NO, subscriberIdMatchRule=EXACT_MATCH, thresholdInBytes=3423843 ] accessLevel:3
+10-26 17:26:23.473   849   849 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-26 17:26:24.948  2557  2557 W http    : type=1400 audit(0.0:623): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:25.215     0     0 W audit   : audit_lost=572 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:25.224     0     0 E audit   : rate limit exceeded
+10-26 17:26:24.948  2557  2557 W http    : type=1400 audit(0.0:624): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:24.948  2557  2557 W http    : type=1400 audit(0.0:625): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:24.948  2557  2557 W http    : type=1400 audit(0.0:626): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:24.948  2557  2557 W http    : type=1400 audit(0.0:627): avc: denied { ioctl } for path="/proc/2557/cgroup" dev="proc" ino=49858 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:27.316  2549  2549 W libproot.so: type=1400 audit(0.0:653): avc: granted { execute } for name="dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:27.316  2549  2549 W libproot.so: type=1400 audit(0.0:654): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:27.582     0     0 W audit   : audit_lost=597 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:27.586     0     0 E audit   : rate limit exceeded
+10-26 17:26:27.316  2583  2583 W libproot_loader: type=1400 audit(0.0:655): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:27.316  2583  2583 W libproot_loader: type=1400 audit(0.0:656): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:27.316  2583  2583 W dpkg    : type=1400 audit(0.0:657): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-32" ino=132116 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:27.348   587   794 E WifiHealthMonitor:  Hit PackageManager exception
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: android.content.pm.PackageManager$NameNotFoundException: No module info for package: com.android.wifi
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.app.ApplicationPackageManager.getModuleInfo(ApplicationPackageManager.java:1187)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.getWifiStackVersion(WifiHealthMonitor.java:366)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.extractCurrentSoftwareBuildInfo(WifiHealthMonitor.java:587)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootSwBuildCheck(WifiHealthMonitor.java:522)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootDetectionHandler(WifiHealthMonitor.java:513)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.-$$Nest$mpostBootDetectionHandler(Unknown Source:0)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor$2.onAlarm(WifiHealthMonitor.java:190)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.app.AlarmManager$ListenerWrapper.run(AlarmManager.java:347)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.os.Handler.handleCallback(Handler.java:942)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.os.Looper.loopOnce(Looper.java:201)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.os.Looper.loop(Looper.java:288)
+10-26 17:26:27.348   587   794 E WifiHealthMonitor: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+10-26 17:26:27.457   587  2576 D WifiNl80211Manager: Scan result ready event
+10-26 17:26:27.457   587  2576 D WifiNative: Scan result ready event
+10-26 17:26:28.278   250  2580 I keystore2: keystore2::watchdog: Watchdog thread idle -> terminating. Have a great day.
+10-26 17:26:28.588  2549  2549 W libproot.so: type=1400 audit(0.0:665): avc: granted { execute } for name="dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:28.588  2549  2549 W libproot.so: type=1400 audit(0.0:666): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:28.855     0     0 W audit   : audit_lost=604 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:28.858     0     0 E audit   : rate limit exceeded
+10-26 17:26:28.588  2584  2584 W libproot_loader: type=1400 audit(0.0:667): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:28.588  2584  2584 W libproot_loader: type=1400 audit(0.0:668): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:28.588  2584  2584 W dpkg    : type=1400 audit(0.0:669): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-32" ino=132116 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:28.631  2446  2474 I ProotSpike: PASS apt-update: exit=0 in 29769 ms
+10-26 17:26:28.631  2446  2474 I ProotSpike:   Get:1 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+10-26 17:26:28.631  2446  2474 I ProotSpike:   Get:2 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+10-26 17:26:28.631  2446  2474 I ProotSpike:   Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+10-26 17:26:28.631  2446  2474 I ProotSpike:   Get:4 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [606 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:5 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:6 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1480 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:7 http://security.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:8 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [205 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:9 http://security.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:10 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [495 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:11 http://security.ubuntu.com/ubuntu resolute-security/restricted Translation-en [99.6 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:12 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [20.0 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:13 http://security.ubuntu.com/ubuntu resolute-security/multiverse Translation-en [3728 B]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:14 http://archive.ubuntu.com/ubuntu resolute/main Translation-en [524 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:15 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [16.0 MB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:16 http://archive.ubuntu.com/ubuntu resolute/universe Translation-en [6329 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:17 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [152 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:18 http://archive.ubuntu.com/ubuntu resolute/restricted Translation-en [25.8 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:19 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [290 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:20 http://archive.ubuntu.com/ubuntu resolute/multiverse Translation-en [127 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:21 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [744 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:22 http://archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:23 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [334 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:24 http://archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:25 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [508 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:26 http://archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [101 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:27 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [21.0 kB]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:28 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse Translation-en [4168 B]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:29 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3136 B]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Get:30 http://archive.ubuntu.com/ubuntu resolute-backports/universe Translation-en [7988 B]
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Fetched 29.1 MB in 28s (1025 kB/s)
+10-26 17:26:28.632  2446  2474 I ProotSpike:   Reading package lists...
+10-26 17:26:28.647  2446  2464 D EGL_emulation: app_time_stats: avg=2524.61ms min=6.94ms max=29768.38ms count=12
+10-26 17:26:30.796  2594  2594 W http    : type=1400 audit(0.0:807): avc: denied { ioctl } for path="/proc/2594/cgroup" dev="proc" ino=51880 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:30.796  2594  2594 W http    : type=1400 audit(0.0:808): avc: denied { ioctl } for path="/proc/2594/cgroup" dev="proc" ino=51880 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:31.062     0     0 W audit   : audit_lost=741 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:31.067     0     0 E audit   : rate limit exceeded
+10-26 17:26:30.796  2594  2594 W http    : type=1400 audit(0.0:809): avc: denied { ioctl } for path="/proc/2594/cgroup" dev="proc" ino=51880 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:30.796  2594  2594 W http    : type=1400 audit(0.0:810): avc: denied { ioctl } for path="/proc/2594/cgroup" dev="proc" ino=51880 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:30.796  2594  2594 W http    : type=1400 audit(0.0:811): avc: denied { ioctl } for path="/proc/2594/cgroup" dev="proc" ino=51880 ioctlcmd=0x5401 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tclass=file permissive=0 app=dev.prootcode.app
+10-26 17:26:31.826     0     0 I init    : Untracked pid 2597 exited with status 0
+10-26 17:26:31.827     0     0 I init    : Untracked pid 2597 did not have an associated service entry and will not be reaped
+10-26 17:26:31.800  2585  2585 W libproot.so: type=1400 audit(0.0:1086): avc: granted { execute } for name="dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:31.800  2585  2585 W libproot.so: type=1400 audit(0.0:1087): avc: granted { execute } for name="ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:32.067     0     0 W audit   : audit_lost=1015 audit_rate_limit=5 audit_backlog_limit=64
+10-26 17:26:32.070     0     0 E audit   : rate limit exceeded
+10-26 17:26:31.800  2616  2616 W libproot_loader: type=1400 audit(0.0:1088): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/bin/dpkg" dev="dm-32" ino=131251 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:31.800  2616  2616 W libproot_loader: type=1400 audit(0.0:1089): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" dev="dm-32" ino=132062 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:31.800  2616  2616 W dpkg    : type=1400 audit(0.0:1090): avc: granted { execute } for path="/data/data/dev.prootcode.app/files/spike/ubuntu/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0" dev="dm-32" ino=132116 scontext=u:r:untrusted_app:s0:c126,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c126,c256,c512,c768 tclass=file app=dev.prootcode.app
+10-26 17:26:32.043  2446  2474 I ProotSpike: PASS apt-install: exit=0 in 3410 ms
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Reading package lists...
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Building dependency tree...
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Reading state information...
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Solving dependencies...
+10-26 17:26:32.043  2446  2474 I ProotSpike:   The following NEW packages will be installed:
+10-26 17:26:32.043  2446  2474 I ProotSpike:     hello
+10-26 17:26:32.043  2446  2474 I ProotSpike:   0 upgraded, 1 newly installed, 0 to remove and 31 not upgraded.
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Need to get 26.1 kB of archives.
+10-26 17:26:32.043  2446  2474 I ProotSpike:   After this operation, 106 kB of additional disk space will be used.
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 hello amd64 2.10-5build1 [26.1 kB]
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Fetched 26.1 kB in 2s (15.0 kB/s)
+10-26 17:26:32.043  2446  2474 I ProotSpike:   Selecting previously unselected package hello.
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 5%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 10%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 15%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 20%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 25%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 30%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 35%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 40%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 45%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 50%
+10-26 17:26:32.043  2446  2474 I ProotSpike:   (Reading database ... 55%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 60%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 65%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 70%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 75%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 80%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 85%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 90%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 95%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 100%
+10-26 17:26:32.044  2446  2474 I ProotSpike:   (Reading database ... 7722 files and directories currently installed.)
+10-26 17:26:32.044  2446  2474 I ProotSpike:   Preparing to unpack .../hello_2.10-5build1_amd64.deb ...
+10-26 17:26:32.044  2446  2474 I ProotSpike:   Unpacking hello (2.10-5build1) ...
+10-26 17:26:32.044  2446  2474 I ProotSpike:   Setting up hello (2.10-5build1) ...
+10-26 17:26:32.062  2446  2464 D EGL_emulation: app_time_stats: avg=3415.31ms min=3415.31ms max=3415.31ms count=1
+10-26 17:26:32.146  2446  2474 I ProotSpike: PASS installed-binary: exit=0 in 101 ms
+10-26 17:26:32.146  2446  2474 I ProotSpike:   Hello, world!
+10-26 17:26:32.151  2446  2474 I ProotSpike: report: /data/user/0/dev.prootcode.app/files/diagnostics/report.json
+10-26 17:26:34.791     0     0 I logd    : logdr: UID=2000 GID=2000 PID=2628 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns

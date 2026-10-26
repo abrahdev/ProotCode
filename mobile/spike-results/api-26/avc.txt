@@ -1,0 +1,260 @@
+I/auditd  (    1): type=1400 audit(0.0:4): avc: denied { module_request } for comm="init" kmod="fs-configfs" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  (    1): type=1400 audit(0.0:5): avc: denied { module_request } for comm="init" kmod="fs-cpuset" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1466): type=1400 audit(0.0:6): avc: denied { search } for comm="logcat" name="/" dev="tmpfs" ino=6818 scontext=u:r:logpersist:s0 tcontext=u:object_r:tmpfs:s0 tclass=dir permissive=0
+I/auditd  ( 1466): type=1400 audit(0.0:7): avc: denied { search } for comm="logcat" name="/" dev="tmpfs" ino=6818 scontext=u:r:logpersist:s0 tcontext=u:object_r:tmpfs:s0 tclass=dir permissive=0
+I/auditd  ( 1380): type=1400 audit(0.0:8): avc: denied { module_request } for comm="vold" kmod="crypto-cbc(aes)" scontext=u:r:vold:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1380): type=1400 audit(0.0:9): avc: denied { module_request } for comm="vold" kmod="crypto-cbc(aes)-all" scontext=u:r:vold:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1380): type=1400 audit(0.0:10): avc: denied { module_request } for comm="vold" kmod="crypto-cbc(aes-generic)" scontext=u:r:vold:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1380): type=1400 audit(0.0:11): avc: denied { module_request } for comm="vold" kmod="crypto-cbc(aes-generic)-all" scontext=u:r:vold:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1553): type=1400 audit(0.0:12): avc: denied { module_request } for comm="netd" kmod="netdev-dummy0" scontext=u:r:netd:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1553): type=1400 audit(0.0:13): avc: denied { module_request } for comm="netd" kmod="net-pf-16-proto-5" scontext=u:r:netd:s0 tcontext=u:r:kernel:s0 tclass=system permissive=0
+I/auditd  ( 1682): type=1400 audit(0.0:14): avc: denied { setgid } for comm="hostapd" capability=6 scontext=u:r:hostapd:s0 tcontext=u:r:hostapd:s0 tclass=capability permissive=0
+I/auditd  ( 1682): type=1400 audit(0.0:15): avc: denied { setgid } for comm="hostapd" capability=6 scontext=u:r:hostapd:s0 tcontext=u:r:hostapd:s0 tclass=capability permissive=0
+I/auditd  ( 1682): type=1400 audit(0.0:16): avc: denied { setuid } for comm="hostapd" capability=7 scontext=u:r:hostapd:s0 tcontext=u:r:hostapd:s0 tclass=capability permissive=0
+I/auditd  ( 1853): type=1400 audit(0.0:18): avc: granted { getattr } for comm=496E666C6174657254687265616420 path="/" dev="rootfs" ino=2 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:rootfs:s0 tclass=dir
+I/auditd  ( 1853): type=1400 audit(0.0:34): avc: granted { getattr } for comm=496E666C6174657254687265616420 path="/" dev="rootfs" ino=2 scontext=u:r:platform_app:s0:c512,c768 tcontext=u:object_r:rootfs:s0 tclass=dir
+I/auditd  ( 2324): type=1400 audit(0.0:35): avc: denied { write } for comm="d.process.media" name="property_service" dev="tmpfs" ino=7233 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0
+I/auditd  ( 3037): type=1400 audit(0.0:36): avc: granted { use } for comm="run-as" path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:36): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:37): avc: granted { use } for comm="run-as" path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:38): avc: granted { use } for comm="run-as" path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:37): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:38): avc: granted { use } for path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:39): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:39): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:40): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:41): avc: granted { use } for comm="run-as" path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:40): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:41): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:42): avc: granted { use } for path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:42): avc: granted { use } for comm="run-as" path="socket:[22203]" dev="sockfs" ino=22203 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:43): avc: granted { use } for comm="run-as" path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3037): type=1400 audit(0.0:43): avc: granted { use } for path="socket:[22205]" dev="sockfs" ino=22205 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3037): type=1400 audit(0.0:44): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3037): type=1400 audit(0.0:44): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3037): type=1400 audit(0.0:45): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3037): type=1400 audit(0.0:45): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3037): type=1400 audit(0.0:46): avc: granted { getattr } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3037): type=1400 audit(0.0:46): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3037): type=1400 audit(0.0:47): avc: granted { getattr } for comm="run-as" path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3037): type=1400 audit(0.0:47): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3037): type=1400 audit(0.0:48): avc: granted { read } for comm="run-as" name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3037): type=1400 audit(0.0:48): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3011): type=1400 audit(0.0:49): avc: denied { link } for comm="DefaultDispatch" name="perl" dev="dm-0" ino=99441 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+W/DefaultDispatch( 3011): type=1400 audit(0.0:49): avc: denied { link } for name="perl" dev="dm-0" ino=99441 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3011): type=1400 audit(0.0:50): avc: denied { link } for comm="DefaultDispatch" name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+W/DefaultDispatch( 3011): type=1400 audit(0.0:50): avc: denied { link } for name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+W/DefaultDispatch( 3011): type=1400 audit(0.0:84): avc: denied { link } for name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3011): type=1400 audit(0.0:84): avc: denied { link } for comm="DefaultDispatch" name="coreutils" dev="dm-0" ino=99212 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:164): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:164): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:167): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:167): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:168): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:168): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:169): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:170): avc: denied { setattr } for comm="libproot.so" name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:169): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:170): avc: denied { setattr } for name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:171): avc: denied { setattr } for comm="libproot.so" name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:172): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:171): avc: denied { setattr } for name="maps" dev="proc" ino=23993 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:172): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:175): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:176): avc: denied { setattr } for comm="libproot.so" name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:175): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:176): avc: denied { setattr } for name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:177): avc: denied { setattr } for comm="libproot.so" name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:178): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:177): avc: denied { setattr } for name="auxv" dev="proc" ino=23994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=file permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:178): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3059): type=1400 audit(0.0:179): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3059): type=1400 audit(0.0:179): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3068): type=1400 audit(0.0:180): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3068): type=1400 audit(0.0:180): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3068): type=1400 audit(0.0:183): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3068): type=1400 audit(0.0:183): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:251): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:251): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:252): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:253): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:252): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:253): avc: denied { setattr } for name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:254): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:255): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:254): avc: denied { setattr } for name="fd" dev="proc" ino=24091 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:255): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:258): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:259): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:258): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:259): avc: denied { setattr } for name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:260): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:261): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:260): avc: denied { setattr } for name="fd" dev="proc" ino=24820 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:261): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:264): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:265): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:264): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:265): avc: denied { setattr } for name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:266): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:267): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:266): avc: denied { setattr } for name="fd" dev="proc" ino=24155 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:267): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:270): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:271): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:270): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:271): avc: denied { setattr } for name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:272): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:273): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:272): avc: denied { setattr } for name="fd" dev="proc" ino=24160 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:273): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3079): type=1400 audit(0.0:274): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3079): type=1400 audit(0.0:274): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3107): type=1400 audit(0.0:275): avc: granted { use } for comm="run-as" path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:275): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:276): avc: granted { use } for comm="run-as" path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:277): avc: granted { use } for comm="run-as" path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:276): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:277): avc: granted { use } for path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:278): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:278): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:279): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:280): avc: granted { use } for comm="run-as" path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:279): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:280): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:281): avc: granted { use } for comm="run-as" path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:282): avc: granted { use } for comm="run-as" path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:281): avc: granted { use } for path="socket:[24172]" dev="sockfs" ino=24172 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3107): type=1400 audit(0.0:282): avc: granted { use } for path="socket:[24174]" dev="sockfs" ino=24174 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3107): type=1400 audit(0.0:283): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3107): type=1400 audit(0.0:283): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3107): type=1400 audit(0.0:284): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3107): type=1400 audit(0.0:284): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3107): type=1400 audit(0.0:285): avc: granted { getattr } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3107): type=1400 audit(0.0:285): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3107): type=1400 audit(0.0:286): avc: granted { getattr } for comm="run-as" path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3107): type=1400 audit(0.0:286): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3107): type=1400 audit(0.0:287): avc: granted { read } for comm="run-as" name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3107): type=1400 audit(0.0:287): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3111): type=1400 audit(0.0:288): avc: granted { use } for comm="run-as" path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:288): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:289): avc: granted { use } for comm="run-as" path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:290): avc: granted { use } for comm="run-as" path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:289): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:290): avc: granted { use } for path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:291): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:291): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:292): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:293): avc: granted { use } for comm="run-as" path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:292): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:293): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:294): avc: granted { use } for comm="run-as" path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:295): avc: granted { use } for comm="run-as" path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:294): avc: granted { use } for path="socket:[22467]" dev="sockfs" ino=22467 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3111): type=1400 audit(0.0:295): avc: granted { use } for path="socket:[22469]" dev="sockfs" ino=22469 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3111): type=1400 audit(0.0:296): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3111): type=1400 audit(0.0:296): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3111): type=1400 audit(0.0:297): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3111): type=1400 audit(0.0:297): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3111): type=1400 audit(0.0:298): avc: granted { getattr } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3111): type=1400 audit(0.0:298): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3111): type=1400 audit(0.0:299): avc: granted { getattr } for comm="run-as" path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3111): type=1400 audit(0.0:299): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3111): type=1400 audit(0.0:300): avc: granted { read } for comm="run-as" name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3111): type=1400 audit(0.0:300): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3115): type=1400 audit(0.0:301): avc: granted { use } for comm="run-as" path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:301): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:302): avc: granted { use } for comm="run-as" path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:303): avc: granted { use } for comm="run-as" path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:302): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:303): avc: granted { use } for path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:304): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:304): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:305): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:306): avc: granted { use } for comm="run-as" path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:305): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:306): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:307): avc: granted { use } for comm="run-as" path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:308): avc: granted { use } for comm="run-as" path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:307): avc: granted { use } for path="socket:[22476]" dev="sockfs" ino=22476 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3115): type=1400 audit(0.0:308): avc: granted { use } for path="socket:[22478]" dev="sockfs" ino=22478 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3115): type=1400 audit(0.0:309): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3115): type=1400 audit(0.0:309): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3115): type=1400 audit(0.0:310): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3115): type=1400 audit(0.0:310): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3115): type=1400 audit(0.0:311): avc: granted { getattr } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3115): type=1400 audit(0.0:311): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3115): type=1400 audit(0.0:312): avc: granted { getattr } for comm="run-as" path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3115): type=1400 audit(0.0:312): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3115): type=1400 audit(0.0:313): avc: granted { read } for comm="run-as" name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3115): type=1400 audit(0.0:313): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3123): type=1400 audit(0.0:314): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:314): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:315): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:316): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:315): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:316): avc: denied { setattr } for name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:317): avc: denied { setattr } for comm="libproot.so" name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:318): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:317): avc: denied { setattr } for name="fd" dev="proc" ino=24205 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:untrusted_app:s0:c512,c768 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:318): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:319): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:320): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:319): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:320): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:323): avc: denied { setattr } for comm="libproot.so" name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:324): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:323): avc: denied { setattr } for name="/" dev="sysfs" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:324): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:325): avc: denied { setattr } for comm="libproot.so" name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:325): avc: denied { setattr } for name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:326): avc: denied { setattr } for comm="libproot.so" name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+I/auditd  ( 3123): type=1400 audit(0.0:327): avc: denied { setattr } for comm="libproot.so" name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:326): avc: denied { setattr } for name="cpuinfo" dev="proc" ino=4026531994 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc_cpuinfo:s0 tclass=file permissive=0
+W/libproot.so( 3123): type=1400 audit(0.0:327): avc: denied { setattr } for name="/" dev="proc" ino=1 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=dir permissive=0
+I/auditd  ( 3135): type=1400 audit(0.0:328): avc: granted { use } for comm="run-as" path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:328): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:329): avc: granted { use } for comm="run-as" path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:330): avc: granted { use } for comm="run-as" path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:329): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:330): avc: granted { use } for path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:331): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:331): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:332): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:333): avc: granted { use } for comm="run-as" path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:332): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:333): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:334): avc: granted { use } for comm="run-as" path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:335): avc: granted { use } for comm="run-as" path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:334): avc: granted { use } for path="socket:[22505]" dev="sockfs" ino=22505 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3135): type=1400 audit(0.0:335): avc: granted { use } for path="socket:[22507]" dev="sockfs" ino=22507 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3135): type=1400 audit(0.0:336): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3135): type=1400 audit(0.0:336): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3135): type=1400 audit(0.0:337): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3135): type=1400 audit(0.0:337): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3135): type=1400 audit(0.0:338): avc: granted { getattr } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3135): type=1400 audit(0.0:338): avc: granted { getattr } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3135): type=1400 audit(0.0:339): avc: granted { getattr } for comm="run-as" path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3135): type=1400 audit(0.0:339): avc: granted { getattr } for path="/data/user/0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3135): type=1400 audit(0.0:340): avc: granted { read } for comm="run-as" name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+W/run-as  ( 3135): type=1400 audit(0.0:340): avc: granted { read } for name="0" dev="dm-0" ino=232322 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=lnk_file
+I/auditd  ( 3137): type=1400 audit(0.0:341): avc: granted { use } for comm="run-as" path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:341): avc: granted { use } for path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:342): avc: granted { use } for comm="run-as" path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:343): avc: granted { use } for comm="run-as" path="socket:[24237]" dev="sockfs" ino=24237 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:342): avc: granted { use } for path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:343): avc: granted { use } for path="socket:[24237]" dev="sockfs" ino=24237 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:344): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:344): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:345): avc: granted { use } for comm="run-as" path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:346): avc: granted { use } for comm="run-as" path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:345): avc: granted { use } for path="/dev/goldfish_pipe" dev="tmpfs" ino=70 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:346): avc: granted { use } for path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:347): avc: granted { use } for comm="run-as" path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:348): avc: granted { use } for comm="run-as" path="socket:[24237]" dev="sockfs" ino=24237 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:347): avc: granted { use } for path="socket:[24235]" dev="sockfs" ino=24235 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+W/run-as  ( 3137): type=1400 audit(0.0:348): avc: granted { use } for path="socket:[24237]" dev="sockfs" ino=24237 scontext=u:r:runas:s0 tcontext=u:r:adbd:s0 tclass=fd
+I/auditd  ( 3137): type=1400 audit(0.0:349): avc: granted { read } for comm="run-as" name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3137): type=1400 audit(0.0:349): avc: granted { read } for name="packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+I/auditd  ( 3137): type=1400 audit(0.0:350): avc: granted { read } for comm="run-as" path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file
+W/run-as  ( 3137): type=1400 audit(0.0:350): avc: granted { read } for path="/data/system/packages.list" dev="dm-0" ino=225425 scontext=u:r:runas:s0 tcontext=u:object_r:system_data_file:s0 tclass=file

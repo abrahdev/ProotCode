@@ -35,6 +35,9 @@ android {
         targetSdk = 37
         versionCode = versionCodeValue
         versionName = appVersion
+        ndk {
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
     }
 
     signingConfigs {
@@ -74,12 +77,24 @@ android {
         compose = true
     }
 
+    sourceSets.getByName("main") {
+        jniLibs.srcDir(rootProject.file("spike-artifacts/jniLibs"))
+        assets.srcDir(rootProject.file("spike-artifacts/assets"))
+    }
+
+    androidResources {
+        noCompress += "gz"
+    }
+
     lint {
         abortOnError = true
         checkReleaseBuilds = true
     }
 
     packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -105,6 +120,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.commons.compress)
 
     testImplementation(libs.junit)
 
