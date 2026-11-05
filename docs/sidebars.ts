@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
     'intro',
     'installation',
     'architecture',
+    'adr',
     'roadmap',
     'contributing',
   ],

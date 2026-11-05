@@ -182,6 +182,27 @@ flowchart TD
     S --> T([Session active])
 ```
 
+## Distributions
+
+Two products are built from the same code:
+
+- `standard` downloads the rootfs and code-server from the catalog on first use.
+- `-Raccoon` bundles Ubuntu 26.04 LTS and code-server for its ABI and works offline.
+
+Raccoon flavors carry only their own architecture because assets are not split by ABI. The
+build details and trade-offs are in [ADR 0005](/adr).
+
+## Environment lifecycle
+
+1. The wizard loads the catalog (remote, cached or bundled).
+2. The rootfs and optional code-server are downloaded or read from the bundled assets, always
+   verified by SHA-256.
+3. The rootfs is extracted to `filesDir/environments/<id>/rootfs`; code-server goes to
+   `opt/code-server`.
+4. `resolv.conf` is written from the active network and `environments.json` records the
+   environment, its presets and its size.
+5. The projects bridge is verified by writing a probe file through proot.
+
 ## Storage model
 
 | Location | Purpose |
