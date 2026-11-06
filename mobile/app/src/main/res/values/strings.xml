@@ -6,6 +6,8 @@
     <string name="environments_details">%1$s · %2$s · code-server %3$s · %4$s</string>
     <string name="environments_new">New environment</string>
     <string name="environments_delete">Delete</string>
+    <string name="environments_terminal">Open terminal</string>
+    <string name="terminal_back">Back</string>
     <string name="catalog_refresh">Refresh catalog</string>
     <string name="wizard_title">Create environment</string>
     <string name="wizard_name">Name</string>

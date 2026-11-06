@@ -22,3 +22,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "ProotCode"
 include(":app")
+
+// Termux terminal modules (vendored)
+include(":terminal-emulator")
+project(":terminal-emulator").projectDir = file("lib/terminal-emulator")
+
+include(":terminal-view")
+project(":terminal-view").projectDir = file("lib/terminal-view")

@@ -49,6 +49,7 @@ import dev.prootcode.app.data.environment.InstallRequest
 import dev.prootcode.app.data.environment.InstallStage
 import dev.prootcode.app.data.environment.Presets
 import dev.prootcode.app.runtime.network.DnsResolver
+import dev.prootcode.app.ui.terminal.TerminalScreen
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -74,6 +75,13 @@ fun AppScreen(modifier: Modifier = Modifier) {
     var messageArg by remember { mutableStateOf<String?>(null) }
     var installJob by remember { mutableStateOf<Job?>(null) }
     var showLicenses by remember { mutableStateOf(false) }
+    var terminalEnvironment by remember { mutableStateOf<Environment?>(null) }
+
+    val terminal = terminalEnvironment
+    if (terminal != null) {
+        TerminalScreen(environment = terminal, onBack = { terminalEnvironment = null })
+        return
+    }
 
     val arch =
         remember {
@@ -320,6 +328,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
                     codeServers = catalog?.codeServerFor(arch).orEmpty(),
                     onChangeCodeServer = { artifact -> changeCodeServer(environment, artifact) },
                     onTestBridge = { testBridge(environment) },
+                    onOpenTerminal = { terminalEnvironment = environment },
                     onDelete = { delete(environment) },
                 )
             }
@@ -538,6 +547,7 @@ private fun EnvironmentCard(
     codeServers: List<CodeServerArtifact>,
     onChangeCodeServer: (CodeServerArtifact) -> Unit,
     onTestBridge: () -> Unit,
+    onOpenTerminal: () -> Unit,
     onDelete: () -> Unit,
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
@@ -564,6 +574,9 @@ private fun EnvironmentCard(
                 )
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                TextButton(onClick = onOpenTerminal) {
+                    Text(stringResource(R.string.environments_terminal))
+                }
                 TextButton(onClick = onTestBridge) {
                     Text(stringResource(R.string.bridge_test))
                 }
