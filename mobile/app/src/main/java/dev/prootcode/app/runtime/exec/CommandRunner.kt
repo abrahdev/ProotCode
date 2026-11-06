@@ -14,6 +14,7 @@ class CommandRunner {
         command: List<String>,
         environment: Map<String, String>,
         timeoutSeconds: Long,
+        onLine: ((String) -> Unit)? = null,
     ): ExecResult {
         val startedAt = System.currentTimeMillis()
         val process =
@@ -26,6 +27,7 @@ class CommandRunner {
             Thread {
                 process.inputStream.bufferedReader().forEachLine { line ->
                     synchronized(output) { output.appendLine(line) }
+                    onLine?.invoke(line)
                 }
             }
         reader.isDaemon = true
