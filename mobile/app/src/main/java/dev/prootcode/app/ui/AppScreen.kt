@@ -1,5 +1,6 @@
 package dev.prootcode.app.ui
 
+import android.content.Intent
 import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,9 @@ import dev.prootcode.app.data.environment.InstallRequest
 import dev.prootcode.app.data.environment.InstallStage
 import dev.prootcode.app.data.environment.Presets
 import dev.prootcode.app.runtime.network.DnsResolver
+import dev.prootcode.app.ui.terminal.TerminalActivity
+import dev.prootcode.app.ui.terminal.TerminalScreen
+import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -74,6 +78,13 @@ fun AppScreen(modifier: Modifier = Modifier) {
     var messageArg by remember { mutableStateOf<String?>(null) }
     var installJob by remember { mutableStateOf<Job?>(null) }
     var showLicenses by remember { mutableStateOf(false) }
+    var terminalEnvironment by remember { mutableStateOf<Environment?>(null) }
+
+    val terminal = terminalEnvironment
+    if (terminal != null) {
+        TerminalScreen(environment = terminal, onBack = { terminalEnvironment = null })
+        return
+    }
 
     val arch =
         remember {
@@ -252,6 +263,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
 
     fun delete(environment: Environment) {
         scope.launch(Dispatchers.IO) {
+            TerminalSessionManager.closeAll(context, environment.id)
             installer.delete(environment.id)
             withContext(Dispatchers.Main) { refreshEnvironments() }
         }
@@ -320,6 +332,14 @@ fun AppScreen(modifier: Modifier = Modifier) {
                     codeServers = catalog?.codeServerFor(arch).orEmpty(),
                     onChangeCodeServer = { artifact -> changeCodeServer(environment, artifact) },
                     onTestBridge = { testBridge(environment) },
+                    onOpenTerminal = { terminalEnvironment = environment },
+                    onOpenTerminalWindow = {
+                        val intent =
+                            Intent(context, TerminalActivity::class.java)
+                                .putExtra(TerminalActivity.EXTRA_ENVIRONMENT_ID, environment.id)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                        context.startActivity(intent)
+                    },
                     onDelete = { delete(environment) },
                 )
             }
@@ -538,6 +558,8 @@ private fun EnvironmentCard(
     codeServers: List<CodeServerArtifact>,
     onChangeCodeServer: (CodeServerArtifact) -> Unit,
     onTestBridge: () -> Unit,
+    onOpenTerminal: () -> Unit,
+    onOpenTerminalWindow: () -> Unit,
     onDelete: () -> Unit,
 ) {
     Card(modifier = Modifier.fillMaxWidth()) {
@@ -564,6 +586,12 @@ private fun EnvironmentCard(
                 )
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                TextButton(onClick = onOpenTerminal) {
+                    Text(stringResource(R.string.environments_terminal))
+                }
+                TextButton(onClick = onOpenTerminalWindow) {
+                    Text(stringResource(R.string.terminal_window))
+                }
                 TextButton(onClick = onTestBridge) {
                     Text(stringResource(R.string.bridge_test))
                 }

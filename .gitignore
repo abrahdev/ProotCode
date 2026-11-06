@@ -37,3 +37,7 @@ docs/.env*
 # Bundled artifacts
 mobile/.artifacts-cache/
 mobile/app/src/raccoon*/assets/bundled/
+
+# Local tooling
+.vscode/
+mobile/spike-artifacts/

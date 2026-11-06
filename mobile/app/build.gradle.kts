@@ -157,6 +157,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.commons.compress)
+    implementation(project(":terminal-view"))
 
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.org.json)

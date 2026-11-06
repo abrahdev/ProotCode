@@ -29,3 +29,9 @@ code-server 4.143.1
 
 AndroidX, Jetpack Compose and Kotlin
   License: Apache License 2.0
+
+Termux terminal-emulator and terminal-view
+  https://github.com/termux/termux-app
+  License: GNU General Public License v3.0
+  Vendored in mobile/lib/terminal-emulator and mobile/lib/terminal-view.
+  Modified only to build with the project SDK and NDK versions.
