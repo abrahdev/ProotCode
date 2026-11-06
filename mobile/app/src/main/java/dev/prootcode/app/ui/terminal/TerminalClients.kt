@@ -3,6 +3,9 @@ package dev.prootcode.app.ui.terminal
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.termux.terminal.TerminalSession
 import com.termux.terminal.TerminalSessionClient
 import com.termux.view.TerminalViewClient
@@ -91,6 +94,9 @@ class ProotSessionClient(
 class ProotViewClient(
     private val onKeyboardRequested: () -> Unit,
 ) : TerminalViewClient {
+    var ctrlActive by mutableStateOf(false)
+    var altActive by mutableStateOf(false)
+
     override fun onScale(scale: Float): Float = 1f
 
     override fun onSingleTapUp(e: MotionEvent) = onKeyboardRequested()
@@ -118,9 +124,9 @@ class ProotViewClient(
 
     override fun onLongPress(event: MotionEvent): Boolean = false
 
-    override fun readControlKey(): Boolean = false
+    override fun readControlKey(): Boolean = ctrlActive
 
-    override fun readAltKey(): Boolean = false
+    override fun readAltKey(): Boolean = altActive
 
     override fun readShiftKey(): Boolean = false
 
