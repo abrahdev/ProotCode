@@ -49,6 +49,9 @@
     <string name="code_server_changed">code-server %1$s installed</string>
     <string name="licenses_title">Licenses</string>
     <string name="licenses_close">Close</string>
+    <string name="presets_install">Install presets</string>
+    <string name="presets_title">Installing presets</string>
+    <string name="presets_close">Close</string>
     <string name="preset_essentials">Essentials (git, curl, build tools)</string>
     <string name="preset_editors">Editors (OpenCode, Neovim)</string>
     <string name="preset_languages">Languages (Python, Node, Go, Rust)</string>
