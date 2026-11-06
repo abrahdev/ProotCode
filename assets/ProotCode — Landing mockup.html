@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ProotCode — Linux in your pocket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#F52D49;--red2:#9E1226;--paper:#F2F0EB;--ink:#111114;--line:#111114;
+--display:"Archivo Black","Arial Black",Impact,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111114;--ink:#F2F0EB;--line:#F2F0EB}}
+:root[data-theme="dark"]{--paper:#111114;--ink:#F2F0EB;--line:#F2F0EB}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+.b{border:3px solid var(--line)}
+.lbl{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:1360px;margin:0 auto}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:3px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);z-index:5}
+.logo{display:flex;align-items:center;gap:12px;font:22px var(--display);text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:36px;height:36px}
+nav ul{display:flex;gap:28px;list-style:none;padding:0}
+nav ul a{text-decoration:none}nav ul a:hover{background:var(--red);color:#fff}
+.btn{display:inline-block;padding:14px 22px;background:var(--red);color:#fff;text-decoration:none;font:700 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;border:3px solid var(--line);box-shadow:6px 6px 0 var(--line);transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--line)}
+.btn.alt{background:var(--paper);color:var(--ink)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;border-bottom:3px solid var(--line)}
+.hl{padding:56px 24px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-right:3px solid var(--line)}
+h1{font:clamp(64px,10.5vw,168px)/.84 var(--display);letter-spacing:-.045em;text-transform:uppercase}
+h1 span{color:var(--red)}h1 i{font-style:normal;-webkit-text-stroke:3px var(--ink);color:transparent}
+.sub{max-width:520px;font-size:16px}
+.cta{display:flex;gap:20px;flex-wrap:wrap}
+.hr{background:linear-gradient(180deg,var(--red),var(--red2));position:relative;min-height:640px;overflow:hidden;color:#fff}
+.hr .big{position:absolute;left:-12%;top:-6%;width:130%;opacity:.95}
+.hr .tag{position:absolute;left:20px;bottom:18px;color:#fff}.hr .tag2{position:absolute;right:20px;top:18px;color:#fff}
+.phone{position:absolute;right:8%;bottom:-70px;width:min(330px,62%);aspect-ratio:9/18;background:#111114;border:10px solid #000;border-radius:38px;transform:rotate(-9deg);box-shadow:14px 14px 0 rgba(0,0,0,.45);padding:22px 14px;color:#e8e6e1;font-size:11px;overflow:hidden}
+.phone .bar{display:flex;gap:6px;margin-bottom:14px;color:#8a8a92}.phone .bar b{background:var(--red);color:#fff;padding:1px 8px}
+.phone p{white-space:pre-wrap;word-break:break-all}.g{color:#4ade80}.r{color:#F52D49}.d{color:#8a8a92}
+.cur{display:inline-block;width:8px;height:13px;background:#fff;vertical-align:-2px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+/* ticker */
+.tick{border-bottom:3px solid var(--line);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:12px 0}
+.tick div{display:inline-block;animation:mq 28s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+.tick span{margin:0 26px}.tick em{color:var(--red);font-style:normal}
+/* sections */
+.sec{padding:72px 24px 24px;border-bottom:3px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+h2{font:clamp(40px,6.5vw,96px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.04em}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--line);border-left:3px solid var(--line);margin:0 -24px 0 0}
+.cell{border-right:3px solid var(--line);border-bottom:3px solid var(--line);padding:20px;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:background .12s,color .12s}
+.cell:hover{background:var(--red);color:#fff}
+.cell .n{font:44px/1 var(--display);color:var(--red)}.cell:hover .n{color:#fff}
+.cell h3{font:19px/1.1 var(--display);text-transform:uppercase;margin-bottom:8px}.cell p{font-size:12.5px}
+.cell.hot{background:var(--ink);color:var(--paper)}
+/* steps */
+.two{display:grid;grid-template-columns:1fr 1fr;border-bottom:3px solid var(--line)}
+.two>div{padding:56px 24px}.two>div:first-child{border-right:3px solid var(--line)}
+.step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 0;border-top:3px solid var(--line)}
+.step b{font:34px/1 var(--display);color:var(--red)}.step h3{font:18px var(--display);text-transform:uppercase}
+.term{background:#111114;color:#e8e6e1;padding:22px;font-size:13px;border:3px solid var(--line);box-shadow:10px 10px 0 var(--red);white-space:pre-wrap;overflow-x:auto}
+/* specs */
+table{width:100%;border-collapse:collapse;margin-bottom:56px}
+td{padding:16px 14px;border-top:3px solid var(--line);vertical-align:top}td:first-child{width:32%;color:var(--red);font-weight:700}tr:last-child td{border-bottom:3px solid var(--line)}
+/* cta */
+.final{background:var(--red);color:#fff;padding:80px 24px 56px;border-bottom:3px solid var(--line);position:relative;overflow:hidden}
+.final h2{font-size:clamp(56px,12vw,200px);line-height:.82}
+.final .btn{background:#fff;color:#111114;border-color:#111114;box-shadow:6px 6px 0 #111114;margin-top:40px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:22px 24px}
+@media(max-width:900px){.hero,.two{grid-template-columns:1fr}.hl,.two>div:first-child{border-right:0;border-bottom:3px solid var(--line)}.grid{grid-template-columns:repeat(2,1fr);margin-right:0}nav ul{display:none}.hr{min-height:560px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="gl" viewBox="0 0 1024 1024"><polygon fill="currentColor" transform="translate(30,0)" points="637,200 787,200 601,490 451,490"/><polygon fill="currentColor" transform="translate(-30,0)" points="237,824 387,824 573,534 423,534"/></symbol>
+<symbol id="ic" viewBox="0 0 1024 1024"><rect width="1024" height="1024" rx="230" fill="#F52D49"/><use href="#gl" color="#fff"/></symbol>
+</defs></svg>
+
+<nav>
+  <a class="logo" href="#"><svg><use href="#ic"/></svg>PROOTCODE</a>
+  <ul class="lbl"><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#specs">Specs</a></li><li><a href="https://github.com/abrahdev/ProotCode">GitHub ↗</a></li></ul>
+  <a class="btn" href="https://github.com/abrahdev/ProotCode/releases">Download APK ↓</a>
+</nav>
+
+<header class="hero wrap" style="max-width:none">
+  <div class="hl">
+    <div class="lbl">Open-source · Kotlin · Android · v26.x</div>
+    <h1>Linux<br>in your<br><span>pocket</span><i>.</i></h1>
+    <div>
+      <p class="sub" style="margin-bottom:28px">Rootless Debian and Ubuntu on Android through proot. Multiple terminals, apt, and a mobile-tuned Code Server. No account, no telemetry, no tracking.</p>
+      <div class="cta"><a class="btn" href="https://github.com/abrahdev/ProotCode/releases">Get the APK ↓</a><a class="btn alt" href="https://abrahdev.github.io/ProotCode/">Read the docs →</a></div>
+    </div>
+  </div>
+  <div class="hr">
+    <svg class="big" viewBox="0 0 1024 1024" style="color:rgba(255,255,255,.16)"><use href="#gl"/></svg>
+    <div class="lbl tag2">/ ROOT · NOT REQUIRED</div>
+    <div class="phone">
+      <div class="bar"><b>ubuntu</b><span>debian</span><span>+</span></div>
+      <p><span class="g">dev@proot</span>:<span class="r">~</span>$ apt install git build-essential
+<span class="d">Reading package lists... Done</span>
+<span class="d">Setting up git ...</span>
+<span class="g">dev@proot</span>:<span class="r">~</span>$ code-server --bind 0.0.0.0
+<span class="d">HTTP server listening on :8080</span>
+<span class="g">dev@proot</span>:<span class="r">~</span>$ <span class="cur"></span></p>
+    </div>
+    <div class="lbl tag">Fig. 01 — Terminal session, no root</div>
+  </div>
+</header>
+
+<div class="tick lbl"><div>
+  <span>Rootless</span><em>/</em><span>No account</span><em>/</em><span>No telemetry</span><em>/</em><span>Debian + Ubuntu</span><em>/</em><span>AGPL-3.0</span><em>/</em><span>Kotlin + Compose</span><em>/</em>
+  <span>Rootless</span><em>/</em><span>No account</span><em>/</em><span>No telemetry</span><em>/</em><span>Debian + Ubuntu</span><em>/</em><span>AGPL-3.0</span><em>/</em><span>Kotlin + Compose</span><em>/</em>
+</div></div>
+
+<section class="sec wrap" id="features" style="max-width:none">
+  <div class="sh"><h2>Thirteen<br>blocks.</h2><p class="lbl" style="max-width:300px">Roadmap features. The project is at initial scaffold; runtime is being built in the open.</p></div>
+  <div class="grid">
+    <div class="cell hot"><span class="n">01</span><div><h3>Distro selector</h3><p>Pick Debian or Ubuntu for each new environment.</p></div></div>
+    <div class="cell"><span class="n">02</span><div><h3>Rootless Linux</h3><p>proot-based install. No root access, ever.</p></div></div>
+    <div class="cell"><span class="n">03</span><div><h3>Non-root user</h3><p>A regular user with a persistent home directory.</p></div></div>
+    <div class="cell"><span class="n">04</span><div><h3>Storage bridge</h3><p>Bind Android folders like Downloads into your Linux home.</p></div></div>
+    <div class="cell"><span class="n">05</span><div><h3>Package manager</h3><p>Run apt commands straight from the app interface.</p></div></div>
+    <div class="cell"><span class="n">06</span><div><h3>Essential presets</h3><p>Git, build-essential, curl and OpenCode pre-installed.</p></div></div>
+    <div class="cell"><span class="n">07</span><div><h3>Tool selection</h3><p>Choose dev tools by category before installing.</p></div></div>
+    <div class="cell hot"><span class="n">08</span><div><h3>Multi terminals</h3><p>Several sessions open on the same distribution.</p></div></div>
+    <div class="cell hot"><span class="n">09</span><div><h3>Code Server</h3><p>VS Code in the browser, on your local network, with mobile CSS.</p></div></div>
+    <div class="cell"><span class="n">10</span><div><h3>Mouse support</h3><p>Pointer integration for proot and the Linux environment.</p></div></div>
+    <div class="cell"><span class="n">11</span><div><h3>Resource controls</h3><p>Monitor and limit battery and CPU usage.</p></div></div>
+    <div class="cell"><span class="n">12</span><div><h3>Install progress</h3><p>Follow every step of the distribution setup.</p></div></div>
+    <div class="cell"><span class="n">13</span><div><h3>Backups</h3><p>Export and restore projects and configuration.</p></div></div>
+    <div class="cell" style="grid-column:span 3;background:var(--red);color:#fff;flex-direction:row;align-items:flex-end"><svg viewBox="0 0 1024 1024" style="width:150px;height:150px;flex:none"><use href="#gl"/></svg><h3 style="font-size:clamp(24px,3.4vw,48px)">Everything runs on your device.</h3></div>
+  </div>
+</section>
+
+<section class="two" id="how">
+  <div>
+    <h2 style="margin-bottom:32px">Three<br>steps.</h2>
+    <div class="step"><b>1</b><div><h3>Install</h3><p>Grab the APK from GitHub Releases, or add the repo to Obtainium for updates.</p></div></div>
+    <div class="step"><b>2</b><div><h3>Deploy</h3><p>Choose Debian or Ubuntu, pick your tools, watch the setup progress.</p></div></div>
+    <div class="step"><b>3</b><div><h3>Build</h3><p>Open terminals, or launch Code Server and code from the browser.</p></div></div>
+  </div>
+  <div style="display:flex;align-items:center;background:var(--paper)">
+    <div class="term" style="width:100%"><span class="d"># build it from source</span>
+<span class="g">$</span> git clone https://github.com/abrahdev/ProotCode.git
+<span class="g">$</span> cd ProotCode/mobile
+<span class="g">$</span> ./gradlew assembleDebug
+
+<span class="d"># → app/build/outputs/apk/debug/app-debug.apk</span></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="specs" style="max-width:none;padding-bottom:0">
+  <div class="sh"><h2>Specs.</h2></div>
+  <table>
+    <tr><td>Platform</td><td>Android, arm64-v8a and x86_64</td></tr>
+    <tr><td>Distributions</td><td>Debian · Ubuntu</td></tr>
+    <tr><td>Runtime</td><td>proot, no root required</td></tr>
+    <tr><td>Stack</td><td>Kotlin + Jetpack Compose</td></tr>
+    <tr><td>Privacy</td><td>No account · no telemetry · no tracking</td></tr>
+    <tr><td>License</td><td>GNU AGPL v3</td></tr>
+    <tr><td>Status</td><td>Initial scaffold: CI, release pipeline and Android project in place</td></tr>
+  </table>
+</section>
+
+<section class="final">
+  <h2>Run Linux.<br>No root.</h2>
+  <a class="btn" href="https://github.com/abrahdev/ProotCode/releases">Download APK ↓</a>
+</section>
+
+<footer class="lbl"><span>ProotCode © 2026</span><span>AGPL-3.0</span><a href="https://github.com/abrahdev/ProotCode">github.com/abrahdev/ProotCode ↗</a></footer>
+</body>
+</html>
