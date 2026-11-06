@@ -99,3 +99,36 @@ and configurable extra keys.
   counters live in memory.
 - The foreground service requires the `specialUse` type and `POST_NOTIFICATIONS` on Android 13+.
 - Vendored code keeps its GPL-3.0 headers and the `NOTICE` entry.
+
+## ADR 0007: app navigation and screens
+
+### Context
+
+The MVP had a single `AppScreen` with local state and an early return for the terminal. That does
+not scale to the package manager, code-server or settings, and it makes back navigation manual.
+
+### Decisions
+
+- **Navigation Compose** with a single `NavHost` in `MainActivity`:
+  - `home`
+  - `environment/{environmentId}`
+  - `settings`
+  - `about`
+- **Home** lists environments, exposes settings and the creation wizard, and shows an empty state
+  when there are none.
+- **Environment detail** keeps the terminal in the first of three tabs: Terminal, Packages and
+  Code-server. The latter two are placeholders for #7 and #8.
+- **Settings** is a route, not a dialog. It exposes About and, later, language and theme.
+- **About** is a route with the version, the licenses dialog backed by `assets/NOTICE.txt` and
+  links to the repository and releases.
+- **External terminal** remains a separate `TerminalActivity` launched with
+  `NEW_TASK | MULTIPLE_TASK`, so it can live in its own window.
+- No ViewModel yet: each screen keeps its state with `remember`. The session manager remains the
+  source of truth for terminals.
+
+### Consequences
+
+- Adding Packages and Code-server only needs a new tab body, not a new navigation stack.
+- The terminal is embedded in the detail screen and also available in an external window.
+- State is lost when a screen leaves composition except for terminal sessions, which live in the
+  manager.

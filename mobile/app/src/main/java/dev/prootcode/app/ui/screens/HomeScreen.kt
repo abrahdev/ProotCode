@@ -1,4 +1,4 @@
-package dev.prootcode.app.ui
+package dev.prootcode.app.ui.screens
 
 import android.content.Intent
 import android.os.Build
@@ -51,7 +51,6 @@ import dev.prootcode.app.data.environment.InstallStage
 import dev.prootcode.app.data.environment.Presets
 import dev.prootcode.app.runtime.network.DnsResolver
 import dev.prootcode.app.ui.terminal.TerminalActivity
-import dev.prootcode.app.ui.terminal.TerminalScreen
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -64,7 +63,11 @@ import java.util.Locale
 import java.util.UUID
 
 @Composable
-fun AppScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    onOpenEnvironment: (Environment) -> Unit,
+    onSettings: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val environments = remember { mutableStateListOf<Environment>() }
@@ -78,13 +81,6 @@ fun AppScreen(modifier: Modifier = Modifier) {
     var messageArg by remember { mutableStateOf<String?>(null) }
     var installJob by remember { mutableStateOf<Job?>(null) }
     var showLicenses by remember { mutableStateOf(false) }
-    var terminalEnvironment by remember { mutableStateOf<Environment?>(null) }
-
-    val terminal = terminalEnvironment
-    if (terminal != null) {
-        TerminalScreen(environment = terminal, onBack = { terminalEnvironment = null })
-        return
-    }
 
     val arch =
         remember {
@@ -272,7 +268,6 @@ fun AppScreen(modifier: Modifier = Modifier) {
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) { refreshEnvironments() }
         loadCatalog(refresh = false)
-        showWizard = environments.isEmpty()
     }
 
     LaunchedEffect(showWizard) {
@@ -286,11 +281,20 @@ fun AppScreen(modifier: Modifier = Modifier) {
             .padding(horizontal = 16.dp, vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text(
-            text = stringResource(R.string.app_name),
-            style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.primary,
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(R.string.app_name),
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.weight(1f),
+            )
+            TextButton(onClick = onSettings) {
+                Text(stringResource(R.string.settings_title))
+            }
+        }
         Text(
             text = stringResource(R.string.environments_storage, formatBytes(registry.totalBytes())),
             style = MaterialTheme.typography.bodySmall,
@@ -313,7 +317,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
                 progress = progress,
                 onCancel = { installJob?.cancel() },
             )
-        } else if (showWizard || environments.isEmpty()) {
+        } else if (showWizard) {
             Wizard(
                 catalog = catalog,
                 arch = arch,
@@ -323,8 +327,10 @@ fun AppScreen(modifier: Modifier = Modifier) {
                 onInstall = { name, distro, codeServer, presets ->
                     install(name, distro, codeServer, presets)
                 },
-                onCancel = if (environments.isEmpty()) null else ({ showWizard = false }),
+                onCancel = { showWizard = false },
             )
+        } else if (environments.isEmpty()) {
+            HomeEmptyState(onCreate = { showWizard = true })
         } else {
             environments.forEach { environment ->
                 EnvironmentCard(
@@ -332,7 +338,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
                     codeServers = catalog?.codeServerFor(arch).orEmpty(),
                     onChangeCodeServer = { artifact -> changeCodeServer(environment, artifact) },
                     onTestBridge = { testBridge(environment) },
-                    onOpenTerminal = { terminalEnvironment = environment },
+                    onOpenTerminal = { onOpenEnvironment(environment) },
                     onOpenTerminalWindow = {
                         val intent =
                             Intent(context, TerminalActivity::class.java)
@@ -370,6 +376,28 @@ fun AppScreen(modifier: Modifier = Modifier) {
             text = noticeText.orEmpty(),
             onDismiss = { showLicenses = false },
         )
+    }
+}
+
+@Composable
+private fun HomeEmptyState(onCreate: () -> Unit) {
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.home_empty_title),
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = stringResource(R.string.home_empty_body),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Button(onClick = onCreate) {
+                Text(stringResource(R.string.environments_new))
+            }
+        }
     }
 }
 

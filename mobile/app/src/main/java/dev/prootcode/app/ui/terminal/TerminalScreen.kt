@@ -48,6 +48,39 @@ fun TerminalScreen(
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
+    val activity = context as? Activity
+
+    LaunchedEffect(environment.id) {
+        activity?.setTaskDescription(ActivityManager.TaskDescription(environment.name))
+    }
+
+    BackHandler(onBack = onBack)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(environment.name) },
+                navigationIcon = {
+                    TextButton(onClick = onBack) {
+                        Text(stringResource(R.string.terminal_back))
+                    }
+                },
+            )
+        },
+    ) { padding ->
+        TerminalContent(
+            environment = environment,
+            modifier = modifier.padding(padding),
+        )
+    }
+}
+
+@Composable
+fun TerminalContent(
+    environment: Environment,
+    modifier: Modifier = Modifier,
+) {
+    val context = LocalContext.current
     val sessions = remember { mutableStateListOf<TerminalSession>() }
     var selected by remember { mutableStateOf(0) }
     var terminalView by remember { mutableStateOf<TerminalView?>(null) }
@@ -58,7 +91,6 @@ fun TerminalScreen(
         }
     val notificationPermission =
         rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
-    val activity = context as? Activity
 
     LaunchedEffect(environment.id) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -77,15 +109,6 @@ fun TerminalScreen(
         onDispose { TerminalSessionManager.onScreenUpdated = null }
     }
 
-    val windowTitle =
-        sessions.getOrNull(selected)?.mSessionName?.let { "${environment.name} · $it" }
-            ?: environment.name
-    LaunchedEffect(windowTitle) {
-        activity?.setTaskDescription(ActivityManager.TaskDescription(windowTitle))
-    }
-
-    BackHandler(onBack = onBack)
-
     fun createSession() {
         sessions.add(TerminalSessionManager.create(context, environment))
         selected = sessions.lastIndex
@@ -94,94 +117,76 @@ fun TerminalScreen(
     fun closeSession(session: TerminalSession) {
         TerminalSessionManager.close(context, environment.id, session)
         sessions.remove(session)
-        if (sessions.isEmpty()) {
-            onBack()
-        } else {
-            selected = selected.coerceIn(0, sessions.lastIndex)
-        }
+        selected = selected.coerceIn(0, sessions.lastIndex.coerceAtLeast(0))
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(windowTitle) },
-                navigationIcon = {
-                    TextButton(onClick = onBack) {
-                        Text(stringResource(R.string.terminal_back))
-                    }
-                },
-            )
-        },
-    ) { padding ->
-        Column(
-            modifier =
-                modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .imePadding(),
+    Column(
+        modifier =
+            modifier
+                .fillMaxSize()
+                .imePadding(),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
+            TabRow(
+                selectedTabIndex = selected,
+                modifier = Modifier.weight(1f),
             ) {
-                TabRow(
-                    selectedTabIndex = selected,
-                    modifier = Modifier.weight(1f),
-                ) {
-                    sessions.forEachIndexed { index, session ->
-                        Tab(
-                            selected = index == selected,
-                            onClick = { selected = index },
-                            text = {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(session.mSessionName ?: "Terminal ${index + 1}")
-                                    TextButton(onClick = { closeSession(session) }) {
-                                        Text(stringResource(R.string.terminal_close_session))
-                                    }
+                sessions.forEachIndexed { index, session ->
+                    Tab(
+                        selected = index == selected,
+                        onClick = { selected = index },
+                        text = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(session.mSessionName ?: "Terminal ${index + 1}")
+                                TextButton(onClick = { closeSession(session) }) {
+                                    Text(stringResource(R.string.terminal_close_session))
                                 }
-                            },
-                        )
-                    }
-                }
-                TextButton(onClick = { createSession() }) {
-                    Text(stringResource(R.string.terminal_new_session))
+                            }
+                        },
+                    )
                 }
             }
-
-            AndroidView(
-                factory = { ctx ->
-                    TerminalView(ctx, null)
-                        .apply {
-                            isFocusable = true
-                            isFocusableInTouchMode = true
-                            val client = ProotViewClient { showKeyboard(ctx, this) }
-                            viewClient = client
-                            setTerminalViewClient(client)
-                            setTextSize(TEXT_SIZE)
-                            sessions.getOrNull(selected)?.let { attachSession(it) }
-                            requestFocus()
-                            post { showKeyboard(ctx, this) }
-                        }.also { terminalView = it }
-                },
-                update = { view ->
-                    val session = sessions.getOrNull(selected)
-                    if (session != null && view.mTermSession !== session) {
-                        view.attachSession(session)
-                        view.requestFocus()
-                    }
-                },
-                modifier =
-                    Modifier
-                        .weight(1f)
-                        .fillMaxWidth(),
-            )
-
-            ExtraKeysRow(
-                client = viewClient,
-                session = sessions.getOrNull(selected),
-                config = keysConfig,
-            )
+            TextButton(onClick = { createSession() }) {
+                Text(stringResource(R.string.terminal_new_session))
+            }
         }
+
+        AndroidView(
+            factory = { ctx ->
+                TerminalView(ctx, null)
+                    .apply {
+                        isFocusable = true
+                        isFocusableInTouchMode = true
+                        val client = ProotViewClient { showKeyboard(ctx, this) }
+                        viewClient = client
+                        setTerminalViewClient(client)
+                        setTextSize(TEXT_SIZE)
+                        sessions.getOrNull(selected)?.let { attachSession(it) }
+                        requestFocus()
+                        post { showKeyboard(ctx, this) }
+                    }.also { terminalView = it }
+            },
+            update = { view ->
+                val session = sessions.getOrNull(selected)
+                if (session != null && view.mTermSession !== session) {
+                    view.attachSession(session)
+                    view.requestFocus()
+                }
+            },
+            modifier =
+                Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+        )
+
+        ExtraKeysRow(
+            client = viewClient,
+            session = sessions.getOrNull(selected),
+            config = keysConfig,
+        )
     }
 }
 
