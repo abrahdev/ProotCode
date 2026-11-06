@@ -203,6 +203,19 @@ build details and trade-offs are in [ADR 0005](/adr).
    environment, its presets and its size.
 5. The projects bridge is verified by writing a probe file through proot.
 
+## Terminal
+
+Each environment can open interactive shells.
+
+- `TerminalSession` from the vendored Termux emulator creates the PTY through its JNI layer and
+  runs `libproot.so` with `/bin/bash -l`.
+- Sessions live in a process-wide manager, so leaving the screen does not stop the shell; a
+  foreground service with a notification keeps the process alive.
+- Tabs create and close sessions; each one is named `Terminal N`.
+- Extra keys (Ctrl, Alt, Esc, Tab, arrows) are configurable and stored in preferences.
+- The terminal can also open in a separate, resizeable activity for split screen and desktop
+  windowing.
+
 ## Storage model
 
 | Location | Purpose |

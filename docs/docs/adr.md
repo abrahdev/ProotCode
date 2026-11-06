@@ -67,3 +67,35 @@ wizard does not block old kernels, but package management will fail there.
 - 16 KB page validation remains open (#16).
 - proot is GPL-2.0 and code-server is MIT; the `NOTICE` file covers attribution and source
   locations.
+
+## ADR 0006: terminal
+
+### Context
+
+Issue #6 needs an interactive terminal per environment, multiple sessions, background persistence
+and configurable extra keys.
+
+### Decisions
+
+- **Vendored Termux** `terminal-emulator` and `terminal-view` (GPL-3.0) in `mobile/lib`, built with
+  the project SDK and NDK. `termux-shared` is not vendored: it is the Termux app utility layer and
+  brings unrelated dependencies (`guava`, `markwon`, `hiddenapibypass`, `termux-am-library`).
+- **PTY**: `TerminalSession` creates the pseudo-terminal through the vendored JNI and runs
+  `libproot.so` from `nativeLibraryDir` with `/bin/bash -l` and the same arguments as the runtime.
+- **Sessions**: a process-wide `TerminalSessionManager` keeps sessions per environment; a
+  `specialUse` foreground service keeps the process alive and shows a notification.
+- **Tabs**: a `TabRow` with create and close actions; sessions are named `Terminal N` from a
+  per-environment counter.
+- **Extra keys**: Ctrl, Alt, Esc, Tab and arrows, configurable from a dialog and stored in shared
+  preferences.
+- **External windows**: `TerminalActivity` is resizeable and launches with
+  `NEW_TASK | MULTIPLE_TASK` and an empty task affinity, so Android can place it in a separate
+  window (split screen, freeform, desktop). The task description shows the session name.
+- **Cleanup**: deleting an environment stops its sessions before removing its files.
+
+### Consequences
+
+- Sessions survive the UI going to the background, but not process death: the manager and the
+  counters live in memory.
+- The foreground service requires the `specialUse` type and `POST_NOTIFICATIONS` on Android 13+.
+- Vendored code keeps its GPL-3.0 headers and the `NOTICE` entry.
