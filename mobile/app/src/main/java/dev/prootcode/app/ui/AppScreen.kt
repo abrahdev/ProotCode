@@ -52,6 +52,7 @@ import dev.prootcode.app.data.environment.Presets
 import dev.prootcode.app.runtime.network.DnsResolver
 import dev.prootcode.app.ui.terminal.TerminalActivity
 import dev.prootcode.app.ui.terminal.TerminalScreen
+import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -262,6 +263,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
 
     fun delete(environment: Environment) {
         scope.launch(Dispatchers.IO) {
+            TerminalSessionManager.closeAll(context, environment.id)
             installer.delete(environment.id)
             withContext(Dispatchers.Main) { refreshEnvironments() }
         }
