@@ -2,31 +2,48 @@ package dev.prootcode.app.ui.screens
 
 import android.content.Intent
 import android.os.Build
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.OpenInNew
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.SwapHoriz
+import androidx.compose.material.icons.outlined.Sync
+import androidx.compose.material.icons.outlined.Terminal
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -34,6 +51,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.prootcode.app.BuildConfig
 import dev.prootcode.app.R
@@ -80,7 +98,7 @@ fun HomeScreen(
     var messageRes by remember { mutableStateOf<Int?>(null) }
     var messageArg by remember { mutableStateOf<String?>(null) }
     var installJob by remember { mutableStateOf<Job?>(null) }
-    var showLicenses by remember { mutableStateOf(false) }
+    var settingsEnvironment by remember { mutableStateOf<Environment?>(null) }
 
     val arch =
         remember {
@@ -99,18 +117,6 @@ fun HomeScreen(
                 tmpDir = File(context.filesDir, "runtime/tmp"),
                 projectsDir = projectsDir,
             )
-        }
-    val noticeText by
-        produceState<String?>(null) {
-            value =
-                withContext(Dispatchers.IO) {
-                    runCatching {
-                        context.assets
-                            .open("NOTICE.txt")
-                            .bufferedReader()
-                            .use { it.readText() }
-                    }.getOrNull()
-                }
         }
 
     fun refreshEnvironments() {
@@ -187,7 +193,8 @@ fun HomeScreen(
                             presets = presets,
                         )
                     openRootfs(distro).use { rootfsStream ->
-                        val codeServerStream = codeServer?.let { openCodeServer(it, forceDownload = false) }
+                        val codeServerStream =
+                            codeServer?.let { openCodeServer(it, forceDownload = false) }
                         codeServerStream.use { stream ->
                             installer.install(request, rootfsStream, stream) { stage = it }
                         }
@@ -265,6 +272,14 @@ fun HomeScreen(
         }
     }
 
+    fun openWindow(environment: Environment) {
+        val intent =
+            Intent(context, TerminalActivity::class.java)
+                .putExtra(TerminalActivity.EXTRA_ENVIRONMENT_ID, environment.id)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        context.startActivity(intent)
+    }
+
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) { refreshEnvironments() }
         loadCatalog(refresh = false)
@@ -274,107 +289,135 @@ fun HomeScreen(
         if (showWizard) loadCatalog(refresh = true)
     }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 16.dp, vertical = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.weight(1f),
-            )
-            TextButton(onClick = onSettings) {
-                Text(stringResource(R.string.settings_title))
-            }
-        }
-        Text(
-            text = stringResource(R.string.environments_storage, formatBytes(registry.totalBytes())),
-            style = MaterialTheme.typography.bodySmall,
-        )
-
-        error?.let { text ->
-            Text(text = text, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
-        }
-        val messageText =
-            messageRes?.let { resource ->
-                messageArg?.let { argument -> stringResource(resource, argument) } ?: stringResource(resource)
-            }
-        messageText?.let { text ->
-            Text(text = text, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
+    val messageText =
+        messageRes?.let { resource ->
+            messageArg?.let { argument -> stringResource(resource, argument) }
+                ?: stringResource(resource)
         }
 
-        if (busy) {
-            BusyCard(
-                stage = stage,
-                progress = progress,
-                onCancel = { installJob?.cancel() },
-            )
-        } else if (showWizard) {
-            Wizard(
-                catalog = catalog,
-                arch = arch,
-                existingNames = environments.map { it.name },
-                enabled = catalog != null,
-                onRefresh = { loadCatalog(refresh = true) },
-                onInstall = { name, distro, codeServer, presets ->
-                    install(name, distro, codeServer, presets)
-                },
-                onCancel = { showWizard = false },
-            )
-        } else if (environments.isEmpty()) {
-            HomeEmptyState(onCreate = { showWizard = true })
-        } else {
-            environments.forEach { environment ->
-                EnvironmentCard(
-                    environment = environment,
-                    codeServers = catalog?.codeServerFor(arch).orEmpty(),
-                    onChangeCodeServer = { artifact -> changeCodeServer(environment, artifact) },
-                    onTestBridge = { testBridge(environment) },
-                    onOpenTerminal = { onOpenEnvironment(environment) },
-                    onOpenTerminalWindow = {
-                        val intent =
-                            Intent(context, TerminalActivity::class.java)
-                                .putExtra(TerminalActivity.EXTRA_ENVIRONMENT_ID, environment.id)
-                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-                        context.startActivity(intent)
-                    },
-                    onDelete = { delete(environment) },
+    Scaffold(
+        modifier = modifier,
+        floatingActionButton = {
+            SmallFloatingActionButton(onClick = { showWizard = true }) {
+                Icon(
+                    imageVector = Icons.Outlined.Add,
+                    contentDescription = stringResource(R.string.environments_new),
                 )
             }
-            Button(
-                onClick = { showWizard = true },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.environments_new))
-            }
-            TextButton(
-                onClick = { loadCatalog(refresh = true) },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.catalog_refresh))
-            }
-        }
-
-        TextButton(
-            onClick = { showLicenses = true },
-            modifier = Modifier.fillMaxWidth(),
+        },
+    ) { padding ->
+        LazyColumn(
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(padding),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text(stringResource(R.string.licenses_title))
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End,
+                ) {
+                    IconButton(onClick = onSettings) {
+                        Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            contentDescription = stringResource(R.string.settings_title),
+                        )
+                    }
+                }
+            }
+
+            error?.let { text ->
+                item {
+                    Text(
+                        text = text,
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+            messageText?.let { text ->
+                item {
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary,
+                    )
+                }
+            }
+
+            when {
+                busy ->
+                    item {
+                        BusyCard(
+                            stage = stage,
+                            progress = progress,
+                            onCancel = { installJob?.cancel() },
+                        )
+                    }
+                showWizard ->
+                    item {
+                        Wizard(
+                            catalog = catalog,
+                            arch = arch,
+                            existingNames = environments.map { it.name },
+                            enabled = catalog != null,
+                            onRefresh = { loadCatalog(refresh = true) },
+                            onInstall = { name, distro, codeServer, presets ->
+                                install(name, distro, codeServer, presets)
+                            },
+                            onCancel = { showWizard = false },
+                        )
+                    }
+                environments.isEmpty() ->
+                    item {
+                        HomeEmptyState(onCreate = { showWizard = true })
+                    }
+                else ->
+                    items(environments, key = { it.id }) { environment ->
+                        EnvironmentHeroCard(
+                            environment = environment,
+                            onOpenTerminal = { onOpenEnvironment(environment) },
+                            onOpenWindow = { openWindow(environment) },
+                            onSettings = { settingsEnvironment = environment },
+                        )
+                    }
+            }
+
+            if (!busy && !showWizard && environments.isNotEmpty()) {
+                item {
+                    Text(
+                        text =
+                            stringResource(
+                                R.string.environments_storage,
+                                formatBytes(registry.totalBytes()),
+                            ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
         }
     }
 
-    if (showLicenses) {
-        LicensesDialog(
-            text = noticeText.orEmpty(),
-            onDismiss = { showLicenses = false },
+    settingsEnvironment?.let { environment ->
+        EnvironmentSettingsSheet(
+            environment = environment,
+            codeServers = catalog?.codeServerFor(arch).orEmpty(),
+            onDismiss = { settingsEnvironment = null },
+            onTestBridge = {
+                testBridge(environment)
+                settingsEnvironment = null
+            },
+            onChangeCodeServer = { artifact ->
+                changeCodeServer(environment, artifact)
+                settingsEnvironment = null
+            },
+            onDelete = {
+                delete(environment)
+                settingsEnvironment = null
+            },
         )
     }
 }
@@ -383,20 +426,145 @@ fun HomeScreen(
 private fun HomeEmptyState(onCreate: () -> Unit) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            Icon(
+                imageVector = Icons.Outlined.Terminal,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.primary,
+            )
             Text(
                 text = stringResource(R.string.home_empty_title),
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.headlineSmall,
             )
             Text(
                 text = stringResource(R.string.home_empty_body),
                 style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Button(onClick = onCreate) {
                 Text(stringResource(R.string.environments_new))
             }
+        }
+    }
+}
+
+@Composable
+private fun EnvironmentHeroCard(
+    environment: Environment,
+    onOpenTerminal: () -> Unit,
+    onOpenWindow: () -> Unit,
+    onSettings: () -> Unit,
+) {
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier.padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                text = environment.name,
+                style = MaterialTheme.typography.headlineMedium,
+            )
+            Text(
+                text =
+                    "${environment.distroVersion} · ${environment.arch} · " +
+                        formatBytes(environment.sizeBytes),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                IconButton(onClick = onOpenTerminal) {
+                    Icon(
+                        imageVector = Icons.Outlined.Terminal,
+                        contentDescription = stringResource(R.string.environments_terminal),
+                    )
+                }
+                IconButton(onClick = onOpenWindow) {
+                    Icon(
+                        imageVector = Icons.Outlined.OpenInNew,
+                        contentDescription = stringResource(R.string.terminal_window),
+                    )
+                }
+                IconButton(onClick = onSettings) {
+                    Icon(
+                        imageVector = Icons.Outlined.Settings,
+                        contentDescription = stringResource(R.string.environments_settings),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun EnvironmentSettingsSheet(
+    environment: Environment,
+    codeServers: List<CodeServerArtifact>,
+    onDismiss: () -> Unit,
+    onTestBridge: () -> Unit,
+    onChangeCodeServer: (CodeServerArtifact) -> Unit,
+    onDelete: () -> Unit,
+) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+    ) {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+                    .padding(bottom = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(text = environment.name, style = MaterialTheme.typography.headlineSmall)
+            Text(
+                text =
+                    "${environment.distroVersion} · ${environment.arch} · " +
+                        formatBytes(environment.sizeBytes),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+            ListItem(
+                leadingContent = { Icon(Icons.Outlined.Sync, contentDescription = null) },
+                headlineContent = { Text(stringResource(R.string.bridge_test)) },
+                modifier = Modifier.clickable { onTestBridge() },
+            )
+            codeServers
+                .filter { it.version != environment.codeServerVersion }
+                .forEach { artifact ->
+                    ListItem(
+                        leadingContent = { Icon(Icons.Outlined.SwapHoriz, contentDescription = null) },
+                        headlineContent = {
+                            Text(stringResource(R.string.code_server_change, artifact.version))
+                        },
+                        modifier = Modifier.clickable { onChangeCodeServer(artifact) },
+                    )
+                }
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+            ListItem(
+                leadingContent = {
+                    Icon(
+                        Icons.Outlined.Delete,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.error,
+                    )
+                },
+                headlineContent = {
+                    Text(
+                        text = stringResource(R.string.environments_delete),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                },
+                modifier = Modifier.clickable { onDelete() },
+            )
         }
     }
 }
@@ -415,7 +583,8 @@ private fun BusyCard(
             val label =
                 when (stage) {
                     InstallStage.EXTRACT_ROOTFS -> stringResource(R.string.install_stage_rootfs)
-                    InstallStage.INSTALL_CODE_SERVER -> stringResource(R.string.install_stage_code_server)
+                    InstallStage.INSTALL_CODE_SERVER ->
+                        stringResource(R.string.install_stage_code_server)
                     InstallStage.READY -> stringResource(R.string.install_stage_ready)
                     null -> stringResource(R.string.install_downloading)
                 }
@@ -454,7 +623,9 @@ private fun Wizard(
     val codeServers = remember(catalog, arch) { catalog?.codeServerFor(arch).orEmpty() }
     var name by remember { mutableStateOf("") }
     var distroIndex by remember(distros) { mutableStateOf(0) }
-    var codeServerIndex by remember(codeServers) { mutableStateOf(if (codeServers.isEmpty()) -1 else 0) }
+    var codeServerIndex by remember(codeServers) {
+        mutableStateOf(if (codeServers.isEmpty()) -1 else 0)
+    }
     val selectedPresets = remember { mutableStateListOf<String>() }
     val duplicate = existingNames.any { it.equals(name.trim(), ignoreCase = true) }
 
@@ -463,7 +634,10 @@ private fun Wizard(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text(text = stringResource(R.string.wizard_title), style = MaterialTheme.typography.titleMedium)
+            Text(
+                text = stringResource(R.string.wizard_title),
+                style = MaterialTheme.typography.titleMedium,
+            )
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
@@ -480,7 +654,10 @@ private fun Wizard(
                 )
             }
 
-            Text(text = stringResource(R.string.wizard_distro), style = MaterialTheme.typography.titleSmall)
+            Text(
+                text = stringResource(R.string.wizard_distro),
+                style = MaterialTheme.typography.titleSmall,
+            )
             if (distros.isEmpty()) {
                 Text(
                     text = stringResource(R.string.wizard_no_distros),
@@ -513,7 +690,10 @@ private fun Wizard(
                 )
             }
 
-            Text(text = stringResource(R.string.wizard_presets), style = MaterialTheme.typography.titleSmall)
+            Text(
+                text = stringResource(R.string.wizard_presets),
+                style = MaterialTheme.typography.titleSmall,
+            )
             Presets.ALL.forEach { preset ->
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -522,7 +702,11 @@ private fun Wizard(
                     Checkbox(
                         checked = preset in selectedPresets,
                         onCheckedChange = { checked ->
-                            if (checked) selectedPresets.add(preset) else selectedPresets.remove(preset)
+                            if (checked) {
+                                selectedPresets.add(preset)
+                            } else {
+                                selectedPresets.remove(preset)
+                            }
                         },
                     )
                     Text(text = stringResource(presetLabel(preset)))
@@ -578,85 +762,6 @@ private fun ChoiceRow(
         RadioButton(selected = selected, onClick = onSelect)
         Text(text = label)
     }
-}
-
-@Composable
-private fun EnvironmentCard(
-    environment: Environment,
-    codeServers: List<CodeServerArtifact>,
-    onChangeCodeServer: (CodeServerArtifact) -> Unit,
-    onTestBridge: () -> Unit,
-    onOpenTerminal: () -> Unit,
-    onOpenTerminalWindow: () -> Unit,
-    onDelete: () -> Unit,
-) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            Text(text = environment.name, style = MaterialTheme.typography.titleMedium)
-            Text(
-                text =
-                    stringResource(
-                        R.string.environments_details,
-                        environment.distroVersion,
-                        environment.arch,
-                        environment.codeServerVersion ?: stringResource(R.string.wizard_none),
-                        formatBytes(environment.sizeBytes),
-                    ),
-                style = MaterialTheme.typography.bodySmall,
-            )
-            if (environment.presets.isNotEmpty()) {
-                Text(
-                    text = stringResource(R.string.environments_presets, environment.presets.joinToString(", ")),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextButton(onClick = onOpenTerminal) {
-                    Text(stringResource(R.string.environments_terminal))
-                }
-                TextButton(onClick = onOpenTerminalWindow) {
-                    Text(stringResource(R.string.terminal_window))
-                }
-                TextButton(onClick = onTestBridge) {
-                    Text(stringResource(R.string.bridge_test))
-                }
-                codeServers
-                    .filter { it.version != environment.codeServerVersion }
-                    .forEach { artifact ->
-                        TextButton(onClick = { onChangeCodeServer(artifact) }) {
-                            Text(stringResource(R.string.code_server_change, artifact.version))
-                        }
-                    }
-            }
-            TextButton(onClick = onDelete) {
-                Text(stringResource(R.string.environments_delete))
-            }
-        }
-    }
-}
-
-@Composable
-private fun LicensesDialog(
-    text: String,
-    onDismiss: () -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.licenses_close))
-            }
-        },
-        title = { Text(stringResource(R.string.licenses_title)) },
-        text = {
-            Column(modifier = Modifier.heightIn(max = 400.dp).verticalScroll(rememberScrollState())) {
-                Text(text = text, style = MaterialTheme.typography.bodySmall)
-            }
-        },
-    )
 }
 
 private fun presetLabel(preset: String): Int =

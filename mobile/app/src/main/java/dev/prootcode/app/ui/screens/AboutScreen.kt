@@ -3,16 +3,26 @@ package dev.prootcode.app.ui.screens
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Code
+import androidx.compose.material.icons.outlined.Description
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.OpenInNew
+import androidx.compose.material.icons.outlined.Terminal
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -39,8 +50,8 @@ import kotlinx.coroutines.withContext
 fun AboutScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     var showLicenses by remember { mutableStateOf(false) }
-    val noticeText by
-        produceState<String?>(null) {
+    val notice by
+        produceState("") {
             value =
                 withContext(Dispatchers.IO) {
                     runCatching {
@@ -48,7 +59,7 @@ fun AboutScreen(onBack: () -> Unit) {
                             .open("NOTICE.txt")
                             .bufferedReader()
                             .use { it.readText() }
-                    }.getOrNull()
+                    }.getOrDefault("")
                 }
         }
 
@@ -57,7 +68,9 @@ fun AboutScreen(onBack: () -> Unit) {
             TopAppBar(
                 title = { Text(stringResource(R.string.about_title)) },
                 navigationIcon = {
-                    TextButton(onClick = onBack) { Text(stringResource(R.string.terminal_back)) }
+                    TextButton(onClick = onBack) {
+                        Text(stringResource(R.string.terminal_back))
+                    }
                 },
             )
         },
@@ -67,62 +80,109 @@ fun AboutScreen(onBack: () -> Unit) {
                 Modifier
                     .fillMaxSize()
                     .padding(padding)
+                    .verticalScroll(rememberScrollState())
                     .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text(text = stringResource(R.string.about_version, BuildConfig.VERSION_NAME))
-            TextButton(
-                onClick = { showLicenses = true },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.about_licenses))
+            Card {
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Terminal,
+                        contentDescription = null,
+                        modifier = Modifier.padding(end = 12.dp),
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                    Column {
+                        Text(
+                            text = stringResource(R.string.app_name),
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                        Text(
+                            text = stringResource(R.string.app_tagline),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
             }
-            TextButton(
-                onClick = { openUrl(context, GITHUB_URL) },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.about_github))
+
+            SectionHeader(stringResource(R.string.about_version_section))
+            GroupedCard {
+                ListItem(
+                    leadingContent = { Icon(Icons.Outlined.Info, contentDescription = null) },
+                    headlineContent = { Text(stringResource(R.string.about_version_label)) },
+                    supportingContent = { Text(BuildConfig.VERSION_NAME) },
+                )
+                ListItem(
+                    leadingContent = { Icon(Icons.Outlined.Description, contentDescription = null) },
+                    headlineContent = { Text(stringResource(R.string.about_licenses)) },
+                    trailingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
+                    modifier = Modifier.clickable { showLicenses = true },
+                )
             }
-            TextButton(
-                onClick = { openUrl(context, RELEASES_URL) },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(stringResource(R.string.about_releases))
+
+            SectionHeader(stringResource(R.string.about_community))
+            GroupedCard {
+                ListItem(
+                    leadingContent = { Icon(Icons.Outlined.Code, contentDescription = null) },
+                    headlineContent = { Text(stringResource(R.string.about_github)) },
+                    trailingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
+                    modifier = Modifier.clickable { openUrl(context, REPOSITORY_URL) },
+                )
+                ListItem(
+                    leadingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
+                    headlineContent = { Text(stringResource(R.string.about_releases)) },
+                    trailingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
+                    modifier = Modifier.clickable { openUrl(context, RELEASES_URL) },
+                )
             }
         }
     }
 
     if (showLicenses) {
-        LicensesDialog(
-            text = noticeText.orEmpty(),
-            onDismiss = { showLicenses = false },
+        AlertDialog(
+            onDismissRequest = { showLicenses = false },
+            title = { Text(stringResource(R.string.about_licenses)) },
+            text = {
+                Column(
+                    modifier =
+                        Modifier
+                            .heightIn(max = 400.dp)
+                            .verticalScroll(rememberScrollState()),
+                ) {
+                    Text(
+                        text = notice,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontFamily = FontFamily.Monospace,
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showLicenses = false }) {
+                    Text(stringResource(R.string.licenses_close))
+                }
+            },
         )
     }
 }
 
 @Composable
-private fun LicensesDialog(
-    text: String,
-    onDismiss: () -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.licenses_close))
-            }
-        },
-        title = { Text(stringResource(R.string.licenses_title)) },
-        text = {
-            Column(modifier = Modifier.heightIn(max = 400.dp).verticalScroll(rememberScrollState())) {
-                Text(
-                    text = text,
-                    fontFamily = FontFamily.Monospace,
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            }
-        },
+private fun SectionHeader(title: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.titleSmall,
+        color = MaterialTheme.colorScheme.primary,
     )
+}
+
+@Composable
+private fun GroupedCard(content: @Composable () -> Unit) {
+    Card {
+        Column { content() }
+    }
 }
 
 private fun openUrl(
@@ -132,5 +192,5 @@ private fun openUrl(
     context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
 }
 
-private const val GITHUB_URL = "https://github.com/abrahdev/ProotCode"
+private const val REPOSITORY_URL = "https://github.com/abrahdev/ProotCode"
 private const val RELEASES_URL = "https://github.com/abrahdev/ProotCode/releases"

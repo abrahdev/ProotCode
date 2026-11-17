@@ -7,6 +7,7 @@
     <string name="environments_new">New environment</string>
     <string name="environments_delete">Delete</string>
     <string name="environments_terminal">Open terminal</string>
+    <string name="environments_settings">Environment settings</string>
     <string name="terminal_back">Back</string>
     <string name="settings_title">Settings</string>
     <string name="settings_theme">Theme</string>
@@ -15,6 +16,9 @@
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_about">About</string>
     <string name="about_title">About</string>
+    <string name="about_version_section">Version</string>
+    <string name="about_version_label">App version</string>
+    <string name="about_community">Community</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_licenses">Licenses</string>
     <string name="about_github">GitHub</string>
