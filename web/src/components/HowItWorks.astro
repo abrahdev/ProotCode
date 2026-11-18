@@ -1,0 +1,20 @@
+<section class="two" id="how">
+  <div>
+    <h2 style="margin-bottom:32px">Three<br>steps.</h2>
+    <div class="step"><b>1</b><div><h3>Install</h3><p>Grab the APK from GitHub Releases, or add the repo to Obtainium for updates.</p></div></div>
+    <div class="step"><b>2</b><div><h3>Deploy</h3><p>Choose Debian or Ubuntu, pick your tools, watch the setup progress.</p></div></div>
+    <div class="step"><b>3</b><div><h3>Build</h3><p>Open terminals, or launch Code Server and code from the browser.</p></div></div>
+  </div>
+  <div style="display:flex;align-items:center;background:var(--paper)">
+    <div class="term" style="width:100%"><span class="d"># build it from source</span><br><span class="g">$</span> git clone https://github.com/abrahdev/ProotCode.git<br><span class="g">$</span> cd ProotCode/mobile<br><span class="g">$</span> ./gradlew assembleDebug<br><br><span class="d"># → app/build/outputs/apk/debug/app-debug.apk</span></div>
+  </div>
+</section>
+
+<style>
+.two{display:grid;grid-template-columns:1fr 1fr;border-bottom:3px solid var(--line)}
+.two>div{padding:56px 24px}.two>div:first-child{border-right:3px solid var(--line)}
+.step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 0;border-top:3px solid var(--line)}
+.step b{font:34px/1 var(--display);color:var(--red)}.step h3{font:18px var(--display);text-transform:uppercase}
+.term{background:#111114;color:#e8e6e1;padding:22px;font-size:13px;border:3px solid var(--line);box-shadow:10px 10px 0 var(--red);white-space:pre-wrap;overflow-x:auto}
+@media(max-width:900px){.two{grid-template-columns:1fr}.two>div:first-child{border-right:0;border-bottom:3px solid var(--line)}}
+</style>

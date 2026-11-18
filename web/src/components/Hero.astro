@@ -1,0 +1,36 @@
+<header class="hero wrap" style="max-width:none">
+  <div class="hl">
+    <div class="lbl">Open-source · Kotlin · Android · v26.x</div>
+    <h1>Linux<br>in your<br><span>pocket</span><i>.</i></h1>
+    <div>
+      <p class="sub" style="margin-bottom:28px">Rootless Debian and Ubuntu on Android through proot. Multiple terminals, apt, and a mobile-tuned Code Server. No account, no telemetry, no tracking.</p>
+      <div class="cta"><a class="btn" href="https://github.com/abrahdev/ProotCode/releases">Get the APK ↓</a><a class="btn alt" href="https://abrahdev.github.io/ProotCode/">Read the docs →</a></div>
+    </div>
+  </div>
+  <div class="hr">
+    <svg class="big" viewBox="0 0 1024 1024" style="color:rgba(255,255,255,.16)"><use href="#gl"/></svg>
+    <div class="lbl tag2">/ ROOT · NOT REQUIRED</div>
+    <div class="phone">
+      <div class="bar"><b>ubuntu</b><span>debian</span><span>+</span></div>
+      <p><span class="g">dev@proot</span>:<span class="r">~</span>$ apt install git build-essential<br><span class="d">Reading package lists... Done</span><br><span class="d">Setting up git ...</span><br><span class="g">dev@proot</span>:<span class="r">~</span>$ code-server --bind 0.0.0.0<br><span class="d">HTTP server listening on :8080</span><br><span class="g">dev@proot</span>:<span class="r">~</span>$ <span class="cur"></span></p>
+    </div>
+    <div class="lbl tag">Fig. 01 — Terminal session, no root</div>
+  </div>
+</header>
+
+<style>
+.hero{display:grid;grid-template-columns:1.1fr 1fr;border-bottom:3px solid var(--line)}
+.hl{padding:56px 24px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-right:3px solid var(--line)}
+h1{font:clamp(64px,10.5vw,168px)/.84 var(--display);letter-spacing:-.045em;text-transform:uppercase}
+h1 span{color:var(--red)}h1 i{font-style:normal;-webkit-text-stroke:3px var(--ink);color:transparent}
+.sub{max-width:520px;font-size:16px}
+.cta{display:flex;gap:20px;flex-wrap:wrap}
+.hr{background:linear-gradient(180deg,var(--red),var(--red2));position:relative;min-height:640px;overflow:hidden;color:#fff}
+.hr .big{position:absolute;left:-12%;top:-6%;width:130%;opacity:.95}
+.hr .tag{position:absolute;left:20px;bottom:18px;color:#fff}.hr .tag2{position:absolute;right:20px;top:18px;color:#fff}
+.phone{position:absolute;right:8%;bottom:-70px;width:min(330px,62%);aspect-ratio:9/18;background:#111114;border:10px solid #000;border-radius:38px;transform:rotate(-9deg);box-shadow:14px 14px 0 rgba(0,0,0,.45);padding:22px 14px;color:#e8e6e1;font-size:11px;overflow:hidden}
+.phone .bar{display:flex;gap:6px;margin-bottom:14px;color:#8a8a92}.phone .bar b{background:var(--red);color:#fff;padding:1px 8px}
+.phone p{white-space:pre-wrap;word-break:break-all}
+.cur{display:inline-block;width:8px;height:13px;background:#fff;vertical-align:-2px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hl{border-right:0;border-bottom:3px solid var(--line)}.hr{min-height:560px}}
+</style>
