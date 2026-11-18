@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import dev.prootcode.app.BuildConfig
 import dev.prootcode.app.R
@@ -48,6 +49,7 @@ import dev.prootcode.app.data.environment.EnvironmentInstaller
 import dev.prootcode.app.data.environment.EnvironmentRegistry
 import dev.prootcode.app.data.environment.InstallRequest
 import dev.prootcode.app.data.environment.InstallStage
+import dev.prootcode.app.data.environment.PresetInstaller
 import dev.prootcode.app.data.environment.Presets
 import dev.prootcode.app.runtime.network.DnsResolver
 import dev.prootcode.app.ui.terminal.TerminalActivity
@@ -78,6 +80,8 @@ fun AppScreen(modifier: Modifier = Modifier) {
     var messageArg by remember { mutableStateOf<String?>(null) }
     var installJob by remember { mutableStateOf<Job?>(null) }
     var showLicenses by remember { mutableStateOf(false) }
+    var presetOutput by remember { mutableStateOf<String?>(null) }
+    var presetJob by remember { mutableStateOf<Job?>(null) }
     var terminalEnvironment by remember { mutableStateOf<Environment?>(null) }
 
     val terminal = terminalEnvironment
@@ -249,6 +253,30 @@ fun AppScreen(modifier: Modifier = Modifier) {
             }
     }
 
+    fun installPresets(environment: Environment) {
+        val output = StringBuilder()
+        presetOutput = ""
+        presetJob =
+            scope.launch(Dispatchers.IO) {
+                val presetInstaller =
+                    PresetInstaller(
+                        nativeLibDir = File(context.applicationInfo.nativeLibraryDir),
+                        projectsDir = projectsDir,
+                        tmpDir = File(context.filesDir, "runtime/tmp"),
+                    )
+                val ok =
+                    presetInstaller.install(
+                        installer.rootfsDir(environment.id),
+                        environment.presets,
+                    ) { line ->
+                        output.appendLine(line)
+                        presetOutput = output.toString()
+                    }
+                output.appendLine(if (ok) "Done" else "Failed")
+                presetOutput = output.toString()
+            }
+    }
+
     fun testBridge(environment: Environment) {
         error = null
         messageRes = null
@@ -333,6 +361,7 @@ fun AppScreen(modifier: Modifier = Modifier) {
                     onChangeCodeServer = { artifact -> changeCodeServer(environment, artifact) },
                     onTestBridge = { testBridge(environment) },
                     onOpenTerminal = { terminalEnvironment = environment },
+                    onInstallPresets = { installPresets(environment) },
                     onOpenTerminalWindow = {
                         val intent =
                             Intent(context, TerminalActivity::class.java)
@@ -363,6 +392,35 @@ fun AppScreen(modifier: Modifier = Modifier) {
         ) {
             Text(stringResource(R.string.licenses_title))
         }
+    }
+
+    presetOutput?.let { text ->
+        AlertDialog(
+            onDismissRequest = { if (presetJob?.isActive != true) presetOutput = null },
+            title = { Text(stringResource(R.string.presets_title)) },
+            text = {
+                Column(
+                    modifier =
+                        Modifier
+                            .heightIn(max = 400.dp)
+                            .verticalScroll(rememberScrollState()),
+                ) {
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontFamily = FontFamily.Monospace,
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = { presetOutput = null },
+                    enabled = presetJob?.isActive != true,
+                ) {
+                    Text(stringResource(R.string.presets_close))
+                }
+            },
+        )
     }
 
     if (showLicenses) {
@@ -559,6 +617,7 @@ private fun EnvironmentCard(
     onChangeCodeServer: (CodeServerArtifact) -> Unit,
     onTestBridge: () -> Unit,
     onOpenTerminal: () -> Unit,
+    onInstallPresets: () -> Unit,
     onOpenTerminalWindow: () -> Unit,
     onDelete: () -> Unit,
 ) {
@@ -586,6 +645,11 @@ private fun EnvironmentCard(
                 )
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (environment.presets.isNotEmpty()) {
+                    TextButton(onClick = onInstallPresets) {
+                        Text(stringResource(R.string.presets_install))
+                    }
+                }
                 TextButton(onClick = onOpenTerminal) {
                     Text(stringResource(R.string.environments_terminal))
                 }
