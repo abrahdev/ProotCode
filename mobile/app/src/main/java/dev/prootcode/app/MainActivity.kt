@@ -32,11 +32,13 @@ import dev.prootcode.app.ui.screens.SettingsScreen
 import dev.prootcode.app.ui.terminal.TerminalScreen
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import dev.prootcode.app.ui.theme.ProotCodeTheme
+import dev.prootcode.app.ui.util.QuestWindow
 import java.io.File
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        QuestWindow.applyOrientation(this)
         enableEdgeToEdge()
         setContent {
             val preferences = remember { AppPreferences.create(applicationContext) }

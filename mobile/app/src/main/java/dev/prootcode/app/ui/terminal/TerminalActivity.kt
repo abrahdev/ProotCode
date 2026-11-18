@@ -11,11 +11,13 @@ import dev.prootcode.app.data.environment.EnvironmentRegistry
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.theme.ProotCodeTheme
+import dev.prootcode.app.ui.util.QuestWindow
 import java.io.File
 
 class TerminalActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        QuestWindow.applyOrientation(this)
         enableEdgeToEdge()
         val environmentId = intent.getStringExtra(EXTRA_ENVIRONMENT_ID)
         val environment =

@@ -17,8 +17,16 @@
         android:theme="@style/Theme.ProotCode">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density"
             android:exported="true"
+            android:resizeableActivity="true"
+            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize">
+            <layout
+                android:defaultWidth="1280dp"
+                android:defaultHeight="720dp"
+                android:minWidth="640dp"
+                android:minHeight="360dp" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,8 +50,14 @@
             android:exported="true"
             android:launchMode="standard"
             android:resizeableActivity="true"
+            android:screenOrientation="landscape"
             android:taskAffinity=""
             android:windowSoftInputMode="adjustResize">
+            <layout
+                android:defaultWidth="1280dp"
+                android:defaultHeight="720dp"
+                android:minWidth="640dp"
+                android:minHeight="360dp" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -60,8 +74,15 @@
             android:exported="false"
             android:launchMode="standard"
             android:resizeableActivity="true"
+            android:screenOrientation="landscape"
             android:taskAffinity=""
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize">
+            <layout
+                android:defaultWidth="1280dp"
+                android:defaultHeight="720dp"
+                android:minWidth="640dp"
+                android:minHeight="360dp" />
+        </activity>
 
         <activity
             android:name=".ui.terminal.TerminalActivity"
@@ -69,8 +90,15 @@
             android:exported="false"
             android:launchMode="standard"
             android:resizeableActivity="true"
+            android:screenOrientation="landscape"
             android:taskAffinity=""
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize">
+            <layout
+                android:defaultWidth="1280dp"
+                android:defaultHeight="720dp"
+                android:minWidth="640dp"
+                android:minHeight="360dp" />
+        </activity>
 
         <service
             android:name=".ui.terminal.TerminalService"
