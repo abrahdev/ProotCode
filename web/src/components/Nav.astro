@@ -1,0 +1,14 @@
+<nav>
+  <a class="logo" href="#"><svg><use href="#ic"/></svg>PROOTCODE</a>
+  <ul class="lbl"><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#specs">Specs</a></li><li><a href="https://github.com/abrahdev/ProotCode">GitHub ↗</a></li></ul>
+  <a class="btn" href="https://github.com/abrahdev/ProotCode/releases">Download APK ↓</a>
+</nav>
+
+<style>
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-bottom:3px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);z-index:5}
+.logo{display:flex;align-items:center;gap:12px;font:22px var(--display);text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:36px;height:36px}
+nav ul{display:flex;gap:28px;list-style:none;padding:0}
+nav ul a{text-decoration:none}nav ul a:hover{background:var(--red);color:#fff}
+@media(max-width:900px){nav ul{display:none}}
+</style>
