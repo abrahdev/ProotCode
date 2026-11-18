@@ -11,7 +11,7 @@ import android.os.Bundle
 
 object QuestWindow {
     private const val PANEL_WIDTH = 1280
-    private const val PANEL_HEIGHT = 720
+    private const val PANEL_HEIGHT = 800
 
     fun start(
         context: Context,

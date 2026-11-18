@@ -24,9 +24,9 @@
             android:windowSoftInputMode="adjustResize">
             <layout
                 android:defaultWidth="1280dp"
-                android:defaultHeight="720dp"
+                android:defaultHeight="800dp"
                 android:minWidth="640dp"
-                android:minHeight="360dp" />
+                android:minHeight="400dp" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -55,9 +55,9 @@
             android:windowSoftInputMode="adjustResize">
             <layout
                 android:defaultWidth="1280dp"
-                android:defaultHeight="720dp"
+                android:defaultHeight="800dp"
                 android:minWidth="640dp"
-                android:minHeight="360dp" />
+                android:minHeight="400dp" />
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -79,9 +79,9 @@
             android:windowSoftInputMode="adjustResize">
             <layout
                 android:defaultWidth="1280dp"
-                android:defaultHeight="720dp"
+                android:defaultHeight="800dp"
                 android:minWidth="640dp"
-                android:minHeight="360dp" />
+                android:minHeight="400dp" />
         </activity>
 
         <activity
@@ -95,9 +95,9 @@
             android:windowSoftInputMode="adjustResize">
             <layout
                 android:defaultWidth="1280dp"
-                android:defaultHeight="720dp"
+                android:defaultHeight="800dp"
                 android:minWidth="640dp"
-                android:minHeight="360dp" />
+                android:minHeight="400dp" />
         </activity>
 
         <service

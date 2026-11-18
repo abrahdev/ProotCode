@@ -321,6 +321,8 @@
     <string name="code_server_title">Code Server</string>
     <string name="code_server_port">Port %1$d</string>
     <string name="code_server_reload">Reload</string>
+    <string name="code_server_zoom_in">Zoom in</string>
+    <string name="code_server_zoom_out">Zoom out</string>
     <string name="code_server_open_browser">Open in browser</string>
     <string name="code_server_stop">Stop</string>
     <string name="code_server_start">Start</string>
