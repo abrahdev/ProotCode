@@ -21,6 +21,19 @@ class EnvironmentRegistry(
         save(updated)
     }
 
+    fun update(environment: Environment) {
+        val current = load()
+        if (current.none { it.id == environment.id }) return
+        save(current.map { if (it.id == environment.id) environment else it })
+    }
+
+    fun reorder(ids: List<String>) {
+        val current = load()
+        val byId = current.associateBy { it.id }
+        val ordered = ids.mapNotNull { byId[it] } + current.filterNot { it.id in ids }
+        save(ordered)
+    }
+
     fun remove(id: String) {
         save(load().filterNot { it.id == id })
     }
@@ -44,7 +57,30 @@ class EnvironmentRegistry(
             put("codeServerVersion", codeServerVersion ?: JSONObject.NULL)
             put("createdAtMillis", createdAtMillis)
             put("sizeBytes", sizeBytes)
-            put("presets", org.json.JSONArray(presets))
+            put("presets", JSONArray(presets))
+            put("settings", settings.toJson())
+        }
+
+    private fun EnvironmentSettings.toJson(): JSONObject =
+        JSONObject().apply {
+            put("icon", icon)
+            put("autostart", autostart)
+            put("language", language)
+            put("timezone", timezone)
+            put("mountDownloads", mountDownloads)
+            put("extraMounts", JSONArray(extraMounts))
+            put("autoCleanup", autoCleanup)
+            put("codeServerPort", codeServerPort)
+            put("networkSharing", networkSharing)
+            put("proxy", proxy)
+            put("adbShare", adbShare)
+            put("customUser", customUser)
+            put("userName", userName)
+            put("ssh", ssh)
+            put("sshPort", sshPort)
+            put("backgroundExecution", backgroundExecution)
+            put("priority", priority)
+            put("debugMode", debugMode)
         }
 
     private fun JSONObject.toEnvironment(): Environment =
@@ -63,5 +99,35 @@ class EnvironmentRegistry(
                         (0 until array.length())
                             .mapNotNull { array.optString(it).takeIf(String::isNotBlank) }
                     }.orEmpty(),
+            settings = optJSONObject("settings")?.toEnvironmentSettings() ?: EnvironmentSettings(),
         )
+
+    private fun JSONObject.toEnvironmentSettings(): EnvironmentSettings {
+        val defaults = EnvironmentSettings()
+        return EnvironmentSettings(
+            icon = optString("icon", defaults.icon),
+            autostart = optBoolean("autostart", defaults.autostart),
+            language = optString("language", defaults.language),
+            timezone = optString("timezone", defaults.timezone),
+            mountDownloads = optBoolean("mountDownloads", defaults.mountDownloads),
+            extraMounts =
+                optJSONArray("extraMounts")
+                    ?.let { array ->
+                        (0 until array.length())
+                            .mapNotNull { array.optString(it).takeIf(String::isNotBlank) }
+                    }.orEmpty(),
+            autoCleanup = optBoolean("autoCleanup", defaults.autoCleanup),
+            codeServerPort = optInt("codeServerPort", defaults.codeServerPort),
+            networkSharing = optBoolean("networkSharing", defaults.networkSharing),
+            proxy = optString("proxy", defaults.proxy),
+            adbShare = optBoolean("adbShare", defaults.adbShare),
+            customUser = optBoolean("customUser", defaults.customUser),
+            userName = optString("userName", defaults.userName),
+            ssh = optBoolean("ssh", defaults.ssh),
+            sshPort = optInt("sshPort", defaults.sshPort),
+            backgroundExecution = optBoolean("backgroundExecution", defaults.backgroundExecution),
+            priority = optString("priority", defaults.priority),
+            debugMode = optBoolean("debugMode", defaults.debugMode),
+        )
+    }
 }

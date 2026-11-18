@@ -4,7 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import dev.prootcode.app.data.environment.EnvironmentRegistry
+import dev.prootcode.app.data.preferences.AppPreferences
+import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.theme.ProotCodeTheme
 import java.io.File
 
@@ -23,8 +28,22 @@ class TerminalActivity : ComponentActivity() {
             finish()
             return
         }
+        val preferences = AppPreferences.create(this)
         setContent {
-            ProotCodeTheme {
+            val settings by preferences.theme.collectAsState()
+            val systemDark = isSystemInDarkTheme()
+            val darkTheme =
+                when (settings.themeMode) {
+                    ThemeMode.SYSTEM -> systemDark
+                    ThemeMode.LIGHT -> false
+                    ThemeMode.DARK -> true
+                }
+            ProotCodeTheme(
+                darkTheme = darkTheme,
+                dynamicColor = settings.dynamicColor,
+                customHue = settings.customHue,
+                hardBackground = settings.hardBackground,
+            ) {
                 TerminalScreen(
                     environment = environment,
                     onBack = { finish() },

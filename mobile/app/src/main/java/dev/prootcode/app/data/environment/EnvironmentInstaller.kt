@@ -20,6 +20,7 @@ data class InstallRequest(
     val codeServerVersion: String?,
     val dnsServers: List<String>,
     val presets: List<String> = emptyList(),
+    val settings: EnvironmentSettings = EnvironmentSettings(),
 )
 
 class EnvironmentInstaller(
@@ -61,6 +62,7 @@ class EnvironmentInstaller(
                 createdAtMillis = System.currentTimeMillis(),
                 sizeBytes = sizeOf(directory),
                 presets = request.presets,
+                settings = request.settings,
             )
         registry.add(environment)
         onStage(InstallStage.READY)

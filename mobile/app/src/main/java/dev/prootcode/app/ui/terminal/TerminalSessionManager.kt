@@ -7,6 +7,8 @@ import com.termux.terminal.TerminalSession
 import dev.prootcode.app.data.environment.Environment
 
 object TerminalSessionManager {
+    const val NATIVE_ENVIRONMENT_ID = "native"
+
     private val sessionsByEnvironment = mutableMapOf<String, MutableList<TerminalSession>>()
     private val counters = mutableMapOf<String, Int>()
     var onScreenUpdated: (() -> Unit)? = null
@@ -17,15 +19,16 @@ object TerminalSessionManager {
         context: Context,
         environment: Environment,
     ): TerminalSession {
-        val session =
-            TerminalSessionFactory(context).create(environment) {
-                onScreenUpdated?.invoke()
-            }
-        val number = (counters[environment.id] ?: 0) + 1
-        counters[environment.id] = number
-        session.mSessionName = "Terminal $number"
-        sessionsByEnvironment.getOrPut(environment.id) { mutableListOf() }.add(session)
-        ensureService(context)
+        val session = TerminalSessionFactory(context).create(environment) {
+            onScreenUpdated?.invoke()
+        }
+        register(context, environment.id, session, "Terminal")
+        return session
+    }
+
+    fun createNative(context: Context): TerminalSession {
+        val session = TerminalSessionFactory(context).createNative { onScreenUpdated?.invoke() }
+        register(context, NATIVE_ENVIRONMENT_ID, session, "Shell")
         return session
     }
 
@@ -52,6 +55,34 @@ object TerminalSessionManager {
     }
 
     fun hasSessions(): Boolean = sessionsByEnvironment.values.any { it.isNotEmpty() }
+
+    fun previewLines(
+        session: TerminalSession,
+        maxLines: Int = 6,
+    ): List<String> =
+        runCatching {
+            session.emulator
+                ?.screen
+                ?.transcriptText
+                ?.lineSequence()
+                ?.filter { it.isNotBlank() }
+                ?.toList()
+                ?.takeLast(maxLines)
+                ?: emptyList()
+        }.getOrDefault(emptyList())
+
+    private fun register(
+        context: Context,
+        environmentId: String,
+        session: TerminalSession,
+        prefix: String,
+    ) {
+        val number = (counters[environmentId] ?: 0) + 1
+        counters[environmentId] = number
+        session.mSessionName = "$prefix $number"
+        sessionsByEnvironment.getOrPut(environmentId) { mutableListOf() }.add(session)
+        ensureService(context)
+    }
 
     private fun ensureService(context: Context) {
         val intent = Intent(context, TerminalService::class.java)

@@ -8,5 +8,9 @@ object NavRoutes {
     const val ENVIRONMENT_ARG = "environmentId"
     const val ENVIRONMENT_PATTERN = "environment/{$ENVIRONMENT_ARG}"
 
+    const val TERMINAL_PATTERN = "terminal/{$ENVIRONMENT_ARG}"
+
     fun environment(id: String): String = "environment/$id"
+
+    fun terminal(id: String): String = "terminal/$id"
 }
