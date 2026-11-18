@@ -7,18 +7,20 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Message
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.core.AnimationSpec
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateOffsetAsState
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -55,7 +57,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -65,6 +66,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
@@ -101,10 +103,18 @@ fun CodeServerScreen(
 
     var webView by remember { mutableStateOf<WebView?>(null) }
     var progress by remember { mutableIntStateOf(0) }
-    var showActions by remember { mutableStateOf(false) }
-    var pointerNear by remember { mutableStateOf(false) }
+    var actionsExpanded by remember { mutableStateOf(true) }
+    var textZoomPercent by remember { mutableIntStateOf(DEFAULT_ZOOM_PERCENT) }
     val layoutPreferences =
         remember { context.getSharedPreferences("code_server_layout", Context.MODE_PRIVATE) }
+    val savedDockSide =
+        runCatching {
+            DockSide.valueOf(
+                layoutPreferences.getString("dock_side_$environmentId", DockSide.BOTTOM.name)
+                    ?: DockSide.BOTTOM.name,
+            )
+        }.getOrDefault(DockSide.BOTTOM)
+    val dockSideState = remember { mutableStateOf(savedDockSide) }
     var dragOffset by remember {
         mutableStateOf(
             Offset(
@@ -115,24 +125,32 @@ fun CodeServerScreen(
     }
     var barSize by remember { mutableStateOf(IntSize.Zero) }
     var isDragging by remember { mutableStateOf(false) }
-    val barCenter = remember { mutableStateOf(Offset.Zero) }
     val runningPort = (status as? CodeServerStatus.Running)?.port
 
     val actionsInteraction = remember { MutableInteractionSource() }
     val actionsHovered by actionsInteraction.collectIsHoveredAsState()
     val density = LocalDensity.current
-    val hoverZone = with(density) { HOVER_ZONE_DP.dp.toPx() }
+    val edgeZone = with(density) { EDGE_ZONE_DP.dp.toPx() }
+    val collapsedOverhang = with(density) { COLLAPSED_OVERHANG_DP.dp.toPx() }
 
-    LaunchedEffect(actionsHovered, pointerNear, isDragging) {
-        if (actionsHovered || isDragging) {
-            showActions = true
-        } else if (!pointerNear) {
-            kotlinx.coroutines.delay(700)
-            if (!actionsHovered && !pointerNear && !isDragging) showActions = false
+    LaunchedEffect(actionsHovered) {
+        if (actionsHovered) actionsExpanded = true
+    }
+    LaunchedEffect(actionsExpanded, actionsHovered, isDragging) {
+        if (actionsExpanded && !actionsHovered && !isDragging) {
+            kotlinx.coroutines.delay(AUTO_HIDE_DELAY_MS)
+            if (!actionsHovered && !isDragging) actionsExpanded = false
         }
     }
     LaunchedEffect(status) {
-        if (status !is CodeServerStatus.Running) showActions = false
+        if (status !is CodeServerStatus.Running) actionsExpanded = false
+    }
+    LaunchedEffect(textZoomPercent) {
+        webView?.settings?.textZoom = textZoomPercent
+    }
+
+    fun changeZoom(step: Int) {
+        textZoomPercent = nextZoomLevel(textZoomPercent, step)
     }
 
     fun openLink(uri: Uri): Boolean {
@@ -224,19 +242,21 @@ fun CodeServerScreen(
             Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
-                .then(if (fullBleed) Modifier else Modifier.safeDrawingPadding()),
+                .then(if (fullBleed) Modifier else Modifier.safeDrawingPadding())
+                .clipToBounds(),
     ) {
         val widthPx = with(density) { maxWidth.toPx() }
         val heightPx = with(density) { maxHeight.toPx() }
         val bottomInsetPx = with(density) { 24.dp.toPx() }
         val maxDragX = ((widthPx - barSize.width) / 2f).coerceAtLeast(0f)
         val maxDragY = (heightPx - barSize.height - bottomInsetPx).coerceAtLeast(0f)
-        SideEffect {
-            barCenter.value =
-                Offset(
-                    widthPx / 2f + dragOffset.x,
-                    heightPx - bottomInsetPx - barSize.height / 2f + dragOffset.y,
-                )
+        val dragBounds = DragBounds(maxDragX, maxDragY)
+        LaunchedEffect(dragBounds) {
+            if (!isDragging) {
+                val snapped = dockOffset(dragOffset, dragBounds)
+                if (snapped != dragOffset) dragOffset = snapped
+                dockSideState.value = resolveDockSide(snapped, dragBounds)
+            }
         }
         when {
             !loaded -> {
@@ -311,29 +331,24 @@ fun CodeServerScreen(
                                         settings.setSupportZoom(true)
                                         settings.builtInZoomControls = true
                                         settings.displayZoomControls = false
+                                        settings.textZoom = textZoomPercent
                                         setOnHoverListener { view, event ->
                                             when (event.actionMasked) {
                                                 MotionEvent.ACTION_HOVER_ENTER,
                                                 MotionEvent.ACTION_HOVER_MOVE,
                                                 -> {
-                                                    showActions =
-                                                        event.x > view.width - hoverZone &&
-                                                        event.y < hoverZone
-                                                }
-                                                MotionEvent.ACTION_HOVER_EXIT -> {
-                                                    showActions = false
+                                                    if (isAtDockEdge(event, view, dockSideState.value, edgeZone)) {
+                                                        actionsExpanded = true
+                                                    }
                                                 }
                                             }
                                             false
                                         }
                                         setOnTouchListener { view, event ->
-                                            if (event.actionMasked == MotionEvent.ACTION_UP) {
-                                                val center = barCenter.value
-                                                val dx = event.x - center.x
-                                                val dy = event.y - center.y
-                                                if (dx * dx + dy * dy <= hoverZone * hoverZone) {
-                                                    showActions = !showActions
-                                                }
+                                            if (event.actionMasked == MotionEvent.ACTION_DOWN &&
+                                                isAtDockEdge(event, view, dockSideState.value, edgeZone)
+                                            ) {
+                                                actionsExpanded = true
                                             }
                                             false
                                         }
@@ -377,147 +392,146 @@ fun CodeServerScreen(
                     }
                 }
 
-                AnimatedVisibility(
-                    visible = showActions,
+                val offsetSpec: AnimationSpec<Offset> =
+                    if (isDragging) {
+                        snap()
+                    } else {
+                        spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMedium)
+                    }
+                val targetOffset =
+                    if (isDragging || actionsExpanded) {
+                        dragOffset
+                    } else {
+                        collapsedOffset(dragOffset, dockSideState.value, collapsedOverhang)
+                    }
+                val animatedOffset by animateOffsetAsState(
+                    targetValue = targetOffset,
+                    animationSpec = offsetSpec,
+                    label = "codeServerActionsOffset",
+                )
+
+                Surface(
+                    shape = RoundedCornerShape(18.dp),
+                    color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.94f),
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    tonalElevation = 6.dp,
+                    shadowElevation = 8.dp,
                     modifier =
                         Modifier
                             .align(Alignment.BottomCenter)
                             .padding(bottom = 24.dp)
                             .offset {
                                 IntOffset(
-                                    dragOffset.x.coerceIn(-maxDragX, maxDragX).roundToInt(),
-                                    dragOffset.y.coerceIn(-maxDragY, 0f).roundToInt(),
+                                    animatedOffset.x.roundToInt(),
+                                    animatedOffset.y.roundToInt(),
                                 )
                             }.onSizeChanged { barSize = it }
-                            .pointerInput(maxDragX, maxDragY) {
+                            .hoverable(actionsInteraction)
+                            .clickable(
+                                indication = null,
+                                interactionSource = remember { MutableInteractionSource() },
+                                onClickLabel = stringResource(R.string.code_server_expand),
+                                onClick = { actionsExpanded = true },
+                            ).pointerInput(maxDragX, maxDragY) {
                                 detectDragGestures(
-                                    onDragStart = { isDragging = true },
-                                    onDragEnd = { isDragging = false },
+                                    onDragStart = {
+                                        isDragging = true
+                                        actionsExpanded = true
+                                    },
+                                    onDragEnd = {
+                                        isDragging = false
+                                        val bounds = DragBounds(maxDragX, maxDragY)
+                                        val snapped = dockOffset(dragOffset, bounds)
+                                        dockSideState.value = resolveDockSide(snapped, bounds)
+                                        dragOffset = snapped
+                                        layoutPreferences
+                                            .edit()
+                                            .putFloat("bar_x_$environmentId", snapped.x)
+                                            .putFloat("bar_y_$environmentId", snapped.y)
+                                            .putString(
+                                                "dock_side_$environmentId",
+                                                dockSideState.value.name,
+                                            ).apply()
+                                    },
                                     onDragCancel = { isDragging = false },
                                 ) { change, amount ->
                                     change.consume()
                                     dragOffset =
-                                        Offset(
-                                            (dragOffset.x + amount.x)
-                                                .coerceIn(-maxDragX, maxDragX),
-                                            (dragOffset.y + amount.y)
-                                                .coerceIn(-maxDragY, 0f),
+                                        clampDragOffset(
+                                            Offset(dragOffset.x + amount.x, dragOffset.y + amount.y),
+                                            DragBounds(maxDragX, maxDragY),
                                         )
                                 }
                             },
-                    enter = fadeIn() + slideInVertically { it / 2 },
-                    exit = fadeOut() + slideOutVertically { it / 2 },
                 ) {
-                    Surface(
-                        shape = RoundedCornerShape(18.dp),
-                        color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.94f),
-                        contentColor = MaterialTheme.colorScheme.onSurface,
-                        tonalElevation = 6.dp,
-                        shadowElevation = 8.dp,
-                        modifier = Modifier.hoverable(actionsInteraction),
+                    Row(
+                        modifier = Modifier.padding(horizontal = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(2.dp),
                     ) {
-                        Row(
-                            modifier = Modifier.padding(horizontal = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(2.dp),
+                        if (dockSideState.value != DockSide.RIGHT) {
+                            DragHandle()
+                        }
+                        IconButton(onClick = onBack) {
+                            Icon(
+                                imageVector = Icons.Outlined.ArrowBack,
+                                contentDescription = stringResource(R.string.action_back),
+                                tint = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(onClick = { webView?.reload() }) {
+                            Icon(
+                                imageVector = Icons.Outlined.Refresh,
+                                contentDescription = stringResource(R.string.code_server_reload),
+                                tint = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(onClick = { changeZoom(ZOOM_STEP_PERCENT) }) {
+                            Icon(
+                                imageVector = Icons.Outlined.ZoomIn,
+                                contentDescription = stringResource(R.string.code_server_zoom_in),
+                                tint = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(onClick = { changeZoom(-ZOOM_STEP_PERCENT) }) {
+                            Icon(
+                                imageVector = Icons.Outlined.ZoomOut,
+                                contentDescription = stringResource(R.string.code_server_zoom_out),
+                                tint = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                runCatching {
+                                    context.startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("http://$CODE_SERVER_HOST:$port/"),
+                                        ),
+                                    )
+                                }
+                            },
                         ) {
-                            Box(
-                                modifier =
-                                    Modifier
-                                        .pointerInput(maxDragX, maxDragY) {
-                                            detectDragGestures(
-                                                onDragStart = { isDragging = true },
-                                                onDragEnd = {
-                                                    isDragging = false
-                                                    layoutPreferences
-                                                        .edit()
-                                                        .putFloat(
-                                                            "bar_x_$environmentId",
-                                                            dragOffset.x,
-                                                        ).putFloat(
-                                                            "bar_y_$environmentId",
-                                                            dragOffset.y,
-                                                        ).apply()
-                                                },
-                                                onDragCancel = { isDragging = false },
-                                            ) { change, amount ->
-                                                change.consume()
-                                                dragOffset =
-                                                    Offset(
-                                                        (dragOffset.x + amount.x)
-                                                            .coerceIn(-maxDragX, maxDragX),
-                                                        (dragOffset.y + amount.y)
-                                                            .coerceIn(-maxDragY, 0f),
-                                                    )
-                                            }
-                                        }.padding(horizontal = 8.dp, vertical = 12.dp),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.DragIndicator,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                            IconButton(onClick = onBack) {
-                                Icon(
-                                    imageVector = Icons.Outlined.ArrowBack,
-                                    contentDescription = stringResource(R.string.action_back),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(onClick = { webView?.reload() }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Refresh,
-                                    contentDescription = stringResource(R.string.code_server_reload),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(onClick = { webView?.zoomIn() }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.ZoomIn,
-                                    contentDescription = stringResource(R.string.code_server_zoom_in),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(onClick = { webView?.zoomOut() }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.ZoomOut,
-                                    contentDescription = stringResource(R.string.code_server_zoom_out),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(
-                                onClick = {
-                                    runCatching {
-                                        context.startActivity(
-                                            Intent(
-                                                Intent.ACTION_VIEW,
-                                                Uri.parse("http://$CODE_SERVER_HOST:$port/"),
-                                            ),
-                                        )
-                                    }
-                                },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.OpenInNew,
-                                    contentDescription =
-                                        stringResource(R.string.code_server_open_browser),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(
-                                onClick = {
-                                    viewModel.stop()
-                                    onBack()
-                                },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Stop,
-                                    contentDescription = stringResource(R.string.code_server_stop),
-                                    tint = MaterialTheme.colorScheme.error,
-                                )
-                            }
+                            Icon(
+                                imageVector = Icons.Outlined.OpenInNew,
+                                contentDescription = stringResource(R.string.code_server_open_browser),
+                                tint = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                viewModel.stop()
+                                onBack()
+                            },
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.Stop,
+                                contentDescription = stringResource(R.string.code_server_stop),
+                                tint = MaterialTheme.colorScheme.error,
+                            )
+                        }
+                        if (dockSideState.value == DockSide.RIGHT) {
+                            DragHandle()
                         }
                     }
                 }
@@ -573,6 +587,113 @@ private fun StatusMessage(
     }
 }
 
-private const val CODE_SERVER_HOST = "127.0.0.1"
+@Composable
+private fun DragHandle() {
+    Box(
+        modifier = Modifier.padding(horizontal = 10.dp, vertical = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = Icons.Outlined.DragIndicator,
+            contentDescription = stringResource(R.string.code_server_move),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
 
-private const val HOVER_ZONE_DP = 220
+private fun isAtDockEdge(
+    event: MotionEvent,
+    view: View,
+    side: DockSide,
+    edgeZone: Float,
+): Boolean =
+    when (side) {
+        DockSide.LEFT -> event.x <= edgeZone
+        DockSide.RIGHT -> event.x >= view.width - edgeZone
+        DockSide.TOP -> event.y <= edgeZone
+        DockSide.BOTTOM -> event.y >= view.height - edgeZone
+    }
+
+private const val CODE_SERVER_HOST = "127.0.0.1"
+private const val EDGE_ZONE_DP = 56f
+private const val COLLAPSED_OVERHANG_DP = 30f
+private const val AUTO_HIDE_DELAY_MS = 700L
+private const val DEFAULT_ZOOM_PERCENT = 100
+
+internal const val MIN_ZOOM_PERCENT = 50
+internal const val MAX_ZOOM_PERCENT = 200
+internal const val ZOOM_STEP_PERCENT = 10
+
+internal enum class DockSide {
+    LEFT,
+    RIGHT,
+    TOP,
+    BOTTOM,
+}
+
+internal data class DragBounds(
+    val maxX: Float,
+    val maxY: Float,
+)
+
+internal fun clampDragOffset(
+    offset: Offset,
+    bounds: DragBounds,
+): Offset =
+    Offset(
+        offset.x.coerceIn(-bounds.maxX, bounds.maxX),
+        offset.y.coerceIn(-bounds.maxY, 0f),
+    )
+
+internal fun resolveDockSide(
+    offset: Offset,
+    bounds: DragBounds,
+): DockSide {
+    val clamped = clampDragOffset(offset, bounds)
+    var best = -clamped.y
+    var side = DockSide.BOTTOM
+    val left = bounds.maxX + clamped.x
+    if (left < best) {
+        best = left
+        side = DockSide.LEFT
+    }
+    val right = bounds.maxX - clamped.x
+    if (right < best) {
+        best = right
+        side = DockSide.RIGHT
+    }
+    if (bounds.maxY + clamped.y < best) {
+        side = DockSide.TOP
+    }
+    return side
+}
+
+internal fun dockOffset(
+    offset: Offset,
+    bounds: DragBounds,
+): Offset {
+    val clamped = clampDragOffset(offset, bounds)
+    return when (resolveDockSide(clamped, bounds)) {
+        DockSide.LEFT -> Offset(-bounds.maxX, clamped.y)
+        DockSide.RIGHT -> Offset(bounds.maxX, clamped.y)
+        DockSide.TOP -> Offset(clamped.x, -bounds.maxY)
+        DockSide.BOTTOM -> Offset(clamped.x, 0f)
+    }
+}
+
+internal fun collapsedOffset(
+    offset: Offset,
+    side: DockSide,
+    overhang: Float,
+): Offset =
+    when (side) {
+        DockSide.LEFT -> Offset(offset.x - overhang, offset.y)
+        DockSide.RIGHT -> Offset(offset.x + overhang, offset.y)
+        DockSide.TOP -> Offset(offset.x, offset.y - overhang)
+        DockSide.BOTTOM -> Offset(offset.x, offset.y + overhang)
+    }
+
+internal fun nextZoomLevel(
+    current: Int,
+    step: Int,
+): Int = (current + step).coerceIn(MIN_ZOOM_PERCENT, MAX_ZOOM_PERCENT)

@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.compose.BackHandler
@@ -21,6 +22,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -32,6 +35,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -40,6 +44,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import com.termux.terminal.TerminalSession
 import com.termux.terminal.TextStyle
 import com.termux.view.TerminalView
@@ -51,6 +56,7 @@ import dev.prootcode.app.ui.components.ClosableTabRow
 import dev.prootcode.app.ui.settings.ShortcutsEditorSheet
 import dev.prootcode.app.ui.theme.TerminalPalette
 import dev.prootcode.app.ui.theme.terminalPalette
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,6 +70,15 @@ fun TerminalScreen(
     val preferences = remember { AppPreferences.create(context) }
     val themeSettings by preferences.theme.collectAsState()
     val environmentId = environment?.id ?: TerminalSessionManager.NATIVE_ENVIRONMENT_ID
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    val notificationDenied = stringResource(R.string.terminal_notifications_denied)
+    val notificationPermission =
+        rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (!granted) {
+                scope.launch { snackbarHostState.showSnackbar(notificationDenied) }
+            }
+        }
 
     LaunchedEffect(environmentId) {
         activity?.setTaskDescription(
@@ -71,9 +86,20 @@ fun TerminalScreen(
         )
     }
 
+    LaunchedEffect(Unit) {
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
     BackHandler(onBack = onBack)
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 navigationIcon = {
@@ -126,13 +152,8 @@ fun TerminalContent(
     var shortcuts by remember { mutableStateOf(TerminalShortcutStore.create(context).load()) }
     var showShortcutsEditor by remember { mutableStateOf(false) }
     val shortcutStore = remember { TerminalShortcutStore.create(context) }
-    val notificationPermission =
-        rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
 
     LaunchedEffect(environmentId) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
         if (TerminalSessionManager.sessions(environmentId).isEmpty()) {
             if (environment == null) {
                 TerminalSessionManager.createNative(context)

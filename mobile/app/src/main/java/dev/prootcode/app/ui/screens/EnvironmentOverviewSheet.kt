@@ -50,7 +50,7 @@ fun EnvironmentOverviewSheet(
                 listOf(
                     stringResource(R.string.overview_status) to status,
                     stringResource(R.string.overview_uptime) to uptime,
-                    stringResource(R.string.overview_ram) to ram,
+                    stringResource(R.string.overview_ram_total) to ram,
                     stringResource(R.string.overview_storage) to storage,
                 ),
         )

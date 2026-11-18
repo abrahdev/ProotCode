@@ -20,7 +20,6 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density"
             android:exported="true"
             android:resizeableActivity="true"
-            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize">
             <layout
                 android:defaultWidth="1280dp"
@@ -50,7 +49,6 @@
             android:exported="true"
             android:launchMode="standard"
             android:resizeableActivity="true"
-            android:screenOrientation="landscape"
             android:taskAffinity=""
             android:windowSoftInputMode="adjustResize">
             <layout
@@ -74,7 +72,6 @@
             android:exported="false"
             android:launchMode="standard"
             android:resizeableActivity="true"
-            android:screenOrientation="landscape"
             android:taskAffinity=""
             android:windowSoftInputMode="adjustResize">
             <layout
@@ -90,7 +87,6 @@
             android:exported="false"
             android:launchMode="standard"
             android:resizeableActivity="true"
-            android:screenOrientation="landscape"
             android:taskAffinity=""
             android:windowSoftInputMode="adjustResize">
             <layout

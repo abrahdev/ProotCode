@@ -25,18 +25,32 @@ object QuestWindow {
         }
     }
 
+    internal fun isVrDevice(
+        manufacturer: String,
+        model: String,
+        hasStandaloneVrFeature: Boolean,
+    ): Boolean =
+        manufacturer.equals("Oculus", ignoreCase = true) ||
+            model.contains("Quest", ignoreCase = true) ||
+            hasStandaloneVrFeature
+
     fun isVrDevice(context: Context): Boolean =
-        Build.MANUFACTURER.equals("Oculus", ignoreCase = true) ||
-            Build.MODEL.contains("Quest", ignoreCase = true) ||
-            context.packageManager.hasSystemFeature("oculus.hardware.standalone_vr")
+        isVrDevice(
+            manufacturer = Build.MANUFACTURER,
+            model = Build.MODEL,
+            hasStandaloneVrFeature =
+                context.packageManager.hasSystemFeature("oculus.hardware.standalone_vr"),
+        )
+
+    internal fun requestedOrientation(isVrDevice: Boolean): Int =
+        if (isVrDevice) {
+            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        } else {
+            ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        }
 
     fun applyOrientation(activity: Activity) {
-        activity.requestedOrientation =
-            if (isVrDevice(activity)) {
-                ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            } else {
-                ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-            }
+        activity.requestedOrientation = requestedOrientation(isVrDevice(activity))
     }
 
     private fun launchOptions(context: Context): Bundle? {

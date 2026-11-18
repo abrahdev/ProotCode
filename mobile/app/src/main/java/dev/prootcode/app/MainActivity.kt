@@ -26,9 +26,9 @@ import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.NavRoutes
 import dev.prootcode.app.ui.codeserver.CodeServerActivity
 import dev.prootcode.app.ui.screens.AboutScreen
+import dev.prootcode.app.ui.screens.ChangelogScreen
 import dev.prootcode.app.ui.screens.EnvironmentDetailScreen
 import dev.prootcode.app.ui.screens.HomeScreen
-import dev.prootcode.app.ui.screens.SettingsScreen
 import dev.prootcode.app.ui.terminal.TerminalScreen
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import dev.prootcode.app.ui.theme.ProotCodeTheme
@@ -37,8 +37,8 @@ import java.io.File
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         QuestWindow.applyOrientation(this)
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             val preferences = remember { AppPreferences.create(applicationContext) }
@@ -91,14 +91,14 @@ class MainActivity : ComponentActivity() {
                                 onOpenAbout = { navController.navigate(NavRoutes.ABOUT) },
                             )
                         }
-                        composable(NavRoutes.SETTINGS) {
-                            SettingsScreen(
+                        composable(NavRoutes.ABOUT) {
+                            AboutScreen(
                                 onBack = { navController.popBackStack() },
-                                onAbout = { navController.navigate(NavRoutes.ABOUT) },
+                                onChangelog = { navController.navigate(NavRoutes.CHANGELOG) },
                             )
                         }
-                        composable(NavRoutes.ABOUT) {
-                            AboutScreen(onBack = { navController.popBackStack() })
+                        composable(NavRoutes.CHANGELOG) {
+                            ChangelogScreen(onBack = { navController.popBackStack() })
                         }
                         composable(
                             route = NavRoutes.ENVIRONMENT_PATTERN,

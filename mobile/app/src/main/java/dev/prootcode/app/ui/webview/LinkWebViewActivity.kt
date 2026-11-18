@@ -12,8 +12,8 @@ import dev.prootcode.app.ui.util.QuestWindow
 
 class LinkWebViewActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         QuestWindow.applyOrientation(this)
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val url = intent.getStringExtra(EXTRA_URL)
         if (url.isNullOrBlank()) {

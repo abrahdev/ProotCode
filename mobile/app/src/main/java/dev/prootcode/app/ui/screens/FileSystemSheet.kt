@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import dev.prootcode.app.R
 import dev.prootcode.app.ui.components.BackupEntry
 import dev.prootcode.app.ui.components.BackupItem
+import dev.prootcode.app.ui.components.FileEntry
 import dev.prootcode.app.ui.components.RootfsBrowser
 import dev.prootcode.app.ui.components.SheetScaffold
 import java.io.File
@@ -27,13 +28,19 @@ import java.io.File
 @Composable
 fun FileSystemSheet(
     rootfs: File,
+    onOpenFile: (FileEntry) -> Unit,
+    onMessage: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
     SheetScaffold(
         title = stringResource(R.string.sheet_files_title),
         onDismiss = onDismiss,
     ) {
-        RootfsBrowser(root = rootfs)
+        RootfsBrowser(
+            root = rootfs,
+            onOpenFile = onOpenFile,
+            onMessage = onMessage,
+        )
     }
 }
 

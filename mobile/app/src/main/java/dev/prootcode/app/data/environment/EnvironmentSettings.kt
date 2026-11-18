@@ -12,7 +12,7 @@ data class EnvironmentSettings(
     val networkSharing: Boolean = true,
     val proxy: String = "",
     val adbShare: Boolean = false,
-    val customUser: Boolean = false,
+    val customUser: Boolean = true,
     val userName: String = "",
     val ssh: Boolean = false,
     val sshPort: Int = 2222,

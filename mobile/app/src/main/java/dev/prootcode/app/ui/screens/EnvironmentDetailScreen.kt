@@ -76,17 +76,17 @@ fun EnvironmentDetailScreen(
     var cacheRefresh by remember { mutableIntStateOf(0) }
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val cacheCleared = stringResource(R.string.config_cache_cleared)
+    val messageText =
+        homeState.messageText
+            ?: homeState.messageRes?.let { res ->
+                homeState.messageArg?.let { arg -> stringResource(res, arg) }
+                    ?: stringResource(res)
+            }
 
-    LaunchedEffect(homeState.messageText, homeState.messageRes, homeState.messageArg) {
-        val text =
-            homeState.messageText
-                ?: homeState.messageRes?.let { res ->
-                    homeState.messageArg?.let { arg ->
-                        context.getString(res, arg)
-                    } ?: context.getString(res)
-                }
-        if (text != null) {
-            snackbarHostState.showSnackbar(text)
+    LaunchedEffect(messageText) {
+        if (messageText != null) {
+            snackbarHostState.showSnackbar(messageText)
             homeViewModel.clearMessage()
         }
     }
@@ -163,6 +163,7 @@ fun EnvironmentDetailScreen(
             item {
                 SettingsGroup(title = stringResource(R.string.settings_general)) {
                     ConfigRow(ConfigKey.NAME, R.string.config_machine_name_sub) { configKey = it }
+                    ConfigRow(ConfigKey.USER, R.string.config_user_sub) { configKey = it }
                     ConfigRow(ConfigKey.ICON, R.string.config_icon_sub) { configKey = it }
                     ConfigRow(ConfigKey.AUTOSTART, R.string.config_autostart_sub) { configKey = it }
                     ConfigRow(ConfigKey.LANGUAGE, R.string.config_language_sub) { configKey = it }
@@ -201,7 +202,6 @@ fun EnvironmentDetailScreen(
             item {
                 SettingsGroup(title = stringResource(R.string.settings_access)) {
                     ConfigRow(ConfigKey.ADB, R.string.config_adb_sub) { configKey = it }
-                    ConfigRow(ConfigKey.USER, R.string.config_user_sub) { configKey = it }
                     ConfigRow(
                         ConfigKey.SSH,
                         R.string.config_ssh_sub,
@@ -223,10 +223,9 @@ fun EnvironmentDetailScreen(
                 SettingsGroup(title = stringResource(R.string.settings_advanced)) {
                     ConfigRow(ConfigKey.DEBUG, R.string.config_debug_sub) { configKey = it }
                     ConfigRow(ConfigKey.LOGS, R.string.config_logs_sub) { configKey = it }
-                    ConfigRow(ConfigKey.BACKUP, R.string.config_backup_sub) { configKey = it }
                     ConfigRow(
-                        ConfigKey.RESET,
-                        R.string.config_reset_sub,
+                        ConfigKey.BACKUP,
+                        R.string.config_backup_sub,
                         showDivider = false,
                     ) { configKey = it }
                 }
@@ -252,7 +251,7 @@ fun EnvironmentDetailScreen(
                         File(rootfs, "tmp").mkdirs()
                     }
                     cacheRefresh += 1
-                    homeViewModel.showText(context.getString(R.string.config_cache_cleared))
+                    homeViewModel.showText(cacheCleared)
                 }
             },
             onTestBridge = { homeViewModel.testBridge(current) },

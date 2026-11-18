@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.Upload
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -61,7 +60,6 @@ enum class ConfigKey {
     DEBUG,
     LOGS,
     BACKUP,
-    RESET,
 }
 
 @Composable
@@ -81,9 +79,7 @@ fun EnvironmentConfigSheet(
 ) {
     var local by remember(environment.id, configKey) { mutableStateOf(environment) }
     var showFolderPicker by remember { mutableStateOf(false) }
-    var confirmReset by remember { mutableStateOf(false) }
     var showNameHelp by remember { mutableStateOf(false) }
-    val logsPending = stringResource(R.string.config_logs_pending)
     val backupPending = stringResource(R.string.config_backup_pending)
 
     fun settings(transform: (EnvironmentSettings) -> EnvironmentSettings) {
@@ -403,15 +399,7 @@ fun EnvironmentConfigSheet(
                 }
 
             ConfigKey.LOGS -> {
-                Text(
-                    text = stringResource(R.string.config_logs_sub),
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                OutlinedButton(
-                    onClick = { onMessage(logsPending) },
-                ) {
-                    Text(stringResource(R.string.config_open_logs))
-                }
+                LogViewerContent(environment = local)
                 OutlinedButton(onClick = onTestBridge) {
                     Text(stringResource(R.string.bridge_test))
                 }
@@ -453,35 +441,6 @@ fun EnvironmentConfigSheet(
                     Text(stringResource(R.string.backups_previous))
                 }
             }
-
-            ConfigKey.RESET -> {
-                Text(
-                    text = stringResource(R.string.config_reset_sub),
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                if (confirmReset) {
-                    Text(
-                        text = stringResource(R.string.config_reset_text),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        TextButton(onClick = { confirmReset = false }) {
-                            Text(stringResource(R.string.action_cancel))
-                        }
-                        Button(onClick = onDelete) {
-                            Text(stringResource(R.string.config_reset_confirm))
-                        }
-                    }
-                } else {
-                    OutlinedButton(onClick = { confirmReset = true }) {
-                        Text(
-                            text = stringResource(R.string.config_reset),
-                            color = MaterialTheme.colorScheme.error,
-                        )
-                    }
-                }
-            }
         }
     }
 
@@ -520,6 +479,5 @@ internal fun configTitle(key: ConfigKey): String =
             ConfigKey.DEBUG -> R.string.config_debug
             ConfigKey.LOGS -> R.string.config_logs
             ConfigKey.BACKUP -> R.string.config_backup
-            ConfigKey.RESET -> R.string.config_reset
         },
     )

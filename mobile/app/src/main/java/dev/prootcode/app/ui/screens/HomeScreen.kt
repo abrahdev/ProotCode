@@ -1,5 +1,7 @@
 package dev.prootcode.app.ui.screens
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -105,6 +107,16 @@ fun HomeScreen(
     val selectedPreviews = remember { mutableStateMapOf<String, Int>() }
     var sheet by remember { mutableStateOf<HomeSheet?>(null) }
     var previewTick by remember { mutableIntStateOf(0) }
+    var overviewTick by remember { mutableIntStateOf(0) }
+    val stoppedText = stringResource(R.string.overview_stopped)
+    val filesPathLabel = stringResource(R.string.files_path_label)
+    val fileOpenedText = stringResource(R.string.files_opened_in_vscode)
+    val messageText =
+        state.messageText
+            ?: state.messageRes?.let { res ->
+                state.messageArg?.let { arg -> stringResource(res, arg) }
+                    ?: stringResource(res)
+            }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -113,16 +125,18 @@ fun HomeScreen(
         }
     }
 
-    LaunchedEffect(state.messageText, state.messageRes, state.messageArg) {
-        val text =
-            state.messageText
-                ?: state.messageRes?.let { res ->
-                    state.messageArg?.let { arg ->
-                        context.getString(res, arg)
-                    } ?: context.getString(res)
-                }
-        if (text != null) {
-            snackbarHostState.showSnackbar(text)
+    LaunchedEffect(sheet is HomeSheet.Overview) {
+        if (sheet is HomeSheet.Overview) {
+            while (true) {
+                delay(1_000)
+                overviewTick += 1
+            }
+        }
+    }
+
+    LaunchedEffect(messageText) {
+        if (messageText != null) {
+            snackbarHostState.showSnackbar(messageText)
             homeViewModel.clearMessage()
         }
     }
@@ -399,11 +413,19 @@ fun HomeScreen(
                     remember(environment.id, previewTick) {
                         TerminalSessionManager.sessions(environment.id)
                     }
+                val uptimeMillis =
+                    remember(environment.id, overviewTick) {
+                        TerminalSessionManager.uptimeMillis(environment.id)
+                    }
+                val ramBytes =
+                    remember(environment.id, overviewTick) {
+                        TerminalSessionManager.ramBytes(environment.id)
+                    }
                 EnvironmentOverviewSheet(
                     name = environment.name,
                     status = stringResource(R.string.status_ready),
-                    uptime = stringResource(R.string.overview_unknown),
-                    ram = stringResource(R.string.overview_unknown),
+                    uptime = formatUptime(uptimeMillis),
+                    ram = formatFileSize(ramBytes),
                     storage = formatFileSize(environment.sizeBytes),
                     sessions =
                         sessions.mapIndexed { index, session ->
@@ -426,17 +448,41 @@ fun HomeScreen(
                     },
                     onStopAll = {
                         TerminalSessionManager.closeAll(context, environment.id)
-                        homeViewModel.showText(context.getString(R.string.overview_stopped))
+                        homeViewModel.showText(stoppedText)
                         sheet = null
                     },
                     onDismiss = { sheet = null },
                 )
             }
         }
-        is HomeSheet.Files ->
+        is HomeSheet.Files -> {
+            val environment = state.environments.firstOrNull { it.id == current.environmentId }
             FileSystemSheet(
                 rootfs = homeViewModel.rootfsDir(current.environmentId),
+                onOpenFile = { entry ->
+                    if (environment != null) {
+                        val clipboard = context.getSystemService(ClipboardManager::class.java)
+                        clipboard?.setPrimaryClip(
+                            ClipData.newPlainText(filesPathLabel, entry.path),
+                        )
+                        onOpenCodeServer(environment)
+                        homeViewModel.showText(fileOpenedText)
+                    }
+                },
+                onMessage = homeViewModel::showText,
                 onDismiss = { sheet = null },
             )
+        }
+    }
+}
+
+@Composable
+private fun formatUptime(millis: Long): String {
+    val seconds = millis / 1_000
+    return when {
+        seconds >= 3_600 ->
+            stringResource(R.string.overview_uptime_hm, seconds / 3_600, (seconds % 3_600) / 60)
+        seconds >= 60 -> stringResource(R.string.overview_uptime_ms, seconds / 60, seconds % 60)
+        else -> stringResource(R.string.overview_uptime_s, seconds)
     }
 }

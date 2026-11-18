@@ -25,7 +25,7 @@ data class WizardState(
     val extraMounts: List<String> = emptyList(),
     val icon: String = "default",
     val adbShare: Boolean = false,
-    val customUser: Boolean = false,
+    val customUser: Boolean = true,
     val userName: String = "",
 )
 

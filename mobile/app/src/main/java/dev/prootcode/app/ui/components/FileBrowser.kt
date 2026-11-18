@@ -11,18 +11,29 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowUpward
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.outlined.FolderOpen
+import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -68,6 +79,8 @@ fun FileBrowser(
     entries: List<FileEntry>,
     onNavigate: (String) -> Unit,
     onOpenFile: (FileEntry) -> Unit,
+    onDeleteFile: (FileEntry) -> Unit,
+    onShareFile: (FileEntry) -> Unit,
     modifier: Modifier = Modifier,
     parentLabel: String? = null,
 ) {
@@ -111,7 +124,10 @@ fun FileBrowser(
                     name = parentLabel,
                     detail = null,
                     mounted = false,
+                    file = null,
                     onClick = { onNavigate(path.substringBeforeLast('/').ifBlank { "/" }) },
+                    onDeleteFile = onDeleteFile,
+                    onShareFile = onShareFile,
                 )
             }
             entries.forEach { entry ->
@@ -124,9 +140,12 @@ fun FileBrowser(
                     name = entry.name,
                     detail = entry.sizeBytes?.let { formatFileSize(it) },
                     mounted = entry.mounted,
+                    file = entry.takeUnless { it.isDirectory },
                     onClick = {
                         if (entry.isDirectory) onNavigate(entry.path) else onOpenFile(entry)
                     },
+                    onDeleteFile = onDeleteFile,
+                    onShareFile = onShareFile,
                 )
                 HorizontalDivider(
                     color = MaterialTheme.colorScheme.outlineVariant,
@@ -139,12 +158,16 @@ fun FileBrowser(
 
 @Composable
 private fun FileBrowserRow(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: ImageVector,
     name: String,
     detail: String?,
     mounted: Boolean,
+    file: FileEntry?,
     onClick: () -> Unit,
+    onDeleteFile: (FileEntry) -> Unit,
+    onShareFile: (FileEntry) -> Unit,
 ) {
+    var menuOpen by remember { mutableStateOf(false) }
     Row(
         modifier =
             Modifier
@@ -182,6 +205,50 @@ private fun FileBrowserRow(
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+        }
+        if (file != null) {
+            IconButton(
+                onClick = { menuOpen = true },
+                modifier = Modifier.size(36.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.MoreVert,
+                    contentDescription = stringResource(R.string.files_actions, name),
+                    modifier = Modifier.size(20.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            DropdownMenu(
+                expanded = menuOpen,
+                onDismissRequest = { menuOpen = false },
+            ) {
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.files_share)) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Share,
+                            contentDescription = null,
+                        )
+                    },
+                    onClick = {
+                        menuOpen = false
+                        onShareFile(file)
+                    },
+                )
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.files_delete)) },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Delete,
+                            contentDescription = null,
+                        )
+                    },
+                    onClick = {
+                        menuOpen = false
+                        onDeleteFile(file)
+                    },
+                )
+            }
         }
     }
 }

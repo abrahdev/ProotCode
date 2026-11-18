@@ -1,15 +1,9 @@
 <resources>
     <string name="app_name">ProotCode</string>
     <string name="app_tagline">A portable Linux development workspace for Android</string>
-    <string name="app_status">Initial scaffold</string>
     <string name="environments_storage">Storage used: %1$s</string>
-    <string name="environments_details">%1$s · %2$s · code-server %3$s · %4$s</string>
-    <string name="environments_new">New environment</string>
     <string name="environments_delete">Delete</string>
-    <string name="environments_terminal">Open terminal</string>
-    <string name="environments_settings">Environment settings</string>
     <string name="terminal_back">Back</string>
-    <string name="settings_title">Settings</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_theme_system">System</string>
     <string name="settings_theme_light">Light</string>
@@ -19,43 +13,20 @@
     <string name="about_version_section">Version</string>
     <string name="about_version_label">App version</string>
     <string name="about_community">Community</string>
-    <string name="about_version">Version %1$s</string>
     <string name="about_licenses">Licenses</string>
     <string name="about_github">GitHub</string>
     <string name="about_releases">Releases</string>
-    <string name="detail_tab_terminal">Terminal</string>
-    <string name="detail_tab_packages">Packages</string>
-    <string name="detail_tab_code_server">Code-server</string>
-    <string name="detail_coming_soon">Coming in the next sprint.</string>
     <string name="home_empty_title">No environments yet</string>
     <string name="home_empty_body">Create your first Linux environment to get started.</string>
-    <string name="terminal_window">Open in window</string>
-    <string name="terminal_new_session">+</string>
     <string name="terminal_close_session">×</string>
     <string name="terminal_notification_title">Terminal sessions</string>
     <string name="terminal_notification_text">ProotCode keeps your shells alive</string>
-    <string name="terminal_keys">Keys</string>
-    <string name="terminal_keys_title">Extra keys</string>
-    <string name="terminal_key_ctrl">Ctrl</string>
-    <string name="terminal_key_alt">Alt</string>
-    <string name="terminal_key_esc">Esc</string>
-    <string name="terminal_key_tab">Tab</string>
-    <string name="terminal_key_left">←</string>
-    <string name="terminal_key_up">↑</string>
-    <string name="terminal_key_down">↓</string>
-    <string name="terminal_key_right">→</string>
     <string name="catalog_refresh">Refresh catalog</string>
     <string name="wizard_title">Create environment</string>
     <string name="wizard_name">Name</string>
     <string name="wizard_name_taken">Name already in use</string>
-    <string name="wizard_distro">Distribution</string>
     <string name="wizard_no_distros">No distribution available for this device. Refresh the catalog.</string>
-    <string name="wizard_code_server">code-server</string>
     <string name="wizard_none">None</string>
-    <string name="wizard_presets">Presets</string>
-    <string name="wizard_presets_note">Presets are installed from the package manager in a later step.</string>
-    <string name="wizard_install">Install</string>
-    <string name="wizard_cancel">Cancel</string>
     <string name="install_downloading">Downloading artifacts</string>
     <string name="install_stage_rootfs">Extracting rootfs</string>
     <string name="install_stage_code_server">Installing code-server</string>
@@ -65,15 +36,9 @@
     <string name="bridge_test">Test projects bridge</string>
     <string name="bridge_ok">Projects bridge works</string>
     <string name="bridge_failed">Projects bridge failed</string>
-    <string name="environments_presets">Presets: %1$s</string>
     <string name="code_server_change">Change to %1$s</string>
     <string name="code_server_changed">code-server %1$s installed</string>
-    <string name="licenses_title">Licenses</string>
     <string name="licenses_close">Close</string>
-    <string name="preset_essentials">Essentials (git, curl, build tools)</string>
-    <string name="preset_editors">Editors (OpenCode, Neovim)</string>
-    <string name="preset_languages">Languages (Python, Node, Go, Rust)</string>
-    <string name="preset_utilities">Utilities (htop, ripgrep, tmux)</string>
 
     <string name="action_close">Close</string>
     <string name="action_cancel">Cancel</string>
@@ -90,7 +55,6 @@
     <string name="action_fewer_versions">Fewer versions</string>
 
     <string name="sheet_preferences_title">Preferences</string>
-    <string name="sheet_theme_title">Theme</string>
     <string name="sheet_terminal_customize_title">Customize terminal</string>
     <string name="sheet_accessibility_title">Accessibility</string>
     <string name="sheet_shortcuts_title">Shortcuts</string>
@@ -155,14 +119,12 @@
     <string name="home_adb_connected">ADB connected</string>
     <string name="home_action_terminal">Terminal</string>
     <string name="home_action_window">Terminal in new window</string>
-    <string name="home_action_files">File system</string>
     <string name="home_more">Menu</string>
     <string name="home_ready_storage">Ready · %1$s</string>
     <string name="home_reorder_hint">Use the arrows to reorder. Tap Done when finished.</string>
     <string name="reorder_move_up">Move up</string>
     <string name="reorder_move_down">Move down</string>
     <string name="status_ready">Ready</string>
-    <string name="code_server_pending">Code Server is installed but not launched yet</string>
 
     <string name="wizard_step_distro">Distro</string>
     <string name="wizard_step_tools">Tools</string>
@@ -219,8 +181,6 @@
     <string name="settings_access">Access</string>
     <string name="settings_performance">Performance</string>
     <string name="settings_advanced">Advanced</string>
-    <string name="detail_tab_settings">Settings</string>
-    <string name="detail_tab_files">Files</string>
 
     <string name="config_machine_name">Machine name</string>
     <string name="config_name">Name</string>
@@ -275,17 +235,11 @@
     <string name="config_debug_sub">Verbose logging</string>
     <string name="config_logs">View logs</string>
     <string name="config_logs_sub">Environment system logs</string>
-    <string name="config_logs_pending">Log viewer is not available yet</string>
-    <string name="config_open_logs">Open logs</string>
     <string name="config_backup">Backup</string>
     <string name="config_backup_sub">Export or import data</string>
     <string name="config_backup_pending">Backups are not available yet</string>
     <string name="config_export_backup">Export backup</string>
     <string name="config_import_backup">Import backup</string>
-    <string name="config_reset">Reset environment</string>
-    <string name="config_reset_sub">Delete and reinstall</string>
-    <string name="config_reset_text">This removes the environment and all its data.</string>
-    <string name="config_reset_confirm">Reset environment</string>
     <string name="priority_low">Low</string>
     <string name="priority_normal">Normal</string>
     <string name="priority_high">High</string>
@@ -296,7 +250,6 @@
     <string name="overview_storage">Storage</string>
     <string name="overview_sessions">Sessions</string>
     <string name="overview_no_sessions">No active sessions.</string>
-    <string name="overview_unknown">—</string>
     <string name="overview_foreground">Foreground</string>
     <string name="overview_background">Background</string>
     <string name="overview_stopped">All processes stopped</string>
@@ -318,8 +271,6 @@
     <string name="icons_fewer">Fewer icons</string>
     <string name="icons_search">Search</string>
 
-    <string name="code_server_title">Code Server</string>
-    <string name="code_server_port">Port %1$d</string>
     <string name="code_server_reload">Reload</string>
     <string name="code_server_zoom_in">Zoom in</string>
     <string name="code_server_zoom_out">Zoom out</string>
@@ -336,4 +287,32 @@
     <string name="web_link_title">Link</string>
     <string name="web_link_reload">Reload</string>
     <string name="web_link_open_browser">Open in browser</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="terminal_new_session">+</string>
+    <string name="wizard_install">Install</string>
+    <string name="code_server_move">Move action bar</string>
+    <string name="code_server_expand">Show code-server actions</string>
+    <string name="web_link_address">Address</string>
+    <string name="web_link_go">Go</string>
+    <string name="web_link_back">Previous page</string>
+    <string name="web_link_forward">Next page</string>
+    <string name="logs_lines">Last %1$d lines</string>
+    <string name="logs_reload">Reload</string>
+    <string name="logs_empty">No log entries yet.</string>
+    <string name="overview_uptime_hm">%1$dh %2$dm</string>
+    <string name="overview_uptime_ms">%1$dm %2$ds</string>
+    <string name="overview_uptime_s">%1$ds</string>
+    <string name="overview_ram_total">RAM (all sessions)</string>
+    <string name="files_actions">Actions for %1$s</string>
+    <string name="files_share">Share</string>
+    <string name="files_delete">Delete</string>
+    <string name="files_delete_text">Delete "%1$s"? This cannot be undone.</string>
+    <string name="files_deleted">File deleted</string>
+    <string name="files_saved">File saved</string>
+    <string name="files_operation_failed">Could not complete the file operation</string>
+    <string name="files_path_label">File path</string>
+    <string name="files_opened_in_vscode">Opening in VS Code. The file path was copied to the clipboard.</string>
+    <string name="terminal_notifications_denied">Notifications are off. Terminal sessions may stop in the background.</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_empty">Changelog is not available.</string>
 </resources>

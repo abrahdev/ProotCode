@@ -47,7 +47,10 @@ import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AboutScreen(onBack: () -> Unit) {
+fun AboutScreen(
+    onBack: () -> Unit,
+    onChangelog: () -> Unit,
+) {
     val context = LocalContext.current
     var showLicenses by remember { mutableStateOf(false) }
     val notice by
@@ -121,6 +124,12 @@ fun AboutScreen(onBack: () -> Unit) {
                     headlineContent = { Text(stringResource(R.string.about_licenses)) },
                     trailingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
                     modifier = Modifier.clickable { showLicenses = true },
+                )
+                ListItem(
+                    leadingContent = { Icon(Icons.Outlined.Info, contentDescription = null) },
+                    headlineContent = { Text(stringResource(R.string.changelog_title)) },
+                    trailingContent = { Icon(Icons.Outlined.OpenInNew, contentDescription = null) },
+                    modifier = Modifier.clickable(onClick = onChangelog),
                 )
             }
 

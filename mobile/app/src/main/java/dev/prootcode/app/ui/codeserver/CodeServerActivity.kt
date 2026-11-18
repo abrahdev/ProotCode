@@ -12,8 +12,8 @@ import dev.prootcode.app.ui.util.QuestWindow
 
 class CodeServerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         QuestWindow.applyOrientation(this)
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val environmentId =
             intent.getStringExtra(EXTRA_ENVIRONMENT_ID)

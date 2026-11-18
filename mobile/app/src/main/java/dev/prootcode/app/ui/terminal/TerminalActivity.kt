@@ -16,8 +16,8 @@ import java.io.File
 
 class TerminalActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         QuestWindow.applyOrientation(this)
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val environmentId = intent.getStringExtra(EXTRA_ENVIRONMENT_ID)
         val environment =
