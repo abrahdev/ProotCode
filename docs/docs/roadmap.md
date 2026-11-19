@@ -15,24 +15,25 @@ ProotCode is developed in small, testable phases.
 
 ## P1 — Linux runtime
 
-- [ ] Debian and Ubuntu rootfs download and verification.
-- [ ] proot installation and first boot.
+- [x] Ubuntu 26.04 LTS rootfs download and verification.
+- [ ] Debian rootfs in the catalog.
+- [x] proot installation and first boot.
 - [ ] Non-root user creation with a persistent home.
 - [ ] Bind mounts for Downloads and user-selected folders.
-- [ ] Installation progress screen.
+- [x] Installation progress screen.
 
 ## P2 — Terminal and packages
 
-- [ ] PTY-backed terminal sessions.
-- [ ] Multiple terminal windows.
+- [x] PTY-backed terminal sessions.
+- [x] Multiple terminal windows.
 - [ ] Mouse and pointer integration.
 - [ ] apt command runner in the app interface.
 - [ ] Essential presets: Git, build-essential, curl, OpenCode.
-- [ ] Tool selection grouped by category.
+- [x] Tool selection grouped by category.
 
 ## P3 — Code Server
 
-- [ ] Code Server installation inside the environment.
+- [x] Code Server installation inside the environment.
 - [ ] Local network access with an explicit toggle.
 - [ ] Mobile CSS with rounded corners.
 - [ ] Project access through the Linux home.

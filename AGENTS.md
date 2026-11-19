@@ -46,6 +46,12 @@ Run every command from `mobile/`.
 - Formatting: `./gradlew ktlintCheck` (use `ktlintFormat` to fix)
 - Release bundle: `./gradlew bundleRelease` only when explicitly requested.
 
+## Web & Docs
+
+- `web/` is the Astro landing. Verify with `npm run build` from `web/`; `web/dist/` is build output and is git-ignored.
+- `docs/` is the Docusaurus site. Verify with `npm run build` from `docs/`.
+- Both need Node 22.12 or newer.
+
 ## Versioning & Releases
 
 - Calendar version in `VERSION`: `YYYY.MM.PATCH` (for example `2026.10.0`).

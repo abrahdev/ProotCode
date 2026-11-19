@@ -22,6 +22,13 @@ cd mobile
 
 Use `./gradlew ktlintFormat` to fix formatting issues automatically.
 
+For the web landing and the documentation site, run the build before opening a pull request:
+
+```bash
+cd web && npm run build
+cd docs && npm run build
+```
+
 ## Branches and commits
 
 - Branch from `main`: `feat/<name>`, `fix/<name>`, or `chore/<name>`.

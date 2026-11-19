@@ -1,28 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap');
+
 :root {
-  --ifm-color-primary: #16a34a;
-  --ifm-color-primary-dark: #128a3e;
-  --ifm-color-primary-darker: #0f7a37;
-  --ifm-color-primary-darkest: #0b5f2a;
-  --ifm-color-primary-light: #22c55e;
-  --ifm-color-primary-lighter: #4ade80;
-  --ifm-color-primary-lightest: #86efac;
-  --ifm-background-color: #f8fafc;
-  --ifm-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ifm-color-primary: #f52d49;
+  --ifm-color-primary-dark: #e12741;
+  --ifm-color-primary-darker: #ce233b;
+  --ifm-color-primary-darkest: #ab1b2f;
+  --ifm-color-primary-light: #f74a61;
+  --ifm-color-primary-lighter: #f97789;
+  --ifm-color-primary-lightest: #fbadb9;
+  --ifm-background-color: #f2f0eb;
+  --ifm-font-family-base: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 [data-theme='dark'] {
-  --ifm-background-color: #0f172a;
-  --ifm-background-surface-color: #1e293b;
-  --ifm-color-content: #e2e8f0;
-  --ifm-color-content-secondary: #94a3b8;
+  --ifm-background-color: #111114;
+  --ifm-background-surface-color: #1a1a1e;
+  --ifm-color-content: #f2f0eb;
+  --ifm-color-content-secondary: #8a8a92;
 }
 
 .navbar {
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08);
+  box-shadow: 0 1px 0 rgba(17, 17, 20, 0.08);
 }
 
 .hero--primary {
-  background: linear-gradient(135deg, #0f172a 0%, #14532d 100%);
+  background: linear-gradient(135deg, #111114 0%, #9e1226 100%);
 }
 
 code {
