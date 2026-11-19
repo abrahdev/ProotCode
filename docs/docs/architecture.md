@@ -4,30 +4,35 @@ sidebar_position: 3
 
 # Architecture
 
-This page describes the intended architecture. The initial repository contains the Android
-scaffold, CI, release pipeline, and documentation.
+This page describes the architecture as implemented today, with planned layers called out where
+they are not built yet.
 
 ## Layers
 
 ```
 mobile/                    Android build root
   app/                     Android UI, navigation, and lifecycle
-    ui/                    Jetpack Compose screens and theme
-    core/                  Shared utilities and result types
-    data/                  Settings, storage, and environment metadata
-    runtime/               proot process management
-    terminal/              Terminal sessions and input handling
-    codeserver/            Code Server lifecycle and networking
+    ui/                    Jetpack Compose screens, wizard, and theme
+    ui/terminal/           PTY terminals, sessions, and background service
+    data/catalog/          Artifact catalog (distributions, Code Server)
+    data/environment/      Environments, installer, registry, and presets
+    runtime/exec/          Command runner
+    runtime/network/       DNS discovery and resolv.conf
+    runtime/proot/         proot command and environment assembly
+    runtime/rootfs/        Rootfs extraction with progress
+web/                       Astro landing page
+catalog/                   Artifact catalog served to the app
 docs/                      Docusaurus documentation
 ```
 
-The package root is `dev.prootcode.app`. Layers will be introduced as features are implemented;
-the scaffold only contains `ui`.
+The package root is `dev.prootcode.app`. The `codeserver` lifecycle and networking modules
+are still planned.
 
 ## Runtime layers
 
-The diagram groups the runtime into five layers. Component names such as `GuestExec`,
-`RootfsInstaller` and `SysdataProvider` are proposed names for future modules, not existing code.
+The diagram groups the runtime into five layers. Some names in it are design names:
+`GuestExec` is implemented as `runtime/proot/ProotCommand`, `RootfsInstaller` as
+`data/environment/EnvironmentInstaller`, and `SysDataProvider` is still planned.
 
 ```mermaid
 flowchart TB
@@ -159,7 +164,7 @@ flowchart LR
     H5 -->|"-b"| G5
 ```
 
-## Environment lifecycle
+## Runtime boot flow (planned)
 
 ```mermaid
 flowchart TD

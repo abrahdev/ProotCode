@@ -14,10 +14,10 @@ the browser.
 
 No account, no telemetry, no tracking. Everything runs on your device.
 
-:::warning
+:::info
 
-ProotCode is at an early stage. This documentation describes the architecture and roadmap; the
-Linux runtime is not implemented yet.
+ProotCode is in early development. The proot runtime, environment installs, and interactive
+terminals are implemented today; the remaining features are still being built.
 
 :::
 
