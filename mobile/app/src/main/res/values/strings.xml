@@ -29,6 +29,7 @@
     <string name="wizard_none">None</string>
     <string name="install_downloading">Downloading artifacts</string>
     <string name="install_stage_rootfs">Extracting rootfs</string>
+    <string name="install_stage_packages">Installing selected tools</string>
     <string name="install_stage_code_server">Installing code-server</string>
     <string name="install_stage_ready">Finishing</string>
     <string name="install_cancel">Cancel</string>
@@ -64,6 +65,8 @@
     <string name="sheet_files_title">File system</string>
 
     <string name="preferences_theme_sub">Color, dark and light mode</string>
+    <string name="preferences_open_links">Open links in app</string>
+    <string name="preferences_open_links_sub">Off: use the default browser</string>
     <string name="preferences_terminal_sub">Color theme, font family and size</string>
     <string name="preferences_accessibility_sub">Display options</string>
 
@@ -121,6 +124,7 @@
     <string name="home_action_window">Terminal in new window</string>
     <string name="home_more">Menu</string>
     <string name="home_ready_storage">Ready · %1$s</string>
+    <string name="home_installing_percent">Installing · %1$d%%</string>
     <string name="home_reorder_hint">Use the arrows to reorder. Tap Done when finished.</string>
     <string name="reorder_move_up">Move up</string>
     <string name="reorder_move_down">Move down</string>
@@ -131,30 +135,27 @@
     <string name="wizard_step_mounts">Mounts</string>
     <string name="wizard_step_config">Config</string>
     <string name="wizard_step_install">Install</string>
-    <string name="wizard_choose_distro">Choose a distribution</string>
-    <string name="wizard_choose_distro_sub">It runs without root, inside the app.</string>
-    <string name="wizard_note">You can create more environments later from the home screen.</string>
     <string name="distro_ubuntu_sub">Ubuntu Base rootfs</string>
     <string name="distro_debian_sub">Official rootfs</string>
-    <string name="wizard_choose_tools">Choose tools</string>
-    <string name="wizard_tools_count">Installed with the environment. %1$d selected.</string>
     <string name="wizard_group_essentials">Essentials</string>
     <string name="wizard_group_code">Code</string>
+    <string name="wizard_group_network">Network</string>
+    <string name="wizard_group_languages">Languages</string>
+    <string name="wizard_group_utilities">Utilities</string>
     <string name="wizard_select_all">Select all</string>
-    <string name="wizard_tools_hint">Ready to work tools are installed and configured by the app.</string>
-    <string name="wizard_more_placeholder">More categories: to be defined</string>
-    <string name="wizard_mounts_sub">Only mounted Android folders are visible from the file explorer.</string>
+    <string name="wizard_versions_title">Versions</string>
+    <string name="wizard_current_version">Selected</string>
     <string name="wizard_mounted_default">Mounted by default</string>
-    <string name="wizard_icon_title">Icon</string>
-    <string name="wizard_icon_sub">Shown on the environment card. Default is the distro logo.</string>
+    <string name="wizard_downloads_toggle">Enable shared Downloads</string>
+    <string name="wizard_downloads_sub">Choose a folder to share</string>
+    <string name="wizard_folder_unavailable">Could not use that folder. Pick a folder on this device.</string>
     <string name="wizard_access_title">Access</string>
     <string name="wizard_share_adb">Share ADB access</string>
     <string name="wizard_share_adb_sub">Lets this environment run adb against this device. Off by default.</string>
     <string name="wizard_setup_adb">Set up ADB</string>
-    <string name="wizard_custom_user">Custom user name and password</string>
-    <string name="wizard_custom_user_sub">Optional. Off by default.</string>
     <string name="wizard_user_name">User name</string>
-    <string name="wizard_config_sub">Optional settings for this environment.</string>
+    <string name="wizard_user_placeholder">root</string>
+    <string name="wizard_user_empty_hint">Leave empty to use root</string>
     <string name="wizard_installing_title">Creating environment</string>
     <string name="wizard_hide">Hide</string>
     <string name="wizard_preparing">Preparing</string>
@@ -173,6 +174,44 @@
     <string name="tool_code_server_sub">VS Code in the browser</string>
     <string name="tool_opencode">OpenCode</string>
     <string name="tool_opencode_sub">Open source AI coding agent</string>
+    <string name="tool_ca_certificates">CA certificates</string>
+    <string name="tool_ca_certificates_sub">Trusted certificates for HTTPS</string>
+    <string name="tool_wget">wget</string>
+    <string name="tool_wget_sub">Download files from URLs</string>
+    <string name="tool_unzip">unzip</string>
+    <string name="tool_unzip_sub">Extract ZIP archives</string>
+    <string name="tool_xz_utils">xz-utils</string>
+    <string name="tool_xz_utils_sub">Extract .xz archives</string>
+    <string name="tool_bzip2">bzip2</string>
+    <string name="tool_bzip2_sub">Extract .bz2 archives</string>
+    <string name="tool_less">less</string>
+    <string name="tool_less_sub">Terminal pager</string>
+    <string name="tool_nano">nano</string>
+    <string name="tool_nano_sub">Simple terminal editor</string>
+    <string name="tool_openssh">OpenSSH client</string>
+    <string name="tool_openssh_sub">Connect with ssh and scp</string>
+    <string name="tool_rsync">rsync</string>
+    <string name="tool_rsync_sub">Sync files efficiently</string>
+    <string name="tool_iproute2">iproute2</string>
+    <string name="tool_iproute2_sub">Network interfaces and routing</string>
+    <string name="tool_ping">ping</string>
+    <string name="tool_ping_sub">Check network connectivity</string>
+    <string name="tool_dnsutils">DNS tools</string>
+    <string name="tool_dnsutils_sub">Look up records with dig</string>
+    <string name="tool_python">Python 3</string>
+    <string name="tool_python_sub">Python interpreter and standard library</string>
+    <string name="tool_nodejs">Node.js</string>
+    <string name="tool_nodejs_sub">JavaScript runtime</string>
+    <string name="tool_golang">Go</string>
+    <string name="tool_golang_sub">Go compiler and tools</string>
+    <string name="tool_rustc">Rust</string>
+    <string name="tool_rustc_sub">Rust compiler</string>
+    <string name="tool_htop">htop</string>
+    <string name="tool_htop_sub">Interactive process viewer</string>
+    <string name="tool_ripgrep">ripgrep</string>
+    <string name="tool_ripgrep_sub">Fast recursive search</string>
+    <string name="tool_tmux">tmux</string>
+    <string name="tool_tmux_sub">Terminal multiplexer</string>
     <string name="tools_ready_to_work">Ready to work</string>
 
     <string name="settings_general">General</string>
@@ -267,8 +306,6 @@
     <string name="folder_picker_new">New folder</string>
     <string name="folder_picker_create">Create</string>
 
-    <string name="icons_more">More icons</string>
-    <string name="icons_fewer">Fewer icons</string>
     <string name="icons_search">Search</string>
 
     <string name="code_server_reload">Reload</string>
@@ -293,6 +330,7 @@
     <string name="code_server_move">Move action bar</string>
     <string name="code_server_expand">Show code-server actions</string>
     <string name="web_link_address">Address</string>
+    <string name="web_link_address_placeholder">Search or enter a URL</string>
     <string name="web_link_go">Go</string>
     <string name="web_link_back">Previous page</string>
     <string name="web_link_forward">Next page</string>

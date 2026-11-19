@@ -68,6 +68,7 @@ class EnvironmentRegistry(
             put("language", language)
             put("timezone", timezone)
             put("mountDownloads", mountDownloads)
+            put("downloadsPath", downloadsPath ?: JSONObject.NULL)
             put("extraMounts", JSONArray(extraMounts))
             put("autoCleanup", autoCleanup)
             put("codeServerPort", codeServerPort)
@@ -110,6 +111,7 @@ class EnvironmentRegistry(
             language = optString("language", defaults.language),
             timezone = optString("timezone", defaults.timezone),
             mountDownloads = optBoolean("mountDownloads", defaults.mountDownloads),
+            downloadsPath = if (isNull("downloadsPath")) null else optString("downloadsPath"),
             extraMounts =
                 optJSONArray("extraMounts")
                     ?.let { array ->

@@ -21,7 +21,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -48,6 +47,7 @@ import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
+import dev.prootcode.app.ui.components.InstallingSkeleton
 import dev.prootcode.app.ui.components.SessionLevel
 import dev.prootcode.app.ui.components.SessionPreview
 import dev.prootcode.app.ui.components.SessionRow
@@ -230,7 +230,7 @@ fun HomeScreen(
 
             if (state.busy && sheet != HomeSheet.NewEnvironment) {
                 item {
-                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                    InstallingSkeleton(stage = state.stage, progress = state.progress)
                 }
             }
 
@@ -254,7 +254,7 @@ fun HomeScreen(
                 item {
                     EmptyState(
                         title = stringResource(R.string.home_empty_title),
-                        body = stringResource(R.string.home_empty_body),
+                        message = stringResource(R.string.home_empty_body),
                         action = {
                             Button(
                                 onClick = {
@@ -344,6 +344,7 @@ fun HomeScreen(
         null -> Unit
         HomeSheet.Preferences ->
             PreferencesSheet(
+                preferences = preferences,
                 onDismiss = { sheet = null },
                 onTheme = { sheet = HomeSheet.Theme },
                 onTerminalCustomization = { sheet = HomeSheet.TerminalCustomization },
@@ -389,7 +390,6 @@ fun HomeScreen(
                 stage = state.stage,
                 progress = state.progress,
                 error = state.error,
-                foldersRoot = homeViewModel.projectsDir.parentFile ?: homeViewModel.projectsDir,
                 onInstall = { input ->
                     homeViewModel.install(input) {
                         sheet = null

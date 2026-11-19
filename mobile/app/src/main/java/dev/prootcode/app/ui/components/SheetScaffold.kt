@@ -1,5 +1,6 @@
 package dev.prootcode.app.ui.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.LocalOverscrollFactory
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,9 +8,9 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,16 +24,22 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import dev.prootcode.app.R
 
@@ -43,74 +50,98 @@ fun SheetScaffold(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
     scrollable: Boolean = true,
+    maxContentHeightFraction: Float = 0.85f,
+    header: (@Composable ColumnScope.() -> Unit)? = null,
     footer: (@Composable RowScope.() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val flingConnection =
+        remember(sheetState) {
+            object : NestedScrollConnection {
+                override suspend fun onPostFling(
+                    consumed: Velocity,
+                    available: Velocity,
+                ): Velocity =
+                    if (available.y < 0f && sheetState.currentValue == SheetValue.Expanded) {
+                        available
+                    } else {
+                        Velocity.Zero
+                    }
+            }
+        }
     CompositionLocalProvider(LocalOverscrollFactory provides null) {
         ModalBottomSheet(
             onDismissRequest = onDismiss,
             sheetState = sheetState,
+            containerColor = MaterialTheme.colorScheme.surface,
             modifier = modifier,
         ) {
-            Column(
+            Row(
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .then(if (scrollable) Modifier.fillMaxHeight(0.92f) else Modifier),
+                        .padding(start = 24.dp, end = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.weight(1f),
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(
+                        imageVector = Icons.Outlined.Close,
+                        contentDescription = stringResource(R.string.action_close),
+                    )
+                }
+            }
+            if (header != null) {
+                Column(
+                    modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 4.dp, bottom = 12.dp),
+                ) {
+                    header()
+                }
+            }
+            val maxContentHeight =
+                maxOf(
+                    160.dp,
+                    (LocalConfiguration.current.screenHeightDp * maxContentHeightFraction).dp - 184.dp,
+                )
+            if (scrollable) {
+                Column(
+                    modifier =
+                        Modifier
+                            .heightIn(max = maxContentHeight)
+                            .animateContentSize()
+                            .nestedScroll(flingConnection)
+                            .verticalScroll(rememberScrollState())
+                            .padding(horizontal = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    content()
+                }
+            } else {
+                Column(
+                    modifier = Modifier.padding(horizontal = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    content()
+                }
+            }
+            if (footer != null) {
+                HorizontalDivider(modifier = Modifier.padding(top = 12.dp))
                 Row(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .padding(start = 24.dp, end = 8.dp),
+                            .padding(horizontal = 24.dp, vertical = 12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.weight(1f),
-                    )
-                    IconButton(onClick = onDismiss) {
-                        Icon(
-                            imageVector = Icons.Outlined.Close,
-                            contentDescription = stringResource(R.string.action_close),
-                        )
-                    }
-                }
-                if (scrollable) {
-                    Column(
-                        modifier =
-                            Modifier
-                                .weight(1f)
-                                .verticalScroll(rememberScrollState())
-                                .padding(horizontal = 24.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        content()
-                    }
-                } else {
-                    Column(
-                        modifier = Modifier.padding(horizontal = 24.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        content()
-                    }
-                }
-                if (footer != null) {
-                    HorizontalDivider(modifier = Modifier.padding(top = 12.dp))
-                    Row(
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 24.dp, vertical = 12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        content = footer,
-                    )
-                } else {
-                    Spacer(modifier = Modifier.height(24.dp))
-                }
+                    content = footer,
+                )
+            } else {
+                Spacer(modifier = Modifier.height(24.dp))
             }
         }
     }

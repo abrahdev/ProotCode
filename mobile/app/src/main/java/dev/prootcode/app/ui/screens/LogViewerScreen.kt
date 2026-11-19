@@ -148,6 +148,10 @@ private fun logSources(
         if (codeServer.exists()) {
             add(LogSource(CODE_SERVER_LABEL, codeServer))
         }
+        val installLog = File(context.filesDir, "environments/$environmentId/install.log")
+        if (installLog.exists()) {
+            add(LogSource("install", installLog))
+        }
         val logDir = File(context.filesDir, "environments/$environmentId/rootfs/var/log")
         logDir
             .walkTopDown()

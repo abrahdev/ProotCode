@@ -152,7 +152,7 @@ object CodeServerManager {
                     rootfsDir = rootfs,
                     tmpDir = File(context.filesDir, "runtime/tmp"),
                     projectsDir = File(context.getExternalFilesDir(null) ?: context.filesDir, "projects"),
-                    mounts = EnvironmentMounts.of(context, environment.settings),
+                    mounts = EnvironmentMounts.of(context, environment.settings, rootfs),
                 )
             val argv =
                 command.execArgv(

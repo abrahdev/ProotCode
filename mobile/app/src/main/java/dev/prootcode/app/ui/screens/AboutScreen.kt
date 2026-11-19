@@ -1,8 +1,6 @@
 package dev.prootcode.app.ui.screens
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,16 +16,12 @@ import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.Terminal
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +36,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import dev.prootcode.app.BuildConfig
 import dev.prootcode.app.R
+import dev.prootcode.app.ui.components.AppScaffold
+import dev.prootcode.app.ui.components.ConfirmDialog
+import dev.prootcode.app.ui.components.GroupedCard
+import dev.prootcode.app.ui.components.SectionHeader
+import dev.prootcode.app.ui.util.LinkOpener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -66,17 +65,9 @@ fun AboutScreen(
                 }
         }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.about_title)) },
-                navigationIcon = {
-                    TextButton(onClick = onBack) {
-                        Text(stringResource(R.string.terminal_back))
-                    }
-                },
-            )
-        },
+    AppScaffold(
+        title = stringResource(R.string.about_title),
+        onBack = onBack,
     ) { padding ->
         Column(
             modifier =
@@ -152,10 +143,13 @@ fun AboutScreen(
     }
 
     if (showLicenses) {
-        AlertDialog(
-            onDismissRequest = { showLicenses = false },
-            title = { Text(stringResource(R.string.about_licenses)) },
-            text = {
+        ConfirmDialog(
+            title = stringResource(R.string.about_licenses),
+            confirmLabel = stringResource(R.string.licenses_close),
+            dismissLabel = stringResource(R.string.action_close),
+            onConfirm = { showLicenses = false },
+            onDismiss = { showLicenses = false },
+            content = {
                 Column(
                     modifier =
                         Modifier
@@ -169,28 +163,7 @@ fun AboutScreen(
                     )
                 }
             },
-            confirmButton = {
-                TextButton(onClick = { showLicenses = false }) {
-                    Text(stringResource(R.string.licenses_close))
-                }
-            },
         )
-    }
-}
-
-@Composable
-private fun SectionHeader(title: String) {
-    Text(
-        text = title,
-        style = MaterialTheme.typography.titleSmall,
-        color = MaterialTheme.colorScheme.primary,
-    )
-}
-
-@Composable
-private fun GroupedCard(content: @Composable () -> Unit) {
-    Card {
-        Column { content() }
     }
 }
 
@@ -198,7 +171,7 @@ private fun openUrl(
     context: Context,
     url: String,
 ) {
-    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    LinkOpener.open(context, url)
 }
 
 private const val REPOSITORY_URL = "https://github.com/abrahdev/ProotCode"

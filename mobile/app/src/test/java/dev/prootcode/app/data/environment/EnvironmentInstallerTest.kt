@@ -94,6 +94,19 @@ class EnvironmentInstallerTest {
         assertTrue(registry.load().isEmpty())
     }
 
+    @Test
+    fun `maps presets to packages`() {
+        assertEquals(
+            listOf("build-essential", "curl", "git"),
+            EnvironmentInstaller.Companion.PresetPackages.packagesFor(listOf(Presets.ESSENTIALS)),
+        )
+        assertTrue(
+            EnvironmentInstaller.Companion.PresetPackages
+                .packagesFor(emptyList())
+                .isEmpty(),
+        )
+    }
+
     private fun request(codeServerVersion: String? = "4.143.1"): InstallRequest =
         InstallRequest(
             id = "one",

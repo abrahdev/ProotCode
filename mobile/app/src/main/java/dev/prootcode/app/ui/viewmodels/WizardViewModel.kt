@@ -11,8 +11,23 @@ val DEFAULT_WIZARD_TOOLS: Map<String, Boolean> =
         "git" to true,
         "build-essential" to true,
         "curl" to true,
+        "ca-certificates" to true,
+        "wget" to true,
+        "unzip" to true,
+        "xz-utils" to true,
+        "bzip2" to true,
+        "less" to true,
+        "nano" to true,
         "code-server" to true,
         "opencode" to false,
+        "openssh-client" to true,
+        "rsync" to true,
+        "iproute2" to true,
+        "iputils-ping" to true,
+        "bind9-dnsutils" to true,
+        "htop" to true,
+        "ripgrep" to true,
+        "tmux" to true,
     )
 
 data class WizardState(
@@ -21,7 +36,8 @@ data class WizardState(
     val distroIndex: Int = 0,
     val versionIndex: Int = 0,
     val tools: Map<String, Boolean> = DEFAULT_WIZARD_TOOLS,
-    val mountDownloads: Boolean = true,
+    val mountDownloads: Boolean = false,
+    val downloadsPath: String? = null,
     val extraMounts: List<String> = emptyList(),
     val icon: String = "default",
     val adbShare: Boolean = false,
@@ -57,8 +73,16 @@ class WizardViewModel : ViewModel() {
         state.update { it.copy(tools = it.tools + (id to !(it.tools[id] ?: false))) }
     }
 
-    fun setMountDownloads(enabled: Boolean) {
-        state.update { it.copy(mountDownloads = enabled) }
+    fun setMountDownloads(
+        enabled: Boolean,
+        path: String? = null,
+    ) {
+        state.update {
+            it.copy(
+                mountDownloads = enabled,
+                downloadsPath = if (enabled) path else null,
+            )
+        }
     }
 
     fun addMount(path: String) {

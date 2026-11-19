@@ -30,6 +30,8 @@ class ProotCommand(
             if (noSeccomp) put("PROOT_NO_SECCOMP", "1")
             put("LD_LIBRARY_PATH", nativeLibDir.absolutePath)
             put("HOME", "/root")
+            put("TMPDIR", "/tmp")
+            put("TMP", "/tmp")
             put("TERM", "xterm-256color")
             put("LANG", "C.UTF-8")
             put("PATH", GUEST_PATH)

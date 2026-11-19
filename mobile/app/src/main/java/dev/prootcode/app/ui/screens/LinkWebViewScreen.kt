@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Message
-import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -16,23 +15,22 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.ArrowForward
-import androidx.compose.material.icons.outlined.OpenInNew
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowForward
+import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.Refresh
-import androidx.compose.material.icons.outlined.Send
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -45,14 +43,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
 import dev.prootcode.app.R
-import dev.prootcode.app.ui.webview.LinkWebViewActivity
+import dev.prootcode.app.ui.components.ExpressiveLinearProgressIndicator
+import dev.prootcode.app.ui.components.WebViewContainer
+import dev.prootcode.app.ui.util.LinkOpener
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("SetJavaScriptEnabled")
@@ -62,7 +59,6 @@ fun LinkWebViewScreen(
     onBack: () -> Unit,
 ) {
     val context = LocalContext.current
-    val host = remember(url) { runCatching { Uri.parse(url).host }.getOrNull() }
     var webView by remember { mutableStateOf<WebView?>(null) }
     var progress by remember { mutableIntStateOf(0) }
     var currentUrl by remember { mutableStateOf(url) }
@@ -100,59 +96,30 @@ fun LinkWebViewScreen(
 
     Scaffold(
         topBar = {
-            Column {
-                TopAppBar(
-                    navigationIcon = {
-                        IconButton(onClick = onBack) {
-                            Icon(
-                                imageVector = Icons.Outlined.ArrowBack,
-                                contentDescription = stringResource(R.string.action_back),
-                            )
-                        }
-                    },
-                    title = {
-                        Text(
-                            text = host?.takeIf { it.isNotBlank() } ?: stringResource(R.string.web_link_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Medium,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    },
-                    actions = {
-                        IconButton(onClick = { reloadKey += 1 }) {
-                            Icon(
-                                imageVector = Icons.Outlined.Refresh,
-                                contentDescription = stringResource(R.string.web_link_reload),
-                            )
-                        }
-                        IconButton(
-                            onClick = {
-                                runCatching {
-                                    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(currentUrl)))
-                                }
-                            },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.OpenInNew,
-                                contentDescription = stringResource(R.string.web_link_open_browser),
-                            )
-                        }
-                    },
-                )
+            Surface(
+                color = MaterialTheme.colorScheme.surfaceContainerLow,
+                modifier = Modifier.statusBarsPadding(),
+            ) {
                 Row(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 12.dp, vertical = 4.dp),
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
+                            contentDescription = stringResource(R.string.action_back),
+                        )
+                    }
                     OutlinedTextField(
                         value = addressInput,
                         onValueChange = { addressInput = it },
                         modifier = Modifier.weight(1f),
                         singleLine = true,
-                        label = { Text(stringResource(R.string.web_link_address)) },
+                        textStyle = MaterialTheme.typography.bodyMedium,
+                        placeholder = { Text(stringResource(R.string.web_link_address_placeholder)) },
                         keyboardOptions =
                             KeyboardOptions(
                                 keyboardType = KeyboardType.Uri,
@@ -160,22 +127,34 @@ fun LinkWebViewScreen(
                             ),
                         keyboardActions = KeyboardActions(onGo = { navigateToAddress() }),
                     )
-                    IconButton(onClick = { navigateToAddress() }) {
-                        Icon(
-                            imageVector = Icons.Outlined.Send,
-                            contentDescription = stringResource(R.string.web_link_go),
-                        )
-                    }
                     IconButton(onClick = { webView?.goBack() }, enabled = canGoBack) {
                         Icon(
-                            imageVector = Icons.Outlined.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
                             contentDescription = stringResource(R.string.web_link_back),
                         )
                     }
                     IconButton(onClick = { webView?.goForward() }, enabled = canGoForward) {
                         Icon(
-                            imageVector = Icons.Outlined.ArrowForward,
+                            imageVector = Icons.AutoMirrored.Outlined.ArrowForward,
                             contentDescription = stringResource(R.string.web_link_forward),
+                        )
+                    }
+                    IconButton(onClick = { reloadKey += 1 }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Refresh,
+                            contentDescription = stringResource(R.string.web_link_reload),
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            runCatching {
+                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(currentUrl)))
+                            }
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.OpenInNew,
+                            contentDescription = stringResource(R.string.web_link_open_browser),
                         )
                     }
                 }
@@ -189,138 +168,132 @@ fun LinkWebViewScreen(
                     .padding(padding),
         ) {
             if (progress in 1..99) {
-                LinearProgressIndicator(
-                    progress = { progress / 100f },
+                ExpressiveLinearProgressIndicator(
+                    progress = progress / 100f,
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
-            AndroidView(
-                factory = { ctx ->
-                    WebView(ctx)
-                        .apply {
-                            layoutParams =
-                                ViewGroup.LayoutParams(
-                                    ViewGroup.LayoutParams.MATCH_PARENT,
-                                    ViewGroup.LayoutParams.MATCH_PARENT,
-                                )
-                            settings.javaScriptEnabled = true
-                            settings.domStorageEnabled = true
-                            settings.databaseEnabled = true
-                            settings.mediaPlaybackRequiresUserGesture = false
-                            settings.allowFileAccess = false
-                            settings.allowContentAccess = false
-                            webViewClient =
+            WebViewContainer(
+                url = url,
+                modifier = Modifier.fillMaxSize(),
+                settings = { webSettings ->
+                    webSettings.javaScriptEnabled = true
+                    webSettings.domStorageEnabled = true
+                    webSettings.setSupportMultipleWindows(true)
+                    webSettings.databaseEnabled = true
+                    webSettings.mediaPlaybackRequiresUserGesture = false
+                    webSettings.allowFileAccess = false
+                    webSettings.allowContentAccess = false
+                },
+                webViewClient =
+                    object : WebViewClient() {
+                        override fun onPageStarted(
+                            view: WebView,
+                            pageUrl: String,
+                            favicon: Bitmap?,
+                        ) {
+                            currentUrl = pageUrl
+                            addressInput = pageUrl
+                            canGoBack = view.canGoBack()
+                            canGoForward = view.canGoForward()
+                        }
+
+                        override fun onPageFinished(
+                            view: WebView,
+                            pageUrl: String,
+                        ) {
+                            currentUrl = pageUrl
+                            addressInput = pageUrl
+                            canGoBack = view.canGoBack()
+                            canGoForward = view.canGoForward()
+                        }
+
+                        override fun doUpdateVisitedHistory(
+                            view: WebView,
+                            url: String,
+                            isReload: Boolean,
+                        ) {
+                            canGoBack = view.canGoBack()
+                            canGoForward = view.canGoForward()
+                        }
+
+                        override fun shouldOverrideUrlLoading(
+                            view: WebView,
+                            request: WebResourceRequest,
+                        ): Boolean {
+                            val scheme = request.url.scheme?.lowercase()
+                            if (scheme != "http" && scheme != "https") {
+                                runCatching {
+                                    context.startActivity(
+                                        Intent(Intent.ACTION_VIEW, request.url),
+                                    )
+                                }
+                                return true
+                            }
+                            return false
+                        }
+                    },
+                webChromeClient =
+                    object : WebChromeClient() {
+                        override fun onProgressChanged(
+                            view: WebView,
+                            newProgress: Int,
+                        ) {
+                            progress = newProgress
+                        }
+
+                        override fun onCreateWindow(
+                            view: WebView,
+                            isDialog: Boolean,
+                            isUserGesture: Boolean,
+                            resultMsg: Message,
+                        ): Boolean {
+                            val popup = WebView(view.context)
+                            popup.settings.javaScriptEnabled = true
+                            var opened = false
+
+                            fun openPopup(url: String) {
+                                if (opened || url.isBlank() || url == "about:blank") return
+                                opened = true
+                                runCatching {
+                                    LinkOpener.open(view.context, url)
+                                }
+                                popup.destroy()
+                            }
+                            popup.webViewClient =
                                 object : WebViewClient() {
-                                    override fun onPageStarted(
-                                        view: WebView,
-                                        pageUrl: String,
-                                        favicon: Bitmap?,
-                                    ) {
-                                        currentUrl = pageUrl
-                                        addressInput = pageUrl
-                                        canGoBack = view.canGoBack()
-                                        canGoForward = view.canGoForward()
-                                    }
-
-                                    override fun onPageFinished(
-                                        view: WebView,
-                                        pageUrl: String,
-                                    ) {
-                                        currentUrl = pageUrl
-                                        addressInput = pageUrl
-                                        canGoBack = view.canGoBack()
-                                        canGoForward = view.canGoForward()
-                                    }
-
-                                    override fun doUpdateVisitedHistory(
-                                        view: WebView,
-                                        url: String,
-                                        isReload: Boolean,
-                                    ) {
-                                        canGoBack = view.canGoBack()
-                                        canGoForward = view.canGoForward()
-                                    }
-
                                     override fun shouldOverrideUrlLoading(
-                                        view: WebView,
+                                        v: WebView,
                                         request: WebResourceRequest,
                                     ): Boolean {
-                                        val scheme = request.url.scheme?.lowercase()
-                                        if (scheme != "http" && scheme != "https") {
-                                            runCatching {
-                                                context.startActivity(
-                                                    Intent(Intent.ACTION_VIEW, request.url),
-                                                )
-                                            }
-                                            return true
-                                        }
-                                        return false
-                                    }
-                                }
-                            webChromeClient =
-                                object : WebChromeClient() {
-                                    override fun onProgressChanged(
-                                        view: WebView,
-                                        newProgress: Int,
-                                    ) {
-                                        progress = newProgress
-                                    }
-
-                                    override fun onCreateWindow(
-                                        view: WebView,
-                                        isDialog: Boolean,
-                                        isUserGesture: Boolean,
-                                        resultMsg: Message,
-                                    ): Boolean {
-                                        val popup = WebView(view.context)
-                                        popup.settings.javaScriptEnabled = true
-                                        var opened = false
-
-                                        fun openPopup(url: String) {
-                                            if (opened || url.isBlank() || url == "about:blank") return
-                                            opened = true
-                                            runCatching {
-                                                LinkWebViewActivity.start(view.context, url)
-                                            }
-                                            popup.destroy()
-                                        }
-                                        popup.webViewClient =
-                                            object : WebViewClient() {
-                                                override fun shouldOverrideUrlLoading(
-                                                    v: WebView,
-                                                    request: WebResourceRequest,
-                                                ): Boolean {
-                                                    openPopup(request.url.toString())
-                                                    return true
-                                                }
-
-                                                @Deprecated("Deprecated in Java")
-                                                override fun shouldOverrideUrlLoading(
-                                                    v: WebView,
-                                                    url: String,
-                                                ): Boolean {
-                                                    openPopup(url)
-                                                    return true
-                                                }
-
-                                                override fun onPageStarted(
-                                                    v: WebView,
-                                                    url: String,
-                                                    favicon: Bitmap?,
-                                                ) {
-                                                    openPopup(url)
-                                                }
-                                            }
-                                        val transport = resultMsg.obj as WebView.WebViewTransport
-                                        transport.webView = popup
-                                        resultMsg.sendToTarget()
+                                        openPopup(request.url.toString())
                                         return true
                                     }
+
+                                    @Deprecated("Deprecated in Java")
+                                    override fun shouldOverrideUrlLoading(
+                                        v: WebView,
+                                        url: String,
+                                    ): Boolean {
+                                        openPopup(url)
+                                        return true
+                                    }
+
+                                    override fun onPageStarted(
+                                        v: WebView,
+                                        url: String,
+                                        favicon: Bitmap?,
+                                    ) {
+                                        openPopup(url)
+                                    }
                                 }
-                            loadUrl(url)
-                        }.also { webView = it }
-                },
-                modifier = Modifier.fillMaxSize(),
+                            val transport = resultMsg.obj as WebView.WebViewTransport
+                            transport.webView = popup
+                            resultMsg.sendToTarget()
+                            return true
+                        }
+                    },
+                onWebViewCreated = { created -> webView = created },
             )
         }
     }

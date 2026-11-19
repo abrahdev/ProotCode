@@ -24,7 +24,7 @@ class TerminalSessionFactory(
                 rootfsDir = rootfsDir,
                 tmpDir = File(context.filesDir, "runtime/tmp"),
                 projectsDir = projectsDir,
-                mounts = EnvironmentMounts.of(context, settings),
+                mounts = EnvironmentMounts.of(context, settings, rootfsDir),
             )
         val environmentVariables =
             command

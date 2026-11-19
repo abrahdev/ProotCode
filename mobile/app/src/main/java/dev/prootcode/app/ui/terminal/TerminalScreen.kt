@@ -15,17 +15,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -42,7 +33,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.termux.terminal.TerminalSession
@@ -52,6 +42,7 @@ import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.TerminalColorTheme
+import dev.prootcode.app.ui.components.AppScaffold
 import dev.prootcode.app.ui.components.ClosableTabRow
 import dev.prootcode.app.ui.settings.ShortcutsEditorSheet
 import dev.prootcode.app.ui.theme.TerminalPalette
@@ -98,27 +89,10 @@ fun TerminalScreen(
 
     BackHandler(onBack = onBack)
 
-    Scaffold(
-        snackbarHost = { SnackbarHost(snackbarHostState) },
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.Outlined.ArrowBack,
-                            contentDescription = stringResource(R.string.action_back),
-                        )
-                    }
-                },
-                title = {
-                    Text(
-                        text = environment?.name ?: stringResource(R.string.home_terminal_native),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Medium,
-                    )
-                },
-            )
-        },
+    AppScaffold(
+        title = environment?.name ?: stringResource(R.string.home_terminal_native),
+        onBack = onBack,
+        snackbarHostState = snackbarHostState,
     ) { padding ->
         TerminalContent(
             environment = environment,

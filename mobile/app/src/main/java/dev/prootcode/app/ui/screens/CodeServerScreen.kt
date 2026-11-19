@@ -6,9 +6,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Message
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -22,9 +19,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -39,9 +34,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.DragIndicator
-import androidx.compose.material.icons.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Stop
 import androidx.compose.material.icons.outlined.ZoomIn
@@ -50,7 +45,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -79,13 +73,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
 import dev.prootcode.app.runtime.codeserver.CodeServerStatus
+import dev.prootcode.app.ui.components.ExpressiveLinearProgressIndicator
+import dev.prootcode.app.ui.components.WebViewContainer
+import dev.prootcode.app.ui.util.LinkOpener
 import dev.prootcode.app.ui.util.QuestWindow
 import dev.prootcode.app.ui.viewmodels.CodeServerViewModel
-import dev.prootcode.app.ui.webview.LinkWebViewActivity
 import kotlin.math.roundToInt
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -125,21 +120,13 @@ fun CodeServerScreen(
     }
     var barSize by remember { mutableStateOf(IntSize.Zero) }
     var isDragging by remember { mutableStateOf(false) }
+    val density = LocalDensity.current
     val runningPort = (status as? CodeServerStatus.Running)?.port
 
-    val actionsInteraction = remember { MutableInteractionSource() }
-    val actionsHovered by actionsInteraction.collectIsHoveredAsState()
-    val density = LocalDensity.current
-    val edgeZone = with(density) { EDGE_ZONE_DP.dp.toPx() }
-    val collapsedOverhang = with(density) { COLLAPSED_OVERHANG_DP.dp.toPx() }
-
-    LaunchedEffect(actionsHovered) {
-        if (actionsHovered) actionsExpanded = true
-    }
-    LaunchedEffect(actionsExpanded, actionsHovered, isDragging) {
-        if (actionsExpanded && !actionsHovered && !isDragging) {
+    LaunchedEffect(actionsExpanded, isDragging) {
+        if (actionsExpanded && !isDragging) {
             kotlinx.coroutines.delay(AUTO_HIDE_DELAY_MS)
-            if (!actionsHovered && !isDragging) actionsExpanded = false
+            if (!isDragging) actionsExpanded = false
         }
     }
     LaunchedEffect(status) {
@@ -154,13 +141,8 @@ fun CodeServerScreen(
     }
 
     fun openLink(uri: Uri): Boolean {
-        val scheme = uri.scheme?.lowercase()
-        if (scheme == "http" || scheme == "https") {
-            return runCatching {
-                LinkWebViewActivity.start(context, uri.toString())
-            }.isSuccess
-        }
-        return runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }.isSuccess
+        LinkOpener.open(context, uri.toString())
+        return true
     }
 
     fun handleNavigation(uri: Uri): Boolean {
@@ -182,7 +164,7 @@ fun CodeServerScreen(
             if (opened || url.isBlank() || url == "about:blank") return
             opened = true
             runCatching {
-                LinkWebViewActivity.start(context, url)
+                LinkOpener.open(context, url)
             }
             popup.destroy()
         }
@@ -306,88 +288,63 @@ fun CodeServerScreen(
                 val port = (status as CodeServerStatus.Running).port
                 Column(modifier = Modifier.fillMaxSize()) {
                     if (progress in 1..99) {
-                        LinearProgressIndicator(
-                            progress = { progress / 100f },
+                        ExpressiveLinearProgressIndicator(
+                            progress = progress / 100f,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
                     key(port) {
-                        AndroidView(
-                            factory = { ctx ->
-                                WebView(ctx)
-                                    .apply {
-                                        layoutParams =
-                                            ViewGroup.LayoutParams(
-                                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                            )
-                                        settings.javaScriptEnabled = true
-                                        settings.domStorageEnabled = true
-                                        settings.databaseEnabled = true
-                                        settings.mediaPlaybackRequiresUserGesture = false
-                                        settings.allowFileAccess = false
-                                        settings.allowContentAccess = false
-                                        settings.setSupportMultipleWindows(true)
-                                        settings.setSupportZoom(true)
-                                        settings.builtInZoomControls = true
-                                        settings.displayZoomControls = false
-                                        settings.textZoom = textZoomPercent
-                                        setOnHoverListener { view, event ->
-                                            when (event.actionMasked) {
-                                                MotionEvent.ACTION_HOVER_ENTER,
-                                                MotionEvent.ACTION_HOVER_MOVE,
-                                                -> {
-                                                    if (isAtDockEdge(event, view, dockSideState.value, edgeZone)) {
-                                                        actionsExpanded = true
-                                                    }
-                                                }
-                                            }
-                                            false
-                                        }
-                                        setOnTouchListener { view, event ->
-                                            if (event.actionMasked == MotionEvent.ACTION_DOWN &&
-                                                isAtDockEdge(event, view, dockSideState.value, edgeZone)
-                                            ) {
-                                                actionsExpanded = true
-                                            }
-                                            false
-                                        }
-                                        webViewClient =
-                                            object : WebViewClient() {
-                                                override fun shouldOverrideUrlLoading(
-                                                    view: WebView,
-                                                    request: WebResourceRequest,
-                                                ): Boolean = handleNavigation(request.url)
-
-                                                @Deprecated("Deprecated in Java")
-                                                override fun shouldOverrideUrlLoading(
-                                                    view: WebView,
-                                                    url: String,
-                                                ): Boolean = handleNavigation(Uri.parse(url))
-                                            }
-                                        webChromeClient =
-                                            object : WebChromeClient() {
-                                                override fun onProgressChanged(
-                                                    view: WebView,
-                                                    newProgress: Int,
-                                                ) {
-                                                    progress = newProgress
-                                                }
-
-                                                override fun onCreateWindow(
-                                                    view: WebView,
-                                                    isDialog: Boolean,
-                                                    isUserGesture: Boolean,
-                                                    resultMsg: Message,
-                                                ): Boolean {
-                                                    openPopup(view, resultMsg)
-                                                    return true
-                                                }
-                                            }
-                                        loadUrl("http://$CODE_SERVER_HOST:$port/")
-                                    }.also { webView = it }
-                            },
+                        WebViewContainer(
+                            url = "http://$CODE_SERVER_HOST:$port/",
                             modifier = Modifier.fillMaxSize(),
+                            settings = { webSettings ->
+                                webSettings.javaScriptEnabled = true
+                                webSettings.domStorageEnabled = true
+                                webSettings.databaseEnabled = true
+                                webSettings.mediaPlaybackRequiresUserGesture = false
+                                webSettings.allowFileAccess = false
+                                webSettings.allowContentAccess = false
+                                webSettings.setSupportMultipleWindows(true)
+                                webSettings.setSupportZoom(true)
+                                webSettings.builtInZoomControls = true
+                                webSettings.displayZoomControls = false
+                                webSettings.textZoom = textZoomPercent
+                            },
+                            webViewClient =
+                                object : WebViewClient() {
+                                    override fun shouldOverrideUrlLoading(
+                                        view: WebView,
+                                        request: WebResourceRequest,
+                                    ): Boolean = handleNavigation(request.url)
+
+                                    @Deprecated("Deprecated in Java")
+                                    override fun shouldOverrideUrlLoading(
+                                        view: WebView,
+                                        url: String,
+                                    ): Boolean = handleNavigation(Uri.parse(url))
+                                },
+                            webChromeClient =
+                                object : WebChromeClient() {
+                                    override fun onProgressChanged(
+                                        view: WebView,
+                                        newProgress: Int,
+                                    ) {
+                                        progress = newProgress
+                                    }
+
+                                    override fun onCreateWindow(
+                                        view: WebView,
+                                        isDialog: Boolean,
+                                        isUserGesture: Boolean,
+                                        resultMsg: Message,
+                                    ): Boolean {
+                                        openPopup(view, resultMsg)
+                                        return true
+                                    }
+                                },
+                            onWebViewCreated = { created ->
+                                webView = created
+                            },
                         )
                     }
                 }
@@ -398,8 +355,17 @@ fun CodeServerScreen(
                     } else {
                         spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMedium)
                     }
+                val collapsedOverhang =
+                    when (dockSideState.value) {
+                        DockSide.LEFT,
+                        DockSide.RIGHT,
+                        -> barSize.width / 2f
+                        DockSide.TOP,
+                        DockSide.BOTTOM,
+                        -> barSize.height / 2f
+                    }
                 val targetOffset =
-                    if (isDragging || actionsExpanded) {
+                    if (actionsExpanded || isDragging) {
                         dragOffset
                     } else {
                         collapsedOffset(dragOffset, dockSideState.value, collapsedOverhang)
@@ -426,7 +392,6 @@ fun CodeServerScreen(
                                     animatedOffset.y.roundToInt(),
                                 )
                             }.onSizeChanged { barSize = it }
-                            .hoverable(actionsInteraction)
                             .clickable(
                                 indication = null,
                                 interactionSource = remember { MutableInteractionSource() },
@@ -436,7 +401,6 @@ fun CodeServerScreen(
                                 detectDragGestures(
                                     onDragStart = {
                                         isDragging = true
-                                        actionsExpanded = true
                                     },
                                     onDragEnd = {
                                         isDragging = false
@@ -472,63 +436,65 @@ fun CodeServerScreen(
                         if (dockSideState.value != DockSide.RIGHT) {
                             DragHandle()
                         }
-                        IconButton(onClick = onBack) {
-                            Icon(
-                                imageVector = Icons.Outlined.ArrowBack,
-                                contentDescription = stringResource(R.string.action_back),
-                                tint = MaterialTheme.colorScheme.onSurface,
-                            )
-                        }
-                        IconButton(onClick = { webView?.reload() }) {
-                            Icon(
-                                imageVector = Icons.Outlined.Refresh,
-                                contentDescription = stringResource(R.string.code_server_reload),
-                                tint = MaterialTheme.colorScheme.onSurface,
-                            )
-                        }
-                        IconButton(onClick = { changeZoom(ZOOM_STEP_PERCENT) }) {
-                            Icon(
-                                imageVector = Icons.Outlined.ZoomIn,
-                                contentDescription = stringResource(R.string.code_server_zoom_in),
-                                tint = MaterialTheme.colorScheme.onSurface,
-                            )
-                        }
-                        IconButton(onClick = { changeZoom(-ZOOM_STEP_PERCENT) }) {
-                            Icon(
-                                imageVector = Icons.Outlined.ZoomOut,
-                                contentDescription = stringResource(R.string.code_server_zoom_out),
-                                tint = MaterialTheme.colorScheme.onSurface,
-                            )
-                        }
-                        IconButton(
-                            onClick = {
-                                runCatching {
-                                    context.startActivity(
-                                        Intent(
-                                            Intent.ACTION_VIEW,
-                                            Uri.parse("http://$CODE_SERVER_HOST:$port/"),
-                                        ),
-                                    )
-                                }
-                            },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.OpenInNew,
-                                contentDescription = stringResource(R.string.code_server_open_browser),
-                                tint = MaterialTheme.colorScheme.onSurface,
-                            )
-                        }
-                        IconButton(
-                            onClick = {
-                                viewModel.stop()
-                                onBack()
-                            },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Outlined.Stop,
-                                contentDescription = stringResource(R.string.code_server_stop),
-                                tint = MaterialTheme.colorScheme.error,
-                            )
+                        if (actionsExpanded) {
+                            IconButton(onClick = onBack) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
+                                    contentDescription = stringResource(R.string.action_back),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(onClick = { webView?.reload() }) {
+                                Icon(
+                                    imageVector = Icons.Outlined.Refresh,
+                                    contentDescription = stringResource(R.string.code_server_reload),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(onClick = { changeZoom(ZOOM_STEP_PERCENT) }) {
+                                Icon(
+                                    imageVector = Icons.Outlined.ZoomIn,
+                                    contentDescription = stringResource(R.string.code_server_zoom_in),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(onClick = { changeZoom(-ZOOM_STEP_PERCENT) }) {
+                                Icon(
+                                    imageVector = Icons.Outlined.ZoomOut,
+                                    contentDescription = stringResource(R.string.code_server_zoom_out),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(
+                                onClick = {
+                                    runCatching {
+                                        context.startActivity(
+                                            Intent(
+                                                Intent.ACTION_VIEW,
+                                                Uri.parse("http://$CODE_SERVER_HOST:$port/"),
+                                            ),
+                                        )
+                                    }
+                                },
+                            ) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Outlined.OpenInNew,
+                                    contentDescription = stringResource(R.string.code_server_open_browser),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(
+                                onClick = {
+                                    viewModel.stop()
+                                    onBack()
+                                },
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Outlined.Stop,
+                                    contentDescription = stringResource(R.string.code_server_stop),
+                                    tint = MaterialTheme.colorScheme.error,
+                                )
+                            }
                         }
                         if (dockSideState.value == DockSide.RIGHT) {
                             DragHandle()
@@ -601,23 +567,8 @@ private fun DragHandle() {
     }
 }
 
-private fun isAtDockEdge(
-    event: MotionEvent,
-    view: View,
-    side: DockSide,
-    edgeZone: Float,
-): Boolean =
-    when (side) {
-        DockSide.LEFT -> event.x <= edgeZone
-        DockSide.RIGHT -> event.x >= view.width - edgeZone
-        DockSide.TOP -> event.y <= edgeZone
-        DockSide.BOTTOM -> event.y >= view.height - edgeZone
-    }
-
 private const val CODE_SERVER_HOST = "127.0.0.1"
-private const val EDGE_ZONE_DP = 56f
-private const val COLLAPSED_OVERHANG_DP = 30f
-private const val AUTO_HIDE_DELAY_MS = 700L
+private const val AUTO_HIDE_DELAY_MS = 3000L
 private const val DEFAULT_ZOOM_PERCENT = 100
 
 internal const val MIN_ZOOM_PERCENT = 50

@@ -1,17 +1,21 @@
 package dev.prootcode.app.ui.wizard
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -39,12 +44,11 @@ import dev.prootcode.app.data.catalog.DistroArtifact
 import dev.prootcode.app.data.environment.EnvironmentSettings
 import dev.prootcode.app.data.environment.InstallStage
 import dev.prootcode.app.data.environment.Presets
+import dev.prootcode.app.runtime.proot.TreeUriPaths
 import dev.prootcode.app.ui.components.DistroOptionCard
-import dev.prootcode.app.ui.components.FolderPickerDialog
+import dev.prootcode.app.ui.components.ExpressiveCircularProgressIndicator
 import dev.prootcode.app.ui.components.IconSelectionSection
 import dev.prootcode.app.ui.components.LabeledTextField
-import dev.prootcode.app.ui.components.PlaceholderBlock
-import dev.prootcode.app.ui.components.ProgressSpinner
 import dev.prootcode.app.ui.components.SettingsGroup
 import dev.prootcode.app.ui.components.SheetScaffold
 import dev.prootcode.app.ui.components.StepIndicator
@@ -65,19 +69,48 @@ private data class ToolDefinition(
     val titleRes: Int,
     val subtitleRes: Int,
     val group: String,
+    val aptPackage: String? = null,
     val readyBadge: Boolean = false,
 )
 
+private fun aptTool(
+    id: String,
+    titleRes: Int,
+    subtitleRes: Int,
+    group: String,
+): ToolDefinition = ToolDefinition(id, titleRes, subtitleRes, group, id)
+
+private val TOOL_GROUPS =
+    listOf(
+        "essentials" to R.string.wizard_group_essentials,
+        "code" to R.string.wizard_group_code,
+        "network" to R.string.wizard_group_network,
+        "languages" to R.string.wizard_group_languages,
+        "utilities" to R.string.wizard_group_utilities,
+    )
+
 private val TOOL_DEFINITIONS =
     listOf(
-        ToolDefinition("git", R.string.tool_git, R.string.tool_git_sub, "essentials"),
-        ToolDefinition(
+        aptTool("git", R.string.tool_git, R.string.tool_git_sub, "essentials"),
+        aptTool(
             "build-essential",
             R.string.tool_build_essential,
             R.string.tool_build_essential_sub,
             "essentials",
         ),
-        ToolDefinition("curl", R.string.tool_curl, R.string.tool_curl_sub, "essentials"),
+        aptTool("curl", R.string.tool_curl, R.string.tool_curl_sub, "essentials"),
+        aptTool(
+            "ca-certificates",
+            R.string.tool_ca_certificates,
+            R.string.tool_ca_certificates_sub,
+            "essentials",
+        ),
+        aptTool("wget", R.string.tool_wget, R.string.tool_wget_sub, "essentials"),
+        aptTool("unzip", R.string.tool_unzip, R.string.tool_unzip_sub, "essentials"),
+        aptTool("xz-utils", R.string.tool_xz_utils, R.string.tool_xz_utils_sub, "essentials"),
+        aptTool("bzip2", R.string.tool_bzip2, R.string.tool_bzip2_sub, "essentials"),
+        aptTool("less", R.string.tool_less, R.string.tool_less_sub, "essentials"),
+        aptTool("nano", R.string.tool_nano, R.string.tool_nano_sub, "essentials"),
         ToolDefinition(
             "code-server",
             R.string.tool_code_server,
@@ -92,6 +125,28 @@ private val TOOL_DEFINITIONS =
             "code",
             readyBadge = true,
         ),
+        aptTool(
+            "openssh-client",
+            R.string.tool_openssh,
+            R.string.tool_openssh_sub,
+            "network",
+        ),
+        aptTool("rsync", R.string.tool_rsync, R.string.tool_rsync_sub, "network"),
+        aptTool("iproute2", R.string.tool_iproute2, R.string.tool_iproute2_sub, "network"),
+        aptTool("iputils-ping", R.string.tool_ping, R.string.tool_ping_sub, "network"),
+        aptTool(
+            "bind9-dnsutils",
+            R.string.tool_dnsutils,
+            R.string.tool_dnsutils_sub,
+            "network",
+        ),
+        aptTool("python3", R.string.tool_python, R.string.tool_python_sub, "languages"),
+        aptTool("nodejs", R.string.tool_nodejs, R.string.tool_nodejs_sub, "languages"),
+        aptTool("golang", R.string.tool_golang, R.string.tool_golang_sub, "languages"),
+        aptTool("rustc", R.string.tool_rustc, R.string.tool_rustc_sub, "languages"),
+        aptTool("htop", R.string.tool_htop, R.string.tool_htop_sub, "utilities"),
+        aptTool("ripgrep", R.string.tool_ripgrep, R.string.tool_ripgrep_sub, "utilities"),
+        aptTool("tmux", R.string.tool_tmux, R.string.tool_tmux_sub, "utilities"),
     )
 
 @Composable
@@ -104,7 +159,6 @@ fun NewEnvironmentSheet(
     stage: InstallStage?,
     progress: Pair<Long, Long>?,
     error: String?,
-    foldersRoot: File,
     onInstall: (EnvironmentInstallInput) -> Unit,
     onCancelInstall: () -> Unit,
     onRefreshCatalog: () -> Unit,
@@ -137,7 +191,38 @@ fun NewEnvironmentSheet(
             stringResource(R.string.wizard_step_config),
             stringResource(R.string.wizard_step_install),
         )
-    var showFolderPicker by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    var folderError by remember { mutableStateOf(false) }
+
+    fun handleFolder(
+        uri: Uri?,
+        downloads: Boolean,
+    ) {
+        val picked = uri ?: run {
+            folderError = true
+            return
+        }
+        val path = TreeUriPaths.resolve(picked)?.takeIf { File(it).isDirectory }
+        if (path == null) {
+            folderError = true
+            return
+        }
+        TreeUriPaths.persist(context, picked)
+        folderError = false
+        if (downloads) {
+            viewModel.setMountDownloads(true, path)
+        } else {
+            viewModel.addMount(path)
+        }
+    }
+    val downloadsPicker =
+        rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+            handleFolder(uri, downloads = true)
+        }
+    val extraPicker =
+        rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+            handleFolder(uri, downloads = false)
+        }
 
     LaunchedEffect(state.step, catalog) {
         if (state.step == 3 && state.name.isBlank() && distro != null) {
@@ -152,6 +237,12 @@ fun NewEnvironmentSheet(
             if (state.tools["opencode"] == true) add(Presets.EDITORS)
         }
 
+    fun packages(): List<String> =
+        TOOL_DEFINITIONS
+            .filter { state.tools[it.id] == true && it.aptPackage != null }
+            .mapNotNull { it.aptPackage }
+            .distinct()
+
     fun buildInput(): EnvironmentInstallInput? {
         val selected = distro ?: return null
         return EnvironmentInstallInput(
@@ -159,13 +250,15 @@ fun NewEnvironmentSheet(
             distro = selected,
             codeServer = codeServer,
             presets = presets(),
+            packages = packages(),
             settings =
                 EnvironmentSettings(
                     icon = state.icon,
                     mountDownloads = state.mountDownloads,
+                    downloadsPath = state.downloadsPath,
                     extraMounts = state.extraMounts,
                     adbShare = state.adbShare,
-                    customUser = state.customUser,
+                    customUser = state.userName.isNotBlank(),
                     userName = state.userName,
                 ),
         )
@@ -179,6 +272,17 @@ fun NewEnvironmentSheet(
                 if (state.step == STEP_INSTALL) R.string.wizard_installing_title else R.string.wizard_title,
             ),
         onDismiss = onDismiss,
+        maxContentHeightFraction =
+            when (state.step) {
+                STEP_DISTRO -> 0.62f
+                STEP_TOOLS -> 0.86f
+                STEP_MOUNTS -> 0.58f
+                STEP_CONFIG -> 0.8f
+                else -> 0.64f
+            },
+        header = {
+            StepIndicator(steps = steps, current = state.step)
+        },
         footer = {
             TextButton(
                 onClick = {
@@ -233,19 +337,8 @@ fun NewEnvironmentSheet(
             }
         },
     ) {
-        StepIndicator(steps = steps, current = state.step)
-
         when (state.step) {
             STEP_DISTRO -> {
-                Text(
-                    text = stringResource(R.string.wizard_choose_distro),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text(
-                    text = stringResource(R.string.wizard_choose_distro_sub),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
                 if (catalog == null) {
                     Text(
                         text = stringResource(R.string.wizard_no_distros),
@@ -268,83 +361,66 @@ fun NewEnvironmentSheet(
                                 ),
                             selected = index == state.distroIndex,
                             onSelect = { viewModel.selectDistro(index) },
-                            versions = distroGroup.artifacts.map { it.version },
+                            versions =
+                                if (index == state.distroIndex) {
+                                    distroGroup.artifacts.map { it.version }
+                                } else {
+                                    emptyList()
+                                },
                             selectedVersion =
                                 if (index == state.distroIndex) state.versionIndex else 0,
-                            onSelectVersion = { versionIndex ->
-                                viewModel.selectDistro(index)
-                                viewModel.selectVersion(versionIndex)
-                            },
-                            versionsCollapsible = distroGroup.artifacts.size > 5,
+                            logoRes =
+                                when {
+                                    distroGroup.name.contains("Ubuntu") -> R.drawable.ic_distro_ubuntu
+                                    distroGroup.name.contains("Debian") -> R.drawable.ic_distro_debian
+                                    else -> null
+                                },
                         )
                     }
                 }
-                Text(
-                    text = stringResource(R.string.wizard_note),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
             }
 
             STEP_TOOLS -> {
-                Text(
-                    text = stringResource(R.string.wizard_choose_tools),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                val selectedCount = state.tools.count { it.value }
-                Text(
-                    text = stringResource(R.string.wizard_tools_count, selectedCount),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                ToolGroup(
-                    title = stringResource(R.string.wizard_group_essentials),
-                    tools = TOOL_DEFINITIONS.filter { it.group == "essentials" },
-                    state = state.tools,
-                    onToggle = viewModel::toggleTool,
-                    onSelectAll = { select ->
-                        TOOL_DEFINITIONS.filter { it.group == "essentials" }.forEach { tool ->
-                            if ((state.tools[tool.id] ?: false) != select) viewModel.toggleTool(tool.id)
-                        }
-                    },
-                )
-                ToolGroup(
-                    title = stringResource(R.string.wizard_group_code),
-                    tools = TOOL_DEFINITIONS.filter { it.group == "code" },
-                    state = state.tools,
-                    onToggle = viewModel::toggleTool,
-                    onSelectAll = { select ->
-                        TOOL_DEFINITIONS.filter { it.group == "code" }.forEach { tool ->
-                            if ((state.tools[tool.id] ?: false) != select) viewModel.toggleTool(tool.id)
-                        }
-                    },
-                )
-                Text(
-                    text = stringResource(R.string.wizard_tools_hint),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                PlaceholderBlock(text = stringResource(R.string.wizard_more_placeholder))
+                TOOL_GROUPS.forEach { (groupId, titleRes) ->
+                    val groupTools = TOOL_DEFINITIONS.filter { it.group == groupId }
+                    ToolGroup(
+                        title = stringResource(titleRes),
+                        tools = groupTools,
+                        state = state.tools,
+                        onToggle = viewModel::toggleTool,
+                        onSelectAll = { select ->
+                            groupTools.forEach { tool ->
+                                if ((state.tools[tool.id] ?: false) != select) viewModel.toggleTool(tool.id)
+                            }
+                        },
+                    )
+                }
             }
 
             STEP_MOUNTS -> {
-                Text(
-                    text = stringResource(R.string.wizard_step_mounts),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text(
-                    text = stringResource(R.string.wizard_mounts_sub),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                SettingsGroup(title = stringResource(R.string.config_shared_folders)) {
+                SettingsGroup(title = stringResource(R.string.config_downloads)) {
                     SwitchRow(
-                        title = stringResource(R.string.config_downloads),
-                        subtitle = stringResource(R.string.wizard_mounted_default),
+                        title = stringResource(R.string.wizard_downloads_toggle),
+                        subtitle = stringResource(R.string.wizard_downloads_sub),
                         checked = state.mountDownloads,
-                        onCheckedChange = viewModel::setMountDownloads,
-                        showDivider = state.extraMounts.isNotEmpty(),
+                        onCheckedChange = { enabled ->
+                            if (enabled) {
+                                downloadsPicker.launch(null)
+                            } else {
+                                viewModel.setMountDownloads(false)
+                            }
+                        },
                     )
+                    state.downloadsPath?.let { path ->
+                        Text(
+                            text = path,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 12.dp),
+                        )
+                    }
+                }
+                SettingsGroup(title = stringResource(R.string.config_shared_folders)) {
                     state.extraMounts.forEachIndexed { index, path ->
                         Row(
                             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
@@ -380,22 +456,31 @@ fun NewEnvironmentSheet(
                             )
                         }
                     }
-                }
-                OutlinedButton(onClick = { showFolderPicker = true }) {
-                    Text(stringResource(R.string.config_add_folder))
+                    Box(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .heightIn(min = if (state.extraMounts.isEmpty()) 160.dp else 0.dp)
+                                .padding(bottom = 12.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            if (folderError) {
+                                Text(
+                                    text = stringResource(R.string.wizard_folder_unavailable),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.error,
+                                )
+                            }
+                            OutlinedButton(onClick = { extraPicker.launch(null) }) {
+                                Text(stringResource(R.string.config_add_folder))
+                            }
+                        }
+                    }
                 }
             }
 
             STEP_CONFIG -> {
-                Text(
-                    text = stringResource(R.string.wizard_step_config),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                Text(
-                    text = stringResource(R.string.wizard_config_sub),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
                 LabeledTextField(
                     label = stringResource(R.string.wizard_name),
                     value = state.name,
@@ -409,19 +494,13 @@ fun NewEnvironmentSheet(
                         },
                     maxLength = 40,
                 )
-                Text(
-                    text = stringResource(R.string.wizard_icon_title),
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.primary,
-                )
-                Text(
-                    text = stringResource(R.string.wizard_icon_sub),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                IconSelectionSection(
-                    selectedId = state.icon,
-                    onSelect = viewModel::setIcon,
+                LabeledTextField(
+                    label = stringResource(R.string.wizard_user_name),
+                    value = state.userName,
+                    onValueChange = viewModel::setUserName,
+                    placeholder = stringResource(R.string.wizard_user_placeholder),
+                    supportingText = stringResource(R.string.wizard_user_empty_hint),
+                    maxLength = 32,
                 )
                 SettingsGroup(title = stringResource(R.string.wizard_access_title)) {
                     SwitchRow(
@@ -429,13 +508,6 @@ fun NewEnvironmentSheet(
                         subtitle = stringResource(R.string.wizard_share_adb_sub),
                         checked = state.adbShare,
                         onCheckedChange = viewModel::setAdbShare,
-                        showDivider = true,
-                    )
-                    SwitchRow(
-                        title = stringResource(R.string.wizard_custom_user),
-                        subtitle = stringResource(R.string.wizard_custom_user_sub),
-                        checked = state.customUser,
-                        onCheckedChange = viewModel::setCustomUser,
                     )
                 }
                 if (state.adbShare) {
@@ -443,11 +515,10 @@ fun NewEnvironmentSheet(
                         Text(stringResource(R.string.wizard_setup_adb))
                     }
                 }
-                if (state.customUser) {
-                    LabeledTextField(
-                        label = stringResource(R.string.wizard_user_name),
-                        value = state.userName,
-                        onValueChange = viewModel::setUserName,
+                SettingsGroup(title = stringResource(R.string.config_icon)) {
+                    IconSelectionSection(
+                        selectedId = state.icon,
+                        onSelect = viewModel::setIcon,
                     )
                 }
             }
@@ -457,16 +528,12 @@ fun NewEnvironmentSheet(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    ProgressSpinner(done = false)
-                    Text(
-                        text = stringResource(R.string.wizard_installing_title),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Center,
-                    )
                     Text(
                         text =
                             when (stage) {
                                 InstallStage.EXTRACT_ROOTFS -> stringResource(R.string.install_stage_rootfs)
+                                InstallStage.INSTALL_PACKAGES ->
+                                    stringResource(R.string.install_stage_packages)
                                 InstallStage.INSTALL_CODE_SERVER ->
                                     stringResource(R.string.install_stage_code_server)
                                 InstallStage.READY -> stringResource(R.string.install_stage_ready)
@@ -511,13 +578,18 @@ fun NewEnvironmentSheet(
                         },
                         when (stage) {
                             InstallStage.EXTRACT_ROOTFS -> StepState.ACTIVE
-                            InstallStage.INSTALL_CODE_SERVER, InstallStage.READY -> StepState.DONE
+                            InstallStage.INSTALL_PACKAGES,
+                            InstallStage.INSTALL_CODE_SERVER,
+                            InstallStage.READY,
+                            -> StepState.DONE
                             null -> StepState.PENDING
                         },
                         when (stage) {
-                            InstallStage.INSTALL_CODE_SERVER -> StepState.ACTIVE
+                            InstallStage.INSTALL_PACKAGES,
+                            InstallStage.INSTALL_CODE_SERVER,
+                            -> StepState.ACTIVE
                             InstallStage.READY -> StepState.DONE
-                            InstallStage.EXTRACT_ROOTFS, null -> StepState.PENDING
+                            else -> StepState.PENDING
                         },
                         when (stage) {
                             InstallStage.READY -> StepState.DONE
@@ -525,6 +597,17 @@ fun NewEnvironmentSheet(
                             else -> StepState.PENDING
                         },
                     )
+                val downloadProgress =
+                    progress?.let { if (it.second > 0) it.first.toFloat() / it.second else null }
+                val activeProgress =
+                    when (stage) {
+                        InstallStage.EXTRACT_ROOTFS -> 0.35f
+                        InstallStage.INSTALL_PACKAGES,
+                        InstallStage.INSTALL_CODE_SERVER,
+                        -> 0.7f
+                        InstallStage.READY -> 1f
+                        null -> downloadProgress ?: 0.15f
+                    }
                 Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     listOf(
                         stringResource(R.string.wizard_step_download),
@@ -546,9 +629,10 @@ fun NewEnvironmentSheet(
                                         tint = MaterialTheme.colorScheme.primary,
                                     )
                                 StepState.ACTIVE ->
-                                    CircularProgressIndicator(
-                                        modifier = Modifier.size(16.dp),
-                                        strokeWidth = 2.dp,
+                                    ExpressiveCircularProgressIndicator(
+                                        progress = activeProgress,
+                                        modifier = Modifier.size(20.dp),
+                                        strokeWidth = 3.dp,
                                     )
                                 StepState.PENDING ->
                                     Text(
@@ -573,17 +657,6 @@ fun NewEnvironmentSheet(
             }
         }
     }
-
-    if (showFolderPicker) {
-        FolderPickerDialog(
-            root = foldersRoot,
-            onPick = { path ->
-                viewModel.addMount(path)
-                showFolderPicker = false
-            },
-            onDismiss = { showFolderPicker = false },
-        )
-    }
 }
 
 @Composable
@@ -594,7 +667,10 @@ private fun ToolGroup(
     onToggle: (String) -> Unit,
     onSelectAll: (Boolean) -> Unit,
 ) {
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -612,14 +688,17 @@ private fun ToolGroup(
                 Text(stringResource(R.string.wizard_select_all))
             }
         }
-        tools.forEach { tool ->
-            ToolRow(
-                title = stringResource(tool.titleRes),
-                subtitle = stringResource(tool.subtitleRes),
-                checked = state[tool.id] == true,
-                onCheckedChange = { onToggle(tool.id) },
-                readyBadge = tool.readyBadge,
-            )
+        SettingsGroup(title = null) {
+            tools.forEachIndexed { index, tool ->
+                ToolRow(
+                    title = stringResource(tool.titleRes),
+                    subtitle = stringResource(tool.subtitleRes),
+                    checked = state[tool.id] == true,
+                    onCheckedChange = { onToggle(tool.id) },
+                    readyBadge = tool.readyBadge,
+                    showDivider = index != tools.lastIndex,
+                )
+            }
         }
     }
 }

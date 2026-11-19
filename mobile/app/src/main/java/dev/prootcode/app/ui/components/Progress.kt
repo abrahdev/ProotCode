@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -44,9 +43,9 @@ fun ProgressSpinner(
             )
         }
     } else {
-        CircularProgressIndicator(
-            modifier = modifier.size(48.dp),
-            strokeWidth = 4.dp,
+        ExpressiveCircularProgressIndicator(
+            modifier = modifier.size(64.dp),
+            strokeWidth = 6.dp,
         )
     }
 }
@@ -84,9 +83,10 @@ fun InstallStepsList(
                             )
                         }
                     StepState.ACTIVE ->
-                        CircularProgressIndicator(
+                        ExpressiveCircularProgressIndicator(
+                            progress = 0.6f,
                             modifier = Modifier.size(20.dp),
-                            strokeWidth = 2.dp,
+                            strokeWidth = 3.dp,
                         )
                     StepState.PENDING ->
                         Box(

@@ -20,6 +20,7 @@ fun LabeledTextField(
     keyboardType: KeyboardType = KeyboardType.Text,
     isError: Boolean = false,
     supportingText: String? = null,
+    placeholder: String? = null,
     maxLength: Int? = null,
     password: Boolean = false,
 ) {
@@ -29,6 +30,12 @@ fun LabeledTextField(
             if (maxLength == null) onValueChange(text) else onValueChange(text.take(maxLength))
         },
         label = { Text(label) },
+        placeholder =
+            if (placeholder != null) {
+                { Text(placeholder) }
+            } else {
+                null
+            },
         singleLine = singleLine,
         isError = isError,
         supportingText =

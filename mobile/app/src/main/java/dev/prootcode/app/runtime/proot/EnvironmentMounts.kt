@@ -9,23 +9,44 @@ object EnvironmentMounts {
     fun of(
         context: Context,
         settings: EnvironmentSettings,
+        rootfsDir: File,
     ): List<Pair<String, String>> {
         val mounts = mutableListOf<Pair<String, String>>()
         if (settings.mountDownloads) {
+            val selected = settings.downloadsPath?.let(::File)?.takeIf { it.isDirectory }
             val downloads =
-                File(
-                    context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) ?: context.filesDir,
-                    "Downloads",
-                )
-            downloads.mkdirs()
-            mounts += downloads.absolutePath to "/root/mounts/Downloads"
+                selected
+                    ?: File(
+                        context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) ?: context.filesDir,
+                        "Downloads",
+                    ).also { it.mkdirs() }
+            val guest = "/root/mounts/Downloads"
+            ensureGuestDir(rootfsDir, guest)
+            mounts += downloads.absolutePath to guest
         }
+        val usedNames = mutableSetOf<String>()
         settings.extraMounts.forEach { path ->
             val host = File(path)
             if (host.isDirectory) {
-                mounts += host.absolutePath to "/root/mounts/${host.name}"
+                val base = host.name.ifBlank { "folder" }
+                var name = base
+                var suffix = 2
+                while (!usedNames.add(name)) {
+                    name = "$base-$suffix"
+                    suffix++
+                }
+                val guest = "/root/mounts/Shared/$name"
+                ensureGuestDir(rootfsDir, guest)
+                mounts += host.absolutePath to guest
             }
         }
         return mounts
+    }
+
+    private fun ensureGuestDir(
+        rootfsDir: File,
+        guest: String,
+    ) {
+        File(rootfsDir, guest.removePrefix("/")).mkdirs()
     }
 }

@@ -56,6 +56,7 @@ data class EnvironmentInstallInput(
     val distro: DistroArtifact,
     val codeServer: CodeServerArtifact?,
     val presets: List<String>,
+    val packages: List<String> = emptyList(),
     val settings: EnvironmentSettings,
 )
 
@@ -70,7 +71,14 @@ class HomeViewModel(
     val projectsDir: File =
         File(context.getExternalFilesDir(null) ?: context.filesDir, "projects")
 
-    private val installer = EnvironmentInstaller(File(context.filesDir, ENVIRONMENTS_DIR), registry)
+    private val installer =
+        EnvironmentInstaller(
+            environmentsDir = File(context.filesDir, ENVIRONMENTS_DIR),
+            registry = registry,
+            nativeLibDir = File(context.applicationInfo.nativeLibraryDir),
+            tmpDir = File(context.filesDir, "runtime/tmp"),
+            projectsDir = projectsDir,
+        )
     private val artifacts = Artifacts(context)
     private val repository = CatalogDefaults.create(context.assets, context.cacheDir)
     private val bridgeVerifier =
@@ -143,6 +151,7 @@ class HomeViewModel(
                             codeServerVersion = input.codeServer?.version,
                             dnsServers = DnsResolver.servers(context),
                             presets = input.presets,
+                            packages = input.packages,
                             settings = input.settings,
                         )
                     withContext(Dispatchers.IO) {

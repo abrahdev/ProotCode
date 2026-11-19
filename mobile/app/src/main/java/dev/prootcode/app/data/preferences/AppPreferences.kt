@@ -20,6 +20,11 @@ enum class TerminalColorTheme {
     SOLARIZED,
 }
 
+enum class LinkOpenBehavior {
+    IN_APP,
+    SYSTEM,
+}
+
 data class AppThemeSettings(
     val themeMode: ThemeMode = ThemeMode.SYSTEM,
     val dynamicColor: Boolean = true,
@@ -35,11 +40,19 @@ class AppPreferences(
     private val preferences: SharedPreferences,
 ) {
     private val state = MutableStateFlow(read())
+    private val linkBehaviorState = MutableStateFlow(readLinkBehavior())
 
     val theme: StateFlow<AppThemeSettings> = state.asStateFlow()
+    val linkBehavior: StateFlow<LinkOpenBehavior> = linkBehaviorState.asStateFlow()
 
     fun refresh() {
         state.value = read()
+        linkBehaviorState.value = readLinkBehavior()
+    }
+
+    fun setLinkBehavior(behavior: LinkOpenBehavior) {
+        preferences.edit().putString(KEY_LINK_BEHAVIOR, behavior.name).apply()
+        linkBehaviorState.value = behavior
     }
 
     fun setThemeMode(mode: ThemeMode) {
@@ -102,6 +115,12 @@ class AppPreferences(
             terminalFontFamily = preferences.getString(KEY_TERMINAL_FONT_FAMILY, "").orEmpty(),
         )
 
+    private fun readLinkBehavior(): LinkOpenBehavior =
+        preferences
+            .getString(KEY_LINK_BEHAVIOR, null)
+            ?.let { runCatching { LinkOpenBehavior.valueOf(it) }.getOrNull() }
+            ?: LinkOpenBehavior.IN_APP
+
     companion object {
         private const val FILE = "app_preferences"
         private const val KEY_THEME_MODE = "theme_mode"
@@ -112,6 +131,7 @@ class AppPreferences(
         private const val KEY_TERMINAL_COLOR_THEME = "terminal_color_theme"
         private const val KEY_TERMINAL_FONT_SIZE = "terminal_font_size"
         private const val KEY_TERMINAL_FONT_FAMILY = "terminal_font_family"
+        private const val KEY_LINK_BEHAVIOR = "link_behavior"
 
         fun create(context: Context): AppPreferences =
             AppPreferences(context.getSharedPreferences(FILE, Context.MODE_PRIVATE))

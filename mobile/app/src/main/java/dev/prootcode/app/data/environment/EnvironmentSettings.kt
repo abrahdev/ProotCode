@@ -6,6 +6,7 @@ data class EnvironmentSettings(
     val language: String = "English",
     val timezone: String = "UTC",
     val mountDownloads: Boolean = true,
+    val downloadsPath: String? = null,
     val extraMounts: List<String> = emptyList(),
     val autoCleanup: Boolean = true,
     val codeServerPort: Int = 8080,
