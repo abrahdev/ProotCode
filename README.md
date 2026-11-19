@@ -16,25 +16,35 @@ multiple terminals, apt package management, and a mobile-optimized Code Server.
 
 No account, no telemetry, no tracking. Everything runs on your device.
 
-> **Status:** initial scaffold. The Android project, CI, and release pipeline are in place.
-> The runtime features below describe the roadmap, not implemented functionality yet.
+> **Status:** early development. The rootless proot runtime, environment installs, and
+> interactive PTY terminals work today. The features below split what is implemented
+> from what is still roadmap.
 
 ## Features
 
+### Implemented
+
+- **Rootless Linux** — proot-based runtime with no root access required.
+- **Environment wizard** — pick a distribution from the catalog (Ubuntu 26.04 LTS today,
+  for arm64-v8a and x86_64), an optional Code Server artifact, and tool presets, with
+  staged install progress.
+- **Code Server install** — `code-server` installed into each environment, with
+  per-environment version switching.
+- **Projects bridge** — a shared projects folder visible inside the environment, with an
+  in-app verification test.
+- **Multiple terminals** — interactive PTY shells with tabs and background sessions,
+  in-app or in separate windows.
+
 ### Roadmap
 
-- **Distribution selector** — choose Debian or Ubuntu when starting a new environment.
-- **Rootless Linux** — proot-based installation with no root access required.
+- **Debian support** — add Debian to the distribution catalog alongside Ubuntu.
 - **Non-root user** — a regular user with a persistent home directory.
 - **Storage bridge** — bind selected Android folders (such as Downloads) into the Linux home.
 - **Package manager** — run apt commands from the app interface.
-- **Essential presets** — Git, build-essential, curl, and OpenCode pre-installed.
-- **Tool selection** — pick development tools grouped by category before installing.
-- **Multiple terminals** — open several terminal sessions for the same distribution.
-- **Code Server** — VS Code in the browser, bound to the local network, with mobile CSS.
+- **Preset installation** — apply the selected tool presets to the rootfs during setup.
+- **Code Server serving** — launch it in the browser, bound to the local network, with mobile CSS.
 - **Mouse support** — pointer integration for proot and the Linux environment.
 - **Resource controls** — monitor and limit battery and CPU usage.
-- **Installation progress** — follow every step of the distribution setup.
 - **Backups** — export and restore projects and configuration.
 
 ## Requirements
@@ -74,6 +84,9 @@ mobile/               Android build root (Kotlin + Compose)
 mobile/app/           Android application module
 mobile/gradle/        Version catalog and Gradle wrapper
 mobile/CHANGELOG.md   Release notes
+web/                  Astro landing page
+assets/               Brand artwork, favicon, and landing mockup
+catalog/              Artifact catalog fetched by the Android app
 docs/                 Docusaurus documentation
 .github/workflows/    CI, release, and documentation deployment
 VERSION               Calendar version used by the release workflow
