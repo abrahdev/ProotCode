@@ -208,6 +208,13 @@ build details and trade-offs are in [ADR 0005](/adr).
    environment, its presets and its size.
 5. The projects bridge is verified by writing a probe file through proot.
 
+## Navigation
+
+`MainActivity` hosts a `NavHost` with four routes: `home`, `environment/{environmentId}`,
+`settings` and `about`. The environment detail keeps the terminal in a tab and reserves the other
+two for the package manager and code-server. The external terminal is a separate, resizeable
+`TerminalActivity`.
+
 ## Terminal
 
 Each environment can open interactive shells.

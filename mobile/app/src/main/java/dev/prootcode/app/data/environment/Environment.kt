@@ -10,4 +10,5 @@ data class Environment(
     val createdAtMillis: Long,
     val sizeBytes: Long,
     val presets: List<String> = emptyList(),
+    val settings: EnvironmentSettings = EnvironmentSettings(),
 )

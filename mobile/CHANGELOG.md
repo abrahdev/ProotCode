@@ -2,6 +2,35 @@
 
 All notable changes to this project are documented in this file.
 
+## [2026.11.0] - 2026-11-19
+
+### Added
+
+- ui: refine wizard, installs and link handling
+- complete pending UI, code-server and settings work
+- ui: zoom
+- ui: migrate mockup to Compose and integrate code-server
+- ui: redesign home environment cards and about screen
+- ui: add navigation, home empty state, detail tabs and settings
+- terminal: interactive PTY shells, tabs and background sessions (#20)
+- environments MVP with standard and Raccoon builds (#19)
+- runtime: port proot execution primitives from the spike (#18)
+
+### Fixed
+
+- quest: limit landscape panels to VR devices
+- runtime: install ca-certificates with the guest /tmp as TMPDIR
+
+### Documentation
+
+- architecture: add runtime and lifecycle diagrams (#14)
+
+### Maintenance
+
+- assets: add brand artwork and landing mockup (#21)
+- add CODEOWNERS for repository reviews (#3)
+- move Android build into mobile/ (#2)
+
 ## [2026.10.0] - 2026-10-20
 
 ### Added

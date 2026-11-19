@@ -7,6 +7,7 @@ class ProotCommand(
     private val rootfsDir: File,
     private val tmpDir: File,
     private val projectsDir: File,
+    private val mounts: List<Pair<String, String>> = emptyList(),
 ) {
     private val prootBinary = File(nativeLibDir, "libproot.so")
     private val prootLoader = File(nativeLibDir, "libproot_loader.so")
@@ -17,18 +18,26 @@ class ProotCommand(
 
     fun interactiveArgv(shell: String = "/bin/bash"): List<String> = baseArgv() + listOf(shell, "-l")
 
-    fun environment(noSeccomp: Boolean = false): Map<String, String> =
+    fun execArgv(command: List<String>): List<String> = baseArgv() + command
+
+    fun environment(
+        noSeccomp: Boolean = false,
+        extraEnvironment: Map<String, String> = emptyMap(),
+    ): Map<String, String> =
         buildMap {
             put("PROOT_LOADER", prootLoader.absolutePath)
             put("PROOT_TMP_DIR", tmpDir.absolutePath)
             if (noSeccomp) put("PROOT_NO_SECCOMP", "1")
             put("LD_LIBRARY_PATH", nativeLibDir.absolutePath)
             put("HOME", "/root")
+            put("TMPDIR", "/tmp")
+            put("TMP", "/tmp")
             put("TERM", "xterm-256color")
             put("LANG", "C.UTF-8")
             put("PATH", GUEST_PATH)
             put("DEBIAN_FRONTEND", "noninteractive")
             put("APT_LISTCHANGES_FRONTEND", "none")
+            putAll(extraEnvironment)
         }
 
     private fun baseArgv(): List<String> =
@@ -48,7 +57,8 @@ class ProotCommand(
             "/sys",
             "-b",
             "${projectsDir.absolutePath}:/root/projects_bridge",
-        )
+        ) +
+            mounts.flatMap { (host, guest) -> listOf("-b", "$host:$guest") }
 
     companion object {
         private const val GUEST_PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
