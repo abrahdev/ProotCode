@@ -1,0 +1,24 @@
+---
+const specs: [string, string][] = [
+  ['Platform', 'Android, arm64-v8a and x86_64'],
+  ['Distributions', 'Debian · Ubuntu'],
+  ['Runtime', 'proot, no root required'],
+  ['Stack', 'Kotlin + Jetpack Compose'],
+  ['Privacy', 'No account · no telemetry · no tracking'],
+  ['License', 'GNU AGPL v3'],
+  ['Status', 'Initial scaffold: CI, release pipeline and Android project in place'],
+]
+---
+<section class="sec wrap" id="specs" style="max-width:none;padding-bottom:0">
+  <div class="sh"><h2>Specs.</h2></div>
+  <table>
+    {specs.map(([label, value]) => (
+      <tr><td>{label}</td><td>{value}</td></tr>
+    ))}
+  </table>
+</section>
+
+<style>
+table{width:100%;border-collapse:collapse;margin-bottom:56px}
+td{padding:16px 14px;border-top:3px solid var(--line);vertical-align:top}td:first-child{width:32%;color:var(--red);font-weight:700}tr:last-child td{border-bottom:3px solid var(--line)}
+</style>
