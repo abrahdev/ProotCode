@@ -1,0 +1,138 @@
+---
+const TOTAL_FRAMES = 220
+const FADE_END = 0.06
+---
+
+<section class="vr" id="vr">
+  <div class="vr-track">
+    <div class="vr-stage">
+      <canvas id="vr-canvas" aria-label="ProotCode on Meta Quest 3, scroll to rotate"></canvas>
+      <div class="vr-fade"></div>
+    </div>
+  </div>
+
+  <div class="vr-summary">
+    <h2>VR<br>Support.</h2>
+    <div class="vr-copy">
+      <p class="lbl">Optimized for Meta Quest 3</p>
+      <p>Run ProotCode from the Quest browser. Deploy Debian or Ubuntu, open terminals and code from Code Server — a full Linux environment, no root, right inside the headset.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.vr{background:#000;border-bottom:3px solid var(--line)}
+.vr-track{height:480vh;position:relative}
+.vr-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;border:3px solid var(--line)}
+.vr-stage canvas{width:100%;height:100%;display:block}
+.vr-fade{position:absolute;inset:0;background:#000;pointer-events:none;will-change:opacity}
+.vr-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:72px 24px;background:var(--paper);color:var(--ink)}
+.vr-summary h2{font-size:clamp(40px,6.5vw,96px)}
+.vr-copy{max-width:480px}
+.vr-copy .lbl{color:var(--red);margin-bottom:14px}
+.vr-copy p{font-size:14px}
+@media(max-width:900px){.vr-summary{flex-direction:column;align-items:flex-start}}
+</style>
+
+<script>
+  const TOTAL_FRAMES = 220
+  const FADE_END = 0.06
+  const framePath = (n) => `/vr-frames/frame_${String(n + 1).padStart(3, '0')}.jpg`
+
+  const track = document.querySelector('.vr-track')
+  const canvas = document.getElementById('vr-canvas')
+  const ctx = canvas.getContext('2d')
+  const fadeEl = document.querySelector('.vr-fade')
+
+  const images = new Array(TOTAL_FRAMES).fill(null)
+  const loaded = new Array(TOTAL_FRAMES).fill(false)
+  let preloadStarted = false
+  let lastDrawn = -1
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const w = track.clientWidth
+    const h = window.innerHeight
+    canvas.width = Math.round(w * dpr)
+    canvas.height = Math.round(h * dpr)
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    lastDrawn = -1
+  }
+
+  function drawContain(img) {
+    const cw = track.clientWidth
+    const ch = window.innerHeight
+    const iw = img.naturalWidth
+    const ih = img.naturalHeight
+    if (!iw || !ih) return
+    const scale = Math.min(cw / iw, ch / ih)
+    const dw = iw * scale
+    const dh = ih * scale
+    const dx = (cw - dw) / 2
+    const dy = (ch - dh) / 2
+    ctx.fillStyle = '#000'
+    ctx.fillRect(0, 0, cw, ch)
+    ctx.drawImage(img, dx, dy, dw, dh)
+  }
+
+  function getProgress() {
+    const rect = track.getBoundingClientRect()
+    const scrollable = track.offsetHeight - window.innerHeight
+    if (scrollable <= 0) return 0
+    return Math.min(1, Math.max(0, -rect.top / scrollable))
+  }
+
+  function nearestLoaded(index) {
+    if (loaded[index]) return images[index]
+    for (let d = 1; d < TOTAL_FRAMES; d++) {
+      if (index - d >= 0 && loaded[index - d]) return images[index - d]
+      if (index + d < TOTAL_FRAMES && loaded[index + d]) return images[index + d]
+    }
+    return null
+  }
+
+  function startPreload() {
+    if (preloadStarted) return
+    preloadStarted = true
+    for (let i = 0; i < TOTAL_FRAMES; i++) {
+      const img = new Image()
+      img.decoding = 'async'
+      img.onload = () => { loaded[i] = true }
+      img.src = framePath(i)
+      images[i] = img
+    }
+  }
+
+  // Precarga diferida: empieza cuando la sección #vr se acerca al viewport.
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        startPreload()
+        observer.disconnect()
+      }
+    }, { rootMargin: '150% 0px 150% 0px' })
+    observer.observe(track)
+  } else {
+    startPreload()
+  }
+
+  function loop() {
+    const progress = getProgress()
+    // degradado inicial: de negro a los frames
+    fadeEl.style.opacity = Math.max(0, Math.min(1, 1 - progress / FADE_END))
+
+    const idx = Math.round(progress * (TOTAL_FRAMES - 1))
+    if (idx !== lastDrawn) {
+      const img = nearestLoaded(idx)
+      if (img && img.complete && img.naturalWidth > 0) {
+        drawContain(img)
+        lastDrawn = idx
+      }
+    }
+    requestAnimationFrame(loop)
+  }
+
+  window.addEventListener('resize', resizeCanvas, { passive: true })
+  resizeCanvas()
+  requestAnimationFrame(loop)
+</script>
