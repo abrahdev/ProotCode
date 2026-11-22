@@ -27,16 +27,22 @@ object TerminalSessionManager {
     fun create(
         context: Context,
         environment: Environment,
+        promptColor: Int,
     ): TerminalSession {
-        val session = TerminalSessionFactory(context).create(environment) {
-            onScreenUpdated?.invoke()
-        }
+        val session =
+            TerminalSessionFactory(context).create(environment, promptColor) {
+                onScreenUpdated?.invoke()
+            }
         register(context, environment.id, session, "Terminal")
         return session
     }
 
-    fun createNative(context: Context): TerminalSession {
-        val session = TerminalSessionFactory(context).createNative { onScreenUpdated?.invoke() }
+    fun createNative(
+        context: Context,
+        promptColor: Int,
+    ): TerminalSession {
+        val session =
+            TerminalSessionFactory(context).createNative(promptColor) { onScreenUpdated?.invoke() }
         register(context, NATIVE_ENVIRONMENT_ID, session, "Shell")
         return session
     }

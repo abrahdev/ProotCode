@@ -88,7 +88,6 @@ class MainActivity : ComponentActivity() {
                                         environment.id,
                                     )
                                 },
-                                onOpenAbout = { navController.navigate(NavRoutes.ABOUT) },
                             )
                         }
                         composable(NavRoutes.ABOUT) {

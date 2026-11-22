@@ -19,9 +19,7 @@ fun PreferencesSheet(
     preferences: AppPreferences,
     onDismiss: () -> Unit,
     onTheme: () -> Unit,
-    onTerminalCustomization: () -> Unit,
     onAccessibility: () -> Unit,
-    onAbout: () -> Unit,
 ) {
     val linkBehavior by preferences.linkBehavior.collectAsState()
 
@@ -37,11 +35,6 @@ fun PreferencesSheet(
                 onClick = onTheme,
             )
             SettingRow(
-                title = stringResource(R.string.sheet_terminal_customize_title),
-                subtitle = stringResource(R.string.preferences_terminal_sub),
-                onClick = onTerminalCustomization,
-            )
-            SettingRow(
                 title = stringResource(R.string.sheet_accessibility_title),
                 subtitle = stringResource(R.string.preferences_accessibility_sub),
                 onClick = onAccessibility,
@@ -55,13 +48,6 @@ fun PreferencesSheet(
                         if (enabled) LinkOpenBehavior.IN_APP else LinkOpenBehavior.SYSTEM,
                     )
                 },
-                showDivider = false,
-            )
-        }
-        SettingsGroup(title = stringResource(R.string.settings_about)) {
-            SettingRow(
-                title = stringResource(R.string.settings_about),
-                onClick = onAbout,
                 showDivider = false,
             )
         }

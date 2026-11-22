@@ -55,7 +55,6 @@ import dev.prootcode.app.ui.components.formatFileSize
 import dev.prootcode.app.ui.settings.AccessibilitySheet
 import dev.prootcode.app.ui.settings.AdbSetupSheet
 import dev.prootcode.app.ui.settings.PreferencesSheet
-import dev.prootcode.app.ui.settings.TerminalCustomizationSheet
 import dev.prootcode.app.ui.settings.ThemeSheet
 import dev.prootcode.app.ui.terminal.TerminalActivity
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
@@ -70,8 +69,6 @@ private sealed interface HomeSheet {
     data object Preferences : HomeSheet
 
     data object Theme : HomeSheet
-
-    data object TerminalCustomization : HomeSheet
 
     data object Accessibility : HomeSheet
 
@@ -95,7 +92,6 @@ fun HomeScreen(
     onOpenTerminal: (Environment) -> Unit,
     onOpenNativeTerminal: () -> Unit,
     onOpenCodeServer: (Environment) -> Unit,
-    onOpenAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -347,24 +343,10 @@ fun HomeScreen(
                 preferences = preferences,
                 onDismiss = { sheet = null },
                 onTheme = { sheet = HomeSheet.Theme },
-                onTerminalCustomization = { sheet = HomeSheet.TerminalCustomization },
                 onAccessibility = { sheet = HomeSheet.Accessibility },
-                onAbout = {
-                    sheet = null
-                    onOpenAbout()
-                },
             )
         HomeSheet.Theme ->
             ThemeSheet(
-                preferences = preferences,
-                onDismiss = { sheet = HomeSheet.Preferences },
-                onAbout = {
-                    sheet = null
-                    onOpenAbout()
-                },
-            )
-        HomeSheet.TerminalCustomization ->
-            TerminalCustomizationSheet(
                 preferences = preferences,
                 onDismiss = { sheet = HomeSheet.Preferences },
             )

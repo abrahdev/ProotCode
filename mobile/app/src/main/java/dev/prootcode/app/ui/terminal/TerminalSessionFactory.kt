@@ -13,6 +13,7 @@ class TerminalSessionFactory(
 ) {
     fun create(
         environment: ProotEnvironment,
+        promptColor: Int,
         onScreenUpdated: () -> Unit,
     ): TerminalSession {
         val rootfsDir = File(context.filesDir, "environments/${environment.id}/rootfs")
@@ -26,10 +27,15 @@ class TerminalSessionFactory(
                 projectsDir = projectsDir,
                 mounts = EnvironmentMounts.of(context, settings, rootfsDir),
             )
+        val coloredPrompt = prompt(promptColor)
         val environmentVariables =
             command
                 .environment(extraEnvironment = GuestEnvironment.of(settings))
-                .map { (key, value) -> "$key=$value" }
+                .toMutableMap()
+                .apply {
+                    put("PS1", coloredPrompt)
+                    put("PROMPT_COMMAND", "PS1='$coloredPrompt'")
+                }.map { (key, value) -> "$key=$value" }
                 .toTypedArray()
         return TerminalSession(
             command.prootBinaryPath,
@@ -41,19 +47,34 @@ class TerminalSessionFactory(
         )
     }
 
-    fun createNative(onScreenUpdated: () -> Unit): TerminalSession =
-        TerminalSession(
-            "/system/bin/sh",
-            context.filesDir.absolutePath,
-            emptyArray(),
-            arrayOf(
-                "PATH=/system/bin:/system/xbin",
-                "HOME=${context.filesDir.absolutePath}",
-                "TERM=xterm-256color",
-            ),
-            TRANSCRIPT_ROWS,
-            ProotSessionClient(onScreenUpdated = onScreenUpdated),
-        )
+    fun createNative(
+        promptColor: Int,
+        onScreenUpdated: () -> Unit,
+    ): TerminalSession =
+        run {
+            val coloredPrompt = prompt(promptColor)
+            TerminalSession(
+                "/system/bin/sh",
+                context.filesDir.absolutePath,
+                emptyArray(),
+                arrayOf(
+                    "PATH=/system/bin:/system/xbin",
+                    "HOME=${context.filesDir.absolutePath}",
+                    "TERM=xterm-256color",
+                    "PS1=$coloredPrompt",
+                    "PROMPT_COMMAND=PS1='$coloredPrompt'",
+                ),
+                TRANSCRIPT_ROWS,
+                ProotSessionClient(onScreenUpdated = onScreenUpdated),
+            )
+        }
+
+    private fun prompt(color: Int): String {
+        val red = (color shr 16) and 0xFF
+        val green = (color shr 8) and 0xFF
+        val blue = color and 0xFF
+        return "\\[\\e[38;2;$red;$green;${blue}m\\]\\u@\\h\\[\\e[0m\\]:\\w\\# "
+    }
 
     fun hostProjectsDir(): File = File(context.getExternalFilesDir(null) ?: context.filesDir, "projects")
 

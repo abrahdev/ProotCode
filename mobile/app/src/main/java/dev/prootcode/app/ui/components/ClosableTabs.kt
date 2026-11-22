@@ -1,12 +1,13 @@
 package dev.prootcode.app.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,6 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import dev.prootcode.app.R
@@ -28,9 +31,7 @@ fun ClosableTabRow(
     selected: Int,
     onSelect: (Int) -> Unit,
     onClose: (Int) -> Unit,
-    onNew: (() -> Unit)?,
     modifier: Modifier = Modifier,
-    actions: @Composable RowScope.() -> Unit = {},
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -47,43 +48,58 @@ fun ClosableTabRow(
                     edgePadding = 8.dp,
                     containerColor = MaterialTheme.colorScheme.surface,
                     contentColor = MaterialTheme.colorScheme.primary,
+                    indicator = {},
                     divider = {},
                 ) {
                     titles.forEachIndexed { index, title ->
-                        Tab(
-                            selected = index == selectedIndex,
-                            onClick = { onSelect(index) },
-                            text = {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(title)
-                                    if (index == selectedIndex) {
-                                        IconButton(
-                                            onClick = { onClose(index) },
-                                            modifier = Modifier.size(28.dp),
-                                        ) {
-                                            Icon(
-                                                imageVector = Icons.Outlined.Close,
-                                                contentDescription = stringResource(
-                                                    R.string.terminal_close_session,
-                                                ),
-                                                modifier = Modifier.size(16.dp),
-                                            )
+                        key(title) {
+                            val active = index == selectedIndex
+                            Tab(
+                                selected = active,
+                                onClick = { onSelect(index) },
+                                modifier =
+                                    Modifier
+                                        .padding(horizontal = 4.dp, vertical = 4.dp)
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(
+                                            if (active) {
+                                                MaterialTheme.colorScheme.secondaryContainer
+                                            } else {
+                                                Color.Transparent
+                                            },
+                                        ),
+                                text = {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Text(
+                                            text = title,
+                                            color =
+                                                if (active) {
+                                                    MaterialTheme.colorScheme.onSecondaryContainer
+                                                } else {
+                                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                                },
+                                            style = MaterialTheme.typography.labelLarge,
+                                        )
+                                        if (active && titles.size > 1) {
+                                            IconButton(
+                                                onClick = { onClose(index) },
+                                                modifier = Modifier.size(28.dp),
+                                            ) {
+                                                Icon(
+                                                    imageVector = Icons.Outlined.Close,
+                                                    contentDescription = stringResource(
+                                                        R.string.terminal_close_session,
+                                                    ),
+                                                    modifier = Modifier.size(16.dp),
+                                                )
+                                            }
                                         }
                                     }
-                                }
-                            },
-                        )
+                                },
+                            )
+                        }
                     }
                 }
-            }
-        }
-        actions()
-        if (onNew != null) {
-            IconButton(onClick = onNew) {
-                Icon(
-                    imageVector = Icons.Outlined.Add,
-                    contentDescription = stringResource(R.string.terminal_new_session_desc),
-                )
             }
         }
     }
