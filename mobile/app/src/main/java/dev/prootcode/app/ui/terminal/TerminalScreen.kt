@@ -15,7 +15,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Keyboard
+import androidx.compose.material.icons.outlined.KeyboardHide
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -125,6 +130,7 @@ fun TerminalContent(
     var viewClient by remember { mutableStateOf<ProotViewClient?>(null) }
     var shortcuts by remember { mutableStateOf(TerminalShortcutStore.create(context).load()) }
     var showShortcutsEditor by remember { mutableStateOf(false) }
+    var keyboardLocked by remember { mutableStateOf(false) }
     val shortcutStore = remember { TerminalShortcutStore.create(context) }
 
     LaunchedEffect(environmentId) {
@@ -176,6 +182,31 @@ fun TerminalContent(
             onSelect = { selected = it },
             onClose = { index -> sessions.getOrNull(index)?.let { closeSession(it) } },
             onNew = { createSession() },
+            actions = {
+                IconButton(
+                    onClick = {
+                        keyboardLocked = !keyboardLocked
+                        if (keyboardLocked) hideKeyboard(context, terminalView)
+                    },
+                ) {
+                    Icon(
+                        imageVector =
+                            if (keyboardLocked) {
+                                Icons.Outlined.KeyboardHide
+                            } else {
+                                Icons.Outlined.Keyboard
+                            },
+                        contentDescription =
+                            stringResource(
+                                if (keyboardLocked) {
+                                    R.string.terminal_keyboard_unlock
+                                } else {
+                                    R.string.terminal_keyboard_lock
+                                },
+                            ),
+                    )
+                }
+            },
         )
         AndroidView(
             factory = { ctx ->
@@ -183,7 +214,8 @@ fun TerminalContent(
                     .apply {
                         isFocusable = true
                         isFocusableInTouchMode = true
-                        val client = ProotViewClient { showKeyboard(ctx, this) }
+                        pointerIcon = android.view.PointerIcon.getSystemIcon(ctx, android.view.PointerIcon.TYPE_TEXT)
+                        val client = ProotViewClient { if (!keyboardLocked) showKeyboard(ctx, this) }
                         viewClient = client
                         setTerminalViewClient(client)
                         applyFont(this, fontFamily, fontSize)
@@ -192,7 +224,7 @@ fun TerminalContent(
                             applyPalette(session, palette)
                         }
                         requestFocus()
-                        post { showKeyboard(ctx, this) }
+                        if (!keyboardLocked) post { showKeyboard(ctx, this) }
                     }.also { terminalView = it }
             },
             update = { view ->
@@ -278,4 +310,13 @@ private fun showKeyboard(
     view.requestFocus()
     val imm = context.getSystemService(InputMethodManager::class.java)
     imm?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+}
+
+private fun hideKeyboard(
+    context: Context,
+    view: TerminalView?,
+) {
+    if (view == null) return
+    val imm = context.getSystemService(InputMethodManager::class.java)
+    imm?.hideSoftInputFromWindow(view.windowToken, 0)
 }

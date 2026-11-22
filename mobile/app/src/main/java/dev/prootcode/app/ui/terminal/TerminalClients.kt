@@ -96,6 +96,47 @@ class ProotViewClient(
 ) : TerminalViewClient {
     var ctrlActive by mutableStateOf(false)
     var altActive by mutableStateOf(false)
+    var ctrlLatched by mutableStateOf(false)
+    var altLatched by mutableStateOf(false)
+
+    fun toggleModifier(id: String) {
+        when (id) {
+            "ctrl" -> {
+                if (ctrlLatched) {
+                    ctrlLatched = false
+                    ctrlActive = false
+                } else {
+                    ctrlActive = !ctrlActive
+                }
+            }
+            "alt" -> {
+                if (altLatched) {
+                    altLatched = false
+                    altActive = false
+                } else {
+                    altActive = !altActive
+                }
+            }
+        }
+    }
+
+    fun toggleModifierLatch(id: String) {
+        when (id) {
+            "ctrl" -> {
+                ctrlLatched = !ctrlLatched
+                ctrlActive = ctrlLatched
+            }
+            "alt" -> {
+                altLatched = !altLatched
+                altActive = altLatched
+            }
+        }
+    }
+
+    fun consumeModifiers() {
+        if (!ctrlLatched) ctrlActive = false
+        if (!altLatched) altActive = false
+    }
 
     override fun onScale(scale: Float): Float = 1f
 
@@ -136,7 +177,10 @@ class ProotViewClient(
         codePoint: Int,
         ctrlDown: Boolean,
         session: TerminalSession?,
-    ): Boolean = false
+    ): Boolean {
+        consumeModifiers()
+        return false
+    }
 
     override fun onEmulatorSet() = Unit
 

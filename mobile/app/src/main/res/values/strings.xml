@@ -84,6 +84,8 @@
     <string name="terminal_font_family">Font family</string>
     <string name="terminal_font_size">Font size</string>
     <string name="terminal_edit_shortcuts">Edit shortcuts</string>
+    <string name="terminal_keyboard_lock">Lock keyboard</string>
+    <string name="terminal_keyboard_unlock">Unlock keyboard</string>
     <string name="terminal_new_session_desc">New session</string>
 
     <string name="access_show_labels">Show text on terminal buttons</string>
