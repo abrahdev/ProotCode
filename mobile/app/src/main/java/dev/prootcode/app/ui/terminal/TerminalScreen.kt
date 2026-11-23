@@ -6,6 +6,8 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -27,6 +29,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -73,6 +76,7 @@ import kotlin.math.roundToInt
 @Composable
 fun TerminalScreen(
     environment: Environment?,
+    darkTheme: Boolean,
     onBack: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -118,6 +122,9 @@ fun TerminalScreen(
                 terminalPaletteFor(
                     theme = themeSettings.terminalColorTheme,
                     hue = themeSettings.customHue,
+                    darkTheme = darkTheme,
+                    dynamicColor = themeSettings.dynamicColor,
+                    colorScheme = MaterialTheme.colorScheme,
                 ),
             fontFamily = themeSettings.terminalFontFamily,
             fontSize = themeSettings.terminalFontSize,
@@ -154,14 +161,13 @@ fun TerminalContent(
     val navBottom = WindowInsets.navigationBars.getBottom(density)
     val imeExtra = with(density) { (imeBottom - navBottom).coerceAtLeast(0).toDp() }
     val shortcutStore = remember { TerminalShortcutStore.create(context) }
-    val promptColor = MaterialTheme.colorScheme.primary.toArgb()
 
     LaunchedEffect(environmentId) {
         if (TerminalSessionManager.sessions(environmentId).isEmpty()) {
             if (environment == null) {
-                TerminalSessionManager.createNative(context, promptColor)
+                TerminalSessionManager.createNative(context)
             } else {
-                TerminalSessionManager.create(context, environment, promptColor)
+                TerminalSessionManager.create(context, environment)
             }
         }
         sessions.clear()
@@ -169,27 +175,48 @@ fun TerminalContent(
         selected = sessions.lastIndex.coerceAtLeast(0)
     }
 
+    val mainHandler = remember { Handler(Looper.getMainLooper()) }
     DisposableEffect(Unit) {
         TerminalSessionManager.onScreenUpdated = { terminalView?.onScreenUpdated() }
-        onDispose { TerminalSessionManager.onScreenUpdated = null }
+        TerminalSessionManager.onSessionFinished = { finishedEnvironmentId, session ->
+            mainHandler.post {
+                if (finishedEnvironmentId == environmentId) {
+                    TerminalSessionManager.sessionExited(context, finishedEnvironmentId, session)
+                    sessions.remove(session)
+                    if (sessions.isEmpty()) {
+                        onBack()
+                    } else {
+                        selected = selected.coerceIn(0, sessions.lastIndex)
+                    }
+                }
+            }
+        }
+        onDispose {
+            TerminalSessionManager.onScreenUpdated = null
+            TerminalSessionManager.onSessionFinished = null
+        }
     }
 
-    LaunchedEffect(selected, palette, sessions.size) {
-        sessions.getOrNull(selected)?.let { session ->
-            applyPalette(session, palette)
-            terminalView?.onScreenUpdated()
-        }
+    LaunchedEffect(palette, sessions.size) {
+        sessions.forEach { applyPalette(it, palette) }
+        terminalView?.onScreenUpdated()
     }
 
     fun createSession() {
         val session =
             if (environment == null) {
-                TerminalSessionManager.createNative(context, promptColor)
+                TerminalSessionManager.createNative(context)
             } else {
-                TerminalSessionManager.create(context, environment, promptColor)
+                TerminalSessionManager.create(context, environment)
             }
         sessions.add(session)
         selected = sessions.lastIndex
+    }
+
+    fun switchSession(toNext: Boolean) {
+        if (sessions.size < 2) return
+        val step = if (toNext) 1 else -1
+        selected = (selected + step + sessions.size) % sessions.size
     }
 
     fun closeSession(session: TerminalSession) {
@@ -250,6 +277,7 @@ fun TerminalContent(
                             val client = ProotViewClient { if (!keyboardLocked) showKeyboard(ctx, this) }
                             viewClient = client
                             setTerminalViewClient(client)
+                            setSwipeListener { toNext -> switchSession(toNext) }
                             applyFont(this, fontFamily, fontSize)
                             sessions.getOrNull(selected)?.let { session ->
                                 attachSession(session)
@@ -314,6 +342,7 @@ private fun applyPalette(
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_BACKGROUND] = palette.background.toArgb()
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_FOREGROUND] = palette.foreground.toArgb()
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_CURSOR] = palette.prompt.toArgb()
+    emulator.mColors.mCurrentColors[PROMPT_COLOR_INDEX] = palette.prompt.toArgb()
 }
 
 private fun applyFont(
@@ -333,9 +362,29 @@ private fun applyFont(
 internal fun terminalPaletteFor(
     theme: TerminalColorTheme,
     hue: Int,
+    darkTheme: Boolean,
+    dynamicColor: Boolean = false,
+    colorScheme: ColorScheme? = null,
+): TerminalPalette =
+    if (dynamicColor && colorScheme != null) {
+        TerminalPalette(
+            background = colorScheme.surface,
+            foreground = colorScheme.onSurface,
+            prompt = colorScheme.primary,
+            inputBackground = colorScheme.surfaceContainer,
+        )
+    } else {
+        paletteForTheme(theme, hue, darkTheme)
+    }
+
+private fun paletteForTheme(
+    theme: TerminalColorTheme,
+    hue: Int,
+    darkTheme: Boolean,
 ): TerminalPalette =
     when (theme) {
-        TerminalColorTheme.SYSTEM, TerminalColorTheme.DARK -> terminalPalette(hue)
+        TerminalColorTheme.SYSTEM -> terminalPalette(hue, lightMode = !darkTheme)
+        TerminalColorTheme.DARK -> terminalPalette(hue)
         TerminalColorTheme.LIGHT ->
             TerminalPalette(
                 background = Color.hsl(hue.toFloat(), 0.20f, 0.98f),

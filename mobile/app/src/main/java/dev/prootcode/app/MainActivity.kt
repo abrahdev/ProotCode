@@ -155,6 +155,7 @@ class MainActivity : ComponentActivity() {
                             } else {
                                 TerminalScreen(
                                     environment = environment,
+                                    darkTheme = darkTheme,
                                     onBack = { navController.popBackStack() },
                                 )
                             }

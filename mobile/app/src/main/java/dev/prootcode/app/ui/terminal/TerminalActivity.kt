@@ -48,6 +48,7 @@ class TerminalActivity : ComponentActivity() {
             ) {
                 TerminalScreen(
                     environment = environment,
+                    darkTheme = darkTheme,
                     onBack = { finish() },
                 )
             }

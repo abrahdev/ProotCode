@@ -13,8 +13,8 @@ class TerminalSessionFactory(
 ) {
     fun create(
         environment: ProotEnvironment,
-        promptColor: Int,
         onScreenUpdated: () -> Unit,
+        onSessionFinished: (TerminalSession) -> Unit,
     ): TerminalSession {
         val rootfsDir = File(context.filesDir, "environments/${environment.id}/rootfs")
         val projectsDir = hostProjectsDir()
@@ -27,7 +27,7 @@ class TerminalSessionFactory(
                 projectsDir = projectsDir,
                 mounts = EnvironmentMounts.of(context, settings, rootfsDir),
             )
-        val coloredPrompt = prompt(promptColor)
+        val coloredPrompt = prompt()
         val environmentVariables =
             command
                 .environment(extraEnvironment = GuestEnvironment.of(settings))
@@ -43,16 +43,19 @@ class TerminalSessionFactory(
             command.interactiveArgv().toTypedArray(),
             environmentVariables,
             TRANSCRIPT_ROWS,
-            ProotSessionClient(onScreenUpdated = onScreenUpdated),
+            ProotSessionClient(
+                onScreenUpdated = onScreenUpdated,
+                onFinished = { onSessionFinished(it) },
+            ),
         )
     }
 
     fun createNative(
-        promptColor: Int,
         onScreenUpdated: () -> Unit,
+        onSessionFinished: (TerminalSession) -> Unit,
     ): TerminalSession =
         run {
-            val coloredPrompt = prompt(promptColor)
+            val coloredPrompt = prompt()
             TerminalSession(
                 "/system/bin/sh",
                 context.filesDir.absolutePath,
@@ -65,16 +68,14 @@ class TerminalSessionFactory(
                     "PROMPT_COMMAND=PS1='$coloredPrompt'",
                 ),
                 TRANSCRIPT_ROWS,
-                ProotSessionClient(onScreenUpdated = onScreenUpdated),
+                ProotSessionClient(
+                    onScreenUpdated = onScreenUpdated,
+                    onFinished = { onSessionFinished(it) },
+                ),
             )
         }
 
-    private fun prompt(color: Int): String {
-        val red = (color shr 16) and 0xFF
-        val green = (color shr 8) and 0xFF
-        val blue = color and 0xFF
-        return "\\[\\e[38;2;$red;$green;${blue}m\\]\\u@\\h\\[\\e[0m\\]:\\w\\# "
-    }
+    private fun prompt(): String = "\\[\\e[38;5;${PROMPT_COLOR_INDEX}m\\]\\u@\\h\\[\\e[0m\\]:\\w\\$ "
 
     fun hostProjectsDir(): File = File(context.getExternalFilesDir(null) ?: context.filesDir, "projects")
 
@@ -82,3 +83,5 @@ class TerminalSessionFactory(
         private const val TRANSCRIPT_ROWS = 5_000
     }
 }
+
+internal const val PROMPT_COLOR_INDEX = 255

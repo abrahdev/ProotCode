@@ -3,6 +3,7 @@ package dev.prootcode.app.ui.screens
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -45,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
+import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
 import dev.prootcode.app.ui.components.InstallingSkeleton
@@ -58,7 +60,7 @@ import dev.prootcode.app.ui.settings.PreferencesSheet
 import dev.prootcode.app.ui.settings.ThemeSheet
 import dev.prootcode.app.ui.terminal.TerminalActivity
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
-import dev.prootcode.app.ui.theme.terminalPalette
+import dev.prootcode.app.ui.terminal.terminalPaletteFor
 import dev.prootcode.app.ui.util.QuestWindow
 import dev.prootcode.app.ui.viewmodels.HomeViewModel
 import dev.prootcode.app.ui.viewmodels.WizardViewModel
@@ -277,7 +279,21 @@ fun HomeScreen(
                             )
                         }
                     val selected = selectedPreviews[environment.id] ?: if (previews.isEmpty()) -1 else 0
-                    val palette = terminalPalette(themeSettings.customHue)
+                    val systemDark = isSystemInDarkTheme()
+                    val darkTheme =
+                        when (themeSettings.themeMode) {
+                            ThemeMode.SYSTEM -> systemDark
+                            ThemeMode.LIGHT -> false
+                            ThemeMode.DARK -> true
+                        }
+                    val palette =
+                        terminalPaletteFor(
+                            theme = themeSettings.terminalColorTheme,
+                            hue = themeSettings.customHue,
+                            darkTheme = darkTheme,
+                            dynamicColor = themeSettings.dynamicColor,
+                            colorScheme = MaterialTheme.colorScheme,
+                        )
                     val markIcon =
                         dev.prootcode.app.ui.components.ProotIcons
                             .resolve(environment.settings.icon)

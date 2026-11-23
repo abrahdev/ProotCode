@@ -12,13 +12,15 @@ import com.termux.view.TerminalViewClient
 
 class ProotSessionClient(
     private val onScreenUpdated: () -> Unit,
-    private val onSessionFinished: () -> Unit = {},
+    private val onFinished: (TerminalSession) -> Unit = {},
 ) : TerminalSessionClient {
     override fun onTextChanged(changedSession: TerminalSession) = onScreenUpdated()
 
     override fun onTitleChanged(changedSession: TerminalSession) = Unit
 
-    override fun onSessionFinished(finishedSession: TerminalSession) = onSessionFinished()
+    override fun onSessionFinished(finishedSession: TerminalSession) {
+        onFinished(finishedSession)
+    }
 
     override fun onCopyTextToClipboard(
         session: TerminalSession,

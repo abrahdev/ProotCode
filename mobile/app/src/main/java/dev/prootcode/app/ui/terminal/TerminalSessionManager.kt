@@ -14,6 +14,7 @@ object TerminalSessionManager {
     private val counters = mutableMapOf<String, Int>()
     private val firstOpenedAt = mutableMapOf<String, Long>()
     var onScreenUpdated: (() -> Unit)? = null
+    var onSessionFinished: ((String, TerminalSession) -> Unit)? = null
 
     fun sessions(environmentId: String): List<TerminalSession> = sessionsByEnvironment[environmentId].orEmpty()
 
@@ -27,22 +28,27 @@ object TerminalSessionManager {
     fun create(
         context: Context,
         environment: Environment,
-        promptColor: Int,
     ): TerminalSession {
         val session =
-            TerminalSessionFactory(context).create(environment, promptColor) {
-                onScreenUpdated?.invoke()
-            }
+            TerminalSessionFactory(context).create(
+                environment = environment,
+                onScreenUpdated = { onScreenUpdated?.invoke() },
+                onSessionFinished = { finished ->
+                    onSessionFinished?.invoke(environment.id, finished)
+                },
+            )
         register(context, environment.id, session, "Terminal")
         return session
     }
 
-    fun createNative(
-        context: Context,
-        promptColor: Int,
-    ): TerminalSession {
+    fun createNative(context: Context): TerminalSession {
         val session =
-            TerminalSessionFactory(context).createNative(promptColor) { onScreenUpdated?.invoke() }
+            TerminalSessionFactory(context).createNative(
+                onScreenUpdated = { onScreenUpdated?.invoke() },
+                onSessionFinished = { finished ->
+                    onSessionFinished?.invoke(NATIVE_ENVIRONMENT_ID, finished)
+                },
+            )
         register(context, NATIVE_ENVIRONMENT_ID, session, "Shell")
         return session
     }
@@ -68,6 +74,20 @@ object TerminalSessionManager {
         sessionsByEnvironment.remove(environmentId)?.forEach { it.finishIfRunning() }
         counters.remove(environmentId)
         firstOpenedAt.remove(environmentId)
+        ensureService(context)
+    }
+
+    fun sessionExited(
+        context: Context,
+        environmentId: String,
+        session: TerminalSession,
+    ) {
+        val sessions = sessionsByEnvironment[environmentId] ?: return
+        if (!sessions.remove(session)) return
+        if (sessions.isEmpty()) {
+            sessionsByEnvironment.remove(environmentId)
+            firstOpenedAt.remove(environmentId)
+        }
         ensureService(context)
     }
 

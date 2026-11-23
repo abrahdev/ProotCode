@@ -34,13 +34,16 @@ private fun hsl(
         alpha = alpha,
     )
 
-fun terminalPalette(hue: Int): TerminalPalette =
+fun terminalPalette(
+    hue: Int,
+    lightMode: Boolean = false,
+): TerminalPalette =
     when (hue) {
         else ->
             TerminalPalette(
                 background = hsl(hue, 0.15f, 0.07f),
-                foreground = hsl(hue, 0.20f, 0.88f),
-                prompt = hsl(hue, 0.65f, 0.74f),
+                foreground = hsl(hue, 0.20f, if (lightMode) 0.72f else 0.88f),
+                prompt = hsl(hue, 0.65f, if (lightMode) 0.62f else 0.74f),
                 inputBackground = hsl(hue, 0.15f, 0.11f),
             )
     }
