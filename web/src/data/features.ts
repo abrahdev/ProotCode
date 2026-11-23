@@ -3,7 +3,7 @@ export interface Feature {
   title: string
   desc: string
   hot?: boolean
-  link?: { text: string; href: string }
+  href?: string
 }
 
 export const features: Feature[] = [
@@ -16,7 +16,7 @@ export const features: Feature[] = [
   { num: '07', title: 'Tool selection', desc: 'Choose dev tools by category before installing.' },
   { num: '08', title: 'Multi terminals', desc: 'Several sessions open on the same distribution.', hot: true },
   { num: '09', title: 'Code Server', desc: 'VS Code in the browser, on your local network, with mobile CSS.', hot: true },
-  { num: '10', title: 'VR Support', desc: 'Run ProotCode from the Meta Quest 3 browser.', link: { text: 'View more', href: '#vr' } },
+  { num: '10', title: 'VR Support', desc: 'Run ProotCode from the Meta Quest 3 browser.', href: '#vr' },
   { num: '11', title: 'Resource controls', desc: 'Monitor and limit battery and CPU usage.' },
   { num: '12', title: 'Install progress', desc: 'Follow every step of the distribution setup.' },
   { num: '13', title: 'Backups', desc: 'Export and restore projects and configuration.' },

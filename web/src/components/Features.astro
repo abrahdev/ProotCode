@@ -4,9 +4,23 @@ import { features } from '../data/features'
 <section class="sec wrap" id="features" style="max-width:none">
   <div class="sh"><h2>Thirteen<br>blocks.</h2><p class="lbl" style="max-width:300px">Roadmap features. The project is at initial scaffold; runtime is being built in the open.</p></div>
   <div class="grid">
-    {features.map((feature) => (
-      <div class:list={['cell', { hot: feature.hot }]}><span class="n">{feature.num}</span><div><h3>{feature.title}</h3><p>{feature.desc}</p>{feature.link && <a class="vm" href={feature.link.href}>{feature.link.text}</a>}</div></div>
-    ))}
+    {features.map((feature) => {
+      const inner = (
+        <>
+          <span class="n">{feature.num}</span>
+          <div><h3>{feature.title}</h3><p>{feature.desc}</p></div>
+        </>
+      )
+      return feature.href ? (
+        <a
+          class:list={['cell', 'cell-link', { hot: feature.hot }]}
+          href={feature.href}
+          aria-label={`${feature.num}. ${feature.title}. ${feature.desc}`}
+        >{inner}</a>
+      ) : (
+        <div class:list={['cell', { hot: feature.hot }]}>{inner}</div>
+      )
+    })}
     <div class="cell" style="grid-column:span 3;background:var(--red);color:#fff;flex-direction:row;align-items:flex-end"><svg viewBox="0 0 1024 1024" style="width:150px;height:150px;flex:none"><use href="#gl"/></svg><h3 style="font-size:clamp(24px,3.4vw,48px)">Everything runs on your device.</h3></div>
   </div>
 </section>
@@ -18,9 +32,8 @@ import { features } from '../data/features'
 .cell .n{font:44px/1 var(--display);color:var(--red)}.cell:hover .n{color:#fff}
 .cell h3{font:19px/1.1 var(--display);text-transform:uppercase;margin-bottom:8px}.cell p{font-size:12.5px}
 .cell.hot{background:var(--ink);color:var(--paper)}
-.vm{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--red);text-decoration:none}
-.vm::after{content:'↓';font-size:15px}
-.cell:hover .vm{color:#fff}
+.cell-link{text-decoration:none;color:inherit}
+.cell-link:focus-visible{outline:4px solid var(--red);outline-offset:-8px}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);margin-right:0}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}}
 </style>

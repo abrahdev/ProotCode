@@ -1,13 +1,7 @@
----
-const TOTAL_FRAMES = 220
-const FADE_END = 0.06
----
-
 <section class="vr" id="vr">
   <div class="vr-track">
     <div class="vr-stage">
-      <canvas id="vr-canvas" aria-label="ProotCode on Meta Quest 3, scroll to rotate"></canvas>
-      <div class="vr-fade"></div>
+      <canvas id="vr-canvas" role="img" aria-label="ProotCode on Meta Quest 3, scroll to rotate and zoom"></canvas>
     </div>
   </div>
 
@@ -22,10 +16,9 @@ const FADE_END = 0.06
 
 <style>
 .vr{background:#000;border-bottom:3px solid var(--line)}
-.vr-track{height:480vh;position:relative}
+.vr-track{height:150vh;position:relative}
 .vr-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;border:3px solid var(--line)}
 .vr-stage canvas{width:100%;height:100%;display:block}
-.vr-fade{position:absolute;inset:0;background:#000;pointer-events:none;will-change:opacity}
 .vr-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:72px 24px;background:var(--paper);color:var(--ink)}
 .vr-summary h2{font-size:clamp(40px,6.5vw,96px)}
 .vr-copy{max-width:480px}
@@ -36,18 +29,22 @@ const FADE_END = 0.06
 
 <script>
   const TOTAL_FRAMES = 220
-  const FADE_END = 0.06
+  const KEYFRAMES = [0, 179, 209]
+  const MAX_PHASE = KEYFRAMES.length - 1
   const framePath = (n) => `/vr-frames/frame_${String(n + 1).padStart(3, '0')}.jpg`
 
   const track = document.querySelector('.vr-track')
   const canvas = document.getElementById('vr-canvas')
   const ctx = canvas.getContext('2d')
-  const fadeEl = document.querySelector('.vr-fade')
 
   const images = new Array(TOTAL_FRAMES).fill(null)
   const loaded = new Array(TOTAL_FRAMES).fill(false)
   let preloadStarted = false
-  let lastDrawn = -1
+  let lastRendered = -1
+  let displayedFrame = 0
+  let phase = 0
+  let animating = false
+  let animToken = 0
 
   function resizeCanvas() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -56,7 +53,8 @@ const FADE_END = 0.06
     canvas.width = Math.round(w * dpr)
     canvas.height = Math.round(h * dpr)
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    lastDrawn = -1
+    lastRendered = -1
+    render()
   }
 
   function drawContain(img) {
@@ -75,13 +73,6 @@ const FADE_END = 0.06
     ctx.drawImage(img, dx, dy, dw, dh)
   }
 
-  function getProgress() {
-    const rect = track.getBoundingClientRect()
-    const scrollable = track.offsetHeight - window.innerHeight
-    if (scrollable <= 0) return 0
-    return Math.min(1, Math.max(0, -rect.top / scrollable))
-  }
-
   function nearestLoaded(index) {
     if (loaded[index]) return images[index]
     for (let d = 1; d < TOTAL_FRAMES; d++) {
@@ -91,13 +82,63 @@ const FADE_END = 0.06
     return null
   }
 
+  function render() {
+    const idx = Math.round(displayedFrame)
+    if (idx === lastRendered) return
+    const img = nearestLoaded(idx)
+    if (img && img.complete && img.naturalWidth > 0) {
+      drawContain(img)
+      lastRendered = idx
+    }
+  }
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+  }
+
+  function animateTo(target) {
+    const start = displayedFrame
+    const duration = Math.max(650, Math.abs(target - start) * 6)
+    const startTime = performance.now()
+    const token = ++animToken
+    animating = true
+    function frame(now) {
+      if (token !== animToken) return
+      const t = Math.min(1, (now - startTime) / duration)
+      displayedFrame = start + (target - start) * easeInOutCubic(t)
+      render()
+      if (t < 1) {
+        requestAnimationFrame(frame)
+      } else {
+        displayedFrame = target
+        lastRendered = -1
+        render()
+        animating = false
+      }
+    }
+    requestAnimationFrame(frame)
+  }
+
+  function step(dir) {
+    const next = Math.max(0, Math.min(MAX_PHASE, phase + dir))
+    if (next === phase) return
+    phase = next
+    animateTo(KEYFRAMES[phase])
+  }
+
   function startPreload() {
     if (preloadStarted) return
     preloadStarted = true
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image()
       img.decoding = 'async'
-      img.onload = () => { loaded[i] = true }
+      img.onload = () => {
+        loaded[i] = true
+        if (i === Math.round(displayedFrame)) {
+          lastRendered = -1
+          render()
+        }
+      }
       img.src = framePath(i)
       images[i] = img
     }
@@ -116,23 +157,59 @@ const FADE_END = 0.06
     startPreload()
   }
 
-  function loop() {
-    const progress = getProgress()
-    // degradado inicial: de negro a los frames
-    fadeEl.style.opacity = Math.max(0, Math.min(1, 1 - progress / FADE_END))
-
-    const idx = Math.round(progress * (TOTAL_FRAMES - 1))
-    if (idx !== lastDrawn) {
-      const img = nearestLoaded(idx)
-      if (img && img.complete && img.naturalWidth > 0) {
-        drawContain(img)
-        lastDrawn = idx
-      }
-    }
-    requestAnimationFrame(loop)
+  function isPinned() {
+    const rect = track.getBoundingClientRect()
+    return rect.top <= 0 && rect.bottom >= window.innerHeight
   }
+
+  let gestureUsed = false
+  let quietTimer = null
+  function armQuiet() {
+    clearTimeout(quietTimer)
+    quietTimer = setTimeout(() => { gestureUsed = false }, 140)
+  }
+
+  function onWheel(e) {
+    if (e.ctrlKey) return
+    const dir = e.deltaY > 0 ? 1 : e.deltaY < 0 ? -1 : 0
+    if (!dir || !isPinned()) return
+    const canStep = (dir > 0 && phase < MAX_PHASE) || (dir < 0 && phase > 0)
+    if (!canStep) return
+    e.preventDefault()
+    if (gestureUsed || animating) {
+      armQuiet()
+      return
+    }
+    gestureUsed = true
+    armQuiet()
+    step(dir)
+  }
+  window.addEventListener('wheel', onWheel, { passive: false })
+
+  let touchStartY = null
+  let touchUsed = false
+  track.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1 || !isPinned()) return
+    touchStartY = e.touches[0].clientY
+    touchUsed = false
+  }, { passive: true })
+  track.addEventListener('touchmove', (e) => {
+    if (touchStartY === null || !isPinned()) return
+    const dy = touchStartY - e.touches[0].clientY
+    if (Math.abs(dy) < 24) return
+    const dir = dy > 0 ? 1 : -1
+    const canStep = (dir > 0 && phase < MAX_PHASE) || (dir < 0 && phase > 0)
+    if (!canStep) return
+    e.preventDefault()
+    if (touchUsed || animating) return
+    touchUsed = true
+    step(dir)
+  }, { passive: false })
+  track.addEventListener('touchend', () => {
+    touchStartY = null
+    touchUsed = false
+  }, { passive: true })
 
   window.addEventListener('resize', resizeCanvas, { passive: true })
   resizeCanvas()
-  requestAnimationFrame(loop)
 </script>
