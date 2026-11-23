@@ -34,6 +34,10 @@ fun WebViewContainer(
         factory = { ctx ->
             WebView(ctx)
                 .apply {
+                    isClickable = true
+                    isFocusable = true
+                    isFocusableInTouchMode = true
+                    this.settings.javaScriptCanOpenWindowsAutomatically = true
                     layoutParams =
                         ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,

@@ -77,6 +77,15 @@ public final class TerminalView extends View {
     private int mMouseScrollStartX = -1, mMouseScrollStartY = -1;
     /** Keep track of the time when a touch event leading to sending mouse scroll events started. */
     private long mMouseStartDownTime = -1;
+    private float mSwipeStartX;
+    private float mSwipeStartY;
+    private boolean mSwipeTracking;
+
+    public interface SwipeListener {
+        void onSwipe(boolean toNext);
+    }
+
+    private SwipeListener mSwipeListener;
 
     final Scroller mScroller;
 
@@ -269,6 +278,10 @@ public final class TerminalView extends View {
      */
     public void setTerminalViewClient(TerminalViewClient client) {
         this.mClient = client;
+    }
+
+    public void setSwipeListener(SwipeListener listener) {
+        mSwipeListener = listener;
     }
 
     /**
@@ -636,6 +649,23 @@ public final class TerminalView extends View {
                         sendMouseEventCode(event, TerminalEmulator.MOUSE_LEFT_BUTTON_MOVED, true);
                         break;
                 }
+            }
+        }
+
+        if (!isSelectingText() && !event.isFromSource(InputDevice.SOURCE_MOUSE)) {
+            if (action == MotionEvent.ACTION_DOWN) {
+                mSwipeStartX = event.getX();
+                mSwipeStartY = event.getY();
+                mSwipeTracking = true;
+            } else if (action == MotionEvent.ACTION_UP && mSwipeTracking) {
+                mSwipeTracking = false;
+                float dx = event.getX() - mSwipeStartX;
+                float dy = event.getY() - mSwipeStartY;
+                if (Math.abs(dx) > 100 && Math.abs(dx) > Math.abs(dy) * 1.5f && mSwipeListener != null) {
+                    mSwipeListener.onSwipe(dx < 0);
+                }
+            } else if (action == MotionEvent.ACTION_CANCEL) {
+                mSwipeTracking = false;
             }
         }
 

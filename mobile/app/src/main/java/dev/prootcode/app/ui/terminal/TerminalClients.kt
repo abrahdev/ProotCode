@@ -12,13 +12,15 @@ import com.termux.view.TerminalViewClient
 
 class ProotSessionClient(
     private val onScreenUpdated: () -> Unit,
-    private val onSessionFinished: () -> Unit = {},
+    private val onFinished: (TerminalSession) -> Unit = {},
 ) : TerminalSessionClient {
     override fun onTextChanged(changedSession: TerminalSession) = onScreenUpdated()
 
     override fun onTitleChanged(changedSession: TerminalSession) = Unit
 
-    override fun onSessionFinished(finishedSession: TerminalSession) = onSessionFinished()
+    override fun onSessionFinished(finishedSession: TerminalSession) {
+        onFinished(finishedSession)
+    }
 
     override fun onCopyTextToClipboard(
         session: TerminalSession,
@@ -96,6 +98,47 @@ class ProotViewClient(
 ) : TerminalViewClient {
     var ctrlActive by mutableStateOf(false)
     var altActive by mutableStateOf(false)
+    var ctrlLatched by mutableStateOf(false)
+    var altLatched by mutableStateOf(false)
+
+    fun toggleModifier(id: String) {
+        when (id) {
+            "ctrl" -> {
+                if (ctrlLatched) {
+                    ctrlLatched = false
+                    ctrlActive = false
+                } else {
+                    ctrlActive = !ctrlActive
+                }
+            }
+            "alt" -> {
+                if (altLatched) {
+                    altLatched = false
+                    altActive = false
+                } else {
+                    altActive = !altActive
+                }
+            }
+        }
+    }
+
+    fun toggleModifierLatch(id: String) {
+        when (id) {
+            "ctrl" -> {
+                ctrlLatched = !ctrlLatched
+                ctrlActive = ctrlLatched
+            }
+            "alt" -> {
+                altLatched = !altLatched
+                altActive = altLatched
+            }
+        }
+    }
+
+    fun consumeModifiers() {
+        if (!ctrlLatched) ctrlActive = false
+        if (!altLatched) altActive = false
+    }
 
     override fun onScale(scale: Float): Float = 1f
 
@@ -136,7 +179,10 @@ class ProotViewClient(
         codePoint: Int,
         ctrlDown: Boolean,
         session: TerminalSession?,
-    ): Boolean = false
+    ): Boolean {
+        consumeModifiers()
+        return false
+    }
 
     override fun onEmulatorSet() = Unit
 

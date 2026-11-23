@@ -1,8 +1,5 @@
 package dev.prootcode.app.ui.settings
 
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -12,15 +9,12 @@ import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.components.ChoiceChipRow
 import dev.prootcode.app.ui.components.HueWheelPicker
-import dev.prootcode.app.ui.components.SettingRow
-import dev.prootcode.app.ui.components.SettingsGroup
 import dev.prootcode.app.ui.components.SheetScaffold
 
 @Composable
 fun ThemeSheet(
     preferences: AppPreferences,
     onDismiss: () -> Unit,
-    onAbout: () -> Unit,
 ) {
     val settings by preferences.theme.collectAsState()
     SheetScaffold(
@@ -56,31 +50,24 @@ fun ThemeSheet(
         )
 
         SectionLabel(stringResource(R.string.settings_theme))
-        SettingsGroup(title = null) {
-            ThemeMode.entries.forEachIndexed { index, mode ->
-                SettingRow(
-                    title =
-                        stringResource(
-                            when (mode) {
-                                ThemeMode.SYSTEM -> R.string.settings_theme_system
-                                ThemeMode.LIGHT -> R.string.settings_theme_light
-                                ThemeMode.DARK -> R.string.settings_theme_dark
-                            },
-                        ),
-                    onClick = { preferences.setThemeMode(mode) },
-                    showDivider = index != ThemeMode.entries.lastIndex,
-                    trailing = {
-                        RadioButton(
-                            selected = settings.themeMode == mode,
-                            onClick = { preferences.setThemeMode(mode) },
-                        )
-                    },
-                )
-            }
-        }
+        ChoiceChipRow(
+            options =
+                listOf(
+                    stringResource(R.string.settings_theme_system),
+                    stringResource(R.string.settings_theme_light),
+                    stringResource(R.string.settings_theme_dark),
+                ),
+            selected = settings.themeMode.ordinal,
+            onSelected = { index -> preferences.setThemeMode(ThemeMode.entries[index]) },
+        )
 
-        TextButton(onClick = onAbout) {
-            Text(stringResource(R.string.settings_about))
-        }
+        SectionLabel(stringResource(R.string.terminal_font_size))
+        ChoiceChipRow(
+            options = FONT_SIZES.map { it.toString() },
+            selected = FONT_SIZES.indexOf(settings.terminalFontSize).coerceAtLeast(0),
+            onSelected = { index -> preferences.setTerminalFontSize(FONT_SIZES[index]) },
+        )
     }
 }
+
+private val FONT_SIZES = listOf(12, 14, 16, 18)

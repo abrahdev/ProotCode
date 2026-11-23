@@ -88,7 +88,6 @@ class MainActivity : ComponentActivity() {
                                         environment.id,
                                     )
                                 },
-                                onOpenAbout = { navController.navigate(NavRoutes.ABOUT) },
                             )
                         }
                         composable(NavRoutes.ABOUT) {
@@ -156,6 +155,7 @@ class MainActivity : ComponentActivity() {
                             } else {
                                 TerminalScreen(
                                     environment = environment,
+                                    darkTheme = darkTheme,
                                     onBack = { navController.popBackStack() },
                                 )
                             }

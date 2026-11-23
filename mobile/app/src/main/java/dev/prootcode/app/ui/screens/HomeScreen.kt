@@ -3,6 +3,7 @@ package dev.prootcode.app.ui.screens
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -45,6 +46,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
+import dev.prootcode.app.data.preferences.ThemeMode
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
 import dev.prootcode.app.ui.components.InstallingSkeleton
@@ -55,11 +57,10 @@ import dev.prootcode.app.ui.components.formatFileSize
 import dev.prootcode.app.ui.settings.AccessibilitySheet
 import dev.prootcode.app.ui.settings.AdbSetupSheet
 import dev.prootcode.app.ui.settings.PreferencesSheet
-import dev.prootcode.app.ui.settings.TerminalCustomizationSheet
 import dev.prootcode.app.ui.settings.ThemeSheet
 import dev.prootcode.app.ui.terminal.TerminalActivity
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
-import dev.prootcode.app.ui.theme.terminalPalette
+import dev.prootcode.app.ui.terminal.terminalPaletteFor
 import dev.prootcode.app.ui.util.QuestWindow
 import dev.prootcode.app.ui.viewmodels.HomeViewModel
 import dev.prootcode.app.ui.viewmodels.WizardViewModel
@@ -70,8 +71,6 @@ private sealed interface HomeSheet {
     data object Preferences : HomeSheet
 
     data object Theme : HomeSheet
-
-    data object TerminalCustomization : HomeSheet
 
     data object Accessibility : HomeSheet
 
@@ -95,7 +94,6 @@ fun HomeScreen(
     onOpenTerminal: (Environment) -> Unit,
     onOpenNativeTerminal: () -> Unit,
     onOpenCodeServer: (Environment) -> Unit,
-    onOpenAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -281,7 +279,21 @@ fun HomeScreen(
                             )
                         }
                     val selected = selectedPreviews[environment.id] ?: if (previews.isEmpty()) -1 else 0
-                    val palette = terminalPalette(themeSettings.customHue)
+                    val systemDark = isSystemInDarkTheme()
+                    val darkTheme =
+                        when (themeSettings.themeMode) {
+                            ThemeMode.SYSTEM -> systemDark
+                            ThemeMode.LIGHT -> false
+                            ThemeMode.DARK -> true
+                        }
+                    val palette =
+                        terminalPaletteFor(
+                            theme = themeSettings.terminalColorTheme,
+                            hue = themeSettings.customHue,
+                            darkTheme = darkTheme,
+                            dynamicColor = themeSettings.dynamicColor,
+                            colorScheme = MaterialTheme.colorScheme,
+                        )
                     val markIcon =
                         dev.prootcode.app.ui.components.ProotIcons
                             .resolve(environment.settings.icon)
@@ -347,24 +359,10 @@ fun HomeScreen(
                 preferences = preferences,
                 onDismiss = { sheet = null },
                 onTheme = { sheet = HomeSheet.Theme },
-                onTerminalCustomization = { sheet = HomeSheet.TerminalCustomization },
                 onAccessibility = { sheet = HomeSheet.Accessibility },
-                onAbout = {
-                    sheet = null
-                    onOpenAbout()
-                },
             )
         HomeSheet.Theme ->
             ThemeSheet(
-                preferences = preferences,
-                onDismiss = { sheet = HomeSheet.Preferences },
-                onAbout = {
-                    sheet = null
-                    onOpenAbout()
-                },
-            )
-        HomeSheet.TerminalCustomization ->
-            TerminalCustomizationSheet(
                 preferences = preferences,
                 onDismiss = { sheet = HomeSheet.Preferences },
             )

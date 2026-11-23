@@ -6,17 +6,38 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.isImeVisible
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -28,11 +49,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.termux.terminal.TerminalSession
@@ -42,7 +66,6 @@ import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.TerminalColorTheme
-import dev.prootcode.app.ui.components.AppScaffold
 import dev.prootcode.app.ui.components.ClosableTabRow
 import dev.prootcode.app.ui.settings.ShortcutsEditorSheet
 import dev.prootcode.app.ui.theme.TerminalPalette
@@ -50,10 +73,10 @@ import dev.prootcode.app.ui.theme.terminalPalette
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TerminalScreen(
     environment: Environment?,
+    darkTheme: Boolean,
     onBack: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -89,10 +112,8 @@ fun TerminalScreen(
 
     BackHandler(onBack = onBack)
 
-    AppScaffold(
-        title = environment?.name ?: stringResource(R.string.home_terminal_native),
-        onBack = onBack,
-        snackbarHostState = snackbarHostState,
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
         TerminalContent(
             environment = environment,
@@ -101,14 +122,20 @@ fun TerminalScreen(
                 terminalPaletteFor(
                     theme = themeSettings.terminalColorTheme,
                     hue = themeSettings.customHue,
+                    darkTheme = darkTheme,
+                    dynamicColor = themeSettings.dynamicColor,
+                    colorScheme = MaterialTheme.colorScheme,
                 ),
             fontFamily = themeSettings.terminalFontFamily,
             fontSize = themeSettings.terminalFontSize,
-            modifier = Modifier.padding(padding).fillMaxSize(),
+            onBack = onBack,
+            contentPadding = padding,
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun TerminalContent(
     environment: Environment?,
@@ -116,6 +143,8 @@ fun TerminalContent(
     palette: TerminalPalette,
     fontFamily: String,
     fontSize: Int,
+    onBack: () -> Unit,
+    contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -125,6 +154,12 @@ fun TerminalContent(
     var viewClient by remember { mutableStateOf<ProotViewClient?>(null) }
     var shortcuts by remember { mutableStateOf(TerminalShortcutStore.create(context).load()) }
     var showShortcutsEditor by remember { mutableStateOf(false) }
+    var keyboardLocked by remember { mutableStateOf(false) }
+    val keyboardVisible = WindowInsets.isImeVisible
+    val density = LocalDensity.current
+    val imeBottom = WindowInsets.ime.getBottom(density)
+    val navBottom = WindowInsets.navigationBars.getBottom(density)
+    val imeExtra = with(density) { (imeBottom - navBottom).coerceAtLeast(0).toDp() }
     val shortcutStore = remember { TerminalShortcutStore.create(context) }
 
     LaunchedEffect(environmentId) {
@@ -140,16 +175,31 @@ fun TerminalContent(
         selected = sessions.lastIndex.coerceAtLeast(0)
     }
 
+    val mainHandler = remember { Handler(Looper.getMainLooper()) }
     DisposableEffect(Unit) {
         TerminalSessionManager.onScreenUpdated = { terminalView?.onScreenUpdated() }
-        onDispose { TerminalSessionManager.onScreenUpdated = null }
+        TerminalSessionManager.onSessionFinished = { finishedEnvironmentId, session ->
+            mainHandler.post {
+                if (finishedEnvironmentId == environmentId) {
+                    TerminalSessionManager.sessionExited(context, finishedEnvironmentId, session)
+                    sessions.remove(session)
+                    if (sessions.isEmpty()) {
+                        onBack()
+                    } else {
+                        selected = selected.coerceIn(0, sessions.lastIndex)
+                    }
+                }
+            }
+        }
+        onDispose {
+            TerminalSessionManager.onScreenUpdated = null
+            TerminalSessionManager.onSessionFinished = null
+        }
     }
 
-    LaunchedEffect(selected, palette, sessions.size) {
-        sessions.getOrNull(selected)?.let { session ->
-            applyPalette(session, palette)
-            terminalView?.onScreenUpdated()
-        }
+    LaunchedEffect(palette, sessions.size) {
+        sessions.forEach { applyPalette(it, palette) }
+        terminalView?.onScreenUpdated()
     }
 
     fun createSession() {
@@ -163,54 +213,113 @@ fun TerminalContent(
         selected = sessions.lastIndex
     }
 
-    fun closeSession(session: TerminalSession) {
-        TerminalSessionManager.close(context, environmentId, session)
-        sessions.remove(session)
-        selected = selected.coerceIn(0, sessions.lastIndex.coerceAtLeast(0))
+    fun switchSession(toNext: Boolean) {
+        if (sessions.size < 2) return
+        val step = if (toNext) 1 else -1
+        selected = (selected + step + sessions.size) % sessions.size
     }
 
-    Column(modifier = modifier.fillMaxSize().imePadding()) {
-        ClosableTabRow(
-            titles = sessions.mapIndexed { index, session -> session.mSessionName ?: "Terminal ${index + 1}" },
-            selected = selected,
-            onSelect = { selected = it },
-            onClose = { index -> sessions.getOrNull(index)?.let { closeSession(it) } },
-            onNew = { createSession() },
-        )
-        AndroidView(
-            factory = { ctx ->
-                TerminalView(ctx, null)
-                    .apply {
-                        isFocusable = true
-                        isFocusableInTouchMode = true
-                        val client = ProotViewClient { showKeyboard(ctx, this) }
-                        viewClient = client
-                        setTerminalViewClient(client)
-                        applyFont(this, fontFamily, fontSize)
-                        sessions.getOrNull(selected)?.let { session ->
-                            attachSession(session)
-                            applyPalette(session, palette)
-                        }
-                        requestFocus()
-                        post { showKeyboard(ctx, this) }
-                    }.also { terminalView = it }
-            },
-            update = { view ->
-                val session = sessions.getOrNull(selected)
-                if (session != null && view.mTermSession !== session) {
-                    view.attachSession(session)
-                    applyPalette(session, palette)
-                    view.requestFocus()
-                }
-                applyFont(view, fontFamily, fontSize)
-            },
-            modifier = Modifier.weight(1f).fillMaxWidth(),
-        )
+    fun closeSession(session: TerminalSession) {
+        val index = sessions.indexOf(session)
+        if (index < 0) return
+        TerminalSessionManager.close(context, environmentId, session)
+        sessions.removeAt(index)
+        selected =
+            when {
+                sessions.isEmpty() -> 0
+                index < selected -> selected - 1
+                index == selected -> index.coerceAtMost(sessions.lastIndex)
+                else -> selected.coerceAtMost(sessions.lastIndex)
+            }
+    }
+
+    Column(
+        modifier =
+            modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+                .padding(bottom = if (keyboardVisible) imeExtra else 0.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            IconButton(onClick = onBack, modifier = Modifier.padding(start = 8.dp).size(40.dp)) {
+                Icon(
+                    imageVector = Icons.Outlined.ArrowBack,
+                    contentDescription = stringResource(R.string.action_back),
+                )
+            }
+            VerticalDivider(
+                modifier = Modifier.padding(horizontal = 4.dp).height(24.dp),
+                color = MaterialTheme.colorScheme.outlineVariant,
+            )
+            ClosableTabRow(
+                titles = sessions.mapIndexed { index, session -> session.mSessionName ?: "Terminal ${index + 1}" },
+                selected = selected,
+                onSelect = { selected = it },
+                onClose = { index -> sessions.getOrNull(index)?.let { closeSession(it) } },
+                modifier = Modifier.weight(1f),
+            )
+        }
+        Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+            AndroidView(
+                factory = { ctx ->
+                    TerminalView(ctx, null)
+                        .apply {
+                            isFocusable = true
+                            isFocusableInTouchMode = true
+                            pointerIcon =
+                                android.view.PointerIcon.getSystemIcon(
+                                    ctx,
+                                    android.view.PointerIcon.TYPE_TEXT,
+                                )
+                            val client = ProotViewClient { if (!keyboardLocked) showKeyboard(ctx, this) }
+                            viewClient = client
+                            setTerminalViewClient(client)
+                            setSwipeListener { toNext -> switchSession(toNext) }
+                            applyFont(this, fontFamily, fontSize)
+                            sessions.getOrNull(selected)?.let { session ->
+                                attachSession(session)
+                                applyPalette(session, palette)
+                            }
+                            requestFocus()
+                            if (!keyboardLocked) post { showKeyboard(ctx, this) }
+                        }.also { terminalView = it }
+                },
+                update = { view ->
+                    val session = sessions.getOrNull(selected)
+                    if (session != null && view.mTermSession !== session) {
+                        view.attachSession(session)
+                        applyPalette(session, palette)
+                        view.requestFocus()
+                    }
+                    applyFont(view, fontFamily, fontSize)
+                },
+                modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp),
+            )
+            SmallFloatingActionButton(
+                onClick = { createSession() },
+                modifier = Modifier.align(Alignment.BottomEnd).padding(12.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Add,
+                    contentDescription = stringResource(R.string.terminal_new_session_desc),
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
         ExtraKeysRow(
             client = viewClient,
             session = sessions.getOrNull(selected),
             shortcuts = shortcuts,
+            keyboardLocked = keyboardLocked,
+            onToggleKeyboardLock = {
+                keyboardLocked = !keyboardLocked
+                if (keyboardLocked) hideKeyboard(context, terminalView)
+            },
             onCustomize = { showShortcutsEditor = true },
+            compact = keyboardVisible,
         )
     }
 
@@ -233,6 +342,7 @@ private fun applyPalette(
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_BACKGROUND] = palette.background.toArgb()
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_FOREGROUND] = palette.foreground.toArgb()
     emulator.mColors.mCurrentColors[TextStyle.COLOR_INDEX_CURSOR] = palette.prompt.toArgb()
+    emulator.mColors.mCurrentColors[PROMPT_COLOR_INDEX] = palette.prompt.toArgb()
 }
 
 private fun applyFont(
@@ -252,9 +362,29 @@ private fun applyFont(
 internal fun terminalPaletteFor(
     theme: TerminalColorTheme,
     hue: Int,
+    darkTheme: Boolean,
+    dynamicColor: Boolean = false,
+    colorScheme: ColorScheme? = null,
+): TerminalPalette =
+    if (dynamicColor && colorScheme != null) {
+        TerminalPalette(
+            background = colorScheme.surface,
+            foreground = colorScheme.onSurface,
+            prompt = colorScheme.primary,
+            inputBackground = colorScheme.surfaceContainer,
+        )
+    } else {
+        paletteForTheme(theme, hue, darkTheme)
+    }
+
+private fun paletteForTheme(
+    theme: TerminalColorTheme,
+    hue: Int,
+    darkTheme: Boolean,
 ): TerminalPalette =
     when (theme) {
-        TerminalColorTheme.SYSTEM, TerminalColorTheme.DARK -> terminalPalette(hue)
+        TerminalColorTheme.SYSTEM -> terminalPalette(hue, lightMode = !darkTheme)
+        TerminalColorTheme.DARK -> terminalPalette(hue)
         TerminalColorTheme.LIGHT ->
             TerminalPalette(
                 background = Color.hsl(hue.toFloat(), 0.20f, 0.98f),
@@ -278,4 +408,13 @@ private fun showKeyboard(
     view.requestFocus()
     val imm = context.getSystemService(InputMethodManager::class.java)
     imm?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+}
+
+private fun hideKeyboard(
+    context: Context,
+    view: TerminalView?,
+) {
+    if (view == null) return
+    val imm = context.getSystemService(InputMethodManager::class.java)
+    imm?.hideSoftInputFromWindow(view.windowToken, 0)
 }
