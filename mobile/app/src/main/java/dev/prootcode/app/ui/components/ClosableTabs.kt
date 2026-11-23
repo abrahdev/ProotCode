@@ -60,7 +60,7 @@ fun ClosableTabRow(
                                 modifier =
                                     Modifier
                                         .padding(horizontal = 4.dp, vertical = 4.dp)
-                                        .clip(RoundedCornerShape(8.dp))
+                                        .clip(RoundedCornerShape(percent = 50))
                                         .background(
                                             if (active) {
                                                 MaterialTheme.colorScheme.secondaryContainer
