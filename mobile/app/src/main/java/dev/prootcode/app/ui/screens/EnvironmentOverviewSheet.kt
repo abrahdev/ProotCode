@@ -32,7 +32,9 @@ fun EnvironmentOverviewSheet(
     ram: String,
     storage: String,
     sessions: List<SessionRow>,
+    codeServer: SessionRow?,
     onCloseSession: (Int) -> Unit,
+    onStopCodeServer: () -> Unit,
     onStopAll: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -59,17 +61,25 @@ fun EnvironmentOverviewSheet(
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary,
         )
-        if (sessions.isEmpty()) {
+        if (sessions.isEmpty() && codeServer == null) {
             Text(
                 text = stringResource(R.string.overview_no_sessions),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         } else {
-            SessionList(
-                sessions = sessions,
-                onCloseSession = onCloseSession,
-            )
+            if (sessions.isNotEmpty()) {
+                SessionList(
+                    sessions = sessions,
+                    onCloseSession = onCloseSession,
+                )
+            }
+            if (codeServer != null) {
+                SessionList(
+                    sessions = listOf(codeServer),
+                    onCloseSession = { onStopCodeServer() },
+                )
+            }
         }
         if (confirmStop) {
             Text(

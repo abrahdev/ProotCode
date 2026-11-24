@@ -290,6 +290,10 @@
     <string name="overview_storage">Storage</string>
     <string name="overview_sessions">Sessions</string>
     <string name="overview_no_sessions">No active sessions.</string>
+    <string name="overview_code_server">code-server</string>
+    <string name="overview_code_server_running">Running · port %1$d</string>
+    <string name="overview_code_server_starting">Starting…</string>
+    <string name="overview_code_server_failed">Failed</string>
     <string name="overview_foreground">Foreground</string>
     <string name="overview_background">Background</string>
     <string name="overview_stopped">All processes stopped</string>

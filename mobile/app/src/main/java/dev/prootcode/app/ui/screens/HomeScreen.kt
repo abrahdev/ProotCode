@@ -48,6 +48,8 @@ import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.ThemeMode
+import dev.prootcode.app.runtime.codeserver.CodeServerManager
+import dev.prootcode.app.runtime.codeserver.CodeServerStatus
 import dev.prootcode.app.ui.components.BatteryPowerBadge
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
@@ -433,6 +435,33 @@ fun HomeScreen(
                                 ResourceMonitor.cpuPercent(environment.id)
                             }
                     }
+                val codeServerStatus by CodeServerManager.status(environment.id).collectAsState()
+                val codeServerRow =
+                    when (val status = codeServerStatus) {
+                        CodeServerStatus.Stopped -> null
+                        CodeServerStatus.Starting ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status = stringResource(R.string.overview_code_server_starting),
+                                level = SessionLevel.WORKING,
+                            )
+                        is CodeServerStatus.Running ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status =
+                                    stringResource(
+                                        R.string.overview_code_server_running,
+                                        status.port,
+                                    ),
+                                level = SessionLevel.IDLE,
+                            )
+                        is CodeServerStatus.Failed ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status = stringResource(R.string.overview_code_server_failed),
+                                level = SessionLevel.ERROR,
+                            )
+                    }
                 EnvironmentOverviewSheet(
                     name = environment.name,
                     cpu = "$cpuPercent%",
@@ -452,11 +481,15 @@ fun HomeScreen(
                                 level = SessionLevel.IDLE,
                             )
                         },
+                    codeServer = codeServerRow,
                     onCloseSession = { index ->
                         sessions.getOrNull(index)?.let { session ->
                             TerminalSessionManager.close(context, environment.id, session)
                             previewTick += 1
                         }
+                    },
+                    onStopCodeServer = {
+                        CodeServerManager.stop(environment.id)
                     },
                     onStopAll = {
                         TerminalSessionManager.closeAll(context, environment.id)
