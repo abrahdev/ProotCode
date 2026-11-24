@@ -95,6 +95,22 @@ object CodeServerManager {
 
     fun isRunning(environmentId: String): Boolean = statusFlow(environmentId).value is CodeServerStatus.Running
 
+    fun processId(environmentId: String): Int? {
+        val marker = "environments/$environmentId/rootfs"
+        return runCatching {
+            File("/proc")
+                .listFiles()
+                ?.asSequence()
+                ?.mapNotNull { directory -> directory.name.toIntOrNull() }
+                ?.firstOrNull { pid ->
+                    val cmdline =
+                        runCatching { File("/proc/$pid/cmdline").readText() }.getOrNull()
+                            ?: return@firstOrNull false
+                    cmdline.contains(marker) && cmdline.contains("code-server")
+                }
+        }.getOrNull()
+    }
+
     fun start(
         context: Context,
         environment: Environment,

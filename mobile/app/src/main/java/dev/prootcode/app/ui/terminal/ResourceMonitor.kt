@@ -1,5 +1,6 @@
 package dev.prootcode.app.ui.terminal
 
+import dev.prootcode.app.runtime.codeserver.CodeServerManager
 import java.io.File
 import kotlin.math.roundToInt
 
@@ -24,14 +25,19 @@ object ResourceMonitor {
         return metrics.cpuPercent
     }
 
+    fun ramBytes(environmentId: String): Long =
+        rootPids(environmentId)
+            .flatMap { processTree(it) }
+            .distinct()
+            .sumOf { rssBytes(it) }
+
     fun sample(
         environmentId: String,
         previous: CpuSample?,
     ): Pair<EnvironmentMetrics, CpuSample> {
         val pids =
-            TerminalSessionManager
-                .sessions(environmentId)
-                .flatMap { processTree(it.pid) }
+            rootPids(environmentId)
+                .flatMap { processTree(it) }
                 .distinct()
         val ticks = pids.sumOf { cpuTicks(it) }
         val ram = pids.sumOf { rssBytes(it) }
@@ -49,6 +55,15 @@ object ResourceMonitor {
             ramBytes = ram,
         ) to CpuSample(ticks = ticks, atMillis = now)
     }
+
+    private fun rootPids(environmentId: String): List<Int> =
+        buildList {
+            TerminalSessionManager
+                .sessions(environmentId)
+                .mapNotNull { session -> session.pid.takeIf { it > 0 } }
+                .forEach(::add)
+            CodeServerManager.processId(environmentId)?.let(::add)
+        }
 
     internal fun processTree(pid: Int): List<Int> {
         if (pid <= 0) return emptyList()

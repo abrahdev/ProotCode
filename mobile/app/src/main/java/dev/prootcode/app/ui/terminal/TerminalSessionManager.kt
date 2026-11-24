@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.termux.terminal.TerminalSession
 import dev.prootcode.app.data.environment.Environment
-import java.io.File
 
 object TerminalSessionManager {
     const val NATIVE_ENVIRONMENT_ID = "native"
@@ -23,7 +22,7 @@ object TerminalSessionManager {
             ?.let { System.currentTimeMillis() - it }
             ?.coerceAtLeast(0L) ?: 0L
 
-    fun ramBytes(environmentId: String): Long = sessions(environmentId).sumOf { session -> rssBytes(session.pid) }
+    fun ramBytes(environmentId: String): Long = ResourceMonitor.ramBytes(environmentId)
 
     fun create(
         context: Context,
@@ -121,21 +120,6 @@ object TerminalSessionManager {
         firstOpenedAt.putIfAbsent(environmentId, System.currentTimeMillis())
         sessionsByEnvironment.getOrPut(environmentId) { mutableListOf() }.add(session)
         ensureService(context)
-    }
-
-    private fun rssBytes(pid: Int): Long {
-        if (pid <= 0) return 0L
-        return runCatching {
-            File("/proc/$pid/status").useLines { lines ->
-                lines
-                    .firstOrNull { it.startsWith("VmRSS:") }
-                    ?.substringAfter(':')
-                    ?.trim()
-                    ?.substringBefore(' ')
-                    ?.toLongOrNull()
-                    ?.times(1024L) ?: 0L
-            }
-        }.getOrDefault(0L)
     }
 
     private fun ensureService(context: Context) {
