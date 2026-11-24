@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.ContentPaste
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Keyboard
 import androidx.compose.material.icons.outlined.KeyboardHide
@@ -51,6 +53,8 @@ fun ExtraKeysRow(
     keyboardLocked: Boolean,
     onToggleKeyboardLock: () -> Unit,
     onCustomize: () -> Unit,
+    onCopy: () -> Unit,
+    onPaste: () -> Unit,
     compact: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
@@ -110,6 +114,16 @@ fun ExtraKeysRow(
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            KeyIconButton(
+                imageVector = Icons.Outlined.ContentCopy,
+                contentDescription = stringResource(R.string.terminal_copy),
+                onClick = onCopy,
+            )
+            KeyIconButton(
+                imageVector = Icons.Outlined.ContentPaste,
+                contentDescription = stringResource(R.string.terminal_paste),
+                onClick = onPaste,
+            )
             KeyIconButton(
                 imageVector = if (keyboardLocked) Icons.Outlined.KeyboardHide else Icons.Outlined.Keyboard,
                 contentDescription =

@@ -1,11 +1,16 @@
 package dev.prootcode.app.ui.screens
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Message
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -16,8 +21,11 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -27,20 +35,24 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
+import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.ContentPaste
 import androidx.compose.material.icons.outlined.DragIndicator
+import androidx.compose.material.icons.outlined.Keyboard
+import androidx.compose.material.icons.outlined.KeyboardHide
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Stop
 import androidx.compose.material.icons.outlined.ZoomIn
-import androidx.compose.material.icons.outlined.ZoomOut
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -81,6 +93,7 @@ import dev.prootcode.app.ui.components.WebViewContainer
 import dev.prootcode.app.ui.util.LinkOpener
 import dev.prootcode.app.ui.util.QuestWindow
 import dev.prootcode.app.ui.viewmodels.CodeServerViewModel
+import org.json.JSONObject
 import kotlin.math.roundToInt
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -105,11 +118,13 @@ fun CodeServerScreen(
     val savedDockSide =
         runCatching {
             DockSide.valueOf(
-                layoutPreferences.getString("dock_side_$environmentId", DockSide.BOTTOM.name)
-                    ?: DockSide.BOTTOM.name,
+                layoutPreferences.getString("dock_side_$environmentId", DockSide.RIGHT.name)
+                    ?: DockSide.RIGHT.name,
             )
-        }.getOrDefault(DockSide.BOTTOM)
+        }.getOrDefault(DockSide.RIGHT)
     val dockSideState = remember { mutableStateOf(savedDockSide) }
+    val hasSavedPosition = remember { layoutPreferences.contains("bar_x_$environmentId") }
+    var defaultPositionApplied by remember { mutableStateOf(hasSavedPosition) }
     var dragOffset by remember {
         mutableStateOf(
             Offset(
@@ -137,7 +152,58 @@ fun CodeServerScreen(
     }
 
     fun changeZoom(step: Int) {
-        textZoomPercent = nextZoomLevel(textZoomPercent, step)
+        textZoomPercent = nextZoomCycle(textZoomPercent, step)
+    }
+
+    fun copyFromWebView() {
+        webView?.evaluateJavascript(
+            "(function(){ try { document.execCommand('copy'); } catch (e) {} })();",
+            null,
+        )
+    }
+
+    fun pasteIntoWebView() {
+        val view = webView ?: return
+        val clipboard = context.getSystemService(ClipboardManager::class.java)
+        val text = clipboard
+            ?.primaryClip
+            ?.getItemAt(0)
+            ?.coerceToText(context)
+            ?.toString()
+        if (text.isNullOrEmpty()) return
+        val escaped = JSONObject.quote(text)
+        view.evaluateJavascript(
+            "(function(){ try { var dt = new DataTransfer(); dt.setData('text/plain', $escaped);" +
+                " var ev = new ClipboardEvent('paste', { clipboardData: dt, bubbles: true, cancelable: true });" +
+                " (document.activeElement || document.body).dispatchEvent(ev); } catch (e) {} })();",
+            null,
+        )
+    }
+
+    var keyboardLocked by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        context.findActivity()?.window?.setSoftInputMode(
+            WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING,
+        )
+    }
+
+    fun toggleKeyboardLock() {
+        keyboardLocked = !keyboardLocked
+        val window = context.findActivity()?.window
+        val imm = context.getSystemService(InputMethodManager::class.java)
+        if (keyboardLocked) {
+            window?.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+            window?.setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN or
+                    WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING,
+            )
+            webView?.let { imm?.hideSoftInputFromWindow(it.windowToken, 0) }
+        } else {
+            window?.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM)
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+            webView?.let { imm?.restartInput(it) }
+        }
     }
 
     fun openLink(uri: Uri): Boolean {
@@ -235,9 +301,15 @@ fun CodeServerScreen(
         val dragBounds = DragBounds(maxDragX, maxDragY)
         LaunchedEffect(dragBounds) {
             if (!isDragging) {
-                val snapped = dockOffset(dragOffset, dragBounds)
-                if (snapped != dragOffset) dragOffset = snapped
-                dockSideState.value = resolveDockSide(snapped, dragBounds)
+                if (!defaultPositionApplied) {
+                    dragOffset = Offset(dragBounds.maxX, -dragBounds.maxY / 2f)
+                    dockSideState.value = DockSide.RIGHT
+                    defaultPositionApplied = true
+                } else {
+                    val snapped = dockOffset(dragOffset, dragBounds)
+                    if (snapped != dragOffset) dragOffset = snapped
+                    dockSideState.value = resolveDockSide(snapped, dragBounds)
+                }
             }
         }
         when {
@@ -286,7 +358,7 @@ fun CodeServerScreen(
             }
             status is CodeServerStatus.Running -> {
                 val port = (status as CodeServerStatus.Running).port
-                Column(modifier = Modifier.fillMaxSize()) {
+                Column(modifier = Modifier.fillMaxSize().imePadding()) {
                     if (progress in 1..99) {
                         ExpressiveLinearProgressIndicator(
                             progress = progress / 100f,
@@ -345,6 +417,7 @@ fun CodeServerScreen(
                             onWebViewCreated = { created ->
                                 webView = created
                             },
+                            imeEnabled = { !keyboardLocked },
                         )
                     }
                 }
@@ -375,6 +448,19 @@ fun CodeServerScreen(
                     animationSpec = offsetSpec,
                     label = "codeServerActionsOffset",
                 )
+
+                if (actionsExpanded && !isDragging) {
+                    Box(
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .clickable(
+                                    indication = null,
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    onClick = { actionsExpanded = false },
+                                ),
+                    )
+                }
 
                 Surface(
                     shape = RoundedCornerShape(18.dp),
@@ -437,13 +523,6 @@ fun CodeServerScreen(
                             DragHandle()
                         }
                         if (actionsExpanded) {
-                            IconButton(onClick = onBack) {
-                                Icon(
-                                    imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
-                                    contentDescription = stringResource(R.string.action_back),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
                             IconButton(onClick = { webView?.reload() }) {
                                 Icon(
                                     imageVector = Icons.Outlined.Refresh,
@@ -451,17 +530,40 @@ fun CodeServerScreen(
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
-                            IconButton(onClick = { changeZoom(ZOOM_STEP_PERCENT) }) {
+                            ZoomButton(
+                                percent = textZoomPercent,
+                                onStep = { changeZoom(it) },
+                            )
+                            IconButton(onClick = { copyFromWebView() }) {
                                 Icon(
-                                    imageVector = Icons.Outlined.ZoomIn,
-                                    contentDescription = stringResource(R.string.code_server_zoom_in),
+                                    imageVector = Icons.Outlined.ContentCopy,
+                                    contentDescription = stringResource(R.string.code_server_copy),
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
-                            IconButton(onClick = { changeZoom(-ZOOM_STEP_PERCENT) }) {
+                            IconButton(onClick = { pasteIntoWebView() }) {
                                 Icon(
-                                    imageVector = Icons.Outlined.ZoomOut,
-                                    contentDescription = stringResource(R.string.code_server_zoom_out),
+                                    imageVector = Icons.Outlined.ContentPaste,
+                                    contentDescription = stringResource(R.string.code_server_paste),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(onClick = { toggleKeyboardLock() }) {
+                                Icon(
+                                    imageVector =
+                                        if (keyboardLocked) {
+                                            Icons.Outlined.KeyboardHide
+                                        } else {
+                                            Icons.Outlined.Keyboard
+                                        },
+                                    contentDescription =
+                                        stringResource(
+                                            if (keyboardLocked) {
+                                                R.string.code_server_keyboard_unlock
+                                            } else {
+                                                R.string.code_server_keyboard_lock
+                                            },
+                                        ),
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
@@ -567,6 +669,40 @@ private fun DragHandle() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun ZoomButton(
+    percent: Int,
+    onStep: (Int) -> Unit,
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier =
+                Modifier
+                    .size(width = 48.dp, height = 40.dp)
+                    .combinedClickable(
+                        interactionSource = interactionSource,
+                        indication = LocalIndication.current,
+                        onClick = { onStep(ZOOM_STEP_PERCENT) },
+                        onLongClick = { onStep(-ZOOM_STEP_PERCENT) },
+                    ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.ZoomIn,
+                contentDescription = stringResource(R.string.code_server_zoom),
+                tint = MaterialTheme.colorScheme.onSurface,
+            )
+        }
+        Text(
+            text = "$percent%",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurface,
+        )
+    }
+}
+
 private const val CODE_SERVER_HOST = "127.0.0.1"
 private const val AUTO_HIDE_DELAY_MS = 3000L
 private const val DEFAULT_ZOOM_PERCENT = 100
@@ -648,3 +784,24 @@ internal fun nextZoomLevel(
     current: Int,
     step: Int,
 ): Int = (current + step).coerceIn(MIN_ZOOM_PERCENT, MAX_ZOOM_PERCENT)
+
+internal fun nextZoomCycle(
+    current: Int,
+    step: Int,
+): Int {
+    val next = current + step
+    return when {
+        next > MAX_ZOOM_PERCENT -> MIN_ZOOM_PERCENT
+        next < MIN_ZOOM_PERCENT -> MAX_ZOOM_PERCENT
+        else -> next
+    }
+}
+
+private fun Context.findActivity(): Activity? {
+    var current: Context = this
+    while (current is ContextWrapper) {
+        if (current is Activity) return current
+        current = current.baseContext
+    }
+    return null
+}

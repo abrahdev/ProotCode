@@ -87,6 +87,11 @@
     <string name="terminal_keyboard_lock">Lock keyboard</string>
     <string name="terminal_keyboard_unlock">Unlock keyboard</string>
     <string name="terminal_new_session_desc">New session</string>
+    <string name="terminal_copy">Copy</string>
+    <string name="terminal_paste">Paste</string>
+    <string name="terminal_copy_empty">Select text to copy</string>
+    <string name="terminal_external_keyboard_notice">External keyboard detected. Enable direct input so keystrokes reach the terminal.</string>
+    <string name="terminal_external_keyboard_never">Don\'t show again</string>
 
     <string name="access_show_labels">Show text on terminal buttons</string>
     <string name="access_show_labels_sub">Terminal and Terminal in new window show only icons by default.</string>
@@ -314,8 +319,11 @@
     <string name="icons_search">Search</string>
 
     <string name="code_server_reload">Reload</string>
-    <string name="code_server_zoom_in">Zoom in</string>
-    <string name="code_server_zoom_out">Zoom out</string>
+    <string name="code_server_zoom">Zoom</string>
+    <string name="code_server_copy">Copy</string>
+    <string name="code_server_paste">Paste</string>
+    <string name="code_server_keyboard_lock">Lock keyboard</string>
+    <string name="code_server_keyboard_unlock">Unlock keyboard</string>
     <string name="code_server_open_browser">Open in browser</string>
     <string name="code_server_stop">Stop</string>
     <string name="code_server_start">Start</string>
