@@ -38,6 +38,7 @@ object TerminalSessionManager {
                 },
             )
         register(context, environment.id, session, "Terminal")
+        TerminalProcessPriority.apply(environment.id, environment.settings.priority)
         return session
     }
 

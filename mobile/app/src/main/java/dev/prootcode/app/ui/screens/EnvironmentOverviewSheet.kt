@@ -27,7 +27,7 @@ import dev.prootcode.app.ui.components.StatusCardGrid
 @Composable
 fun EnvironmentOverviewSheet(
     name: String,
-    status: String,
+    cpu: String,
     uptime: String,
     ram: String,
     storage: String,
@@ -48,7 +48,7 @@ fun EnvironmentOverviewSheet(
         StatusCardGrid(
             cards =
                 listOf(
-                    stringResource(R.string.overview_status) to status,
+                    stringResource(R.string.overview_cpu) to cpu,
                     stringResource(R.string.overview_uptime) to uptime,
                     stringResource(R.string.overview_ram_total) to ram,
                     stringResource(R.string.overview_storage) to storage,

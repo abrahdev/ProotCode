@@ -128,7 +128,10 @@ class EnvironmentRegistry(
             ssh = optBoolean("ssh", defaults.ssh),
             sshPort = optInt("sshPort", defaults.sshPort),
             backgroundExecution = optBoolean("backgroundExecution", defaults.backgroundExecution),
-            priority = optString("priority", defaults.priority),
+            priority =
+                optString("priority", defaults.priority)
+                    .takeIf { it in EnvironmentSettings.PRIORITIES }
+                    ?: defaults.priority,
             debugMode = optBoolean("debugMode", defaults.debugMode),
         )
     }

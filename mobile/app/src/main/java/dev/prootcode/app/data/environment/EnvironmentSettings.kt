@@ -25,9 +25,8 @@ data class EnvironmentSettings(
         const val DEFAULT_ICON = "default"
         const val PRIORITY_LOW = "low"
         const val PRIORITY_NORMAL = "normal"
-        const val PRIORITY_HIGH = "high"
 
-        val PRIORITIES = listOf(PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_HIGH)
+        val PRIORITIES = listOf(PRIORITY_LOW, PRIORITY_NORMAL)
         val LANGUAGES = listOf("English", "Español", "Deutsch", "Français")
     }
 }

@@ -283,7 +283,6 @@
     <string name="config_import_backup">Import backup</string>
     <string name="priority_low">Low</string>
     <string name="priority_normal">Normal</string>
-    <string name="priority_high">High</string>
 
     <string name="overview_status">Status</string>
     <string name="overview_uptime">Session uptime</string>
@@ -343,6 +342,8 @@
     <string name="overview_uptime_ms">%1$dm %2$ds</string>
     <string name="overview_uptime_s">%1$ds</string>
     <string name="overview_ram_total">RAM (all sessions)</string>
+    <string name="overview_cpu">CPU</string>
+    <string name="battery_power_watts">%1$.1f W</string>
     <string name="files_actions">Actions for %1$s</string>
     <string name="files_share">Share</string>
     <string name="files_delete">Delete</string>
