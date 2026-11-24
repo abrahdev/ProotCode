@@ -3,12 +3,15 @@ package dev.prootcode.app.ui.terminal
 import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,8 +38,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -70,6 +75,7 @@ import dev.prootcode.app.ui.components.ClosableTabRow
 import dev.prootcode.app.ui.settings.ShortcutsEditorSheet
 import dev.prootcode.app.ui.theme.TerminalPalette
 import dev.prootcode.app.ui.theme.terminalPalette
+import dev.prootcode.app.ui.util.KeyboardUtils
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -130,6 +136,7 @@ fun TerminalScreen(
             fontSize = themeSettings.terminalFontSize,
             onBack = onBack,
             contentPadding = padding,
+            snackbarHostState = snackbarHostState,
             modifier = Modifier.fillMaxSize(),
         )
     }
@@ -145,6 +152,7 @@ fun TerminalContent(
     fontSize: Int,
     onBack: () -> Unit,
     contentPadding: PaddingValues,
+    snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -233,6 +241,49 @@ fun TerminalContent(
             }
     }
 
+    fun copySelection() {
+        val view = terminalView ?: return
+        val text = view.selectedText ?: view.storedSelectedText
+        if (text.isNullOrBlank()) {
+            Toast.makeText(context, R.string.terminal_copy_empty, Toast.LENGTH_SHORT).show()
+        } else {
+            val clipboard = context.getSystemService(ClipboardManager::class.java)
+            clipboard?.setPrimaryClip(ClipData.newPlainText("terminal", text))
+        }
+    }
+
+    fun pasteFromClipboard() {
+        val session = sessions.getOrNull(selected) ?: return
+        val clipboard = context.getSystemService(ClipboardManager::class.java)
+        val text = clipboard
+            ?.primaryClip
+            ?.getItemAt(0)
+            ?.coerceToText(context)
+            ?.toString()
+        if (text.isNullOrEmpty()) return
+        session.emulator?.paste(text)
+    }
+
+    val preferences = remember { AppPreferences.create(context) }
+    val externalKeyboardNoticeDismissed by preferences.externalKeyboardNoticeDismissed.collectAsState()
+    val externalKeyboardConnected = remember { KeyboardUtils.isExternalKeyboardConnected(context) }
+    val keyboardNoticeMessage = stringResource(R.string.terminal_external_keyboard_notice)
+    val keyboardNoticeNever = stringResource(R.string.terminal_external_keyboard_never)
+
+    LaunchedEffect(Unit) {
+        if (externalKeyboardConnected && !externalKeyboardNoticeDismissed) {
+            val result =
+                snackbarHostState.showSnackbar(
+                    message = keyboardNoticeMessage,
+                    actionLabel = keyboardNoticeNever,
+                    duration = SnackbarDuration.Long,
+                )
+            if (result == SnackbarResult.ActionPerformed) {
+                preferences.setExternalKeyboardNoticeDismissed()
+            }
+        }
+    }
+
     Column(
         modifier =
             modifier
@@ -319,6 +370,8 @@ fun TerminalContent(
                 if (keyboardLocked) hideKeyboard(context, terminalView)
             },
             onCustomize = { showShortcutsEditor = true },
+            onCopy = { copySelection() },
+            onPaste = { pasteFromClipboard() },
             compact = keyboardVisible,
         )
     }

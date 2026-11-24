@@ -1,6 +1,8 @@
 package dev.prootcode.app.ui.components
 
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -21,6 +23,7 @@ fun WebViewContainer(
     webChromeClient: WebChromeClient? = null,
     onWebViewCreated: (WebView) -> Unit = {},
     settings: (android.webkit.WebSettings) -> Unit = {},
+    imeEnabled: () -> Boolean = { true },
 ) {
     var webView by remember { mutableStateOf<WebView?>(null) }
     DisposableEffect(Unit) {
@@ -32,23 +35,31 @@ fun WebViewContainer(
     }
     AndroidView(
         factory = { ctx ->
-            WebView(ctx)
-                .apply {
-                    isClickable = true
-                    isFocusable = true
-                    isFocusableInTouchMode = true
-                    this.settings.javaScriptCanOpenWindowsAutomatically = true
-                    layoutParams =
-                        ViewGroup.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                        )
-                    settings(this.settings)
-                    this.webViewClient = webViewClient
-                    if (webChromeClient != null) this.webChromeClient = webChromeClient
-                    onWebViewCreated(this)
-                    loadUrl(url)
-                }.also { webView = it }
+            object : WebView(ctx) {
+                override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection? =
+                    if (imeEnabled()) {
+                        super.onCreateInputConnection(outAttrs)
+                    } else {
+                        null
+                    }
+
+                override fun onCheckIsTextEditor(): Boolean = imeEnabled()
+            }.apply {
+                isClickable = true
+                isFocusable = true
+                isFocusableInTouchMode = true
+                this.settings.javaScriptCanOpenWindowsAutomatically = true
+                layoutParams =
+                    ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                    )
+                settings(this.settings)
+                this.webViewClient = webViewClient
+                if (webChromeClient != null) this.webChromeClient = webChromeClient
+                onWebViewCreated(this)
+                loadUrl(url)
+            }.also { webView = it }
         },
         modifier = modifier,
     )

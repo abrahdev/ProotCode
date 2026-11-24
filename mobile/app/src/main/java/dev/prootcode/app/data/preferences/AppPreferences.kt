@@ -41,13 +41,21 @@ class AppPreferences(
 ) {
     private val state = MutableStateFlow(read())
     private val linkBehaviorState = MutableStateFlow(readLinkBehavior())
+    private val externalKeyboardNoticeState = MutableStateFlow(readExternalKeyboardNoticeDismissed())
 
     val theme: StateFlow<AppThemeSettings> = state.asStateFlow()
     val linkBehavior: StateFlow<LinkOpenBehavior> = linkBehaviorState.asStateFlow()
+    val externalKeyboardNoticeDismissed: StateFlow<Boolean> = externalKeyboardNoticeState.asStateFlow()
 
     fun refresh() {
         state.value = read()
         linkBehaviorState.value = readLinkBehavior()
+        externalKeyboardNoticeState.value = readExternalKeyboardNoticeDismissed()
+    }
+
+    fun setExternalKeyboardNoticeDismissed() {
+        preferences.edit().putBoolean(KEY_EXTERNAL_KEYBOARD_NOTICE_DISMISSED, true).apply()
+        externalKeyboardNoticeState.value = true
     }
 
     fun setLinkBehavior(behavior: LinkOpenBehavior) {
@@ -121,6 +129,9 @@ class AppPreferences(
             ?.let { runCatching { LinkOpenBehavior.valueOf(it) }.getOrNull() }
             ?: LinkOpenBehavior.IN_APP
 
+    private fun readExternalKeyboardNoticeDismissed(): Boolean =
+        preferences.getBoolean(KEY_EXTERNAL_KEYBOARD_NOTICE_DISMISSED, false)
+
     companion object {
         private const val FILE = "app_preferences"
         private const val KEY_THEME_MODE = "theme_mode"
@@ -132,6 +143,7 @@ class AppPreferences(
         private const val KEY_TERMINAL_FONT_SIZE = "terminal_font_size"
         private const val KEY_TERMINAL_FONT_FAMILY = "terminal_font_family"
         private const val KEY_LINK_BEHAVIOR = "link_behavior"
+        private const val KEY_EXTERNAL_KEYBOARD_NOTICE_DISMISSED = "external_keyboard_notice_dismissed"
 
         fun create(context: Context): AppPreferences =
             AppPreferences(context.getSharedPreferences(FILE, Context.MODE_PRIVATE))
