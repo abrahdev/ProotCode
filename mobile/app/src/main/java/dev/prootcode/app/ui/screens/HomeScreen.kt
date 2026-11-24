@@ -35,6 +35,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -47,6 +48,9 @@ import dev.prootcode.app.R
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.preferences.AppPreferences
 import dev.prootcode.app.data.preferences.ThemeMode
+import dev.prootcode.app.runtime.codeserver.CodeServerManager
+import dev.prootcode.app.runtime.codeserver.CodeServerStatus
+import dev.prootcode.app.ui.components.BatteryPowerBadge
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
 import dev.prootcode.app.ui.components.InstallingSkeleton
@@ -58,6 +62,7 @@ import dev.prootcode.app.ui.settings.AccessibilitySheet
 import dev.prootcode.app.ui.settings.AdbSetupSheet
 import dev.prootcode.app.ui.settings.PreferencesSheet
 import dev.prootcode.app.ui.settings.ThemeSheet
+import dev.prootcode.app.ui.terminal.ResourceMonitor
 import dev.prootcode.app.ui.terminal.TerminalActivity
 import dev.prootcode.app.ui.terminal.TerminalSessionManager
 import dev.prootcode.app.ui.terminal.terminalPaletteFor
@@ -65,7 +70,9 @@ import dev.prootcode.app.ui.util.QuestWindow
 import dev.prootcode.app.ui.viewmodels.HomeViewModel
 import dev.prootcode.app.ui.viewmodels.WizardViewModel
 import dev.prootcode.app.ui.wizard.NewEnvironmentSheet
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 private sealed interface HomeSheet {
     data object Preferences : HomeSheet
@@ -190,6 +197,8 @@ fun HomeScreen(
                         TextButton(onClick = { homeViewModel.setReorderMode(false) }) {
                             Text(stringResource(R.string.action_done))
                         }
+                    } else {
+                        BatteryPowerBadge()
                     }
                     Spacer(modifier = Modifier.weight(1f))
                     IconButton(onClick = onOpenNativeTerminal) {
@@ -419,9 +428,43 @@ fun HomeScreen(
                     remember(environment.id, overviewTick) {
                         TerminalSessionManager.ramBytes(environment.id)
                     }
+                val cpuPercent by
+                    produceState(initialValue = 0, environment.id, overviewTick) {
+                        value =
+                            withContext(Dispatchers.IO) {
+                                ResourceMonitor.cpuPercent(environment.id)
+                            }
+                    }
+                val codeServerStatus by CodeServerManager.status(environment.id).collectAsState()
+                val codeServerRow =
+                    when (val status = codeServerStatus) {
+                        CodeServerStatus.Stopped -> null
+                        CodeServerStatus.Starting ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status = stringResource(R.string.overview_code_server_starting),
+                                level = SessionLevel.WORKING,
+                            )
+                        is CodeServerStatus.Running ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status =
+                                    stringResource(
+                                        R.string.overview_code_server_running,
+                                        status.port,
+                                    ),
+                                level = SessionLevel.IDLE,
+                            )
+                        is CodeServerStatus.Failed ->
+                            SessionRow(
+                                name = stringResource(R.string.overview_code_server),
+                                status = stringResource(R.string.overview_code_server_failed),
+                                level = SessionLevel.ERROR,
+                            )
+                    }
                 EnvironmentOverviewSheet(
                     name = environment.name,
-                    status = stringResource(R.string.status_ready),
+                    cpu = "$cpuPercent%",
                     uptime = formatUptime(uptimeMillis),
                     ram = formatFileSize(ramBytes),
                     storage = formatFileSize(environment.sizeBytes),
@@ -438,11 +481,15 @@ fun HomeScreen(
                                 level = SessionLevel.IDLE,
                             )
                         },
+                    codeServer = codeServerRow,
                     onCloseSession = { index ->
                         sessions.getOrNull(index)?.let { session ->
                             TerminalSessionManager.close(context, environment.id, session)
                             previewTick += 1
                         }
+                    },
+                    onStopCodeServer = {
+                        CodeServerManager.stop(environment.id)
                     },
                     onStopAll = {
                         TerminalSessionManager.closeAll(context, environment.id)

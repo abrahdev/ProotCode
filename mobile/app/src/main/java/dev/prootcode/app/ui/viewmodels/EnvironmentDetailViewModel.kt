@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import dev.prootcode.app.data.environment.Environment
 import dev.prootcode.app.data.environment.EnvironmentRegistry
+import dev.prootcode.app.ui.terminal.TerminalProcessPriority
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -40,7 +41,10 @@ class EnvironmentDetailViewModel(
 
     fun update(environment: Environment) {
         state.value = environment
-        scope.launch { withContext(Dispatchers.IO) { registry.update(environment) } }
+        scope.launch {
+            withContext(Dispatchers.IO) { registry.update(environment) }
+            TerminalProcessPriority.apply(environmentId, environment.settings.priority)
+        }
     }
 
     fun rename(name: String) {

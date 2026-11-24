@@ -32,7 +32,7 @@ class EnvironmentSettingsPersistenceTest {
                 ssh = true,
                 sshPort = 2200,
                 backgroundExecution = false,
-                priority = EnvironmentSettings.PRIORITY_HIGH,
+                priority = EnvironmentSettings.PRIORITY_LOW,
                 debugMode = true,
             )
         registry.add(environment(settings = settings))

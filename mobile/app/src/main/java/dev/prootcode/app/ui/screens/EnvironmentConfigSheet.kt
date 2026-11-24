@@ -379,9 +379,11 @@ fun EnvironmentConfigSheet(
                         listOf(
                             stringResource(R.string.priority_low),
                             stringResource(R.string.priority_normal),
-                            stringResource(R.string.priority_high),
                         ),
-                    selected = EnvironmentSettings.PRIORITIES.indexOf(local.settings.priority),
+                    selected =
+                        EnvironmentSettings.PRIORITIES
+                            .indexOf(local.settings.priority)
+                            .coerceAtLeast(0),
                     onSelected = { index ->
                         settings { it.copy(priority = EnvironmentSettings.PRIORITIES[index]) }
                     },

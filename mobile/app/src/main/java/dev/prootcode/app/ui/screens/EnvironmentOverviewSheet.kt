@@ -27,12 +27,14 @@ import dev.prootcode.app.ui.components.StatusCardGrid
 @Composable
 fun EnvironmentOverviewSheet(
     name: String,
-    status: String,
+    cpu: String,
     uptime: String,
     ram: String,
     storage: String,
     sessions: List<SessionRow>,
+    codeServer: SessionRow?,
     onCloseSession: (Int) -> Unit,
+    onStopCodeServer: () -> Unit,
     onStopAll: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -48,7 +50,7 @@ fun EnvironmentOverviewSheet(
         StatusCardGrid(
             cards =
                 listOf(
-                    stringResource(R.string.overview_status) to status,
+                    stringResource(R.string.overview_cpu) to cpu,
                     stringResource(R.string.overview_uptime) to uptime,
                     stringResource(R.string.overview_ram_total) to ram,
                     stringResource(R.string.overview_storage) to storage,
@@ -59,17 +61,25 @@ fun EnvironmentOverviewSheet(
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.primary,
         )
-        if (sessions.isEmpty()) {
+        if (sessions.isEmpty() && codeServer == null) {
             Text(
                 text = stringResource(R.string.overview_no_sessions),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         } else {
-            SessionList(
-                sessions = sessions,
-                onCloseSession = onCloseSession,
-            )
+            if (sessions.isNotEmpty()) {
+                SessionList(
+                    sessions = sessions,
+                    onCloseSession = onCloseSession,
+                )
+            }
+            if (codeServer != null) {
+                SessionList(
+                    sessions = listOf(codeServer),
+                    onCloseSession = { onStopCodeServer() },
+                )
+            }
         }
         if (confirmStop) {
             Text(
