@@ -31,10 +31,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,35 +44,21 @@ import dev.prootcode.app.R
 
 @Composable
 fun CodeServerShortcutsBar(
+    modifierState: CodeServerModifierState,
     onKey: (keyCode: Int, metaState: Int) -> Unit,
     onCopy: () -> Unit,
     onPaste: () -> Unit,
     onShowKeyboard: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var ctrlLocked by remember { mutableStateOf(false) }
-    var ctrlActive by remember { mutableStateOf(false) }
-    var altLocked by remember { mutableStateOf(false) }
-    var altActive by remember { mutableStateOf(false) }
-
-    val ctrl = ctrlLocked || ctrlActive
-    val alt = altLocked || altActive
-
-    fun buildMetaState(shift: Boolean): Int {
-        var state = 0
-        if (ctrl) state = state or KeyEvent.META_CTRL_ON
-        if (alt) state = state or KeyEvent.META_ALT_ON
-        if (shift) state = state or KeyEvent.META_SHIFT_ON
-        return state
-    }
-
     fun send(
         keyCode: Int,
         shift: Boolean = false,
     ) {
-        onKey(keyCode, buildMetaState(shift))
-        if (!ctrlLocked) ctrlActive = false
-        if (!altLocked) altActive = false
+        var metaState = modifierState.metaState()
+        if (shift) metaState = metaState or KeyEvent.META_SHIFT_ON
+        onKey(keyCode, metaState)
+        modifierState.consume()
     }
 
     Surface(
@@ -97,23 +80,17 @@ fun CodeServerShortcutsBar(
                 KeyPill(label = "Tab", onClick = { send(KeyEvent.KEYCODE_TAB) })
                 KeyPill(
                     label = "Ctrl",
-                    active = ctrl,
-                    locked = ctrlLocked,
-                    onClick = { ctrlActive = !ctrlActive },
-                    onLongClick = {
-                        ctrlLocked = !ctrlLocked
-                        ctrlActive = ctrlLocked
-                    },
+                    active = modifierState.ctrl,
+                    locked = modifierState.ctrlLocked,
+                    onClick = { modifierState.toggleCtrl() },
+                    onLongClick = { modifierState.toggleCtrlLock() },
                 )
                 KeyPill(
                     label = "Alt",
-                    active = alt,
-                    locked = altLocked,
-                    onClick = { altActive = !altActive },
-                    onLongClick = {
-                        altLocked = !altLocked
-                        altActive = altLocked
-                    },
+                    active = modifierState.alt,
+                    locked = modifierState.altLocked,
+                    onClick = { modifierState.toggleAlt() },
+                    onLongClick = { modifierState.toggleAltLock() },
                 )
                 KeyPill(label = "↑", onClick = { send(KeyEvent.KEYCODE_DPAD_UP) })
                 KeyPill(label = "↓", onClick = { send(KeyEvent.KEYCODE_DPAD_DOWN) })

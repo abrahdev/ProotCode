@@ -80,6 +80,7 @@ fun GuestCodeServerScreen(
     var progress by remember { mutableIntStateOf(0) }
     var showSettings by remember { mutableStateOf(false) }
     var textZoomPercent by remember { mutableIntStateOf(layoutPreferences.getInt(GUEST_ZOOM_KEY, 100)) }
+    val modifierState = remember { CodeServerModifierState() }
     val guestHost = remember(guestUrl) { runCatching { Uri.parse(guestUrl).host }.getOrNull() }
 
     LaunchedEffect(textZoomPercent) {
@@ -301,8 +302,14 @@ fun GuestCodeServerScreen(
                         }
                     },
                 onWebViewCreated = { created -> webView = created },
+                onCommitText = { text ->
+                    commitModifiedText(text, modifierState) { keyCode, metaState ->
+                        sendKey(keyCode, metaState)
+                    }
+                },
             )
             CodeServerShortcutsBar(
+                modifierState = modifierState,
                 onKey = { keyCode, metaState -> sendKey(keyCode, metaState) },
                 onCopy = { copyFromWebView() },
                 onPaste = { pasteIntoWebView() },

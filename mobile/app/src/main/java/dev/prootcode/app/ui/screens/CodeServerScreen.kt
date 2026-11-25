@@ -90,7 +90,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
 import dev.prootcode.app.runtime.codeserver.CodeServerStatus
+import dev.prootcode.app.ui.codeserver.CodeServerModifierState
 import dev.prootcode.app.ui.codeserver.CodeServerShortcutsBar
+import dev.prootcode.app.ui.codeserver.commitModifiedText
 import dev.prootcode.app.ui.components.ExpressiveLinearProgressIndicator
 import dev.prootcode.app.ui.components.SettingsGroup
 import dev.prootcode.app.ui.components.SheetScaffold
@@ -120,6 +122,7 @@ fun CodeServerScreen(
 
     var showSettings by remember { mutableStateOf(false) }
     var webView by remember { mutableStateOf<WebView?>(null) }
+    val modifierState = remember { CodeServerModifierState() }
     var progress by remember { mutableIntStateOf(0) }
     var actionsExpanded by remember { mutableStateOf(true) }
     var textZoomPercent by remember { mutableIntStateOf(DEFAULT_ZOOM_PERCENT) }
@@ -490,9 +493,15 @@ fun CodeServerScreen(
                                 webView = created
                             },
                             imeEnabled = { !keyboardLocked },
+                            onCommitText = { text ->
+                                commitModifiedText(text, modifierState) { keyCode, metaState ->
+                                    sendKey(keyCode, metaState)
+                                }
+                            },
                         )
                     }
                     CodeServerShortcutsBar(
+                        modifierState = modifierState,
                         onKey = { keyCode, metaState -> sendKey(keyCode, metaState) },
                         onCopy = { copyFromWebView() },
                         onPaste = { pasteIntoWebView() },
