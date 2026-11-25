@@ -271,6 +271,16 @@ fun EnvironmentConfigSheet(
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                SettingsGroup(title = null) {
+                    SwitchRow(
+                        title = stringResource(R.string.code_server_lan),
+                        subtitle = stringResource(R.string.code_server_lan_sub),
+                        checked = local.settings.codeServerLan,
+                        onCheckedChange = { checked ->
+                            settings { it.copy(codeServerLan = checked) }
+                        },
+                    )
+                }
             }
 
             ConfigKey.NETWORK_SHARING ->

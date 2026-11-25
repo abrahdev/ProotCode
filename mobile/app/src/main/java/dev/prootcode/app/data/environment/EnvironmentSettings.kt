@@ -10,6 +10,7 @@ data class EnvironmentSettings(
     val extraMounts: List<String> = emptyList(),
     val autoCleanup: Boolean = true,
     val codeServerPort: Int = 8080,
+    val codeServerLan: Boolean = false,
     val networkSharing: Boolean = true,
     val proxy: String = "",
     val adbShare: Boolean = false,

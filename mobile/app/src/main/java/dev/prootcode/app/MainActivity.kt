@@ -88,6 +88,13 @@ class MainActivity : ComponentActivity() {
                                         environment.id,
                                     )
                                 },
+                                onOpenGuest = { url, password ->
+                                    CodeServerActivity.startGuest(
+                                        this@MainActivity,
+                                        url,
+                                        password,
+                                    )
+                                },
                             )
                         }
                         composable(NavRoutes.ABOUT) {
