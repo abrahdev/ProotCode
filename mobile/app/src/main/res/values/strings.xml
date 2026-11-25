@@ -356,7 +356,7 @@
     <string name="code_server_url_copy">Copy address</string>
     <string name="code_server_url_unavailable">Start the server to get an address.</string>
     <string name="code_server_share">Share</string>
-    <string name="code_server_share_message">%1$s\n\ncode-server password: %2$s</string>
+    <string name="code_server_share_message">Code-server:\n%1$s\n%2$s</string>
     <string name="code_server_guest">Open as guest</string>
     <string name="code_server_guest_title">Open as guest</string>
     <string name="code_server_guest_url">Address</string>
