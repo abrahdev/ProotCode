@@ -234,10 +234,14 @@ fun CodeServerScreen(
         view.dispatchKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0, metaState))
     }
 
+    val passwordLabel = stringResource(R.string.code_server_password)
+    val urlLabel = stringResource(R.string.code_server_url)
+    val shareLabel = stringResource(R.string.code_server_share)
+
     fun copyPassword() {
         val value = password ?: return
         val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
-        clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.code_server_password), value))
+        clipboard.setPrimaryClip(ClipData.newPlainText(passwordLabel, value))
     }
 
     fun reachableUrl(): String? {
@@ -250,23 +254,26 @@ fun CodeServerScreen(
         }
     }
 
+    val shareText =
+        stringResource(
+            R.string.code_server_share_message,
+            reachableUrl().orEmpty(),
+            password.orEmpty(),
+        )
+
     fun copyUrl() {
         val url = reachableUrl() ?: return
         val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
-        clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.code_server_url), url))
+        clipboard.setPrimaryClip(ClipData.newPlainText(urlLabel, url))
     }
 
     fun shareAccess() {
-        val url = reachableUrl() ?: return
-        val text = context.getString(R.string.code_server_share_message, url, password.orEmpty())
         val intent =
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, text)
+                putExtra(Intent.EXTRA_TEXT, shareText)
             }
-        context.startActivity(
-            Intent.createChooser(intent, context.getString(R.string.code_server_share)),
-        )
+        context.startActivity(Intent.createChooser(intent, shareLabel))
     }
 
     val latestPassword = rememberUpdatedState(password)

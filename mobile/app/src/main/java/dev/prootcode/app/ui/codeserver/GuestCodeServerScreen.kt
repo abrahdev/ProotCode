@@ -190,27 +190,34 @@ fun GuestCodeServerScreen(
         resultMsg.sendToTarget()
     }
 
+    val passwordLabel = stringResource(R.string.code_server_password)
+    val urlLabel = stringResource(R.string.code_server_url)
+    val shareLabel = stringResource(R.string.code_server_share)
+    val shareText =
+        stringResource(
+            R.string.code_server_share_message,
+            guestUrl,
+            guestPassword.orEmpty(),
+        )
+
     fun copyPassword() {
         val value = guestPassword ?: return
         val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
-        clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.code_server_password), value))
+        clipboard.setPrimaryClip(ClipData.newPlainText(passwordLabel, value))
     }
 
     fun copyUrl() {
         val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
-        clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.code_server_url), guestUrl))
+        clipboard.setPrimaryClip(ClipData.newPlainText(urlLabel, guestUrl))
     }
 
     fun shareAccess() {
-        val text = context.getString(R.string.code_server_share_message, guestUrl, guestPassword.orEmpty())
         val intent =
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, text)
+                putExtra(Intent.EXTRA_TEXT, shareText)
             }
-        context.startActivity(
-            Intent.createChooser(intent, context.getString(R.string.code_server_share)),
-        )
+        context.startActivity(Intent.createChooser(intent, shareLabel))
     }
 
     BackHandler {
