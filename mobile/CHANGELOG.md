@@ -14,6 +14,8 @@ All notable changes to this project are documented in this file.
 - code-server: show-keyboard button in the shortcuts bar
 - code-server: zoom slider in settings
 - code-server: guest mode to open any link with a password using the same interface
+- code-server: expressive loading indicator while the server starts
+- code-server: reuse the open window instead of spawning a new one
 - code-server: mobile CSS injection for rounded web UI corners
 - code-server: user data and extensions directories inside the environment
 

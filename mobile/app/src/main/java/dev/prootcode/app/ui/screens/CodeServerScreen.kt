@@ -39,6 +39,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -52,7 +53,6 @@ import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Stop
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -93,6 +93,7 @@ import dev.prootcode.app.runtime.codeserver.CodeServerStatus
 import dev.prootcode.app.ui.codeserver.CodeServerModifierState
 import dev.prootcode.app.ui.codeserver.CodeServerShortcutsBar
 import dev.prootcode.app.ui.codeserver.commitModifiedText
+import dev.prootcode.app.ui.components.ExpressiveCircularProgressIndicator
 import dev.prootcode.app.ui.components.ExpressiveLinearProgressIndicator
 import dev.prootcode.app.ui.components.SettingsGroup
 import dev.prootcode.app.ui.components.SheetScaffold
@@ -379,7 +380,7 @@ fun CodeServerScreen(
         when {
             !loaded -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                    ExpressiveCircularProgressIndicator(modifier = Modifier.size(48.dp))
                 }
             }
             environment == null -> {
@@ -498,6 +499,8 @@ fun CodeServerScreen(
                                     sendKey(keyCode, metaState)
                                 }
                             },
+                            modifierMetaState = { modifierState.metaState() },
+                            onModifierConsumed = { modifierState.consume() },
                         )
                     }
                     CodeServerShortcutsBar(
@@ -836,7 +839,7 @@ private fun StatusMessage(
         verticalArrangement = Arrangement.Center,
     ) {
         if (showSpinner) {
-            CircularProgressIndicator()
+            ExpressiveCircularProgressIndicator(modifier = Modifier.size(48.dp))
             Box(modifier = Modifier.padding(top = 16.dp))
         }
         Text(

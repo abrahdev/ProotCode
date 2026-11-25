@@ -307,6 +307,8 @@ fun GuestCodeServerScreen(
                         sendKey(keyCode, metaState)
                     }
                 },
+                modifierMetaState = { modifierState.metaState() },
+                onModifierConsumed = { modifierState.consume() },
             )
             CodeServerShortcutsBar(
                 modifierState = modifierState,

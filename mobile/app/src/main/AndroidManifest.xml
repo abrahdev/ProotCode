@@ -48,7 +48,7 @@
             android:name=".ui.codeserver.CodeServerActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density"
             android:exported="true"
-            android:launchMode="standard"
+            android:launchMode="singleInstance"
             android:resizeableActivity="true"
             android:taskAffinity=""
             android:windowSoftInputMode="adjustResize">

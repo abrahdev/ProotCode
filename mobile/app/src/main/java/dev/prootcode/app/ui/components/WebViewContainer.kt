@@ -1,5 +1,6 @@
 package dev.prootcode.app.ui.components
 
+import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
@@ -26,6 +27,8 @@ fun WebViewContainer(
     settings: (android.webkit.WebSettings) -> Unit = {},
     imeEnabled: () -> Boolean = { true },
     onCommitText: (CharSequence) -> Boolean = { false },
+    modifierMetaState: () -> Int = { 0 },
+    onModifierConsumed: () -> Unit = {},
 ) {
     var webView by remember { mutableStateOf<WebView?>(null) }
     DisposableEffect(Unit) {
@@ -45,6 +48,27 @@ fun WebViewContainer(
                 }
 
                 override fun onCheckIsTextEditor(): Boolean = imeEnabled()
+
+                override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+                    val extra = modifierMetaState()
+                    if (extra == 0) return super.dispatchKeyEvent(event)
+                    val modified =
+                        KeyEvent(
+                            event.downTime,
+                            event.eventTime,
+                            event.action,
+                            event.keyCode,
+                            event.repeatCount,
+                            event.metaState or extra,
+                            event.deviceId,
+                            event.scanCode,
+                            event.flags,
+                            event.source,
+                        )
+                    val handled = super.dispatchKeyEvent(modified)
+                    if (event.action == KeyEvent.ACTION_UP) onModifierConsumed()
+                    return handled
+                }
             }.apply {
                 isClickable = true
                 isFocusable = true
