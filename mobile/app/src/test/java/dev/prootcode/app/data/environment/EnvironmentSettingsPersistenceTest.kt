@@ -24,6 +24,7 @@ class EnvironmentSettingsPersistenceTest {
                 extraMounts = listOf("/tmp/one", "/tmp/two"),
                 autoCleanup = false,
                 codeServerPort = 9090,
+                codeServerLan = true,
                 networkSharing = false,
                 proxy = "http://proxy:8080",
                 adbShare = true,

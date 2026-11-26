@@ -56,17 +56,34 @@ fun codeServerGuestPath(
 
 fun codeServerArgs(
     port: Int,
-    workspace: String = "/root/projects_bridge",
+    lan: Boolean = false,
+    userDataDir: String = CODE_SERVER_USER_DATA_DIR,
+    extensionsDir: String = CODE_SERVER_EXTENSIONS_DIR,
+    workspace: String = CODE_SERVER_WORKSPACE,
 ): List<String> =
     listOf(
         "--bind-addr",
-        "127.0.0.1:$port",
+        "${if (lan) WILDCARD_HOST else LOOPBACK_HOST}:$port",
         "--auth",
-        "none",
+        "password",
         "--disable-telemetry",
         "--disable-update-check",
+        "--user-data-dir",
+        userDataDir,
+        "--extensions-dir",
+        extensionsDir,
         workspace,
     )
+
+private const val LOOPBACK_HOST = "127.0.0.1"
+
+private const val WILDCARD_HOST = "0.0.0.0"
+
+internal const val CODE_SERVER_USER_DATA_DIR = "/root/.local/share/code-server"
+
+internal const val CODE_SERVER_EXTENSIONS_DIR = "/root/.local/share/code-server/extensions"
+
+internal const val CODE_SERVER_WORKSPACE = "/root/projects_bridge"
 
 fun isCodeServerPortOpen(port: Int): Boolean =
     runCatching {
@@ -80,6 +97,10 @@ private const val PORT_PROBE_TIMEOUT_MS = 300
 private const val START_TIMEOUT_MS = 90_000L
 
 private const val POLL_INTERVAL_MS = 400L
+
+private const val PORT_CLOSE_TIMEOUT_MS = 5_000L
+
+private const val PORT_CLOSE_POLL_MS = 100L
 
 private const val MIN_PORT = 1024
 
@@ -133,6 +154,27 @@ object CodeServerManager {
         scope.launch { killLeftoverProcesses(environmentId) }
     }
 
+    fun restart(
+        context: Context,
+        environment: Environment,
+    ): Job {
+        val environmentId = environment.id
+        jobs.remove(environmentId)?.cancel()
+        processes.remove(environmentId)?.let { process ->
+            runCatching { process.destroy() }
+            runCatching { process.destroyForcibly() }
+        }
+        statusFlow(environmentId).value = CodeServerStatus.Starting
+        val job =
+            scope.launch {
+                killLeftoverProcesses(environmentId)
+                awaitPortClosed(environment.settings.codeServerPort.coerceIn(MIN_PORT, MAX_PORT))
+                launchProcess(context.applicationContext, environment)
+            }
+        jobs[environmentId] = job
+        return job
+    }
+
     fun logFile(
         context: Context,
         environmentId: String,
@@ -161,6 +203,8 @@ object CodeServerManager {
         val log = logFile(context, environmentId)
         log.parentFile?.mkdirs()
         runCatching { log.writeText("") }
+        val password = CodeServerCredentials.password(context, environmentId)
+        CodeServerSettings.seed(rootfs, CODE_SERVER_USER_DATA_DIR)
         runCatching {
             val command =
                 ProotCommand(
@@ -172,7 +216,8 @@ object CodeServerManager {
                 )
             val argv =
                 command.execArgv(
-                    listOf(codeServerGuestPath(rootfs, binary)) + codeServerArgs(port),
+                    listOf(codeServerGuestPath(rootfs, binary)) +
+                        codeServerArgs(port = port, lan = environment.settings.codeServerLan),
                 )
             val builder =
                 ProcessBuilder(argv)
@@ -183,6 +228,7 @@ object CodeServerManager {
             val processEnvironment = builder.environment()
             processEnvironment.putAll(command.environment())
             processEnvironment.putAll(GuestEnvironment.of(environment.settings))
+            processEnvironment["PASSWORD"] = password
             processEnvironment["TMPDIR"] = "/tmp"
             processEnvironment["XDG_RUNTIME_DIR"] = "/tmp/runtime-root"
             processEnvironment["XDG_CACHE_HOME"] = "/root/.cache"
@@ -224,6 +270,13 @@ object CodeServerManager {
             delay(POLL_INTERVAL_MS)
         }
         return CodeServerStatus.Failed("Timed out waiting for code-server on port $port")
+    }
+
+    private suspend fun awaitPortClosed(port: Int) {
+        val deadline = System.currentTimeMillis() + PORT_CLOSE_TIMEOUT_MS
+        while (System.currentTimeMillis() < deadline && isCodeServerPortOpen(port)) {
+            delay(PORT_CLOSE_POLL_MS)
+        }
     }
 
     private fun logTail(

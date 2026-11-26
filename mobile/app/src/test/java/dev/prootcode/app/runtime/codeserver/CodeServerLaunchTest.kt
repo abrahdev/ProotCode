@@ -54,9 +54,45 @@ class CodeServerLaunchTest {
         val args = codeServerArgs(8080)
 
         assertEquals("127.0.0.1:8080", args[args.indexOf("--bind-addr") + 1])
-        assertEquals("none", args[args.indexOf("--auth") + 1])
+        assertEquals("password", args[args.indexOf("--auth") + 1])
         assertTrue(args.contains("--disable-telemetry"))
+        assertEquals(CODE_SERVER_USER_DATA_DIR, args[args.indexOf("--user-data-dir") + 1])
+        assertEquals(CODE_SERVER_EXTENSIONS_DIR, args[args.indexOf("--extensions-dir") + 1])
         assertEquals("/root/projects_bridge", args.last())
+    }
+
+    @Test
+    fun `binds to all interfaces when lan is enabled`() {
+        val args = codeServerArgs(8080, lan = true)
+
+        assertEquals("0.0.0.0:8080", args[args.indexOf("--bind-addr") + 1])
+    }
+
+    @Test
+    fun `seeds keyCode keyboard dispatch without overwriting existing settings`() {
+        val rootfs = File(tempDir, "rootfs")
+        CodeServerSettings.seed(rootfs, CODE_SERVER_USER_DATA_DIR)
+
+        val file = File(rootfs, "root/.local/share/code-server/User/settings.json")
+        assertTrue(file.isFile)
+        assertTrue(file.readText().contains("\"keyboard.dispatch\""))
+        assertTrue(file.readText().contains("keyCode"))
+
+        file.writeText("{\n  \"editor.fontSize\": 16\n}")
+        CodeServerSettings.seed(rootfs, CODE_SERVER_USER_DATA_DIR)
+
+        assertTrue(file.readText().contains("\"editor.fontSize\""))
+        assertTrue(file.readText().contains("\"keyboard.dispatch\""))
+    }
+
+    @Test
+    fun `generates readable passwords`() {
+        val first = CodeServerCredentials.generate()
+        val second = CodeServerCredentials.generate()
+
+        assertEquals(16, first.length)
+        assertEquals(16, second.length)
+        assertTrue(first != second)
     }
 
     @Test

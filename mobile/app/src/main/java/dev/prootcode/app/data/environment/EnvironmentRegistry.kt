@@ -72,6 +72,7 @@ class EnvironmentRegistry(
             put("extraMounts", JSONArray(extraMounts))
             put("autoCleanup", autoCleanup)
             put("codeServerPort", codeServerPort)
+            put("codeServerLan", codeServerLan)
             put("networkSharing", networkSharing)
             put("proxy", proxy)
             put("adbShare", adbShare)
@@ -120,6 +121,7 @@ class EnvironmentRegistry(
                     }.orEmpty(),
             autoCleanup = optBoolean("autoCleanup", defaults.autoCleanup),
             codeServerPort = optInt("codeServerPort", defaults.codeServerPort),
+            codeServerLan = optBoolean("codeServerLan", defaults.codeServerLan),
             networkSharing = optBoolean("networkSharing", defaults.networkSharing),
             proxy = optString("proxy", defaults.proxy),
             adbShare = optBoolean("adbShare", defaults.adbShare),

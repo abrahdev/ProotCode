@@ -2,6 +2,7 @@ package dev.prootcode.app.ui.screens
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.ContextWrapper
@@ -9,6 +10,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Message
+import android.os.SystemClock
+import android.view.KeyEvent
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.webkit.WebChromeClient
@@ -21,11 +24,8 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -46,20 +46,21 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.ContentCopy
-import androidx.compose.material.icons.outlined.ContentPaste
 import androidx.compose.material.icons.outlined.DragIndicator
 import androidx.compose.material.icons.outlined.Keyboard
 import androidx.compose.material.icons.outlined.KeyboardHide
 import androidx.compose.material.icons.outlined.Refresh
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Stop
-import androidx.compose.material.icons.outlined.ZoomIn
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -69,6 +70,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -88,7 +90,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
 import dev.prootcode.app.runtime.codeserver.CodeServerStatus
+import dev.prootcode.app.ui.codeserver.CodeServerModifierState
+import dev.prootcode.app.ui.codeserver.CodeServerShortcutsBar
+import dev.prootcode.app.ui.codeserver.commitModifiedText
+import dev.prootcode.app.ui.components.ExpressiveCircularProgressIndicator
 import dev.prootcode.app.ui.components.ExpressiveLinearProgressIndicator
+import dev.prootcode.app.ui.components.SettingsGroup
+import dev.prootcode.app.ui.components.SheetScaffold
+import dev.prootcode.app.ui.components.SwitchRow
 import dev.prootcode.app.ui.components.WebViewContainer
 import dev.prootcode.app.ui.util.LinkOpener
 import dev.prootcode.app.ui.util.QuestWindow
@@ -108,8 +117,13 @@ fun CodeServerScreen(
     val status by viewModel.status.collectAsState()
     val environment by viewModel.environment.collectAsState()
     val loaded by viewModel.loaded.collectAsState()
+    val password by viewModel.password.collectAsState()
+    val lan by viewModel.lan.collectAsState()
+    val lanAddress by viewModel.lanAddress.collectAsState()
 
+    var showSettings by remember { mutableStateOf(false) }
     var webView by remember { mutableStateOf<WebView?>(null) }
+    val modifierState = remember { CodeServerModifierState() }
     var progress by remember { mutableIntStateOf(0) }
     var actionsExpanded by remember { mutableStateOf(true) }
     var textZoomPercent by remember { mutableIntStateOf(DEFAULT_ZOOM_PERCENT) }
@@ -151,8 +165,11 @@ fun CodeServerScreen(
         webView?.settings?.textZoom = textZoomPercent
     }
 
-    fun changeZoom(step: Int) {
-        textZoomPercent = nextZoomCycle(textZoomPercent, step)
+    fun showKeyboard() {
+        val view = webView ?: return
+        val imm = context.getSystemService(InputMethodManager::class.java)
+        view.requestFocus()
+        imm?.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
     }
 
     fun copyFromWebView() {
@@ -205,6 +222,61 @@ fun CodeServerScreen(
             webView?.let { imm?.restartInput(it) }
         }
     }
+
+    fun sendKey(
+        keyCode: Int,
+        metaState: Int,
+    ) {
+        val view = webView ?: return
+        view.requestFocus()
+        val now = SystemClock.uptimeMillis()
+        view.dispatchKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_DOWN, keyCode, 0, metaState))
+        view.dispatchKeyEvent(KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0, metaState))
+    }
+
+    val passwordLabel = stringResource(R.string.code_server_password)
+    val urlLabel = stringResource(R.string.code_server_url)
+    val shareLabel = stringResource(R.string.code_server_share)
+
+    fun copyPassword() {
+        val value = password ?: return
+        val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
+        clipboard.setPrimaryClip(ClipData.newPlainText(passwordLabel, value))
+    }
+
+    fun reachableUrl(): String? {
+        val port = (status as? CodeServerStatus.Running)?.port ?: return null
+        val ip = lanAddress
+        return if (lan && ip != null) {
+            "http://$ip:$port/"
+        } else {
+            "http://$CODE_SERVER_HOST:$port/"
+        }
+    }
+
+    val shareText =
+        stringResource(
+            R.string.code_server_share_message,
+            reachableUrl().orEmpty(),
+            password.orEmpty(),
+        )
+
+    fun copyUrl() {
+        val url = reachableUrl() ?: return
+        val clipboard = context.getSystemService(ClipboardManager::class.java) ?: return
+        clipboard.setPrimaryClip(ClipData.newPlainText(urlLabel, url))
+    }
+
+    fun shareAccess() {
+        val intent =
+            Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, shareText)
+            }
+        context.startActivity(Intent.createChooser(intent, shareLabel))
+    }
+
+    val latestPassword = rememberUpdatedState(password)
 
     fun openLink(uri: Uri): Boolean {
         LinkOpener.open(context, uri.toString())
@@ -315,7 +387,7 @@ fun CodeServerScreen(
         when {
             !loaded -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                    ExpressiveCircularProgressIndicator(modifier = Modifier.size(48.dp))
                 }
             }
             environment == null -> {
@@ -368,7 +440,7 @@ fun CodeServerScreen(
                     key(port) {
                         WebViewContainer(
                             url = "http://$CODE_SERVER_HOST:$port/",
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.weight(1f).fillMaxWidth(),
                             settings = { webSettings ->
                                 webSettings.javaScriptEnabled = true
                                 webSettings.domStorageEnabled = true
@@ -394,6 +466,17 @@ fun CodeServerScreen(
                                         view: WebView,
                                         url: String,
                                     ): Boolean = handleNavigation(Uri.parse(url))
+
+                                    override fun onPageFinished(
+                                        view: WebView,
+                                        url: String,
+                                    ) {
+                                        super.onPageFinished(view, url)
+                                        view.evaluateJavascript(
+                                            MOBILE_CSS_SCRIPT + autoLoginScript(latestPassword.value),
+                                            null,
+                                        )
+                                    }
                                 },
                             webChromeClient =
                                 object : WebChromeClient() {
@@ -418,8 +501,22 @@ fun CodeServerScreen(
                                 webView = created
                             },
                             imeEnabled = { !keyboardLocked },
+                            onCommitText = { text ->
+                                commitModifiedText(text, modifierState) { keyCode, metaState ->
+                                    sendKey(keyCode, metaState)
+                                }
+                            },
+                            modifierMetaState = { modifierState.metaState() },
+                            onModifierConsumed = { modifierState.consume() },
                         )
                     }
+                    CodeServerShortcutsBar(
+                        modifierState = modifierState,
+                        onKey = { keyCode, metaState -> sendKey(keyCode, metaState) },
+                        onCopy = { copyFromWebView() },
+                        onPaste = { pasteIntoWebView() },
+                        onShowKeyboard = { showKeyboard() },
+                    )
                 }
 
                 val offsetSpec: AnimationSpec<Offset> =
@@ -530,24 +627,6 @@ fun CodeServerScreen(
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
-                            ZoomButton(
-                                percent = textZoomPercent,
-                                onStep = { changeZoom(it) },
-                            )
-                            IconButton(onClick = { copyFromWebView() }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.ContentCopy,
-                                    contentDescription = stringResource(R.string.code_server_copy),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(onClick = { pasteIntoWebView() }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.ContentPaste,
-                                    contentDescription = stringResource(R.string.code_server_paste),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
                             IconButton(onClick = { toggleKeyboardLock() }) {
                                 Icon(
                                     imageVector =
@@ -585,6 +664,13 @@ fun CodeServerScreen(
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
+                            IconButton(onClick = { showSettings = true }) {
+                                Icon(
+                                    imageVector = Icons.Outlined.Settings,
+                                    contentDescription = stringResource(R.string.code_server_settings),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
                             IconButton(
                                 onClick = {
                                     viewModel.stop()
@@ -604,6 +690,140 @@ fun CodeServerScreen(
                     }
                 }
             }
+        }
+
+        if (showSettings) {
+            CodeServerSettingsSheet(
+                url = reachableUrl(),
+                password = password,
+                lan = lan,
+                lanAddress = lanAddress,
+                zoomPercent = textZoomPercent,
+                onZoomChange = { textZoomPercent = it },
+                onLanChange = viewModel::setLan,
+                onRegenerate = viewModel::regeneratePassword,
+                onCopyPassword = { copyPassword() },
+                onCopyUrl = { copyUrl() },
+                onShare = { shareAccess() },
+                onDismiss = { showSettings = false },
+            )
+        }
+    }
+}
+
+@Composable
+private fun CodeServerSettingsSheet(
+    url: String?,
+    password: String?,
+    lan: Boolean,
+    lanAddress: String?,
+    zoomPercent: Int,
+    onZoomChange: (Int) -> Unit,
+    onLanChange: (Boolean) -> Unit,
+    onRegenerate: () -> Unit,
+    onCopyPassword: () -> Unit,
+    onCopyUrl: () -> Unit,
+    onShare: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    SheetScaffold(
+        title = stringResource(R.string.code_server_settings),
+        onDismiss = onDismiss,
+        footer = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.action_done))
+            }
+        },
+    ) {
+        Text(
+            text = stringResource(R.string.code_server_zoom),
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.primary,
+        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Slider(
+                value = zoomPercent.toFloat(),
+                onValueChange = { onZoomChange(it.roundToInt()) },
+                valueRange = MIN_ZOOM_PERCENT.toFloat()..MAX_ZOOM_PERCENT.toFloat(),
+                steps = (MAX_ZOOM_PERCENT - MIN_ZOOM_PERCENT) / 10 - 1,
+                modifier = Modifier.weight(1f),
+            )
+            Text(
+                text = "$zoomPercent%",
+                style = MaterialTheme.typography.labelLarge,
+                modifier = Modifier.padding(start = 12.dp),
+            )
+        }
+        SettingsGroup(title = null) {
+            SwitchRow(
+                title = stringResource(R.string.code_server_lan),
+                subtitle = stringResource(R.string.code_server_lan_sub),
+                checked = lan,
+                onCheckedChange = onLanChange,
+                showDivider = true,
+            )
+        }
+        Text(
+            text = stringResource(R.string.code_server_password),
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.primary,
+        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = password.orEmpty(),
+                style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
+                modifier = Modifier.weight(1f),
+            )
+            IconButton(onClick = onCopyPassword) {
+                Icon(
+                    imageVector = Icons.Outlined.ContentCopy,
+                    contentDescription = stringResource(R.string.code_server_password_copy),
+                )
+            }
+        }
+        Text(
+            text = stringResource(R.string.code_server_password_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.code_server_url),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Text(
+                    text =
+                        url ?: if (lan) {
+                            stringResource(R.string.code_server_lan_unavailable)
+                        } else {
+                            stringResource(R.string.code_server_url_unavailable)
+                        },
+                    style = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
+                )
+            }
+            IconButton(enabled = url != null, onClick = onCopyUrl) {
+                Icon(
+                    imageVector = Icons.Outlined.ContentCopy,
+                    contentDescription = stringResource(R.string.code_server_url_copy),
+                )
+            }
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(enabled = url != null, onClick = onShare) {
+                Text(stringResource(R.string.code_server_share))
+            }
+            OutlinedButton(onClick = onRegenerate) {
+                Text(stringResource(R.string.code_server_password_regenerate))
+            }
+        }
+        if (lan && lanAddress == null) {
+            Text(
+                text = stringResource(R.string.code_server_lan_unavailable),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
     }
 }
@@ -626,7 +846,7 @@ private fun StatusMessage(
         verticalArrangement = Arrangement.Center,
     ) {
         if (showSpinner) {
-            CircularProgressIndicator()
+            ExpressiveCircularProgressIndicator(modifier = Modifier.size(48.dp))
             Box(modifier = Modifier.padding(top = 16.dp))
         }
         Text(
@@ -669,42 +889,32 @@ private fun DragHandle() {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
-@Composable
-private fun ZoomButton(
-    percent: Int,
-    onStep: (Int) -> Unit,
-) {
-    val interactionSource = remember { MutableInteractionSource() }
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(
-            modifier =
-                Modifier
-                    .size(width = 48.dp, height = 40.dp)
-                    .combinedClickable(
-                        interactionSource = interactionSource,
-                        indication = LocalIndication.current,
-                        onClick = { onStep(ZOOM_STEP_PERCENT) },
-                        onLongClick = { onStep(-ZOOM_STEP_PERCENT) },
-                    ),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.ZoomIn,
-                contentDescription = stringResource(R.string.code_server_zoom),
-                tint = MaterialTheme.colorScheme.onSurface,
-            )
-        }
-        Text(
-            text = "$percent%",
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-    }
-}
-
 private const val CODE_SERVER_HOST = "127.0.0.1"
 private const val AUTO_HIDE_DELAY_MS = 3000L
+internal const val MOBILE_CSS_SCRIPT =
+    "(function(){" +
+        "if(document.getElementById('prootcode-mobile-css'))return;" +
+        "var s=document.createElement('style');s.id='prootcode-mobile-css';" +
+        "s.textContent='.monaco-workbench{border-radius:18px;overflow:hidden!important;}'+" +
+        "'html,body{background:transparent!important;}';" +
+        "document.head.appendChild(s);" +
+        "})();"
+
+internal fun autoLoginScript(password: String?): String {
+    if (password.isNullOrBlank()) return ""
+    val quoted = JSONObject.quote(password)
+    return "(function(){" +
+        "var p=document.querySelector('input[type=password]');" +
+        "if(!p)return;" +
+        "if(sessionStorage.getItem('prootcode_auto_login'))return;" +
+        "sessionStorage.setItem('prootcode_auto_login','1');" +
+        "p.value=$quoted;" +
+        "p.dispatchEvent(new Event('input',{bubbles:true}));" +
+        "var f=p.form||p.closest('form');" +
+        "if(f)f.submit();" +
+        "})();"
+}
+
 private const val DEFAULT_ZOOM_PERCENT = 100
 
 internal const val MIN_ZOOM_PERCENT = 50

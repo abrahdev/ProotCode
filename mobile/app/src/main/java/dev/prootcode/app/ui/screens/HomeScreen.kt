@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.DeveloperBoard
+import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Terminal
 import androidx.compose.material3.Button
@@ -42,6 +43,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.prootcode.app.R
@@ -54,9 +56,11 @@ import dev.prootcode.app.ui.components.BatteryPowerBadge
 import dev.prootcode.app.ui.components.EmptyState
 import dev.prootcode.app.ui.components.EnvCard
 import dev.prootcode.app.ui.components.InstallingSkeleton
+import dev.prootcode.app.ui.components.LabeledTextField
 import dev.prootcode.app.ui.components.SessionLevel
 import dev.prootcode.app.ui.components.SessionPreview
 import dev.prootcode.app.ui.components.SessionRow
+import dev.prootcode.app.ui.components.SheetScaffold
 import dev.prootcode.app.ui.components.formatFileSize
 import dev.prootcode.app.ui.settings.AccessibilitySheet
 import dev.prootcode.app.ui.settings.AdbSetupSheet
@@ -73,6 +77,7 @@ import dev.prootcode.app.ui.wizard.NewEnvironmentSheet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import java.net.URI
 
 private sealed interface HomeSheet {
     data object Preferences : HomeSheet
@@ -82,6 +87,8 @@ private sealed interface HomeSheet {
     data object Accessibility : HomeSheet
 
     data object Adb : HomeSheet
+
+    data object Guest : HomeSheet
 
     data object NewEnvironment : HomeSheet
 
@@ -101,6 +108,7 @@ fun HomeScreen(
     onOpenTerminal: (Environment) -> Unit,
     onOpenNativeTerminal: () -> Unit,
     onOpenCodeServer: (Environment) -> Unit,
+    onOpenGuest: (String, String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -201,6 +209,12 @@ fun HomeScreen(
                         BatteryPowerBadge()
                     }
                     Spacer(modifier = Modifier.weight(1f))
+                    IconButton(onClick = { sheet = HomeSheet.Guest }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Link,
+                            contentDescription = stringResource(R.string.code_server_guest),
+                        )
+                    }
                     IconButton(onClick = onOpenNativeTerminal) {
                         Icon(
                             imageVector = Icons.Outlined.Terminal,
@@ -387,6 +401,14 @@ fun HomeScreen(
                 onDismiss = { sheet = null },
                 onMessage = homeViewModel::showText,
             )
+        HomeSheet.Guest ->
+            GuestLinkSheet(
+                onOpen = { url, password ->
+                    onOpenGuest(url, password)
+                    sheet = null
+                },
+                onDismiss = { sheet = null },
+            )
         HomeSheet.NewEnvironment ->
             NewEnvironmentSheet(
                 viewModel = wizardViewModel,
@@ -493,6 +515,7 @@ fun HomeScreen(
                     },
                     onStopAll = {
                         TerminalSessionManager.closeAll(context, environment.id)
+                        CodeServerManager.stop(environment.id)
                         homeViewModel.showText(stoppedText)
                         sheet = null
                     },
@@ -519,6 +542,58 @@ fun HomeScreen(
             )
         }
     }
+}
+
+@Composable
+private fun GuestLinkSheet(
+    onOpen: (String, String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var url by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    val normalized = normalizeGuestUrl(url)
+
+    SheetScaffold(
+        title = stringResource(R.string.code_server_guest_title),
+        onDismiss = onDismiss,
+        footer = {
+            Spacer(modifier = Modifier.weight(1f))
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.action_cancel))
+            }
+            Button(
+                enabled = normalized != null && password.isNotBlank(),
+                onClick = { normalized?.let { onOpen(it, password) } },
+            ) {
+                Text(stringResource(R.string.code_server_guest_open))
+            }
+        },
+    ) {
+        LabeledTextField(
+            label = stringResource(R.string.code_server_guest_url),
+            value = url,
+            onValueChange = { url = it },
+            placeholder = stringResource(R.string.code_server_guest_url_hint),
+            keyboardType = KeyboardType.Uri,
+        )
+        LabeledTextField(
+            label = stringResource(R.string.code_server_guest_password),
+            value = password,
+            onValueChange = { password = it },
+            password = true,
+        )
+    }
+}
+
+internal fun normalizeGuestUrl(raw: String): String? {
+    val trimmed = raw.trim()
+    if (trimmed.isEmpty()) return null
+    val withScheme = if (trimmed.contains("://")) trimmed else "http://$trimmed"
+    val uri = runCatching { URI(withScheme) }.getOrNull() ?: return null
+    val scheme = uri.scheme?.lowercase()
+    if (scheme != "http" && scheme != "https") return null
+    if (uri.host.isNullOrBlank()) return null
+    return withScheme
 }
 
 @Composable
